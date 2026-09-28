@@ -1,0 +1,542 @@
+<title>Árbol Domecq Vergara</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&family=Alegreya+Sans:wght@400;500;700&family=Alegreya+Sans+SC:wght@500;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3F4F1;
+    --card:#FFFFFF;
+    --soft:#E8EAE6;
+    --ink:#1B2130;
+    --muted:#5A6170;
+    --line:#BFC3CA;
+    --pat:#2E5E4E;
+    --mat:#94580F;
+    --dup:#8C2F39;
+    --display:'IM Fell English', 'Iowan Old Style', Georgia, serif;
+    --body:'Alegreya', Georgia, 'Times New Roman', serif;
+    --sans:'Alegreya Sans', 'Gill Sans', 'Segoe UI', sans-serif;
+    --sc:'Alegreya Sans SC', 'Alegreya Sans', 'Gill Sans', sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      color-scheme:dark;
+      --paper:#11151B; --card:#181E27; --soft:#1F2631; --ink:#E6E8EC; --muted:#9CA3B0;
+      --line:#3A4250; --pat:#7DBBA5; --mat:#E0A862; --dup:#E68C97;
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme:dark;
+    --paper:#11151B; --card:#181E27; --soft:#1F2631; --ink:#E6E8EC; --muted:#9CA3B0;
+    --line:#3A4250; --pat:#7DBBA5; --mat:#E0A862; --dup:#E68C97;
+  }
+
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.5}
+  .wrap{max-width:1180px;margin:0 auto;padding-inline:20px;padding-block:44px 72px;display:flex;flex-direction:column;gap:64px}
+  h1,h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0;line-height:1.1}
+  p{margin:0}
+  a{color:inherit;text-decoration-color:var(--line);text-underline-offset:3px}
+  a:hover{text-decoration-color:currentColor}
+  button{font:inherit;color:inherit}
+  :focus-visible{outline:2px solid var(--pat);outline-offset:2px}
+
+  .eyebrow{font-family:var(--sc);font-weight:500;font-size:14px;letter-spacing:.08em;color:var(--muted)}
+  .lede{max-width:62ch;color:var(--ink)}
+  .muted{color:var(--muted)}
+  .num{font-family:var(--sans);font-variant-numeric:tabular-nums lining-nums}
+
+  /* Cabecera */
+  header{display:flex;flex-direction:column;gap:18px}
+  header h1{font-size:clamp(2.6rem,7vw,4.4rem)}
+  header h1 em{font-style:italic;color:var(--muted);font-size:.5em;display:block;margin-top:8px}
+  .stats{display:flex;flex-wrap:wrap;gap:16px 44px;margin-top:10px;padding-top:18px;border-top:1px solid var(--line)}
+  .stat{display:flex;flex-direction:column;gap:2px;max-width:17rem}
+  .stat b{font-family:var(--display);font-weight:400;font-size:2.4rem;line-height:1}
+  .stat span{font-family:var(--sans);font-size:15px;color:var(--muted);line-height:1.35}
+
+  section{display:flex;flex-direction:column;gap:20px}
+  section > h2{font-size:clamp(1.8rem,4vw,2.4rem)}
+  .intro{max-width:66ch}
+
+  /* Convergencia */
+  .conv{display:grid;grid-template-columns:1fr 92px 1fr;row-gap:22px;max-width:760px}
+  .conv .all{grid-column:1/-1}
+  .cnode{position:relative;display:flex;flex-direction:column;gap:2px;align-items:center;text-align:center;
+    background:var(--card);border:1px solid var(--line);border-radius:3px;padding:10px 12px;cursor:pointer}
+  .cnode:hover{border-color:var(--ink)}
+  .cnode .k{font-family:var(--sans);font-size:13px;font-variant-numeric:tabular-nums}
+  .cnode .nm{font-weight:700;line-height:1.25}
+  .cnode .dt{font-family:var(--sans);font-size:14px;color:var(--muted)}
+  .cnode.top{justify-self:center;max-width:32rem;border-color:var(--dup)}
+  .cnode.top .k{color:var(--dup)}
+  .cnode.me{justify-self:center;min-width:14rem;border:1.5px solid var(--ink)}
+  .cnode.l .k{color:var(--pat)} .cnode.r .k{color:var(--mat)}
+  .cnode.top::after,.cnode.last::after{content:"";position:absolute;left:50%;bottom:-23px;height:22px;border-left:1px solid var(--line)}
+  .cnode.l::before,.cnode.r::before,.cnode.me::before{content:"";position:absolute;left:50%;top:-23px;height:22px;border-left:1px solid var(--line)}
+  .fork{grid-column:1/-1;display:grid;grid-template-columns:1fr 92px 1fr;height:22px}
+  .fork i{position:relative;display:block}
+  .fork i::before,.fork i::after{content:"";position:absolute}
+  .fork i:nth-child(1)::after{left:50%;right:0;top:50%;border-top:1px solid var(--line)}
+  .fork i:nth-child(2)::after{left:0;right:0;top:50%;border-top:1px solid var(--line)}
+  .fork i:nth-child(3)::after{left:0;right:50%;top:50%;border-top:1px solid var(--line)}
+  .fork.down i:nth-child(1)::before,.fork.down i:nth-child(3)::before{left:50%;top:50%;bottom:0;border-left:1px solid var(--line)}
+  .fork.down i:nth-child(2)::before{left:50%;top:0;bottom:50%;border-left:1px solid var(--line)}
+  .fork.up i:nth-child(1)::before,.fork.up i:nth-child(3)::before{left:50%;top:0;bottom:50%;border-left:1px solid var(--line)}
+  .fork.up i:nth-child(2)::before{left:50%;top:50%;bottom:0;border-left:1px solid var(--line)}
+  .rel{position:relative;display:flex;align-items:center;justify-content:center;text-align:center}
+  .rel::before{content:"";position:absolute;left:0;right:0;top:50%;border-top:1px dashed var(--dup)}
+  .rel span{position:relative;background:var(--paper);padding:2px 4px;font-family:var(--sc);font-weight:500;font-size:13px;letter-spacing:.04em;color:var(--dup);line-height:1.2}
+
+  /* Leyenda */
+  .legend{display:flex;flex-wrap:wrap;gap:8px 24px;font-family:var(--sans);font-size:15px;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:8px}
+  .mk{display:inline-block;width:10px;height:10px;border-radius:50%;flex:none}
+  .mk.ok,.mk.self{background:var(--ink)}
+  .mk.tree{border:2px solid var(--ink)}
+  .mk.ded{border:1.5px dashed var(--ink)}
+  .mk.none{border:1.5px dotted var(--muted)}
+  .sw{display:inline-block;width:18px;height:3px;flex:none}
+
+  /* Árbol */
+  .chart-scroll{overflow-x:auto;padding-bottom:10px;margin-inline:-4px;padding-inline:4px}
+  .chart{display:grid;grid-template-columns:repeat(5,228px);grid-template-rows:auto;grid-auto-rows:minmax(66px,auto);width:max-content}
+  .colhead{grid-row:1;padding:0 16px 10px;font-family:var(--sc);font-weight:500;font-size:14px;letter-spacing:.06em;color:var(--muted);border-bottom:1px solid var(--line);margin-bottom:8px}
+  .colhead b{font-family:var(--display);font-weight:400;font-size:18px;letter-spacing:0;color:var(--ink);margin-right:6px}
+  .cell{position:relative;display:flex;align-items:center;padding:4px 16px}
+  .cell.g1::before,.cell.g2::before,.cell.g3::before,.cell.g4::before{content:"";position:absolute;left:0;top:50%;width:16px;border-top:1px solid var(--line)}
+  .cell.fa::after{content:"";position:absolute;left:0;top:50%;bottom:0;border-left:1px solid var(--line)}
+  .cell.mo::after{content:"";position:absolute;left:0;top:0;bottom:50%;border-left:1px solid var(--line)}
+  .card{position:relative;width:100%;text-align:left;display:flex;flex-direction:column;gap:1px;background:var(--card);
+    border:1px solid var(--line);border-radius:3px;padding:7px 22px 8px 10px;cursor:pointer}
+  .card:hover{border-color:var(--ink)}
+  .cell.stub .card::after{content:"";position:absolute;right:-17px;top:50%;width:16px;border-top:1px solid var(--line)}
+  .card .k{font-family:var(--sans);font-size:13px;font-weight:500;font-variant-numeric:tabular-nums}
+  .card .nm{font-weight:700;font-size:15.5px;line-height:1.22}
+  .card .dt{font-family:var(--sans);font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .card .tg{font-style:italic;font-size:14px;line-height:1.25;color:var(--muted)}
+  .card .mk{position:absolute;top:9px;right:9px;width:8px;height:8px}
+  .card.pat .k{color:var(--pat)} .card.mat .k{color:var(--mat)}
+  .card.none{background:transparent;border-style:dashed}
+  .card.none .nm{font-weight:500;color:var(--muted)}
+  .card.dup{border-color:var(--dup)}
+  .card .badge{font-family:var(--sc);font-size:12.5px;font-weight:700;letter-spacing:.04em;color:var(--dup)}
+  .card.self{border:1.5px solid var(--ink);background:var(--soft)}
+  .card.self .nm{font-size:17px}
+  .scroll-hint{display:none;font-family:var(--sans);font-size:14px;color:var(--muted)}
+  @media (max-width:760px){.scroll-hint{display:block}}
+
+  /* Ramas antiguas */
+  .note{max-width:66ch;padding:12px 14px;border:1px solid var(--dup);border-radius:3px;font-size:16px}
+  .note b{color:var(--dup);font-weight:700}
+  .branches{columns:340px;column-gap:20px}
+  .branch{break-inside:avoid;margin-bottom:20px;background:var(--card);border:1px solid var(--line);border-radius:3px;padding:16px 16px 18px;display:flex;flex-direction:column;gap:12px}
+  .branch h3{font-size:1.5rem}
+  .branch .sub{font-family:var(--sans);font-size:15px;color:var(--muted);line-height:1.35}
+  .branch .sub .k{font-variant-numeric:tabular-nums}
+  .gblock{display:flex;flex-direction:column;gap:8px;padding-top:10px;border-top:1px solid var(--soft)}
+  .glabel{font-family:var(--sc);font-weight:500;font-size:13px;letter-spacing:.06em;color:var(--muted)}
+  .couple{display:flex;flex-direction:column;gap:3px}
+  .couple .of{font-family:var(--sans);font-size:14px;color:var(--muted)}
+  .couple .pair{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px}
+  .couple .x{color:var(--muted)}
+  .pbtn{background:none;border:0;padding:0;text-align:left;cursor:pointer;line-height:1.3}
+  .pbtn .k{font-family:var(--sans);font-size:13px;font-variant-numeric:tabular-nums;margin-right:4px}
+  .pbtn .nm{font-weight:700;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+  .pbtn:hover .nm{text-decoration-color:currentColor}
+  .pbtn .dt{font-family:var(--sans);font-size:14px;color:var(--muted);margin-left:4px;font-variant-numeric:tabular-nums}
+  .pbtn.none .nm{font-weight:400;color:var(--muted);text-decoration:none}
+  .pbtn.pat .k{color:var(--pat)} .pbtn.mat .k{color:var(--mat)}
+  .empty{font-size:16px;color:var(--muted)}
+
+  /* Apellidos */
+  .surnames{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
+  .sn{display:flex;flex-direction:column;gap:4px;padding:10px 10px 12px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:86px}
+  .sn .k{font-family:var(--sans);font-size:13px;font-weight:500;font-variant-numeric:tabular-nums}
+  .sn.pat .k{color:var(--pat)} .sn.mat .k{color:var(--mat)}
+  .sn b{font-family:var(--display);font-weight:400;font-size:1.3rem;line-height:1.1;overflow-wrap:anywhere}
+  .sn.dup b{color:var(--dup)}
+  .sn.unk b{color:var(--muted)}
+  .sn small{font-family:var(--sans);font-size:13px;color:var(--muted)}
+  .sides{display:flex;flex-wrap:wrap;gap:8px 24px;font-family:var(--sans);font-size:15px;color:var(--muted)}
+  .sides span{display:inline-flex;align-items:center;gap:8px}
+  @media (max-width:900px){.surnames{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+  /* Lagunas y fuentes */
+  .gaps{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:10px;max-width:70ch}
+  .sources{margin:0;padding:0;list-style:none;columns:320px;column-gap:28px;font-size:15.5px;font-family:var(--sans)}
+  .sources li{break-inside:avoid;padding:4px 0;line-height:1.35}
+  footer{font-family:var(--sans);font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;max-width:70ch}
+
+  /* Ficha */
+  dialog{border:1px solid var(--line);border-radius:4px;background:var(--card);color:var(--ink);padding:0;width:min(560px,calc(100vw - 32px));max-height:calc(100vh - 48px)}
+  dialog::backdrop{background:rgba(17,21,27,.45)}
+  .fi{display:flex;flex-direction:column;gap:14px;padding:22px 22px 24px}
+  .fi-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+  .fi h3{font-size:1.8rem;margin-top:6px}
+  .fi .meta{font-family:var(--sans);font-size:15px;color:var(--muted)}
+  .fi .conf{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:14px;color:var(--muted)}
+  .fi .close{flex:none;background:none;border:1px solid var(--line);border-radius:3px;padding:4px 10px;cursor:pointer;font-family:var(--sans);font-size:14px}
+  .fi .close:hover{border-color:var(--ink)}
+  .fi .fam{display:flex;flex-direction:column;gap:6px;padding-top:12px;border-top:1px solid var(--soft)}
+  .fi .fam .row{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline}
+  .fi .fam .lbl{font-family:var(--sc);font-weight:500;font-size:13px;letter-spacing:.06em;color:var(--muted);min-width:7.5rem}
+  .fi ul{margin:0;padding-left:1.1em;font-family:var(--sans);font-size:15px;display:flex;flex-direction:column;gap:4px}
+
+  @media (prefers-reduced-motion:no-preference){
+    .card,.cnode,.close{transition:border-color .15s ease}
+  }
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Ascendencia · numeración Sosa-Stradonitz</p>
+    <h1>Pedro Domecq Vergara<em>Árbol genealógico hasta el último antepasado documentado</em></h1>
+    <p class="lede">Por parte de padre desciendes de los Domecq, Hidalgo, Bohórquez y Mora-Figueroa; por parte de madre, de los Vergara, Lacave, otra vez los Domecq, y los López de Carrizosa. La línea más larga llega al siglo XVIII en Usquain, en el Béarn francés, de donde salieron los Domecq hacia Jerez.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <section aria-labelledby="h-conv">
+    <p class="eyebrow">Lo más llamativo</p>
+    <h2 id="h-conv">Dos veces Domecq</h2>
+    <p class="intro">Tu bisabuelo paterno José Manuel y tu bisabuelo materno Juan Pedro eran hermanos, hijos del I marqués de Casa Domecq. Así, tu abuelo José Manuel y tu abuela Beatriz eran primos hermanos, y tus padres son primos segundos. Por eso el matrimonio Domecq–Rivero ocupa dos casillas en tu árbol: la 16–17 y la 28–29.</p>
+    <div class="conv" id="conv">
+      <button class="cnode top all" data-k="16" type="button"><span class="k">nº 16–17 · y también nº 28–29</span><span class="nm">Pedro Domecq Núñez de Villavicencio × María Rivero González</span><span class="dt">I marqueses de Casa Domecq · casaron en Jerez en 1892</span></button>
+      <div class="fork down" aria-hidden="true"><i></i><i></i><i></i></div>
+      <button class="cnode l" data-k="8" type="button"><span class="k">nº 8</span><span class="nm">José Manuel Domecq Rivero</span><span class="dt">1895–1981</span></button>
+      <div class="rel"><span>hermanos</span></div>
+      <button class="cnode r" data-k="14" type="button"><span class="k">nº 14</span><span class="nm">Juan Pedro Domecq Rivero</span><span class="dt">1910–1995</span></button>
+      <button class="cnode l" data-k="4" type="button"><span class="k">nº 4</span><span class="nm">José Manuel Domecq Hidalgo</span><span class="dt">tu abuelo</span></button>
+      <div class="rel"><span>primos hermanos</span></div>
+      <button class="cnode r" data-k="7" type="button"><span class="k">nº 7</span><span class="nm">Beatriz Domecq López de Carrizosa</span><span class="dt">tu abuela</span></button>
+      <button class="cnode l last" data-k="2" type="button"><span class="k">nº 2</span><span class="nm">Pablo Domecq Bohórquez</span><span class="dt">tu padre</span></button>
+      <div class="rel"><span>primos segundos</span></div>
+      <button class="cnode r last" data-k="3" type="button"><span class="k">nº 3</span><span class="nm">Beatriz Vergara Domecq</span><span class="dt">tu madre</span></button>
+      <div class="fork up" aria-hidden="true"><i></i><i></i><i></i></div>
+      <button class="cnode me all" data-k="1" type="button"><span class="k">nº 1</span><span class="nm">Pedro Domecq Vergara</span></button>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-tree">
+    <p class="eyebrow">Cinco generaciones · nº 1 a 31</p>
+    <h2 id="h-tree">El árbol</h2>
+    <p class="intro">Cada persona lleva su número de Sosa: el padre de <span class="num">n</span> es <span class="num">2n</span> y la madre <span class="num">2n+1</span>. Los números pares son hombres y los impares mujeres. Pulsa cualquier nombre para abrir su ficha con fechas, notas y fuentes.</p>
+    <div class="legend">
+      <span><i class="mk ok"></i>Confirmado en fuentes de referencia o por ti</span>
+      <span><i class="mk tree"></i>Solo en árboles publicados</span>
+      <span><i class="mk ded"></i>Deducido</span>
+      <span><i class="mk none"></i>Sin documentar</span>
+      <span><i class="sw" style="background:var(--pat)"></i>Vía paterna</span>
+      <span><i class="sw" style="background:var(--mat)"></i>Vía materna</span>
+    </div>
+    <p class="scroll-hint">Desliza el árbol hacia la izquierda para ver las generaciones anteriores.</p>
+    <div class="chart-scroll"><div class="chart" id="chart"></div></div>
+  </section>
+
+  <section aria-labelledby="h-old">
+    <p class="eyebrow">Generaciones VI a VIII · nº 32 en adelante</p>
+    <h2 id="h-old">Más atrás, rama por rama</h2>
+    <p class="intro">Lo que se conoce por encima de tus dieciséis tatarabuelos, agrupado por el matrimonio de tatarabuelos del que parte cada rama.</p>
+    <p class="note"><b>Rama nº 28–29.</b> Es la misma que la 16–17: los tatarabuelos Domecq–Rivero aparecen por las dos vías, así que su ascendencia solo se muestra una vez.</p>
+    <div class="branches" id="branches"></div>
+  </section>
+
+  <section aria-labelledby="h-sn">
+    <p class="eyebrow">Generación V · nº 16 a 31</p>
+    <h2 id="h-sn">Los dieciséis apellidos</h2>
+    <p class="intro">En la tradición genealógica española, los apellidos de los dieciséis tatarabuelos resumen una ascendencia. En la tuya, Domecq y Rivero se repiten, y dos casillas de la rama Vergara–Lacave siguen vacías.</p>
+    <div class="surnames" id="surnames"></div>
+    <div class="sides">
+      <span><i class="sw" style="background:var(--pat)"></i>nº 16–23, vía paterna</span>
+      <span><i class="sw" style="background:var(--mat)"></i>nº 24–31, vía materna</span>
+      <span><i class="sw" style="background:var(--dup)"></i>Repetido</span>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-gaps">
+    <h2 id="h-gaps">Lagunas y cómo seguir</h2>
+    <ul class="gaps">
+      <li><strong>Tus padres (nº 2 y 3).</strong> Geneanet registra el matrimonio de Pablo Domecq Bohórquez con Beatriz Vergara Domecq, y es el único enlace entre esas dos familias. De ahí sale la deducción; confírmalo y el árbol queda cerrado por abajo.</li>
+      <li><strong>Padres de Eduardo Vergara Lacave (nº 12 y 13).</strong> Es la laguna más cercana. No aparecen en ninguna fuente abierta. Su partida de bautismo (Jerez, 1940) o la esquela de 2008 darían los nombres. Hay dos pistas sin confirmar: los Vergara de la bodega Palomino &amp; Vergara y los Lacave de la bodega Lacave y Cía. de Cádiz.</li>
+      <li><strong>Padres de María del Carmen Enrile (nº 38–39), de Pedro Bohórquez Piñero y Juana Gómez Tocón (nº 40–43) y de Josefa de Eizaguirre (nº 62–63).</strong> Se conocen los apellidos, pero no los nombres.</li>
+      <li><strong>El árbol de Luis Manuel de Villena en Geneanet</strong> (usuario <span class="num">lmvillena</span>) recoge casi todas estas ramas y seguramente llega más lejos. Durante esta búsqueda solo se pudieron leer extractos.</li>
+      <li><strong>Archivos para seguir:</strong> Archivo Diocesano de Asidonia-Jerez (parroquias de San Miguel, Santiago, San Marcos y Santo Domingo), Archivo Municipal de Jerez y FamilySearch.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="h-src">
+    <h2 id="h-src">Fuentes</h2>
+    <ul class="sources" id="sources"></ul>
+  </section>
+
+  <footer>Compilado el 28 de septiembre de 2026 con fuentes públicas en línea. Las fechas siguen la costumbre de los registros parroquiales: día, mes en números romanos y año (12-X-1925). “N.” indica un nombre de pila no localizado.</footer>
+</div>
+
+<dialog id="ficha" aria-labelledby="fi-name">
+  <div class="fi" id="fi"></div>
+</dialog>
+
+<script>
+const S = {
+  gn_jmdh:["Geneanet · José Manuel Domecq Hidalgo","https://gw.geneanet.org/lmvillena?lang=es&n=jose+manuel+domecq+hidalgo&oc=1&p=x"],
+  gn_pdb:["Geneanet · Pablo Domecq Bohórquez","https://gw.geneanet.org/lmvillena?lang=es&n=pablo+domecq+bohorquez&p=x"],
+  gn_bvd:["Geneanet · Beatriz Vergara Domecq","https://gw.geneanet.org/lmvillena?lang=en&n=beatriz+vergara+domecq&p=x"],
+  gn_jpvd:["Geneanet · Juan Pedro Vergara Domecq","https://gw.geneanet.org/lmvillena?lang=es&n=juan+pedro+vergara+domecq&p=x"],
+  gn_bdlc:["Geneanet · Beatriz Domecq López de Carrizosa","https://gw.geneanet.org/lmvillena?lang=en&n=beatriz+domecq+lopez+de+carrizosa&p=x"],
+  obit_bdlc:["Hermandad del Santo Crucifijo · Obituario de Beatriz Domecq López de Carrizosa","https://santocrucifijo.org/obituario-beatriz-domecq-lopez-de-carrizosa/"],
+  esq_bdlc:["Esquelas ABC · Beatriz Domecq y López de Carrizosa (junio 2023)","https://esquelasenprensa.com/2023/06/beatriz-domecq-y-lopez-de-carrizosa/"],
+  fs_evl:["FamilySearch · Eduardo Vergara Lacave (1940–2008)","https://ancestors.familysearch.org/en/LRPF-38G/eduardo-vergara-lacave-1940-2008"],
+  trece:["Trece divisas · Los Díez, de Jerez de la Frontera","http://trecedivisas.blogspot.com/2017/12/los-diez-de-jerez-de-lafrontera.html"],
+  gn_mchE:["Geneanet · María del Carmen Hidalgo Enrile","https://gw.geneanet.org/lmvillena?lang=es&n=maria+del+carmen+hidalgo+enrile&p=x"],
+  wk_casadomecq:["Wikipedia · Marquesado de Casa Domecq","https://es.wikipedia.org/wiki/Marquesado_de_Casa_Domecq"],
+  gn_jbmf:["Geneanet · José Bohórquez Mora-Figueroa","https://gw.geneanet.org/lmvillena?lang=en&n=jose+bohorquez+mora+figueroa&p=x"],
+  gn_fbg:["Geneanet · Fermín Bohórquez Gómez","https://gw.geneanet.org/lmvillena?lang=es&n=fermin+bohorquez+gomez&p=x"],
+  gn_aldce:["Geneanet · Ángeles López de Carrizosa Eizaguirre","https://gw.geneanet.org/lmvillena?lang=en&n=angeles+lopez+de+carrizosa+eizaguirre&p=x"],
+  cultoro:["Cultoro · Juan Pedro Domecq López de Carrizosa, ganadero","https://cultoro.es/actualidad/juan-pedro-domecq-toreros-147383"],
+  wk_casatoreros:["Wikipedia · Casa de los Toreros","https://es.wikipedia.org/wiki/Casa_de_los_Toreros"],
+  rah_pdnv:["Real Academia de la Historia · Pedro Domecq y Núñez de Villavicencio","https://historia-hispanica.rah.es/biografias/14174-pedro-domecq-y-nunez-de-villavicencio"],
+  gn_mrg:["Geneanet (Seminario de Genealogía Mexicana) · María Rivero González","https://gw.geneanet.org/sanchiz?lang=es&n=rivero+gonzalez&oc=0&p=maria"],
+  gn_tro:["Geneanet (Seminario de Genealogía Mexicana) · Tomás Rivero O'Neale","https://gw.geneanet.org/sanchiz?lang=es&n=rivero+o+neale&p=tomas"],
+  wk_pardofig:["Wikipedia · Marquesado de Pardo de Figueroa","https://es.wikipedia.org/wiki/Marquesado_de_Pardo_de_Figueroa"],
+  dialnet_jpf:["Dialnet · Josefa Pardo de Figueroa y Serna, I marquesa de Pardo de Figueroa","https://dialnet.unirioja.es/servlet/articulo?codigo=7745691"],
+  gn_jpfs:["Geneanet (Seminario de Genealogía Mexicana) · Josefa Pardo de Figueroa Serna","https://gw.geneanet.org/sanchiz?lang=es&n=pardo+de+figueroa+serna&oc=0&p=josefa"],
+  rah_mmf:["Real Academia de la Historia · Manuel Mora-Figueroa y Gómez-Imaz","https://historia-hispanica.rah.es/biografias/30876-manuel-mora-figueroa-y-gomez-imaz"],
+  rah_jmf:["Real Academia de la Historia · José de Mora-Figueroa y Gómez-Imaz","https://dbe.rah.es/biografias/70697/jose-de-mora-figueroa-y-gomez-imaz"],
+  lanceros:["Lanceros de Villaviciosa · Los hermanos Mora-Figueroa Ferrer","http://lancerosvillaviciosa.blogspot.com/2024/05/aquella-gente-del-villaviciosa-6361-los.html"],
+  geni_mfd:["Geni · José de Mora-Figueroa y Daza, VI marqués de Tamarón","https://www.geni.com/people/Jos%C3%A9-de-Mora-Figueroa-y-Daza-VI-Marqu%C3%A9s-de-Tamar%C3%B3n/6000000028889401052"],
+  fs_mmfgi:["FamilySearch · Manuel de Mora-Figueroa y Gómez-Imaz (1904–1964)","https://ancestors.familysearch.org/en/LRY3-7J2/manuel-de-mora-figueroa-y-g%C3%B3mez-imaz-1904-1964"],
+  wk_algar:["Wikipedia · Baronía de Algar del Campo","https://es.wikipedia.org/wiki/Baron%C3%ADa_de_Algar_del_Campo"],
+  geni_plcg:["Geni · Pedro López de Carrizosa y Giles, I barón de Algar del Campo","https://www.geni.com/people/Pedro-L%C3%B3pez-de-Carrizosa-y-Giles-I-Bar%C3%B3n-de-Algar-del-Campo/6000000027866408120"],
+  rah_fjlcp:["Real Academia de la Historia · Francisco Javier López de Carrizosa y Pavón","https://historia-hispanica.rah.es/biografias/26948-francisco-javier-lopez-de-carrizosa-y-pavon"],
+  wk_casapavon:["Wikipedia · Marquesado de Casa Pavón","https://es.wikipedia.org/wiki/Marquesado_de_Casa_Pav%C3%B3n"],
+  wk_pdl:["Wikipedia · Pedro Domecq Loustau","https://es.wikipedia.org/wiki/Pedro_Domecq_Loustau"],
+  wk_pdlem:["Wikipedia · Pedro Domecq Lembeye","https://es.wikipedia.org/wiki/Pedro_Domecq_Lembeye"],
+  wk_jpdl:["Wikipedia · Juan Pedro Domecq Lembeye","https://es.wikipedia.org/wiki/Juan_Pedro_Domecq_Lembeye"],
+  wk_cnv:["Wikipedia · Carmen Núñez de Villavicencio y Olaguer Feliú","https://es.wikipedia.org/wiki/Carmen_N%C3%BA%C3%B1ez_de_Villavicencio_y_Olaguer_Feli%C3%BA"],
+  wk_mnv:["Wikipedia · Manuel Núñez de Villavicencio y Olaguer Feliú","https://es.wikipedia.org/wiki/Manuel_Nu%C3%B1ez_de_Villavicencio_y_Olaguer_Feli%C3%BA"],
+  memjerez:["Memoria histórica de Jerez · Vida y muerte de la 1.ª marquesa de Domecq","https://memoriahistoricadejerez.blogspot.com/2022/10/vida-y-muerte-de-la-1-marquesa-de.html"],
+  infocat:["Infocatólica · El patriarca de la saga Domecq, junto con su esposa, camino de los altares","https://www.infocatolica.com/blog/caballeropilar.php/2508191159-el-patriarca-de-la-saga-domec-1"]
+};
+
+const P = {
+  1:{n:"Pedro Domecq Vergara",c:"self",note:"Punto de partida del árbol."},
+  2:{n:"Pablo Domecq Bohórquez",c:"ded",t:"Tu padre (deducido)",note:"Hijo de José Manuel Domecq Hidalgo y Victoria Bohórquez Mora-Figueroa. Geneanet registra su matrimonio con Beatriz Vergara Domecq; es el único enlace Domecq Bohórquez × Vergara Domecq que aparece en las fuentes, de ahí la deducción. Hermanos: Victoria, José Manuel, Almudena y Jorge Domecq Bohórquez.",s:["gn_pdb","gn_bvd","gn_jmdh"]},
+  3:{n:"Beatriz Vergara Domecq",c:"ded",t:"Tu madre (deducido)",note:"Hija de Eduardo Vergara Lacave y Beatriz Domecq López de Carrizosa. Geneanet la registra casada con Pablo Domecq Bohórquez. Hermanos: Begoña María, Mercedes, María del Rocío y Juan Pedro Vergara Domecq.",s:["gn_bvd","gn_jpvd"]},
+  4:{n:"José Manuel Domecq Hidalgo",c:"ok",note:"Hijo de José Manuel Domecq Rivero y María del Carmen Hidalgo Enrile. Con Victoria Bohórquez Mora-Figueroa tuvo a Victoria, José Manuel, Almudena, Pablo y Jorge Domecq Bohórquez. Era primo hermano de tu abuela Beatriz Domecq López de Carrizosa.",s:["gn_jmdh"]},
+  5:{n:"Victoria Bohórquez Mora-Figueroa",c:"ok",note:"Hija de José Bohórquez Gómez y María Francisca de Mora-Figueroa y Gómez-Imaz. Hermanos documentados: José (Jerez, 2-IV-1935) y Ana María Bohórquez Mora-Figueroa.",s:["gn_jbmf","gn_pdb"]},
+  6:{n:"Eduardo Vergara Lacave",d:"1940–2008",c:"ok",note:"Casado con Beatriz Domecq López de Carrizosa. Hijos: Beatriz, Begoña María, Mercedes, María del Rocío y Juan Pedro Vergara Domecq. Hermanos documentados: María Teresa (Jerez, 14-XI-1946) y Rafael Vergara Lacave. Sus padres no aparecen en ninguna fuente accesible.",s:["fs_evl","gn_jpvd","trece"]},
+  7:{n:"Beatriz Domecq López de Carrizosa",d:"† 2023",c:"ok",t:"Camarera de la Virgen de la Encarnación",note:"Hija de Juan Pedro Domecq Rivero y Ángeles López de Carrizosa y Eizaguirre. Murió en junio de 2023. Fue camarera de María Santísima de la Encarnación, de la Hermandad del Santo Crucifijo. Hermanos: María, Javier, Teresa, Juan Pedro, Fernando, Lucía y Gonzalo Domecq López de Carrizosa.",s:["gn_bdlc","obit_bdlc","esq_bdlc","gn_aldce"]},
+  8:{n:"José Manuel Domecq Rivero",d:"1895–1981",c:"ok",t:"Caballero de Calatrava",note:"Hijo del I marqués de Casa Domecq. Casó el 12-X-1925 en la iglesia de San Miguel de Jerez con María del Carmen Hidalgo Enrile. Su hijo Pedro Domecq Hidalgo heredó de su tío Pedro el marquesado de Casa Domecq. Hermano de tu bisabuelo materno Juan Pedro Domecq Rivero.",s:["gn_jmdh","wk_casadomecq"]},
+  9:{n:"María del Carmen Hidalgo Enrile",d:"1897–1998",c:"ok",note:"Hija de los marqueses de Pardo de Figueroa y de Negrón. Su hermano Baltasar Hidalgo y Enrile fue III marqués de Pardo de Figueroa y VI de Negrón.",s:["gn_mchE","wk_casadomecq","wk_pardofig"]},
+  10:{n:"José Bohórquez Gómez",c:"tree",note:"Hijo de Pedro Bohórquez Piñero y Juana Gómez Tocón. Hermano de Fermín Bohórquez Gómez (1904–1973), ganadero, diputado por Cádiz y senador vitalicio.",s:["gn_jbmf","gn_fbg"]},
+  11:{n:"María Francisca de Mora-Figueroa y Gómez-Imaz",d:"1907–2003",c:"tree",note:"Hija del VII marqués de Tamarón. Hermana de José de Mora-Figueroa y Gómez-Imaz, VIII marqués de Tamarón (1899–1976), y del contralmirante Manuel de Mora-Figueroa y Gómez-Imaz (1904–1964).",s:["gn_jbmf","rah_mmf","rah_jmf"]},
+  12:{n:"N. Vergara",c:"none",t:"Padre de Eduardo",note:"Sin documentar en las fuentes accesibles. Pista sin confirmar: los Vergara de Jerez ligados a la bodega Palomino & Vergara."},
+  13:{n:"N. Lacave",c:"none",t:"Madre de Eduardo",note:"Sin documentar en las fuentes accesibles. Pista sin confirmar: la familia Lacave de Cádiz y Jerez, dueña de Lacave y Cía., bodega fundada en Cádiz en 1810."},
+  14:{n:"Juan Pedro Domecq Rivero",d:"1910–1995",c:"ok",t:"Ganadero de bravo",note:"Hijo del I marqués de Casa Domecq y hermano de José Manuel Domecq Rivero, tu bisabuelo paterno. Con Ángeles López de Carrizosa y Eizaguirre tuvo ocho hijos. Al morir su hermano Pedro en 1979 llevó la ganadería familiar con su hijo Gonzalo. Sus hijos Gonzalo y Juan Pedro fundaron en 1999 la ganadería Casa de los Toreros.",s:["cultoro","wk_casatoreros","gn_aldce"]},
+  15:{n:"Ángeles López de Carrizosa y Eizaguirre",d:"n. 1918",c:"tree",t:"Dama de la Maestranza de Ronda",note:"Hija del I barón de Algar del Campo. Dama de la Real Maestranza de Caballería de Ronda. Hermanos: Pedro (II barón de Algar del Campo), Xavier, Álvaro y Milagros López de Carrizosa y Eizaguirre.",s:["gn_aldce","wk_algar"]},
+  16:{n:"Pedro Domecq Núñez de Villavicencio",d:"1869–1921",c:"ok",t:"I marqués de Casa Domecq",note:"Dirigió la casa Pedro Domecq después de su padre. Casó en Jerez el 26-XI-1892 con María Rivero González. Su primogénito, Pedro Domecq Rivero (1893–1979), fue II marqués de Casa Domecq y de Domecq d’Usquain.",s:["wk_casadomecq","rah_pdnv"]},
+  17:{n:"María Rivero González",d:"1869–1962",c:"ok",note:"Nació en Jerez el 15-IV-1869 y murió allí el 25-II-1962. De la familia bodeguera Rivero.",s:["gn_mrg","wk_casadomecq"]},
+  18:{n:"Salvador Hidalgo y Pardo de Figueroa",d:"1865–1939",c:"ok",t:"II marqués de Pardo de Figueroa, V de Negrón",note:"Nació en Medina Sidonia el 22-XI-1865. Caballero de Calatrava y maestrante de Sevilla. Casó en Cádiz en 1893.",s:["wk_pardofig"]},
+  19:{n:"María del Carmen Enrile y González de la Mota",d:"1859–1901",c:"ok",note:"Nació el 17-V-1859. Hermanos documentados: Joaquín, Jerónimo y Francisca Enrile y González de la Mota.",s:["wk_pardofig","gn_mchE"]},
+  20:{n:"Pedro Bohórquez Piñero",c:"tree",note:"Padre de José y de Fermín Bohórquez Gómez.",s:["gn_fbg"]},
+  21:{n:"Juana Gómez Tocón",c:"tree",s:["gn_fbg"]},
+  22:{n:"José de Mora-Figueroa y Ferrer",d:"1871–1929",c:"ok",t:"VII marqués de Tamarón",note:"Nació en El Puerto de Santa María en 1871 y murió en Jerez en 1929. Fue el mayor de diez hermanos varones: cinco militares, cuatro abogados y un ingeniero.",s:["rah_mmf","lanceros"]},
+  23:{n:"Victoria Gómez-Imaz Vázquez",d:"n. h. 1870",c:"ok",note:"Hija de Manuel Gómez-Imaz Simón y Victoria Vázquez Rodríguez. Su nombre llegó a tu abuela Victoria Bohórquez.",s:["rah_mmf","fs_mmfgi"]},
+  24:{n:"N. Vergara",c:"none",note:"Abuelo paterno de Eduardo Vergara Lacave. Sin documentar."},
+  25:{n:"Sin documentar",c:"none",note:"Abuela paterna de Eduardo Vergara Lacave. Sin documentar."},
+  26:{n:"N. Lacave",c:"none",note:"Abuelo materno de Eduardo Vergara Lacave. Sin documentar."},
+  27:{n:"Sin documentar",c:"none",note:"Abuela materna de Eduardo Vergara Lacave. Sin documentar."},
+  28:{same:16}, 29:{same:17},
+  30:{n:"Pedro López de Carrizosa y Giles",d:"1868–1930",c:"ok",t:"I barón de Algar del Campo",note:"El título se le concedió el 26-X-1907. Hijo del I marqués de Mochales.",s:["wk_algar","geni_plcg"]},
+  31:{n:"María Josefa de Eizaguirre y Dasqui-Leguía",d:"1892–1973",c:"ok",s:["wk_algar","gn_aldce"]},
+  32:{n:"Pedro Domecq Loustau",d:"1824–1894",c:"ok",t:"Creador del brandy Fundador",note:"Nació como Pierre Patient Domecq en Usquain (Béarn) el 10-IX-1824 y murió en Saint-Gladie el 5-IX-1894. En 1848 entró en la bodega de su tío Juan Pedro Domecq Lembeye, y hacia 1874 empezó a vender Fundador, el primer brandy de Jerez. Casó en 1868; de sus diez hijos sobrevivieron seis. Según Infocatólica (2025), él y su esposa van camino de los altares.",s:["wk_pdl","infocat"]},
+  33:{n:"Carmen Núñez de Villavicencio y Olaguer-Feliú",d:"1840–1923",c:"ok",t:"I marquesa de Domecq d’Usquain",note:"Nació en Jerez el 21-X-1840 y murió allí el 12-VII-1923. Con su marido fundó en Jerez colegios para niños pobres, asilos de ancianos y centros para mujeres.",s:["wk_cnv","memjerez"]},
+  34:{n:"Tomás Rivero O'Neale",d:"1835–1902",c:"tree",note:"Nació en Jerez el 16-I-1835. Hijos: Joaquín María, Manuel, María, Pedro y María Josefa Rivero González.",s:["gn_tro"]},
+  35:{n:"Emilia González de Soto",d:"1841–1889",c:"tree",s:["gn_tro","gn_mrg"]},
+  36:{n:"Baltasar Hidalgo y Meléndez",d:"1831–1894",c:"ok",t:"IV marqués de Negrón",s:["wk_pardofig"]},
+  37:{n:"Josefa Pardo de Figueroa y de la Serna",c:"ok",t:"I marquesa de Pardo de Figueroa",note:"Casó en Medina Sidonia el 13-VII-1863. Ya viuda, Alfonso XIII creó para ella el marquesado de Pardo de Figueroa (16-V-1927). Hay un estudio sobre su figura en Dialnet.",s:["wk_pardofig","dialnet_jpf","gn_jpfs"]},
+  38:{n:"N. Enrile",c:"none",note:"Padre de María del Carmen Enrile y González de la Mota. Nombre no localizado."},
+  39:{n:"N. González de la Mota",c:"none",note:"Madre de María del Carmen Enrile y González de la Mota. Nombre no localizado."},
+  40:{n:"N. Bohórquez",c:"none",note:"Padre de Pedro Bohórquez Piñero. Nombre no localizado."},
+  41:{n:"N. Piñero",c:"none",note:"Madre de Pedro Bohórquez Piñero. Nombre no localizado."},
+  42:{n:"N. Gómez",c:"none",note:"Padre de Juana Gómez Tocón. Nombre no localizado."},
+  43:{n:"N. Tocón",c:"none",note:"Madre de Juana Gómez Tocón. Nombre no localizado."},
+  44:{n:"José de Mora-Figueroa y Daza",d:"1839–1909",c:"ok",t:"VI marqués de Tamarón",note:"Nació en Vejer de la Frontera y murió en Jerez. Terrateniente y ganadero de bravo.",s:["rah_jmf","geni_mfd"]},
+  45:{n:"Francisca Ferrer y Rabech",d:"1852–1924",c:"ok",note:"Nació en El Puerto de Santa María y murió en Jerez. Casó en El Puerto en 1870; tuvieron dieciséis hijos.",s:["rah_jmf"]},
+  46:{n:"Manuel Gómez-Imaz Simón",d:"1844–1922",c:"tree",s:["fs_mmfgi"]},
+  47:{n:"Victoria Vázquez Rodríguez",d:"n. 1849",c:"tree",s:["fs_mmfgi"]},
+  60:{n:"Francisco Javier López de Carrizosa y Pavón",d:"1825–1882",c:"ok",t:"VIII marqués de Casa Pavón, I de Mochales",note:"Nació en Jerez en 1825 y murió el 3-XI-1882. Senador y maestrante de Sevilla. Recibió el marquesado de Mochales en 1878. Casó en 1853.",s:["rah_fjlcp","wk_casapavon"]},
+  61:{n:"María del Rosario de Giles y Rivero",d:"1837–1899",c:"ok",s:["rah_fjlcp"]},
+  62:{n:"N. Eizaguirre",c:"none",note:"Padre de María Josefa de Eizaguirre y Dasqui-Leguía. Nombre no localizado."},
+  63:{n:"N. Dasqui-Leguía",c:"none",note:"Madre de María Josefa de Eizaguirre y Dasqui-Leguía. Nombre no localizado."},
+  64:{n:"Pierre (Pedro Pascual) Domecq Lembeye",c:"ok",note:"Hermano de Pedro Domecq Lembeye, que en 1822 dio su nombre a la casa Pedro Domecq, y de Juan Pedro Domecq Lembeye, que la continuó.",s:["wk_pdl","wk_jpdl"]},
+  65:{n:"Marie de Loustau",c:"ok",s:["wk_pdl"]},
+  66:{n:"José Juan Núñez de Villavicencio y Angulo",d:"1800–1875",c:"ok",t:"Caballero de Calatrava, señor de Casarejo",note:"Hijo de los condes de Cañete del Pinar.",s:["wk_cnv","wk_mnv"]},
+  67:{n:"María Regla Olaguer-Feliú y González de Ceballos",d:"1798–1864",c:"ok",note:"De la familia de Antonio Olaguer Feliú, virrey del Río de la Plata, y del mariscal de campo Manuel Olaguer Feliú.",s:["wk_cnv","wk_mnv"]},
+  68:{n:"Joaquín Rivero Tijera",d:"1797–1868",c:"tree",s:["gn_tro"]},
+  69:{n:"Carmen O'Neale Saelices",c:"tree",s:["gn_tro"]},
+  74:{n:"José María Pardo de Figueroa y Manso de Andrade",c:"tree",t:"Regidor perpetuo de Cádiz",s:["gn_jpfs"]},
+  75:{n:"María Luisa de la Serna y Pareja",c:"tree",s:["gn_jpfs"]},
+  88:{n:"José María de Mora-Figueroa y Arrafán",d:"1804–1839",c:"tree",s:["geni_mfd"]},
+  89:{n:"Josefa Daza y Caballero",d:"1807–1887",c:"tree",s:["geni_mfd"]},
+  122:{n:"Miguel de Giles y Fernández de Rivero",c:"ok",t:"Caballero de Carlos III",note:"Diputado y consejero real de Agricultura.",s:["rah_fjlcp"]},
+  123:{n:"Josefa Rivero de la Tixera",c:"ok",note:"Comparte apellido con Joaquín Rivero Tijera (nº 68). Si eran parientes, los Rivero entrarían en tu ascendencia por una tercera vía. Sin confirmar.",s:["rah_fjlcp"]},
+  128:{n:"Jean de Domecq",c:"ded",t:"Usquain, Béarn",note:"Padre de Pedro Domecq Lembeye (Tabaille-Usquain, 15-X-1787). Los Domecq procedían de la casa de la Verguerie d’Usquain, en el Béarn, citada ya en documentos de 1385, y salieron de Francia huyendo de la Revolución. Se le sitúa aquí porque Pedro Pascual (nº 64) era hermano de Pedro Domecq Lembeye.",s:["wk_pdlem","wk_pdl"]},
+  129:{n:"Catherine (Catalina) Lembeye",c:"ded",note:"Madre de Pedro Domecq Lembeye y, por la misma deducción, de Pedro Pascual (nº 64).",s:["wk_pdlem"]},
+  132:{n:"Conde de Cañete del Pinar",c:"none",t:"N. Núñez de Villavicencio",note:"Padre de José Juan Núñez de Villavicencio y Angulo. Nombre de pila no localizado.",s:["wk_cnv"]},
+  133:{n:"Condesa de Cañete del Pinar",c:"none",t:"N. Angulo",note:"Madre de José Juan Núñez de Villavicencio y Angulo. Nombre de pila no localizado.",s:["wk_cnv"]}
+};
+
+const DUP = {16:[28],17:[29]};
+const CONF = {self:"Tú",ok:"Confirmado en fuentes de referencia o por ti",tree:"Solo en árboles publicados",ded:"Deducido de las relaciones documentadas",none:"Sin documentar"};
+const GENS = ["","Tú","Padres","Abuelos","Bisabuelos","Tatarabuelos","Cuartos abuelos (trastatarabuelos)","Quintos abuelos","Sextos abuelos"];
+const ROMAN = ["","I","II","III","IV","V","VI","VII","VIII"];
+const REL = {2:["padre","madre"],3:["abuelo","abuela"],4:["bisabuelo","bisabuela"],5:["tatarabuelo","tatarabuela"],6:["trastatarabuelo","trastatarabuela"],7:["quinto abuelo","quinta abuela"],8:["sexto abuelo","sexta abuela"]};
+
+const gen = k => Math.floor(Math.log2(k)) + 1;
+const real = k => (P[k] && P[k].same) ? P[k].same : k;
+const person = k => P[real(k)];
+const side = k => { if (k < 2) return ""; const g = gen(k), base = 2 ** (g - 1); return k < base * 1.5 ? "pat" : "mat"; };
+const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+function rel(k){
+  if (k === 1) return "Tú";
+  const g = gen(k), fem = k % 2 === 1;
+  let r = REL[g][fem ? 1 : 0];
+  if (g > 2) r += side(k) === "pat" ? (fem ? " paterna" : " paterno") : (fem ? " materna" : " materno");
+  return cap(r);
+}
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* Cifras de cabecera */
+(function stats(){
+  const named = Object.entries(P).filter(([k,p]) => !p.same && p.c !== "none" && p.c !== "self");
+  const deepest = Math.max(...named.map(([k]) => gen(+k)));
+  document.getElementById("stats").innerHTML =
+    `<div class="stat"><b class="num">${named.length}</b><span>antepasados identificados por su nombre</span></div>
+     <div class="stat"><b>${ROMAN[deepest]}</b><span>generaciones en la línea más larga, la de los Domecq de Usquain</span></div>
+     <div class="stat"><b class="num">2</b><span>veces desciendes de los I marqueses de Casa Domecq</span></div>`;
+})();
+
+/* Árbol de cinco generaciones */
+(function chart(){
+  const el = document.getElementById("chart");
+  let html = "";
+  for (let g = 1; g <= 5; g++) {
+    html += `<div class="colhead" style="grid-column:${g}"><b>${ROMAN[g]}</b>${GENS[g]}</div>`;
+  }
+  for (let k = 1; k <= 31; k++) {
+    const g = gen(k) - 1, i = k - 2 ** g, span = 2 ** (4 - g), row = i * span + 2;
+    const p = person(k), dup = !!P[k].same;
+    const cls = ["cell", "g" + g];
+    if (g >= 1) cls.push(k % 2 === 0 ? "fa" : "mo");
+    if (g < 4) cls.push("stub");
+    const ccls = ["card", side(k), p.c, dup ? "dup" : ""].filter(Boolean).join(" ");
+    html += `<div class="${cls.join(" ")}" style="grid-column:${g + 1};grid-row:${row} / span ${span}">
+      <button type="button" class="${ccls}" data-k="${k}" aria-label="Ficha de ${esc(p.n)}, número ${k}">
+        <i class="mk ${p.c}" aria-hidden="true"></i>
+        <span class="k">nº ${k}${k === 1 ? " · tú" : ""}</span>
+        ${dup ? `<span class="badge">= nº ${P[k].same}</span>` : ""}
+        <span class="nm">${esc(p.n)}</span>
+        ${p.d ? `<span class="dt">${esc(p.d)}</span>` : ""}
+        ${p.t ? `<span class="tg">${esc(p.t)}</span>` : ""}
+      </button></div>`;
+  }
+  el.innerHTML = html;
+})();
+
+/* Ramas antiguas */
+(function branches(){
+  const B = [
+    {a:16,b:17,h:"Domecq · Rivero"},
+    {a:18,b:19,h:"Hidalgo · Enrile"},
+    {a:20,b:21,h:"Bohórquez · Gómez"},
+    {a:22,b:23,h:"Mora-Figueroa · Gómez-Imaz"},
+    {a:24,b:27,h:"Vergara · Lacave",txt:"Sin documentar más allá de Eduardo Vergara Lacave (nº 6). Sus padres (nº 12–13) y sus cuatro abuelos (nº 24–27) son la laguna principal del árbol."},
+    {a:30,b:31,h:"López de Carrizosa · Eizaguirre"}
+  ];
+  const pbtn = k => {
+    const p = P[k];
+    return `<button type="button" class="pbtn ${side(k)} ${p.c}" data-k="${k}"><span class="k">${k}</span><span class="nm">${esc(p.n)}</span>${p.d ? `<span class="dt">${esc(p.d)}</span>` : ""}</button>`;
+  };
+  let html = "";
+  for (const br of B) {
+    const child = Math.floor(br.a / 2);
+    const sub = br.txt ? "Vía materna" :
+      `${side(br.a) === "pat" ? "Vía paterna" : "Vía materna"} · padres de ${esc(P[child].n)} (<span class="k">nº ${child}</span>)`;
+    html += `<article class="branch"><div><p class="glabel">nº ${br.a}–${br.b}</p><h3>${br.h}</h3><p class="sub">${sub}</p></div>`;
+    if (br.txt) { html += `<p class="empty">${br.txt}</p></article>`; continue; }
+    let any = false;
+    for (let off = 1; off <= 3; off++) {
+      const lo = br.a * 2 ** off, hi = (br.b + 1) * 2 ** off - 1;
+      let rows = "";
+      for (let k = lo; k < hi; k += 2) {
+        if (!P[k] && !P[k + 1]) continue;
+        const of = Math.floor(k / 2);
+        rows += `<div class="couple"><span class="of">padres de ${esc(P[of] ? P[of].n : "nº " + of)}</span><div class="pair">${P[k] ? pbtn(k) : ""}<span class="x">×</span>${P[k + 1] ? pbtn(k + 1) : ""}</div></div>`;
+      }
+      if (rows) { any = true; html += `<div class="gblock"><p class="glabel">${ROMAN[5 + off]} · ${GENS[5 + off]}</p>${rows}</div>`; }
+    }
+    if (!any) html += `<p class="empty">Sin ascendencia documentada por encima de este matrimonio.</p>`;
+    html += `</article>`;
+  }
+  document.getElementById("branches").innerHTML = html;
+})();
+
+/* Dieciséis apellidos */
+(function surnames(){
+  const SN = {16:"Domecq",17:"Rivero",18:"Hidalgo",19:"Enrile",20:"Bohórquez",21:"Gómez",22:"Mora-Figueroa",23:"Gómez-Imaz",24:"Vergara",25:"—",26:"Lacave",27:"—",28:"Domecq",29:"Rivero",30:"López de Carrizosa",31:"Eizaguirre"};
+  let html = "";
+  for (let k = 16; k <= 31; k++) {
+    const dup = !!P[k].same, unk = SN[k] === "—";
+    html += `<div class="sn ${side(k)}${dup ? " dup" : ""}${unk ? " unk" : ""}"><span class="k">nº ${k}</span><b>${SN[k]}</b>${dup ? `<small>repite nº ${P[k].same}</small>` : unk ? "<small>sin documentar</small>" : ""}</div>`;
+  }
+  document.getElementById("surnames").innerHTML = html;
+})();
+
+/* Fuentes */
+(function sources(){
+  const used = new Set();
+  Object.values(P).forEach(p => (p.s || []).forEach(s => used.add(s)));
+  document.getElementById("sources").innerHTML = Object.entries(S)
+    .filter(([key]) => used.has(key))
+    .sort((a, b) => a[1][0].localeCompare(b[1][0], "es"))
+    .map(([, [label, url]]) => `<li><a href="${esc(url)}" target="_blank" rel="noopener">${esc(label)}</a></li>`).join("");
+})();
+
+/* Ficha */
+const dlg = document.getElementById("ficha");
+const fi = document.getElementById("fi");
+function famBtn(k){
+  const p = person(k);
+  return `<button type="button" class="pbtn ${side(k)} ${p.c}" data-k="${k}"><span class="k">${k}</span><span class="nm">${esc(p.n)}</span>${p.d ? `<span class="dt">${esc(p.d)}</span>` : ""}</button>`;
+}
+function openFicha(k){
+  k = real(k);
+  const p = P[k];
+  const places = [k, ...(DUP[k] || [])];
+  const where = places.map(n => `nº ${n} · ${rel(n)}`).join("<br>");
+  const parents = [2 * k, 2 * k + 1].filter(n => P[n]);
+  const kids = places.filter(n => n > 1).map(n => Math.floor(n / 2));
+  const src = (p.s || []).map(key => `<li><a href="${esc(S[key][1])}" target="_blank" rel="noopener">${esc(S[key][0])}</a></li>`).join("");
+  fi.innerHTML = `
+    <div class="fi-head">
+      <div><p class="eyebrow">${where}</p><h3 id="fi-name">${esc(p.n)}</h3></div>
+      <button type="button" class="close" id="fi-close">Cerrar</button>
+    </div>
+    ${(p.d || p.t) ? `<p class="meta">${[p.d, p.t].filter(Boolean).map(esc).join(" · ")}</p>` : ""}
+    <p class="conf"><i class="mk ${p.c}" aria-hidden="true"></i>${CONF[p.c]}</p>
+    ${p.note ? `<p>${esc(p.note)}</p>` : ""}
+    ${(parents.length || kids.length) ? `<div class="fam">
+      ${parents.length ? `<div class="row"><span class="lbl">Padres</span>${parents.map(famBtn).join("")}</div>` : ""}
+      ${kids.length ? `<div class="row"><span class="lbl">${kids.length > 1 ? "Hijos en tu línea" : (kids[0] % 2 === 1 ? "Hija" : "Hijo")}</span>${kids.map(famBtn).join("")}</div>` : ""}
+    </div>` : ""}
+    ${src ? `<div class="fam"><span class="lbl eyebrow">Fuentes</span><ul>${src}</ul></div>` : ""}`;
+  if (!dlg.open) { try { dlg.showModal(); } catch (e) { dlg.setAttribute("open", ""); } }
+  dlg.scrollTop = 0;
+  document.getElementById("fi-close").focus();
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-k]");
+  if (b) { openFicha(+b.dataset.k); return; }
+  if (e.target.id === "fi-close" || e.target === dlg) dlg.close();
+});
+</script>
