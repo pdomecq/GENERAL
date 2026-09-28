@@ -4,12 +4,54 @@ Ascendencia hasta el último antepasado documentado en fuentes públicas en lín
 (compilado el 28-IX-2026). La versión visual e interactiva está en [`arbol.html`](arbol.html).
 
 Numeración **Sosa-Stradonitz**: tú eres el nº 1; el padre de *n* es *2n* y la madre *2n+1*.
-Fechas al estilo de los registros parroquiales (día-mes en romanos-año). "N." = nombre de pila no localizado.
+Fechas al estilo de los registros parroquiales (día-mes en romanos-año). "N." = nombre de pila no localizado; "h." = hacia.
 
-Grado de certeza: **[C]** confirmado en fuentes de referencia (Wikipedia, Real Academia de la Historia) o por ti ·
+Grado de certeza: **[C]** confirmado en fuentes de referencia (Wikipedia, Real Academia de la Historia, estudios académicos) o por ti ·
 **[Á]** solo en árboles publicados (Geneanet, Geni, FamilySearch) · **[D]** deducido · **[?]** sin documentar.
 
-## Lo más llamativo: dos veces Domecq
+## Tu línea más antigua: 25 generaciones, de 1264 a hoy
+
+Va por tu padre, los Domecq, tu trastatarabuela Carmen Núñez de Villavicencio y los marqueses de Valhermoso.
+El documento directo más antiguo es el mayorazgo de Pedro Camacho de Villavicencio «el Rico» (1507); la historiografía
+del linaje lo remonta hasta Miguel Fernández de Villavicencio, caballero de la conquista de Jerez (1264).
+
+| Gen. | Nº Sosa | Antepasado | Datos | Certeza |
+|---|---|---|---|---|
+| XXV | 17.367.424 | Miguel Fernández de Villavicencio | Caballero de la conquista de Jerez (1264); tronco de los Villavicencio jerezanos | [D] |
+| XXIV | 8.683.712 | Gonzalo Núñez de Villavicencio × María Alonso de Astudillo | h. 1280–1340; regidor de Jerez; batalla del Salado (1340) | [D] |
+| XXIII | 4.341.856 | Lorenzo Fernández de Villavicencio | h. 1300–h. 1370; alcaide del alcázar de Jerez desde 1326 (biografía en la RAH) | [D] |
+| XXII | 2.170.928 | Nuño Fernández de Villavicencio | Leal a Pedro I; murió en Granada | [D] |
+| XXI | 1.085.464 | Lorenzo Fernández de Villavicencio | Alcaide del alcázar el 13-VI-1406 (o su hermano Nuño: enlace sin confirmar) | [D] |
+| XX | 542.732 | Alonso Núñez de Villavicencio × Antonia Ximénez Camacho | Mediados s. XV; alcalde mayor de Jerez | [Á] |
+| XIX | 271.366 | Pedro Camacho de Villavicencio «el Rico» × Teresa de Zuazo | Veinticuatro; mayorazgo de 1507, el más antiguo conservado de Jerez | [C] |
+| XVIII | 135.683 | Catalina Núñez de Villavicencio Camacho × Luis de Spínola y Contreras | Él, servidor de los Reyes Católicos, conquista de Granada; hijo del comendador genovés Agustín Spínola | [Á] |
+| XVII | 67.841 | Mencía Spínola († 1543) × Juan Fernández de Villavicencio y Carrizosa | Señor de Valhermoso; sirvió a Carlos V; mayorazgo 2-III-1543 | [Á] |
+| XVI | 33.920 | Agustín Fernández de Villavicencio y Spínola × Mencía de Valdespino | Señor de Valhermoso y Pozuela | [Á] |
+| XV | 16.960 | Lorenzo de Villavicencio y Zuazo × Clara Núñez de Villavicencio y Dávila | Caballero de Santiago; regidor perpetuo de Cádiz | [Á] |
+| XIV | 8.480 | Lorenzo Fernández de Villavicencio y Núñez de Villavicencio | Señor de Valhermoso y Pozuela; doc. 1588 | [Á] |
+| XIII | 4.240 | Lorenzo Fernández de Villavicencio × Ana María Benítez Melgarejo y Dávila | Señor de Valhermoso y Pozuela | [C] |
+| XII | 2.120 | Lorenzo Fernández de Villavicencio y Benítez Melgarejo × Catalina de Villavicencio y Zacarías | I marqués de Valhermoso de Pozuela (1681); † Madrid 30-XI-1707 | [C] |
+| XI | 1.060 | Lorenzo Fernández de Villavicencio y Villavicencio × María Manuela Spínola y Villaviciosa | II marqués (1665–1741); comandante general de Canarias | [C] |
+| X | 530 | Lorenzo Antonio Fernández de Villavicencio y Spínola × María Josefa Paula de Villavicencio | III marqués (1712–1773) | [Á] |
+| IX | 265 | Petronila Inés Fernández de Villavicencio × José Antonio Núñez de Villavicencio y Zurita | Casaron el 6-XI-1754 | [Á] |
+| VIII | 132 | José Núñez de Villavicencio y Fernández de Villavicencio × Inés de Angulo y Lasso de la Vega | Bautizado en Jerez el 19-II-1758; conde de Cañete del Pinar | [Á] |
+| VII | 66 | José Juan Núñez de Villavicencio y Angulo × María Regla Olaguer-Feliú | 1800–1875; casaron en San Miguel de Jerez el 15-I-1834 | [C] |
+| VI | 33 | Carmen Núñez de Villavicencio y Olaguer-Feliú × Pedro Domecq Loustau | 1840–1923; I marquesa de Domecq d'Usquain | [C] |
+| V | 16 | Pedro Domecq Núñez de Villavicencio × María Rivero González | I marqués de Casa Domecq | [C] |
+| IV | 8 | José Manuel Domecq Rivero × María del Carmen Hidalgo Enrile | 1895–1981 | [C] |
+| III | 4 | José Manuel Domecq Hidalgo × Victoria Bohórquez Mora-Figueroa | | [C] |
+| II | 2 | Pablo Domecq Bohórquez × Beatriz Vergara Domecq | | [C] |
+| I | 1 | Pedro Domecq Vergara | | |
+
+### Otras ramas que llegan lejos
+- **Spínola (Génova), s. XV:** Agustín Spínola (nº 271.364), comendador al servicio del marqués de Villena.
+- **Domecq (Béarn), 1385:** la casa Domecq de Usquain figura en el censo del Béarn de 1385; un Juan de Domecq rindió homenaje a Luis XIV el 18-III-1666. Jean Domecq (h. 1759–1831, nº 128) casó el 25-VII-1780 con Catherine Lembeye Haurie (nº 129), sobrina de Juan Haurie, el comerciante de vinos de Jerez.
+- **Zurita (marqueses de Campo Real), s. XVII:** Álvaro Diego de Zurita y Haro (nº 1.058).
+- **Lasso de la Vega (Écija), 1679:** García Lasso de la Vega y Valbuena (nº 1.068).
+- **Olaguer-Feliú, 1716:** Tomás Olaguer Feliú × María Josefa Heredia (Jaca, 1716) (nº 268–269), padres del virrey del Río de la Plata Antonio Olaguer Feliú y de tu antepasado José (bautizado en Barcelona en 1747).
+- **Pardo de Figueroa, s. XVIII:** Francisco Manuel Pardo de Figueroa y Legobien (nº 296), bisabuelo del «Doctor Thebussem».
+
+## Lo más llamativo de las ramas recientes: dos veces Domecq
 
 Tus bisabuelos José Manuel Domecq Rivero (nº 8, vía paterna) y Juan Pedro Domecq Rivero (nº 14, vía materna)
 eran hermanos, hijos del I marqués de Casa Domecq. Tu abuelo José Manuel Domecq Hidalgo y tu abuela
@@ -20,8 +62,8 @@ Por eso Pedro Domecq Núñez de Villavicencio × María Rivero González ocupan 
 1. Pedro Domecq Vergara
 
 ## II · Padres
-2. Pablo Domecq Bohórquez **[D]** — Geneanet registra su matrimonio con Beatriz Vergara Domecq; es el único enlace Domecq Bohórquez × Vergara Domecq documentado.
-3. Beatriz Vergara Domecq **[D]**
+2. Pablo Domecq Bohórquez **[C]**
+3. Beatriz Vergara Domecq **[C]**
 
 ## III · Abuelos
 4. José Manuel Domecq Hidalgo **[C]**
@@ -34,78 +76,85 @@ Por eso Pedro Domecq Núñez de Villavicencio × María Rivero González ocupan 
 9. María del Carmen Hidalgo Enrile (1897–1998) **[C]**
 10. José Bohórquez Gómez **[Á]** — hermano del ganadero y senador Fermín Bohórquez Gómez (1904–1973).
 11. María Francisca de Mora-Figueroa y Gómez-Imaz (1907–2003) **[Á]**
-12. N. Vergara **[?]**
-13. N. Lacave **[?]**
+12. Juan Vicente Vergara Sanchiz (1899–1974), bodeguero en Jerez **[D]** — casó en 1933 con Eugenia María Lacave Patero; en 1937 bautizaron en la Colegial de Jerez a su hijo Juan Pedro.
+13. Eugenia María Lacave Patero (1912–2008) **[D]**
 14. Juan Pedro Domecq Rivero (1910–1995), ganadero de bravo **[C]**
 15. Ángeles López de Carrizosa y Eizaguirre (n. 1918), dama de la Real Maestranza de Ronda **[Á]**
 
 ## V · Tatarabuelos (los dieciséis apellidos)
 16. Pedro Domecq Núñez de Villavicencio (1869–1921), I marqués de Casa Domecq **[C]** — casó en Jerez el 26-XI-1892.
 17. María Rivero González (Jerez, 15-IV-1869 – 25-II-1962) **[C]**
-18. Salvador Hidalgo y Pardo de Figueroa (Medina Sidonia, 22-XI-1865 – 1939), II marqués de Pardo de Figueroa y V de Negrón **[C]** — casó en Cádiz en 1893.
+18. Salvador Hidalgo y Pardo de Figueroa (Medina Sidonia, 22-XI-1865 – 1939), II marqués de Pardo de Figueroa y V de Negrón **[C]**
 19. María del Carmen Enrile y González de la Mota (17-V-1859 – 1901) **[C]**
 20. Pedro Bohórquez Piñero **[Á]**
 21. Juana Gómez Tocón **[Á]**
 22. José de Mora-Figueroa y Ferrer (El Puerto de Santa María, 1871 – Jerez, 1929), VII marqués de Tamarón **[C]**
 23. Victoria Gómez-Imaz Vázquez (n. h. 1870) **[C]**
-24. N. Vergara **[?]**
-25. Sin documentar **[?]**
-26. N. Lacave **[?]**
-27. Sin documentar **[?]**
-28. = nº 16 (Pedro Domecq Núñez de Villavicencio)
-29. = nº 17 (María Rivero González)
+24. N. Vergara **[?]** · 25. N. Sanchiz **[?]**
+26. N. Lacave **[?]** · 27. N. Patero **[?]**
+28. = nº 16 · 29. = nº 17
 30. Pedro López de Carrizosa y Giles (1868–1930), I barón de Algar del Campo (1907) **[C]**
 31. María Josefa de Eizaguirre y Dasqui-Leguía (1892–1973) **[C]**
 
-## VI · Cuartos abuelos (trastatarabuelos)
+## VI · Trastatarabuelos (4.º abuelos)
 32. Pedro Domecq Loustau (Usquain, 10-IX-1824 – Saint-Gladie, 5-IX-1894), creador del brandy Fundador **[C]**
 33. Carmen Núñez de Villavicencio y Olaguer-Feliú (Jerez, 21-X-1840 – 12-VII-1923), I marquesa de Domecq d'Usquain **[C]**
-34. Tomás Rivero O'Neale (Jerez, 16-I-1835 – 1902) **[Á]**
-35. Emilia González de Soto (1841–1889) **[Á]**
+34. Tomás Rivero O'Neale (1835–1902) **[Á]** · 35. Emilia González de Soto (1841–1889) **[Á]**
 36. Baltasar Hidalgo y Meléndez (1831–1894), IV marqués de Negrón **[C]**
-37. Josefa Pardo de Figueroa y de la Serna, I marquesa de Pardo de Figueroa (1927) **[C]** — casó en Medina Sidonia el 13-VII-1863.
-38. N. Enrile **[?]** · 39. N. González de la Mota **[?]**
-40. N. Bohórquez **[?]** · 41. N. Piñero **[?]**
-42. N. Gómez **[?]** · 43. N. Tocón **[?]**
-44. José de Mora-Figueroa y Daza (Vejer, 1839 – Jerez, 1909), VI marqués de Tamarón **[C]**
-45. Francisca Ferrer y Rabech (El Puerto, 1852 – Jerez, 1924) **[C]** — casó en El Puerto en 1870.
-46. Manuel Gómez-Imaz Simón (1844–1922) **[Á]**
-47. Victoria Vázquez Rodríguez (n. 1849) **[Á]**
-48–55. Ascendencia Vergara–Lacave: sin documentar.
-56–59. = nº 32–35.
-60. Francisco Javier López de Carrizosa y Pavón (Jerez, 1825 – 3-XI-1882), VIII marqués de Casa Pavón y I de Mochales, senador **[C]** — casó en 1853.
+37. Josefa Pardo de Figueroa y de la Serna, I marquesa de Pardo de Figueroa (1927) **[C]** — hermana del «Doctor Thebussem».
+38–43. Enrile, González de la Mota, Bohórquez, Piñero, Gómez, Tocón: nombres sin documentar.
+44. José de Mora-Figueroa y Daza (1839–1909), VI marqués de Tamarón **[C]** · 45. Francisca Ferrer y Rabech (1852–1924) **[C]**
+46. Manuel Gómez-Imaz Simón (1844–1922) **[Á]** · 47. Victoria Vázquez Rodríguez (n. 1849) **[Á]**
+60. Francisco Javier López de Carrizosa y Pavón (1825–1882), VIII marqués de Casa Pavón y I de Mochales **[C]**
 61. María del Rosario de Giles y Rivero (1837–1899) **[C]**
-62. N. Eizaguirre **[?]** · 63. N. Dasqui-Leguía **[?]**
 
-## VII · Quintos abuelos
-64. Pierre (Pedro Pascual) Domecq Lembeye **[C]** — hermano de Pedro Domecq Lembeye (fundador de la casa Pedro Domecq, 1822) y de Juan Pedro Domecq Lembeye.
-65. Marie de Loustau **[C]**
-66. José Juan Núñez de Villavicencio y Angulo (1800–1875), caballero de Calatrava, señor de Casarejo **[C]**
-67. María Regla Olaguer-Feliú y González de Ceballos (1798–1864) **[C]** — de la familia del virrey Antonio Olaguer Feliú.
-68. Joaquín Rivero Tijera (1797–1868) **[Á]**
-69. Carmen O'Neale Saelices **[Á]**
-74. José María Pardo de Figueroa y Manso de Andrade, regidor perpetuo de Cádiz **[Á]**
-75. María Luisa de la Serna y Pareja **[Á]**
-88. José María de Mora-Figueroa y Arrafán (1804–1839) **[Á]**
-89. Josefa Daza y Caballero (1807–1887) **[Á]**
-122. Miguel de Giles y Fernández de Rivero, caballero de Carlos III, diputado **[C]**
-123. Josefa Rivero de la Tixera **[C]** — posible parienta de Joaquín Rivero Tijera (nº 68); sin confirmar.
+## VII · 5.º abuelos
+64. Pierre Pascal (Pedro Pascual) Domecq Lembeye (h. 1783–1848) **[C]** · 65. Marie de Loustau **[C]**
+66. José Juan Núñez de Villavicencio y Angulo (1800–1875) **[C]** · 67. María Regla Olaguer-Feliú y González de Ceballos (1798–1864) **[C]**
+68. Joaquín Rivero Tijera (1797–1868) **[Á]** · 69. Carmen O'Neale Saelices **[Á]**
+74. José María Pardo de Figueroa y Manso de Andrade (Arcos, 25-I-1800) **[Á]** · 75. María Luisa de la Serna y Pareja **[Á]**
+88. José María de Mora-Figueroa y Arrafán (1804–1839) **[Á]** · 89. Josefa Daza y Caballero (1807–1887) **[Á]**
+122. Miguel de Giles y Fernández del Rivero (n. 1807) **[C]** · 123. Josefa Rivero de la Tixera **[C]**
 
-## VIII · Sextos abuelos
-128. Jean de Domecq, de Usquain (Béarn) **[D]**
-129. Catherine (Catalina) Lembeye **[D]** — padres de Pedro Domecq Lembeye (Tabaille-Usquain, 15-X-1787).
-132. Conde de Cañete del Pinar (N. Núñez de Villavicencio) **[?]** · 133. Condesa de Cañete del Pinar (N. Angulo) **[?]**
+## VIII · 6.º abuelos
+128. Jean Domecq (h. 1759–1831) **[Á]** · 129. Catherine Lembeye Haurie (n. 6-I-1760) **[Á]**
+132. José Núñez de Villavicencio y Fernández de Villavicencio (bautizado 19-II-1758), conde de Cañete del Pinar **[Á]** · 133. Inés de Angulo y Lasso de la Vega (1772–1845) **[Á]**
+134. José Olaguer-Feliú y Heredia (bautizado en Barcelona el 27-IV-1747) **[Á]** · 135. Dionisia González de Ceballos y Garibay (Sanlúcar, 9-X-1754) **[Á]**
+148. José María Pardo de Figueroa y Yuste de la Torre (Arcos, 1756) **[Á]** · 149. Vicenta Manso de Andrade **[Á]**
+244. Vicente de Giles y Castro (n. 1761) **[Á]** · 245. María Antonia Fernández del Rivero **[Á]**
 
-## Lagunas
-- Confirmar tus padres (nº 2–3).
-- Padres de Eduardo Vergara Lacave (nº 12–13): no aparecen en fuentes abiertas. Su partida de bautismo (Jerez, 1940) o la esquela de 2008 darían los nombres.
-- Nombres de los padres de María del Carmen Enrile, Pedro Bohórquez Piñero, Juana Gómez Tocón y Josefa de Eizaguirre.
-- El árbol de Luis Manuel de Villena en Geneanet (usuario `lmvillena`) recoge casi todas estas ramas y seguramente llega más lejos.
+## IX · 7.º abuelos
+258. Arnaud Lembeye **[Á]** · 259. Marie Haurie **[Á]** (hermana de Juan Haurie)
+264. José Antonio Núñez de Villavicencio y Zurita (1733–1791) **[Á]** · 265. Petronila Inés Fernández de Villavicencio y Villavicencio (n. 1736) **[Á]**
+266. Gregorio José de Angulo y Tamariz (1747–1789) **[Á]** · 267. María Josefa Lasso de la Vega y Fernández de Bobadilla (1750–1825) **[Á]**
+268. Tomás Olaguer Feliú **[Á]** · 269. María Josefa Heredia (Jaca, 1716) **[Á]**
+296. Francisco Manuel Pardo de Figueroa y Legobien **[Á]** · 297. Antonia Josefa Yuste de la Torre y Angulo **[Á]**
+
+## X · 8.º abuelos
+528. Bruno Núñez de Villavicencio y Núñez de Villavicencio (n. 1695) **[Á]** · 529. Francisca de Zurita Haro y Auñón (n. 1701) **[Á]**
+530. Lorenzo Antonio Fernández de Villavicencio y Spínola (1712–1773), III marqués de Valhermoso **[Á]** · 531. María Josefa Paula de Villavicencio **[Á]**
+532. Francisco de Paula de Angulo y Fernández de Valenzuela (n. 1696) **[Á]** · 533. Inés Tamariz y Torres de Villavicencio (n. 1701) **[Á]**
+534. Antonio García Lasso de la Vega y Rivas (Écija, 1708) **[Á]** · 535. Francisca Fernández de Bobadilla y Galindo **[Á]**
+
+## XI · 9.º abuelos
+1058. Álvaro Diego de Zurita y Haro, marqués de Campo Real **[Á]** · 1059. María de Auñón **[Á]**
+1060. Lorenzo Fernández de Villavicencio y Villavicencio (1665–1741), II marqués de Valhermoso **[C]** · 1061. María Manuela Spínola y Villaviciosa **[Á]**
+1068. García Lasso de la Vega y Valbuena (n. 1679) **[Á]** · 1069. Ana Rivas Castroviejo Dávila **[Á]**
+
+Las generaciones XII a XXV de la línea Villavicencio están en la tabla de arriba.
+
+## Lagunas y pistas
+- Confirmar que Eduardo Vergara Lacave es hijo de Juan Vicente Vergara Sanchiz y Eugenia María Lacave Patero.
+- Enlace medieval: no se ha confirmado de cuál de los dos hermanos que volvieron a Jerez con Juan I desciende Alonso Núñez de Villavicencio.
+- Señores de Valhermoso (1543–1681): salen de árboles publicados; conviene contrastarlos.
+- Pistas: marquesado de Tamarón (1712, Diego Pablo de Mora-Figueroa) y de Casa Pavón (Miguel José Pavón de Fuentes, Jerez 1671).
+- Obras: *Notas genealógicas* del Doctor Thebussem (1888–1889); *La casa de Domecq d'Usquain*, de J. A. Delgado y Orellana (1966); Archivo Diocesano de Asidonia-Jerez.
 
 ## Fuentes principales
-- Geneanet, árbol de Luis Manuel de Villena (`lmvillena`) y del Seminario de Genealogía Mexicana (`sanchiz`)
-- Wikipedia: Marquesado de Casa Domecq, Pedro Domecq Loustau, Pedro Domecq Lembeye, Carmen Núñez de Villavicencio y Olaguer Feliú, Marquesado de Pardo de Figueroa, Baronía de Algar del Campo, Marquesado de Casa Pavón
-- Real Academia de la Historia (DB~e): Pedro Domecq y Núñez de Villavicencio, José y Manuel de Mora-Figueroa y Gómez-Imaz, Francisco Javier López de Carrizosa y Pavón
-- FamilySearch, Geni, Hermandad del Santo Crucifijo, Esquelas ABC, Cultoro, Dialnet, Infocatólica
+- Real Academia de la Historia (DB~e): Lorenzo Fernández de Villavicencio (h. 1300–h. 1370), Lorenzo Fernández de Villavicencio y Benítez Melgarejo, Pedro Domecq y Núñez de Villavicencio, Antonio Olaguer Feliú y Heredia, Mariano Pardo de Figueroa, José y Manuel de Mora-Figueroa, Francisco Javier López de Carrizosa y Pavón
+- *En la España Medieval* (UCM): «El mayorazgo del veinticuatro Pedro Camacho de Villavicencio "el rico" (1507)»
+- Wikipedia: Casa de Villavicencio, Marquesado de Valhermoso de Pozuela, Condado de Cañete del Pinar, Marquesado de Casa Domecq, Pedro Domecq Loustau, Pedro Domecq Lembeye, Carmen Núñez de Villavicencio, Marquesado de Pardo de Figueroa, Baronía de Algar del Campo, Marquesado de Casa Pavón
+- Geneanet (árboles de Luis Manuel de Villena, Gonzalo Alonso, chamecu, Marc Le Chanony, Seminario de Genealogía Mexicana), Geni, FamilySearch, Genealogy.com
+- Movimiento nobiliario 1937, Hidalgo & Suárez, Gente del Puerto, blog de J.-P. Domecq, Historia y Genealogía (palomatorrijos), Genealogías Canarias
 
 La lista completa de enlaces está en la sección "Fuentes" de `arbol.html`.

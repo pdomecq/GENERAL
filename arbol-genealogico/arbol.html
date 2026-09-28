@@ -42,7 +42,6 @@
 
   .eyebrow{font-family:var(--sc);font-weight:500;font-size:14px;letter-spacing:.08em;color:var(--muted)}
   .lede{max-width:62ch;color:var(--ink)}
-  .muted{color:var(--muted)}
   .num{font-family:var(--sans);font-variant-numeric:tabular-nums lining-nums}
 
   /* Cabecera */
@@ -57,6 +56,38 @@
   section{display:flex;flex-direction:column;gap:20px}
   section > h2{font-size:clamp(1.8rem,4vw,2.4rem)}
   .intro{max-width:66ch}
+  .subhead{font-size:1.6rem;margin-top:12px}
+
+  /* Línea más antigua */
+  .line{list-style:none;margin:0;padding:0}
+  .line > li{display:grid;grid-template-columns:6.2rem 20px minmax(0,1fr);column-gap:14px}
+  .line .yr{grid-column:1;text-align:right;padding-top:10px;font-family:var(--sans);font-size:15px;color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .line .rail{grid-column:2;position:relative}
+  .line .rail::before,.line .rail::after{content:"";position:absolute;left:9px;border-left:2px solid var(--line)}
+  .line .rail::before{top:0;height:17px}
+  .line .rail::after{top:17px;bottom:0}
+  .line li.wa .rail::before{border-left-style:dashed}
+  .line li.wb .rail::after{border-left-style:dashed}
+  .line li:first-child .rail::before{display:none}
+  .line li:last-child .rail::after{display:none}
+  .line .rail .mk{position:absolute;left:4px;top:12px;width:12px;height:12px}
+  .line .rail .mk.tree,.line .rail .mk.ded,.line .rail .mk.none{background:var(--paper)}
+  .line .body{grid-column:3;padding:6px 0 20px;display:flex;flex-direction:column;gap:4px;min-width:0}
+  .line .gl{font-family:var(--sc);font-weight:500;font-size:13px;letter-spacing:.05em;color:var(--muted)}
+  .line .gl .k{font-family:var(--sans);letter-spacing:0;font-variant-numeric:tabular-nums}
+  .line .who{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px}
+  .line .who .nm{font-size:17.5px}
+  .line .who .x{color:var(--muted)}
+  .line .tx{font-size:16px;line-height:1.45;max-width:64ch}
+  .line li.top .who .nm{font-family:var(--display);font-weight:400;font-size:1.7rem;text-decoration:none}
+  .line li.era .eralabel{grid-column:3;padding:4px 0 14px;font-family:var(--display);font-style:italic;font-size:1.3rem;color:var(--muted)}
+  .line li.era .yr{padding:0}
+
+  .oldgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px}
+  .oldb{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px}
+  .oldb h3{font-size:2.1rem}
+  .oldb p{font-size:16px;line-height:1.45}
+  .oldb .who{display:flex;flex-wrap:wrap;gap:4px 12px;padding-top:8px;border-top:1px solid var(--soft)}
 
   /* Convergencia */
   .conv{display:grid;grid-template-columns:1fr 92px 1fr;row-gap:22px;max-width:760px}
@@ -96,6 +127,8 @@
   .mk.ded{border:1.5px dashed var(--ink)}
   .mk.none{border:1.5px dotted var(--muted)}
   .sw{display:inline-block;width:18px;height:3px;flex:none}
+  .dash{display:inline-block;width:18px;border-top:2px dashed var(--line);flex:none}
+  .solid{display:inline-block;width:18px;border-top:2px solid var(--line);flex:none}
 
   /* Árbol */
   .chart-scroll{overflow-x:auto;padding-bottom:10px;margin-inline:-4px;padding-inline:4px}
@@ -146,7 +179,8 @@
   .pbtn .dt{font-family:var(--sans);font-size:14px;color:var(--muted);margin-left:4px;font-variant-numeric:tabular-nums}
   .pbtn.none .nm{font-weight:400;color:var(--muted);text-decoration:none}
   .pbtn.pat .k{color:var(--pat)} .pbtn.mat .k{color:var(--mat)}
-  .empty{font-size:16px;color:var(--muted)}
+  .empty,.more{font-size:16px;color:var(--muted)}
+  .more{font-style:italic}
 
   /* Apellidos */
   .surnames{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
@@ -155,7 +189,6 @@
   .sn.pat .k{color:var(--pat)} .sn.mat .k{color:var(--mat)}
   .sn b{font-family:var(--display);font-weight:400;font-size:1.3rem;line-height:1.1;overflow-wrap:anywhere}
   .sn.dup b{color:var(--dup)}
-  .sn.unk b{color:var(--muted)}
   .sn small{font-family:var(--sans);font-size:13px;color:var(--muted)}
   .sides{display:flex;flex-wrap:wrap;gap:8px 24px;font-family:var(--sans);font-size:15px;color:var(--muted)}
   .sides span{display:inline-flex;align-items:center;gap:8px}
@@ -182,6 +215,10 @@
   .fi .fam .lbl{font-family:var(--sc);font-weight:500;font-size:13px;letter-spacing:.06em;color:var(--muted);min-width:7.5rem}
   .fi ul{margin:0;padding-left:1.1em;font-family:var(--sans);font-size:15px;display:flex;flex-direction:column;gap:4px}
 
+  @media (max-width:560px){
+    .line > li{grid-template-columns:3.9rem 20px minmax(0,1fr);column-gap:8px}
+    .line .yr{font-size:13.5px}
+  }
   @media (prefers-reduced-motion:no-preference){
     .card,.cnode,.close{transition:border-color .15s ease}
   }
@@ -191,12 +228,66 @@
   <header>
     <p class="eyebrow">Ascendencia · numeración Sosa-Stradonitz</p>
     <h1>Pedro Domecq Vergara<em>Árbol genealógico hasta el último antepasado documentado</em></h1>
-    <p class="lede">Por parte de padre desciendes de los Domecq, Hidalgo, Bohórquez y Mora-Figueroa; por parte de madre, de los Vergara, Lacave, otra vez los Domecq, y los López de Carrizosa. La línea más larga llega al siglo XVIII en Usquain, en el Béarn francés, de donde salieron los Domecq hacia Jerez.</p>
+    <p class="lede">Por parte de padre desciendes de los Domecq, Hidalgo, Bohórquez y Mora-Figueroa; por parte de madre, de los Vergara, Lacave, otra vez los Domecq, y los López de Carrizosa. La línea más antigua es la de los Villavicencio de Jerez, que entra por tu trastatarabuela Carmen Núñez de Villavicencio. Su primer documento directo es de 1507, y la historiografía del linaje la lleva hasta la conquista de Jerez en 1264.</p>
     <div class="stats" id="stats"></div>
   </header>
 
+  <section aria-labelledby="h-line">
+    <p class="eyebrow">Veinticinco generaciones · de 1264 a hoy</p>
+    <h2 id="h-line">Tu línea más antigua</h2>
+    <p class="intro">Esta es la cadena de padres e hijos que llega más lejos. Pasa por tu padre, los Domecq, tu trastatarabuela Carmen Núñez de Villavicencio y los marqueses de Valhermoso hasta los caballeros que tomaron Jerez con Alfonso X. El trazo continuo une a personas documentadas; el discontinuo marca un enlace deducido. La fecha de la izquierda es una época aproximada de nacimiento.</p>
+    <div class="legend">
+      <span><i class="mk ok"></i>Confirmado en fuentes de referencia</span>
+      <span><i class="mk tree"></i>Solo en árboles publicados</span>
+      <span><i class="mk ded"></i>Enlace deducido</span>
+      <span><i class="solid"></i>Filiación documentada</span>
+      <span><i class="dash"></i>Filiación deducida</span>
+    </div>
+    <ol class="line" id="line"></ol>
+
+    <h3 class="subhead">Otras ramas que llegan lejos</h3>
+    <div class="oldgrid">
+      <article class="oldb">
+        <p class="glabel">Spínola · Génova</p>
+        <h3>Siglo XV</h3>
+        <p>El comendador genovés Agustín Spínola sirvió al marqués de Villena. Su hijo Luis de Spínola y Contreras luchó en la conquista de Granada y casó con la hija de Pedro Camacho el Rico; los Spínola vuelven a entrar dos siglos después con la mujer del II marqués de Valhermoso.</p>
+        <div class="who"><button type="button" class="pbtn" data-k="271364"><span class="nm">Agustín Spínola</span></button><button type="button" class="pbtn" data-k="135682"><span class="nm">Luis de Spínola y Contreras</span></button></div>
+      </article>
+      <article class="oldb">
+        <p class="glabel">Domecq · Béarn</p>
+        <h3>1385</h3>
+        <p>La casa Domecq de Usquain ya figura en el censo del Béarn de 1385, y un Juan de Domecq rindió homenaje a Luis XIV el 18-III-1666. Tus antepasados Jean Domecq y Catherine Lembeye Haurie casaron el 25-VII-1780; la madre de ella era hermana de Juan Haurie, el comerciante de vinos de Jerez cuya casa acabaron llevando los Domecq.</p>
+        <div class="who"><button type="button" class="pbtn" data-k="128"><span class="nm">Jean Domecq</span></button><button type="button" class="pbtn" data-k="259"><span class="nm">Marie Haurie</span></button></div>
+      </article>
+      <article class="oldb">
+        <p class="glabel">Zurita · marqueses de Campo Real</p>
+        <h3>Siglo XVII</h3>
+        <p>Álvaro Diego de Zurita y Haro, marqués de Campo Real y señor de Villar del Saz (Cuenca), casó a su hija Francisca en 1725 con Bruno Núñez de Villavicencio. Los Zurita de Jerez se tenían por descendientes de Fagut de Zurita, otro caballero de la conquista de 1264.</p>
+        <div class="who"><button type="button" class="pbtn" data-k="1058"><span class="nm">Álvaro Diego de Zurita y Haro</span></button></div>
+      </article>
+      <article class="oldb">
+        <p class="glabel">Lasso de la Vega · Écija</p>
+        <h3>1679</h3>
+        <p>García Lasso de la Vega y Valbuena nació en Écija en 1679. Su hijo Antonio, caballero de San Juan desde 1725, casó allí en 1746; su nieta María Josefa es la madre de Inés de Angulo, condesa de Cañete del Pinar.</p>
+        <div class="who"><button type="button" class="pbtn" data-k="1068"><span class="nm">García Lasso de la Vega y Valbuena</span></button><button type="button" class="pbtn" data-k="534"><span class="nm">Antonio García Lasso de la Vega</span></button></div>
+      </article>
+      <article class="oldb">
+        <p class="glabel">Olaguer-Feliú · Cataluña</p>
+        <h3>1716</h3>
+        <p>María Josefa Heredia nació en Jaca en 1716 y casó con Tomás Olaguer Feliú, nacido en Ceuta y capitán del Regimiento de Infantería de Granada. Su hijo José, tu antepasado, se bautizó en Barcelona en 1747; otro hijo, Antonio, fue virrey del Río de la Plata entre 1797 y 1799.</p>
+        <div class="who"><button type="button" class="pbtn" data-k="268"><span class="nm">Tomás Olaguer Feliú</span></button><button type="button" class="pbtn" data-k="269"><span class="nm">María Josefa Heredia</span></button></div>
+      </article>
+      <article class="oldb">
+        <p class="glabel">Pardo de Figueroa · Arcos y Medina Sidonia</p>
+        <h3>Siglo XVIII</h3>
+        <p>Francisco Manuel Pardo de Figueroa y Legobien, de Arcos, es bisabuelo de Mariano Pardo de Figueroa, el «Doctor Thebussem» (1828–1918), escritor y hermano de tu trastatarabuela Josefa. Mariano publicó en 1888–1889 las Notas genealógicas de la familia, la fuente para seguir esta rama.</p>
+        <div class="who"><button type="button" class="pbtn" data-k="296"><span class="nm">Francisco Manuel Pardo de Figueroa</span></button><button type="button" class="pbtn" data-k="37"><span class="nm">Josefa Pardo de Figueroa</span></button></div>
+      </article>
+    </div>
+  </section>
+
   <section aria-labelledby="h-conv">
-    <p class="eyebrow">Lo más llamativo</p>
+    <p class="eyebrow">Lo más llamativo de las ramas recientes</p>
     <h2 id="h-conv">Dos veces Domecq</h2>
     <p class="intro">Tu bisabuelo paterno José Manuel y tu bisabuelo materno Juan Pedro eran hermanos, hijos del I marqués de Casa Domecq. Así, tu abuelo José Manuel y tu abuela Beatriz eran primos hermanos, y tus padres son primos segundos. Por eso el matrimonio Domecq–Rivero ocupa dos casillas en tu árbol: la 16–17 y la 28–29.</p>
     <div class="conv" id="conv">
@@ -233,9 +324,9 @@
   </section>
 
   <section aria-labelledby="h-old">
-    <p class="eyebrow">Generaciones VI a VIII · nº 32 en adelante</p>
+    <p class="eyebrow">Generaciones VI a XI · nº 32 a 2.047</p>
     <h2 id="h-old">Más atrás, rama por rama</h2>
-    <p class="intro">Lo que se conoce por encima de tus dieciséis tatarabuelos, agrupado por el matrimonio de tatarabuelos del que parte cada rama.</p>
+    <p class="intro">Lo que se conoce entre la sexta y la undécima generación, agrupado por el matrimonio de tatarabuelos del que parte cada rama. La línea Villavicencio sigue mucho más allá, en «Tu línea más antigua».</p>
     <p class="note"><b>Rama nº 28–29.</b> Es la misma que la 16–17: los tatarabuelos Domecq–Rivero aparecen por las dos vías, así que su ascendencia solo se muestra una vez.</p>
     <div class="branches" id="branches"></div>
   </section>
@@ -243,7 +334,7 @@
   <section aria-labelledby="h-sn">
     <p class="eyebrow">Generación V · nº 16 a 31</p>
     <h2 id="h-sn">Los dieciséis apellidos</h2>
-    <p class="intro">En la tradición genealógica española, los apellidos de los dieciséis tatarabuelos resumen una ascendencia. En la tuya, Domecq y Rivero se repiten, y dos casillas de la rama Vergara–Lacave siguen vacías.</p>
+    <p class="intro">En la tradición genealógica española, los apellidos de los dieciséis tatarabuelos resumen una ascendencia. En la tuya, Domecq y Rivero se repiten, y los cuatro de la rama Vergara–Lacave salen de la deducción sobre los padres de tu abuelo Eduardo.</p>
     <div class="surnames" id="surnames"></div>
     <div class="sides">
       <span><i class="sw" style="background:var(--pat)"></i>nº 16–23, vía paterna</span>
@@ -255,11 +346,12 @@
   <section aria-labelledby="h-gaps">
     <h2 id="h-gaps">Lagunas y cómo seguir</h2>
     <ul class="gaps">
-      <li><strong>Tus padres (nº 2 y 3).</strong> Geneanet registra el matrimonio de Pablo Domecq Bohórquez con Beatriz Vergara Domecq, y es el único enlace entre esas dos familias. De ahí sale la deducción; confírmalo y el árbol queda cerrado por abajo.</li>
-      <li><strong>Padres de Eduardo Vergara Lacave (nº 12 y 13).</strong> Es la laguna más cercana. No aparecen en ninguna fuente abierta. Su partida de bautismo (Jerez, 1940) o la esquela de 2008 darían los nombres. Hay dos pistas sin confirmar: los Vergara de la bodega Palomino &amp; Vergara y los Lacave de la bodega Lacave y Cía. de Cádiz.</li>
-      <li><strong>Padres de María del Carmen Enrile (nº 38–39), de Pedro Bohórquez Piñero y Juana Gómez Tocón (nº 40–43) y de Josefa de Eizaguirre (nº 62–63).</strong> Se conocen los apellidos, pero no los nombres.</li>
-      <li><strong>El árbol de Luis Manuel de Villena en Geneanet</strong> (usuario <span class="num">lmvillena</span>) recoge casi todas estas ramas y seguramente llega más lejos. Durante esta búsqueda solo se pudieron leer extractos.</li>
-      <li><strong>Archivos para seguir:</strong> Archivo Diocesano de Asidonia-Jerez (parroquias de San Miguel, Santiago, San Marcos y Santo Domingo), Archivo Municipal de Jerez y FamilySearch.</li>
+      <li><strong>Padres de tu abuelo Eduardo (nº 12 y 13).</strong> Todo apunta a Juan Vicente Vergara Sanchiz (1899–1974) y Eugenia María Lacave Patero (1912–2008). Casaron en 1933 y en 1937 bautizaron en la Colegial de Jerez a su hijo Juan Pedro. Encaja por fechas y apellidos, pero ninguna fuente abierta nombra a Eduardo como hijo suyo; confírmalo con la familia.</li>
+      <li><strong>El enlace medieval.</strong> La Real Academia de la Historia documenta a los alcaides Villavicencio de los siglos XIV y XV, pero no se ha encontrado un documento que diga de cuál de los dos hermanos que volvieron a Jerez en tiempos de Juan I desciende Alonso Núñez de Villavicencio. Ese eslabón y el de Miguel con Gonzalo figuran como deducidos.</li>
+      <li><strong>Siglos XVI y XVII.</strong> Los señores de Valhermoso entre 1543 y 1681 salen de árboles publicados, sobre todo el de Gonzalo Alonso en Geneanet. Los apellidos encajan de una generación a la siguiente, pero conviene contrastarlos con la documentación de la casa.</li>
+      <li><strong>Nombres que faltan</strong> en las ramas Enrile, Bohórquez, Eizaguirre, Sanchiz y Patero, y los padres de Francisco Javier López de Carrizosa y Pavón y de José María Mora-Figueroa y Arrafán.</li>
+      <li><strong>Pistas por seguir.</strong> El marquesado de Tamarón se creó en 1712 para Diego Pablo de Mora-Figueroa, y el primer marqués de Casa Pavón fue Miguel José Pavón de Fuentes (Jerez, 1671). Los dos títulos llegaron por herencia a tus antepasados, así que es probable que desciendas de ambos, aunque faltan las generaciones intermedias.</li>
+      <li><strong>Obras que conviene consultar:</strong> las Notas genealógicas del Doctor Thebussem (1888–1889) para los Pardo de Figueroa, <em>La casa de Domecq d’Usquain</em> de José Antonio Delgado y Orellana (1966) para los Domecq, y el Archivo Diocesano de Asidonia-Jerez para partidas de bautismo y matrimonio.</li>
     </ul>
   </section>
 
@@ -268,7 +360,7 @@
     <ul class="sources" id="sources"></ul>
   </section>
 
-  <footer>Compilado el 28 de septiembre de 2026 con fuentes públicas en línea. Las fechas siguen la costumbre de los registros parroquiales: día, mes en números romanos y año (12-X-1925). “N.” indica un nombre de pila no localizado.</footer>
+  <footer>Compilado el 28 de septiembre de 2026 con fuentes públicas en línea. Las fechas siguen la costumbre de los registros parroquiales: día, mes en números romanos y año (12-X-1925). “N.” indica un nombre de pila no localizado; “h.” significa hacia.</footer>
 </div>
 
 <dialog id="ficha" aria-labelledby="fi-name">
@@ -286,6 +378,11 @@ const S = {
   esq_bdlc:["Esquelas ABC · Beatriz Domecq y López de Carrizosa (junio 2023)","https://esquelasenprensa.com/2023/06/beatriz-domecq-y-lopez-de-carrizosa/"],
   fs_evl:["FamilySearch · Eduardo Vergara Lacave (1940–2008)","https://ancestors.familysearch.org/en/LRPF-38G/eduardo-vergara-lacave-1940-2008"],
   trece:["Trece divisas · Los Díez, de Jerez de la Frontera","http://trecedivisas.blogspot.com/2017/12/los-diez-de-jerez-de-lafrontera.html"],
+  mn1937:["Movimiento nobiliario 1937 (J. M. de Mayoralgo y Lodo)","http://www.ariasdereyna.com/Documentos/Libros-otros/movimiento%20nobiliario%201937.pdf"],
+  gn_sanchiz_jer:["Geneanet · Índice Sanchiz en Jerez de la Frontera","https://es.geneanet.org/fonds/individus/?go=1&nom=SANCHIZ&place__0__=Jerez+de+la+Frontera&size=50"],
+  gn_vlassaletta:["Geneanet (Seminario de Genealogía Mexicana) · Juan Vicente Vergara Lassaletta","https://gw.geneanet.org/sanchiz?lang=es&n=vergara+lassaletta&oc=0&p=juan+vicente"],
+  todocol_jvv:["Todocolección · Etiqueta «Juan Vicente Vergara, vinos y coñacs», Jerez (1945)","https://en.todocoleccion.net/collectable-wines-liqueurs/juan-vicente-vergara-vinos-conacs-jerez-frontera-1945~x218893050"],
+  fs_elp:["FamilySearch · Eugenia María Lacave Patero (1912–2008)","https://ancestors.familysearch.org/en/LRP6-G2X/eugenia-mar%C3%ADa-lacave-patero-1912-2008"],
   gn_mchE:["Geneanet · María del Carmen Hidalgo Enrile","https://gw.geneanet.org/lmvillena?lang=es&n=maria+del+carmen+hidalgo+enrile&p=x"],
   wk_casadomecq:["Wikipedia · Marquesado de Casa Domecq","https://es.wikipedia.org/wiki/Marquesado_de_Casa_Domecq"],
   gn_jbmf:["Geneanet · José Bohórquez Mora-Figueroa","https://gw.geneanet.org/lmvillena?lang=en&n=jose+bohorquez+mora+figueroa&p=x"],
@@ -299,6 +396,9 @@ const S = {
   wk_pardofig:["Wikipedia · Marquesado de Pardo de Figueroa","https://es.wikipedia.org/wiki/Marquesado_de_Pardo_de_Figueroa"],
   dialnet_jpf:["Dialnet · Josefa Pardo de Figueroa y Serna, I marquesa de Pardo de Figueroa","https://dialnet.unirioja.es/servlet/articulo?codigo=7745691"],
   gn_jpfs:["Geneanet (Seminario de Genealogía Mexicana) · Josefa Pardo de Figueroa Serna","https://gw.geneanet.org/sanchiz?lang=es&n=pardo+de+figueroa+serna&oc=0&p=josefa"],
+  rah_thebussem:["Real Academia de la Historia · Mariano Pardo de Figueroa y de la Serna","https://historia-hispanica.rah.es/biografias/34582-mariano-pardo-de-figueroa-y-de-la-serna"],
+  wk_thebussem:["Wikipedia · Mariano Pardo de Figueroa (Doctor Thebussem)","https://es.wikipedia.org/wiki/Doctor_Thebussem"],
+  gn_yuste:["Geneanet · Índice Yuste en Arcos de la Frontera (Pardo de Figueroa)","https://es.geneanet.org/fonds/individus/?go=1&nom=DE+LA+YUSTE&place__0__=Arcos+de+la+Frontera&size=50"],
   rah_mmf:["Real Academia de la Historia · Manuel Mora-Figueroa y Gómez-Imaz","https://historia-hispanica.rah.es/biografias/30876-manuel-mora-figueroa-y-gomez-imaz"],
   rah_jmf:["Real Academia de la Historia · José de Mora-Figueroa y Gómez-Imaz","https://dbe.rah.es/biografias/70697/jose-de-mora-figueroa-y-gomez-imaz"],
   lanceros:["Lanceros de Villaviciosa · Los hermanos Mora-Figueroa Ferrer","http://lancerosvillaviciosa.blogspot.com/2024/05/aquella-gente-del-villaviciosa-6361-los.html"],
@@ -308,29 +408,58 @@ const S = {
   geni_plcg:["Geni · Pedro López de Carrizosa y Giles, I barón de Algar del Campo","https://www.geni.com/people/Pedro-L%C3%B3pez-de-Carrizosa-y-Giles-I-Bar%C3%B3n-de-Algar-del-Campo/6000000027866408120"],
   rah_fjlcp:["Real Academia de la Historia · Francisco Javier López de Carrizosa y Pavón","https://historia-hispanica.rah.es/biografias/26948-francisco-javier-lopez-de-carrizosa-y-pavon"],
   wk_casapavon:["Wikipedia · Marquesado de Casa Pavón","https://es.wikipedia.org/wiki/Marquesado_de_Casa_Pav%C3%B3n"],
+  gn_giles:["Geneanet (chamecu) · Miguel de Giles Casilla y Fernández del Rivero","https://gw.geneanet.org/chamecu?lang=en&p=miguel&n=de+giles+casilla+y+fernandez+del+rivero"],
   wk_pdl:["Wikipedia · Pedro Domecq Loustau","https://es.wikipedia.org/wiki/Pedro_Domecq_Loustau"],
   wk_pdlem:["Wikipedia · Pedro Domecq Lembeye","https://es.wikipedia.org/wiki/Pedro_Domecq_Lembeye"],
   wk_jpdl:["Wikipedia · Juan Pedro Domecq Lembeye","https://es.wikipedia.org/wiki/Juan_Pedro_Domecq_Lembeye"],
+  gn_poeymarc:["Geneanet (Marc Le Chanony) · Pedro Domecq Lembeye","https://gw.geneanet.org/poeymarc?lang=fr&n=domecq+lembeye&p=pedro"],
+  gn_lembeye:["Geneanet (Marc Le Chanony) · Catherine Lembeye Haurie","https://gw.geneanet.org/poeymarc?lang=en&n=lembeye+haurie&oc=1&p=catherine"],
+  jpdomecq:["Le blog de JPierre Domecq · Grains de sel (2)","https://genealogie-jpdomecq.over-blog.fr/pages/Grains_de_sel_2-3252696.html"],
+  jpd1385:["Le blog de JPierre Domecq · Los Domec(q) del Béarn en 1385","http://genealogie-jpdomecq.over-blog.fr/pages/Annexes_localisation_des_Domecq_en_Bearn_en_1385_2-3266056.html"],
+  delgado:["J. A. Delgado y Orellana · La casa de Domecq d’Usquain (1966)","https://books.google.de/books/about/La_casa_de_Domecq_d_Usquain.html?id=6Y6XmQEACAAJ"],
   wk_cnv:["Wikipedia · Carmen Núñez de Villavicencio y Olaguer Feliú","https://es.wikipedia.org/wiki/Carmen_N%C3%BA%C3%B1ez_de_Villavicencio_y_Olaguer_Feli%C3%BA"],
   wk_mnv:["Wikipedia · Manuel Núñez de Villavicencio y Olaguer Feliú","https://es.wikipedia.org/wiki/Manuel_Nu%C3%B1ez_de_Villavicencio_y_Olaguer_Feli%C3%BA"],
   memjerez:["Memoria histórica de Jerez · Vida y muerte de la 1.ª marquesa de Domecq","https://memoriahistoricadejerez.blogspot.com/2022/10/vida-y-muerte-de-la-1-marquesa-de.html"],
-  infocat:["Infocatólica · El patriarca de la saga Domecq, junto con su esposa, camino de los altares","https://www.infocatolica.com/blog/caballeropilar.php/2508191159-el-patriarca-de-la-saga-domec-1"]
+  infocat:["Infocatólica · El patriarca de la saga Domecq, junto con su esposa, camino de los altares","https://www.infocatolica.com/blog/caballeropilar.php/2508191159-el-patriarca-de-la-saga-domec-1"],
+  wk_canete:["Wikipedia · Condado de Cañete del Pinar","https://es.wikipedia.org/wiki/Condado_de_Ca%C3%B1ete_del_Pinar"],
+  gcom_vill:["Genealogy.com · Foro «Re: Villavicencio»","https://www.genealogy.com/forum/regional/countries/topics/spain/5617/"],
+  gn_jjnva:["Geneanet (chamecu) · José Juan Núñez de Villavicencio Angulo","https://gw.geneanet.org/chamecu?lang=es&n=nunez+de+villavicencio+angulo&p=jose+juan"],
+  hys_nobleza:["Hidalgo & Suárez · La nobleza jerezana en los archivos diocesanos (III)","https://www.hidalgoysuarez.es/2019/02/01/la-nobleza-jerezana-en-los-archivos-diocesanos-de-jerez-y-sevilla-iii/"],
+  gn_angulo:["Geneanet (María Pilar de Olivar) · Gregorio José de Angulo","https://gw.geneanet.org/pocita?lang=en&n=de+angulo+fdz.+de+valenzuela+cisneros+tamariz+torres+de+villavicencio+y+valderrama&oc=0&p=gregorio+jose"],
+  gn_lasso:["Geneanet (chamecu) · Antonio Garcilaso de la Vega","https://gw.geneanet.org/chamecu?lang=en&n=garcilaso+de+la+vega&p=antonio"],
+  geni_mjlv:["Geni · María Josefa Lasso de la Vega y Fernández de Bobadilla","https://www.geni.com/people/Mar%C3%ADa-Josefa-Lasso-de-la-Vega-y-Fern%C3%A1ndez-de-Bobadilla/6000000041662725449"],
+  rah_olaguer:["Real Academia de la Historia · Antonio Olaguer Feliú y Heredia","https://dbe.rah.es/biografias/11550/antonio-olaguer-feliu-y-heredia"],
+  gn_olaguer:["Geneanet (asguille) · Antonio Olaguer Feliú y Heredia López y Domec","https://gw.geneanet.org/asguille?lang=en&n=olaguer+feliu+y+heredia+lopez+y+domec&p=antonio"],
+  geni_jancz:["Geni · José Antonio Núñez de Villavicencio y Zurita, señor de Casarejo","https://www.geni.com/people/Jos%C3%A9-Antonio-N%C3%BA%C3%B1ez-de-Villavicencio-y-Zurita-Se%C3%B1or-de-Casarejo/6000000035845940119"],
+  palomat_fz:["Historia y Genealogía · Francisca de Zurita y Haro, de la casa de Campo Real","https://palomatorrijos.blogspot.com/2011/11/francisca-de-zurita-y-haro-de-la-casa.html"],
+  palomat_campo:["Historia y Genealogía · Marqueses de Campo Real en Jerez","https://palomatorrijos.blogspot.com/2010/04/marqueses-de-campo-real.html"],
+  wk_valhermoso:["Wikipedia · Marquesado de Valhermoso de Pozuela","https://es.wikipedia.org/wiki/Marquesado_de_Valhermoso_de_Pozuela"],
+  geni_valh3:["Geni · Lorenzo Antonio Fernández de Villavicencio y Espínola, III marqués","https://www.geni.com/people/Lorenzo-Fern%C3%A1ndez-de-Villavicencio-y-Esp%C3%ADnola-III-marqu%C3%A9s-de-Valhermoso-de-Pozuela/6000000016164482817"],
+  wk_lvv:["Wikipedia · Lorenzo de Villavicencio y Villavicencio","https://es.wikipedia.org/wiki/Lorenzo_de_Villavicencio_y_Villavicencio"],
+  rah_lfvbm:["Real Academia de la Historia · Lorenzo Fernández de Villavicencio y Benítez Melgarejo","https://historia-hispanica.rah.es/biografias/16665-lorenzo-fernandez-de-villavicencio-y-benitez-melgarejo"],
+  gn_galonso:["Geneanet (Gonzalo Alonso) · Villavicencio, ramas","https://gw.geneanet.org/galonso?lang=es&m=N&v=VILLAVICENCIO"],
+  geneacan:["Genealogías Canarias · Villavicencio, otro eslabón majorero","http://geneacanaria.blogspot.com/2013/06/villavicencio-otro-eslabon-majorero.html"],
+  gentepuerto:["Gente del Puerto · Martín Daoíz, propietario del cortijo «La Negra» (Luis de Spínola)","https://www.gentedelpuerto.com/2022/08/29/martin-daoiz-propietario-del-cortijo-la-negra-5-178/"],
+  elem_camacho:["En la España Medieval (UCM) · El mayorazgo del veinticuatro Pedro Camacho de Villavicencio «el rico» (1507)","https://revistas.ucm.es/index.php/ELEM/article/view/38912"],
+  rah_lfv:["Real Academia de la Historia · Lorenzo Fernández de Villavicencio (h. 1300 – h. 1370)","https://dbe.rah.es/biografias/39377/lorenzo-fernandez-de-villavicencio"],
+  wk_casavill:["Wikipedia · Casa de Villavicencio","https://es.wikipedia.org/wiki/Casa_de_Villavicencio"],
+  fs_gnv:["FamilySearch · Gonzalo Núñez de Villavicencio (1280–1340)","https://ancestors.familysearch.org/es/LDM7-QCD/gonzalo-n%C3%BA%C3%B1ez-de-villavicencio-1280-1340"]
 };
 
 const P = {
   1:{n:"Pedro Domecq Vergara",c:"self",note:"Punto de partida del árbol."},
-  2:{n:"Pablo Domecq Bohórquez",c:"ded",t:"Tu padre (deducido)",note:"Hijo de José Manuel Domecq Hidalgo y Victoria Bohórquez Mora-Figueroa. Geneanet registra su matrimonio con Beatriz Vergara Domecq; es el único enlace Domecq Bohórquez × Vergara Domecq que aparece en las fuentes, de ahí la deducción. Hermanos: Victoria, José Manuel, Almudena y Jorge Domecq Bohórquez.",s:["gn_pdb","gn_bvd","gn_jmdh"]},
-  3:{n:"Beatriz Vergara Domecq",c:"ded",t:"Tu madre (deducido)",note:"Hija de Eduardo Vergara Lacave y Beatriz Domecq López de Carrizosa. Geneanet la registra casada con Pablo Domecq Bohórquez. Hermanos: Begoña María, Mercedes, María del Rocío y Juan Pedro Vergara Domecq.",s:["gn_bvd","gn_jpvd"]},
+  2:{n:"Pablo Domecq Bohórquez",c:"ok",t:"Tu padre",note:"Hijo de José Manuel Domecq Hidalgo y Victoria Bohórquez Mora-Figueroa; casado con Beatriz Vergara Domecq. Hermanos: Victoria, José Manuel, Almudena y Jorge Domecq Bohórquez.",s:["gn_pdb","gn_bvd","gn_jmdh"]},
+  3:{n:"Beatriz Vergara Domecq",c:"ok",t:"Tu madre",note:"Hija de Eduardo Vergara Lacave y Beatriz Domecq López de Carrizosa. Hermanos: Begoña María, Mercedes, María del Rocío y Juan Pedro Vergara Domecq.",s:["gn_bvd","gn_jpvd"]},
   4:{n:"José Manuel Domecq Hidalgo",c:"ok",note:"Hijo de José Manuel Domecq Rivero y María del Carmen Hidalgo Enrile. Con Victoria Bohórquez Mora-Figueroa tuvo a Victoria, José Manuel, Almudena, Pablo y Jorge Domecq Bohórquez. Era primo hermano de tu abuela Beatriz Domecq López de Carrizosa.",s:["gn_jmdh"]},
   5:{n:"Victoria Bohórquez Mora-Figueroa",c:"ok",note:"Hija de José Bohórquez Gómez y María Francisca de Mora-Figueroa y Gómez-Imaz. Hermanos documentados: José (Jerez, 2-IV-1935) y Ana María Bohórquez Mora-Figueroa.",s:["gn_jbmf","gn_pdb"]},
-  6:{n:"Eduardo Vergara Lacave",d:"1940–2008",c:"ok",note:"Casado con Beatriz Domecq López de Carrizosa. Hijos: Beatriz, Begoña María, Mercedes, María del Rocío y Juan Pedro Vergara Domecq. Hermanos documentados: María Teresa (Jerez, 14-XI-1946) y Rafael Vergara Lacave. Sus padres no aparecen en ninguna fuente accesible.",s:["fs_evl","gn_jpvd","trece"]},
+  6:{n:"Eduardo Vergara Lacave",d:"1940–2008",c:"ok",note:"Casado con Beatriz Domecq López de Carrizosa. Hijos: Beatriz, Begoña María, Mercedes, María del Rocío y Juan Pedro Vergara Domecq. Hermanos documentados: María Teresa (Jerez, 14-XI-1946) y Rafael Vergara Lacave, y muy probablemente Juan Pedro, bautizado en 1937.",s:["fs_evl","gn_jpvd","trece","mn1937"]},
   7:{n:"Beatriz Domecq López de Carrizosa",d:"† 2023",c:"ok",t:"Camarera de la Virgen de la Encarnación",note:"Hija de Juan Pedro Domecq Rivero y Ángeles López de Carrizosa y Eizaguirre. Murió en junio de 2023. Fue camarera de María Santísima de la Encarnación, de la Hermandad del Santo Crucifijo. Hermanos: María, Javier, Teresa, Juan Pedro, Fernando, Lucía y Gonzalo Domecq López de Carrizosa.",s:["gn_bdlc","obit_bdlc","esq_bdlc","gn_aldce"]},
   8:{n:"José Manuel Domecq Rivero",d:"1895–1981",c:"ok",t:"Caballero de Calatrava",note:"Hijo del I marqués de Casa Domecq. Casó el 12-X-1925 en la iglesia de San Miguel de Jerez con María del Carmen Hidalgo Enrile. Su hijo Pedro Domecq Hidalgo heredó de su tío Pedro el marquesado de Casa Domecq. Hermano de tu bisabuelo materno Juan Pedro Domecq Rivero.",s:["gn_jmdh","wk_casadomecq"]},
   9:{n:"María del Carmen Hidalgo Enrile",d:"1897–1998",c:"ok",note:"Hija de los marqueses de Pardo de Figueroa y de Negrón. Su hermano Baltasar Hidalgo y Enrile fue III marqués de Pardo de Figueroa y VI de Negrón.",s:["gn_mchE","wk_casadomecq","wk_pardofig"]},
   10:{n:"José Bohórquez Gómez",c:"tree",note:"Hijo de Pedro Bohórquez Piñero y Juana Gómez Tocón. Hermano de Fermín Bohórquez Gómez (1904–1973), ganadero, diputado por Cádiz y senador vitalicio.",s:["gn_jbmf","gn_fbg"]},
   11:{n:"María Francisca de Mora-Figueroa y Gómez-Imaz",d:"1907–2003",c:"tree",note:"Hija del VII marqués de Tamarón. Hermana de José de Mora-Figueroa y Gómez-Imaz, VIII marqués de Tamarón (1899–1976), y del contralmirante Manuel de Mora-Figueroa y Gómez-Imaz (1904–1964).",s:["gn_jbmf","rah_mmf","rah_jmf"]},
-  12:{n:"N. Vergara",c:"none",t:"Padre de Eduardo",note:"Sin documentar en las fuentes accesibles. Pista sin confirmar: los Vergara de Jerez ligados a la bodega Palomino & Vergara."},
-  13:{n:"N. Lacave",c:"none",t:"Madre de Eduardo",note:"Sin documentar en las fuentes accesibles. Pista sin confirmar: la familia Lacave de Cádiz y Jerez, dueña de Lacave y Cía., bodega fundada en Cádiz en 1810."},
+  12:{n:"Juan Vicente Vergara Sanchiz",d:"1899–1974",c:"ded",t:"Bodeguero en Jerez",note:"Muy probablemente el padre de Eduardo. Casó en 1933 con Eugenia María Lacave Patero, y en febrero de 1937 bautizaron en la Colegial de Jerez a su hijo Juan Pedro, «hijo de don Juan V. Vergara y Sanchiz y doña Eugenia Lacave». Tuvo bodega propia: «Juan Vicente Vergara, vinos y coñacs». Hermanos: María Pilar (1879–1956), Eduardo (1882–1921), casado con María Luisa Giles Ponce de León, e Isabel (1895–1977).",s:["mn1937","gn_sanchiz_jer","todocol_jvv"]},
+  13:{n:"Eugenia María Lacave Patero",d:"1912–2008",c:"ded",note:"Muy probablemente la madre de Eduardo. Hermanos: María Teresa (1909–1997), María Josefa (1911–1949) y Pedro (1916–2001) Lacave Patero.",s:["fs_elp","mn1937"]},
   14:{n:"Juan Pedro Domecq Rivero",d:"1910–1995",c:"ok",t:"Ganadero de bravo",note:"Hijo del I marqués de Casa Domecq y hermano de José Manuel Domecq Rivero, tu bisabuelo paterno. Con Ángeles López de Carrizosa y Eizaguirre tuvo ocho hijos. Al morir su hermano Pedro en 1979 llevó la ganadería familiar con su hijo Gonzalo. Sus hijos Gonzalo y Juan Pedro fundaron en 1999 la ganadería Casa de los Toreros.",s:["cultoro","wk_casatoreros","gn_aldce"]},
   15:{n:"Ángeles López de Carrizosa y Eizaguirre",d:"n. 1918",c:"tree",t:"Dama de la Maestranza de Ronda",note:"Hija del I barón de Algar del Campo. Dama de la Real Maestranza de Caballería de Ronda. Hermanos: Pedro (II barón de Algar del Campo), Xavier, Álvaro y Milagros López de Carrizosa y Eizaguirre.",s:["gn_aldce","wk_algar"]},
   16:{n:"Pedro Domecq Núñez de Villavicencio",d:"1869–1921",c:"ok",t:"I marqués de Casa Domecq",note:"Dirigió la casa Pedro Domecq después de su padre. Casó en Jerez el 26-XI-1892 con María Rivero González. Su primogénito, Pedro Domecq Rivero (1893–1979), fue II marqués de Casa Domecq y de Domecq d’Usquain.",s:["wk_casadomecq","rah_pdnv"]},
@@ -341,19 +470,19 @@ const P = {
   21:{n:"Juana Gómez Tocón",c:"tree",s:["gn_fbg"]},
   22:{n:"José de Mora-Figueroa y Ferrer",d:"1871–1929",c:"ok",t:"VII marqués de Tamarón",note:"Nació en El Puerto de Santa María en 1871 y murió en Jerez en 1929. Fue el mayor de diez hermanos varones: cinco militares, cuatro abogados y un ingeniero.",s:["rah_mmf","lanceros"]},
   23:{n:"Victoria Gómez-Imaz Vázquez",d:"n. h. 1870",c:"ok",note:"Hija de Manuel Gómez-Imaz Simón y Victoria Vázquez Rodríguez. Su nombre llegó a tu abuela Victoria Bohórquez.",s:["rah_mmf","fs_mmfgi"]},
-  24:{n:"N. Vergara",c:"none",note:"Abuelo paterno de Eduardo Vergara Lacave. Sin documentar."},
-  25:{n:"Sin documentar",c:"none",note:"Abuela paterna de Eduardo Vergara Lacave. Sin documentar."},
-  26:{n:"N. Lacave",c:"none",note:"Abuelo materno de Eduardo Vergara Lacave. Sin documentar."},
-  27:{n:"Sin documentar",c:"none",note:"Abuela materna de Eduardo Vergara Lacave. Sin documentar."},
+  24:{n:"N. Vergara",c:"none",note:"Padre de Juan Vicente Vergara Sanchiz. Nombre no localizado. En Jerez murió el 16-I-1900, a los 69 años, un Juan Vicente Vergara Lassaletta que podría ser pariente cercano.",s:["gn_vlassaletta"]},
+  25:{n:"N. Sanchiz",c:"none",note:"Madre de Juan Vicente Vergara Sanchiz. Nombre no localizado."},
+  26:{n:"N. Lacave",c:"none",note:"Padre de Eugenia María Lacave Patero. Nombre no localizado."},
+  27:{n:"N. Patero",c:"none",note:"Madre de Eugenia María Lacave Patero. Nombre no localizado."},
   28:{same:16}, 29:{same:17},
   30:{n:"Pedro López de Carrizosa y Giles",d:"1868–1930",c:"ok",t:"I barón de Algar del Campo",note:"El título se le concedió el 26-X-1907. Hijo del I marqués de Mochales.",s:["wk_algar","geni_plcg"]},
   31:{n:"María Josefa de Eizaguirre y Dasqui-Leguía",d:"1892–1973",c:"ok",s:["wk_algar","gn_aldce"]},
   32:{n:"Pedro Domecq Loustau",d:"1824–1894",c:"ok",t:"Creador del brandy Fundador",note:"Nació como Pierre Patient Domecq en Usquain (Béarn) el 10-IX-1824 y murió en Saint-Gladie el 5-IX-1894. En 1848 entró en la bodega de su tío Juan Pedro Domecq Lembeye, y hacia 1874 empezó a vender Fundador, el primer brandy de Jerez. Casó en 1868; de sus diez hijos sobrevivieron seis. Según Infocatólica (2025), él y su esposa van camino de los altares.",s:["wk_pdl","infocat"]},
-  33:{n:"Carmen Núñez de Villavicencio y Olaguer-Feliú",d:"1840–1923",c:"ok",t:"I marquesa de Domecq d’Usquain",note:"Nació en Jerez el 21-X-1840 y murió allí el 12-VII-1923. Con su marido fundó en Jerez colegios para niños pobres, asilos de ancianos y centros para mujeres.",s:["wk_cnv","memjerez"]},
+  33:{n:"Carmen Núñez de Villavicencio y Olaguer-Feliú",d:"1840–1923",c:"ok",t:"I marquesa de Domecq d’Usquain",note:"Nació en Jerez el 21-X-1840 y murió allí el 12-VII-1923. Con su marido fundó en Jerez colegios para niños pobres, asilos de ancianos y centros para mujeres. Por ella llega a los Domecq la ascendencia Villavicencio, la más antigua de tu árbol.",s:["wk_cnv","memjerez"]},
   34:{n:"Tomás Rivero O'Neale",d:"1835–1902",c:"tree",note:"Nació en Jerez el 16-I-1835. Hijos: Joaquín María, Manuel, María, Pedro y María Josefa Rivero González.",s:["gn_tro"]},
   35:{n:"Emilia González de Soto",d:"1841–1889",c:"tree",s:["gn_tro","gn_mrg"]},
   36:{n:"Baltasar Hidalgo y Meléndez",d:"1831–1894",c:"ok",t:"IV marqués de Negrón",s:["wk_pardofig"]},
-  37:{n:"Josefa Pardo de Figueroa y de la Serna",c:"ok",t:"I marquesa de Pardo de Figueroa",note:"Casó en Medina Sidonia el 13-VII-1863. Ya viuda, Alfonso XIII creó para ella el marquesado de Pardo de Figueroa (16-V-1927). Hay un estudio sobre su figura en Dialnet.",s:["wk_pardofig","dialnet_jpf","gn_jpfs"]},
+  37:{n:"Josefa Pardo de Figueroa y de la Serna",c:"ok",t:"I marquesa de Pardo de Figueroa",note:"Casó en Medina Sidonia el 13-VII-1863. Ya viuda, Alfonso XIII creó para ella el marquesado de Pardo de Figueroa (16-V-1927). Hermana de Mariano Pardo de Figueroa, el «Doctor Thebussem» (1828–1918), escritor y cervantista, que publicó las Notas genealógicas de la familia en 1888–1889.",s:["wk_pardofig","dialnet_jpf","gn_jpfs","rah_thebussem","wk_thebussem"]},
   38:{n:"N. Enrile",c:"none",note:"Padre de María del Carmen Enrile y González de la Mota. Nombre no localizado."},
   39:{n:"N. González de la Mota",c:"none",note:"Madre de María del Carmen Enrile y González de la Mota. Nombre no localizado."},
   40:{n:"N. Bohórquez",c:"none",note:"Padre de Pedro Bohórquez Piñero. Nombre no localizado."},
@@ -364,64 +493,181 @@ const P = {
   45:{n:"Francisca Ferrer y Rabech",d:"1852–1924",c:"ok",note:"Nació en El Puerto de Santa María y murió en Jerez. Casó en El Puerto en 1870; tuvieron dieciséis hijos.",s:["rah_jmf"]},
   46:{n:"Manuel Gómez-Imaz Simón",d:"1844–1922",c:"tree",s:["fs_mmfgi"]},
   47:{n:"Victoria Vázquez Rodríguez",d:"n. 1849",c:"tree",s:["fs_mmfgi"]},
-  60:{n:"Francisco Javier López de Carrizosa y Pavón",d:"1825–1882",c:"ok",t:"VIII marqués de Casa Pavón, I de Mochales",note:"Nació en Jerez en 1825 y murió el 3-XI-1882. Senador y maestrante de Sevilla. Recibió el marquesado de Mochales en 1878. Casó en 1853.",s:["rah_fjlcp","wk_casapavon"]},
+  60:{n:"Francisco Javier López de Carrizosa y Pavón",d:"1825–1882",c:"ok",t:"VIII marqués de Casa Pavón, I de Mochales",note:"Nació en Jerez el 21-IV-1825 y murió el 3-XI-1882. Senador y maestrante de Sevilla. Heredó Casa Pavón por cesión de su tío Cayetano y recibió el marquesado de Mochales en 1878. Casó en 1853.",s:["rah_fjlcp","wk_casapavon"]},
   61:{n:"María del Rosario de Giles y Rivero",d:"1837–1899",c:"ok",s:["rah_fjlcp"]},
   62:{n:"N. Eizaguirre",c:"none",note:"Padre de María Josefa de Eizaguirre y Dasqui-Leguía. Nombre no localizado."},
   63:{n:"N. Dasqui-Leguía",c:"none",note:"Madre de María Josefa de Eizaguirre y Dasqui-Leguía. Nombre no localizado."},
-  64:{n:"Pierre (Pedro Pascual) Domecq Lembeye",c:"ok",note:"Hermano de Pedro Domecq Lembeye, que en 1822 dio su nombre a la casa Pedro Domecq, y de Juan Pedro Domecq Lembeye, que la continuó.",s:["wk_pdl","wk_jpdl"]},
+  64:{n:"Pierre Pascal (Pedro Pascual) Domecq Lembeye",d:"h. 1783–1848",c:"ok",note:"Hermano de Pedro Domecq Lembeye, que en 1822 dio su nombre a la casa Pedro Domecq, y de Juan Pedro Domecq Lembeye, que la continuó.",s:["wk_pdl","wk_jpdl","gn_poeymarc"]},
   65:{n:"Marie de Loustau",c:"ok",s:["wk_pdl"]},
-  66:{n:"José Juan Núñez de Villavicencio y Angulo",d:"1800–1875",c:"ok",t:"Caballero de Calatrava, señor de Casarejo",note:"Hijo de los condes de Cañete del Pinar.",s:["wk_cnv","wk_mnv"]},
-  67:{n:"María Regla Olaguer-Feliú y González de Ceballos",d:"1798–1864",c:"ok",note:"De la familia de Antonio Olaguer Feliú, virrey del Río de la Plata, y del mariscal de campo Manuel Olaguer Feliú.",s:["wk_cnv","wk_mnv"]},
+  66:{n:"José Juan Núñez de Villavicencio y Angulo",d:"1800–1875",c:"ok",t:"Caballero de Calatrava, señor de Casarejo",note:"Bautizado en San Marcos de Jerez el 26-VI-1800. Hijo de los condes de Cañete del Pinar. Casó en San Miguel de Jerez el 15-I-1834.",s:["wk_cnv","wk_mnv","gn_jjnva"]},
+  67:{n:"María Regla Olaguer-Feliú y González de Ceballos",d:"1798–1864",c:"ok",note:"Bautizada en Sevilla el 26-IV-1798. Sobrina del virrey del Río de la Plata Antonio Olaguer Feliú.",s:["wk_cnv","wk_mnv","gcom_vill"]},
   68:{n:"Joaquín Rivero Tijera",d:"1797–1868",c:"tree",s:["gn_tro"]},
   69:{n:"Carmen O'Neale Saelices",c:"tree",s:["gn_tro"]},
-  74:{n:"José María Pardo de Figueroa y Manso de Andrade",c:"tree",t:"Regidor perpetuo de Cádiz",s:["gn_jpfs"]},
-  75:{n:"María Luisa de la Serna y Pareja",c:"tree",s:["gn_jpfs"]},
+  74:{n:"José María Pardo de Figueroa y Manso de Andrade",d:"n. 1800",c:"tree",t:"Regidor perpetuo de Cádiz",note:"Nació en Arcos el 25-I-1800 y casó en Medina Sidonia el 31-XII-1827. Padre del Doctor Thebussem.",s:["gn_jpfs","rah_thebussem"]},
+  75:{n:"María Luisa de la Serna y Pareja",c:"tree",s:["gn_jpfs","rah_thebussem"]},
   88:{n:"José María de Mora-Figueroa y Arrafán",d:"1804–1839",c:"tree",s:["geni_mfd"]},
   89:{n:"Josefa Daza y Caballero",d:"1807–1887",c:"tree",s:["geni_mfd"]},
-  122:{n:"Miguel de Giles y Fernández de Rivero",c:"ok",t:"Caballero de Carlos III",note:"Diputado y consejero real de Agricultura.",s:["rah_fjlcp"]},
-  123:{n:"Josefa Rivero de la Tixera",c:"ok",note:"Comparte apellido con Joaquín Rivero Tijera (nº 68). Si eran parientes, los Rivero entrarían en tu ascendencia por una tercera vía. Sin confirmar.",s:["rah_fjlcp"]},
-  128:{n:"Jean de Domecq",c:"ded",t:"Usquain, Béarn",note:"Padre de Pedro Domecq Lembeye (Tabaille-Usquain, 15-X-1787). Los Domecq procedían de la casa de la Verguerie d’Usquain, en el Béarn, citada ya en documentos de 1385, y salieron de Francia huyendo de la Revolución. Se le sitúa aquí porque Pedro Pascual (nº 64) era hermano de Pedro Domecq Lembeye.",s:["wk_pdlem","wk_pdl"]},
-  129:{n:"Catherine (Catalina) Lembeye",c:"ded",note:"Madre de Pedro Domecq Lembeye y, por la misma deducción, de Pedro Pascual (nº 64).",s:["wk_pdlem"]},
-  132:{n:"Conde de Cañete del Pinar",c:"none",t:"N. Núñez de Villavicencio",note:"Padre de José Juan Núñez de Villavicencio y Angulo. Nombre de pila no localizado.",s:["wk_cnv"]},
-  133:{n:"Condesa de Cañete del Pinar",c:"none",t:"N. Angulo",note:"Madre de José Juan Núñez de Villavicencio y Angulo. Nombre de pila no localizado.",s:["wk_cnv"]}
+  122:{n:"Miguel de Giles y Fernández del Rivero",d:"n. 1807",c:"ok",t:"Caballero de Carlos III",note:"Diputado y consejero real de Agricultura.",s:["rah_fjlcp","gn_giles"]},
+  123:{n:"Josefa Rivero de la Tixera",c:"ok",note:"Comparte apellido con Joaquín Rivero Tijera (nº 68). Si eran parientes, los Rivero entrarían en tu ascendencia por otra vía. Sin confirmar.",s:["rah_fjlcp"]},
+  128:{n:"Jean Domecq",d:"h. 1759–1831",c:"tree",t:"Señor de la casa Domecq de Usquain",note:"Casó el 25-VII-1780 con Catherine Lembeye Haurie. Hijos: Marie (1780), Pierre Pascal (h. 1783), Pierre (1785), Pedro Domecq Lembeye (1787), Bertrand (h. 1788) y Juan Pedro (h. 1796). La casa Domecq de Usquain ya figura en el censo del Béarn de 1385, y un Juan de Domecq rindió homenaje a Luis XIV el 18-III-1666.",s:["gn_poeymarc","jpdomecq","jpd1385","delgado","wk_pdlem"]},
+  129:{n:"Catherine Lembeye Haurie",d:"n. 1760",c:"tree",note:"Nacida el 6-I-1760. Su madre, Marie Haurie, era hermana de Juan Haurie, el comerciante de vinos de Jerez cuya casa llevaron después los Domecq.",s:["gn_lembeye","wk_pdlem"]},
+  132:{n:"José Núñez de Villavicencio y Fernández de Villavicencio",d:"n. 1758",c:"tree",t:"Conde de Cañete del Pinar",note:"Bautizado en Jerez el 19-II-1758. Veinticuatro perpetuo de Jerez y señor de Casarejo. Wikipedia presenta a su hijo José Juan como hijo de los condes de Cañete del Pinar, título creado en 1688, así que él y su mujer serían los condes. Su hija María del Carmen casó en 1817 con Cristóbal Tamariz Martel.",s:["gcom_vill","gn_jjnva","wk_cnv","wk_canete","hys_nobleza"]},
+  133:{n:"Inés de Angulo y Lasso de la Vega",d:"1772–1845",c:"tree",note:"Murió en Écija.",s:["gn_angulo","hys_nobleza"]},
+  134:{n:"José Olaguer-Feliú y Heredia",d:"n. 1747",c:"tree",t:"Teniente coronel de Estado Mayor",note:"Bautizado en Barcelona el 27-IV-1747. Hermano de Antonio Olaguer Feliú (1742–1813), virrey del Río de la Plata y secretario de Guerra de Carlos IV.",s:["gcom_vill","rah_olaguer","gn_olaguer"]},
+  135:{n:"Dionisia González de Ceballos y Garibay",d:"n. 1754",c:"tree",note:"Nacida en Sanlúcar de Barrameda el 9-X-1754.",s:["gcom_vill"]},
+  148:{n:"José María Pardo de Figueroa y Yuste de la Torre",d:"n. 1756",c:"tree",note:"Nacido en Arcos de la Frontera. Casado con Vicenta Manso de Andrade.",s:["gn_yuste"]},
+  149:{n:"Vicenta Manso de Andrade",c:"tree",s:["gn_yuste"]},
+  244:{n:"Vicente de Giles y Castro",d:"n. 1761",c:"tree",s:["gn_giles"]},
+  245:{n:"María Antonia Fernández del Rivero",c:"tree",s:["gn_giles"]},
+  258:{n:"Arnaud Lembeye",c:"tree",s:["gn_lembeye"]},
+  259:{n:"Marie Haurie",c:"tree",note:"Hermana de Juan Haurie, comerciante de vinos en Jerez, cuya casa heredaron sus sobrinos nietos los Domecq.",s:["gn_lembeye","wk_pdlem"]},
+  264:{n:"José Antonio Núñez de Villavicencio y Zurita",d:"1733–1791",c:"tree",t:"Señor de Casarejo",note:"Nació en Jerez el 19-III-1733. Veinticuatro perpetuo de Jerez y señor del mayorazgo de Casarejo. Casó el 6-XI-1754 con Petronila Inés Fernández de Villavicencio, de otra rama del mismo linaje.",s:["geni_jancz","gcom_vill"]},
+  265:{n:"Petronila Inés Fernández de Villavicencio y Villavicencio",d:"n. 1736",c:"tree",note:"Nacida en Jerez. Hija del III marqués de Valhermoso de Pozuela. Por ella sigue la línea más antigua de tu árbol.",s:["gn_galonso","hys_nobleza"]},
+  266:{n:"Gregorio José de Angulo y Tamariz",d:"1747–1789",c:"tree",note:"Nacido en Lucena.",s:["gn_angulo"]},
+  267:{n:"María Josefa Lasso de la Vega y Fernández de Bobadilla",d:"1750–1825",c:"tree",s:["geni_mjlv","gn_lasso"]},
+  268:{n:"Tomás Olaguer Feliú",c:"tree",t:"Capitán del Regimiento de Infantería de Granada",note:"Nacido en Ceuta. Padre del virrey Antonio Olaguer Feliú.",s:["rah_olaguer","gn_olaguer"]},
+  269:{n:"María Josefa Heredia",d:"n. 1716",c:"tree",note:"Nacida en Jaca. Algunos árboles la llaman Heredia y López Domec, una Domec en la rama Olaguer-Feliú sin relación conocida con los Domecq del Béarn.",s:["gn_olaguer"]},
+  296:{n:"Francisco Manuel Pardo de Figueroa y Legobien",c:"tree",note:"Bisabuelo de Mariano Pardo de Figueroa, el «Doctor Thebussem».",s:["gn_yuste"]},
+  297:{n:"Antonia Josefa Yuste de la Torre y Angulo",c:"tree",s:["gn_yuste"]},
+  528:{n:"Bruno Núñez de Villavicencio y Núñez de Villavicencio",d:"n. 1695",c:"tree",t:"Veinticuatro perpetuo de Jerez",note:"Casó el 18-XI-1725 con Francisca de Zurita Haro y Auñón.",s:["palomat_fz","gcom_vill"]},
+  529:{n:"Francisca de Zurita Haro y Auñón",d:"n. 1701",c:"tree",note:"Bautizada en Jerez. Hija de los marqueses de Campo Real.",s:["palomat_fz"]},
+  530:{n:"Lorenzo Antonio Fernández de Villavicencio y Spínola",d:"1712–1773",c:"tree",t:"III marqués de Valhermoso de Pozuela",note:"Nació el 10-VIII-1712 y murió en Jerez el 19-III-1773. Veinticuatro de Jerez y alcaide de sus Alcázares.",s:["geni_valh3","wk_valhermoso"]},
+  531:{n:"María Josefa Paula de Villavicencio",c:"tree",s:["gn_galonso"]},
+  532:{n:"Francisco de Paula de Angulo y Fernández de Valenzuela",d:"n. 1696",c:"tree",s:["gn_angulo"]},
+  533:{n:"Inés Tamariz y Torres de Villavicencio",d:"n. 1701",c:"tree",s:["gn_angulo"]},
+  534:{n:"Antonio García Lasso de la Vega y Rivas",d:"n. 1708",c:"tree",t:"Caballero de San Juan",note:"Nacido en Écija. Caballero de San Juan desde 1725. Casó en Écija el 13-XI-1746 con Francisca Fernández de Bobadilla y Galindo.",s:["gn_lasso"]},
+  535:{n:"Francisca Fernández de Bobadilla y Galindo",c:"tree",s:["gn_lasso"]},
+  1058:{n:"Álvaro Diego de Zurita y Haro",c:"tree",t:"Marqués de Campo Real",note:"Señor de Villar del Saz de don Guillén (Cuenca). Los Zurita de Jerez se tenían por descendientes de Fagut de Zurita, caballero de la conquista de la ciudad en 1264.",s:["palomat_fz","palomat_campo"]},
+  1059:{n:"María de Auñón",c:"tree",s:["palomat_fz"]},
+  1060:{n:"Lorenzo Fernández de Villavicencio y Villavicencio",d:"1665–1741",c:"ok",t:"II marqués de Valhermoso de Pozuela",note:"Nació en Madrid en 1665 y murió en Jerez el 21-I-1741. Comandante general de Canarias de 1723 a 1735.",s:["wk_lvv","wk_valhermoso"]},
+  1061:{n:"María Manuela Spínola y Villaviciosa",c:"tree",s:["gn_galonso"]},
+  1068:{n:"García Lasso de la Vega y Valbuena",d:"n. 1679",c:"tree",note:"Nacido en Écija.",s:["gn_lasso"]},
+  1069:{n:"Ana Rivas Castroviejo Dávila",c:"tree",s:["gn_lasso"]},
+  2120:{n:"Lorenzo Fernández de Villavicencio y Benítez Melgarejo",d:"† 1707",c:"ok",t:"I marqués de Valhermoso de Pozuela",note:"Carlos II le concedió el marquesado en 1681. Caballero de Calatrava, alcaide perpetuo de los Reales Alcázares de Jerez, corregidor de Toledo y de Madrid, asistente de Sevilla y mayordomo mayor de la reina Mariana de Austria. Murió en Madrid el 30-XI-1707.",s:["wk_valhermoso","rah_lfvbm"]},
+  2121:{n:"Catalina de Villavicencio y Zacarías",c:"ok",s:["wk_lvv"]},
+  4240:{n:"Lorenzo Fernández de Villavicencio",c:"ok",t:"Señor de Valhermoso y Pozuela",s:["wk_valhermoso"]},
+  4241:{n:"Ana María Benítez Melgarejo y Dávila",c:"ok",note:"Señora del mayorazgo de Vicos.",s:["wk_valhermoso"]},
+  8480:{n:"Lorenzo Fernández de Villavicencio y Núñez de Villavicencio",c:"tree",t:"Señor de Valhermoso y Pozuela",note:"Alcalde perpetuo y veinticuatro de Jerez; documentado en 1588.",s:["gn_galonso","geneacan"]},
+  16960:{n:"Lorenzo de Villavicencio y Zuazo",c:"tree",t:"Caballero de Santiago",note:"Veinticuatro de Jerez y regidor perpetuo de Cádiz.",s:["gn_galonso"]},
+  16961:{n:"Clara Núñez de Villavicencio y Dávila",c:"tree",s:["gn_galonso"]},
+  33920:{n:"Agustín Fernández de Villavicencio y Spínola",c:"tree",t:"Señor de Valhermoso",note:"Sucedió a su padre como veinticuatro de Jerez.",s:["gn_galonso","gcom_vill"]},
+  33921:{n:"Mencía de Valdespino",c:"tree",note:"Natural de Gibraltar; también aparece como Mencía de Zuazo de Sanabria y Mendoza.",s:["gn_galonso"]},
+  67840:{n:"Juan Fernández de Villavicencio y Carrizosa",c:"tree",t:"Señor de Valhermoso",note:"Veinticuatro de Jerez. Sirvió a Carlos V durante la guerra de las Comunidades. Fundó mayorazgo con su mujer el 2-III-1543.",s:["gcom_vill","gn_galonso"]},
+  67841:{n:"Mencía Spínola",d:"† 1543",c:"tree",note:"También llamada Mencía de Valdespino. Hija de Luis de Spínola y de Catalina Núñez de Villavicencio Camacho, y nieta de Pedro Camacho el Rico.",s:["gn_galonso","gcom_vill"]},
+  135682:{n:"Luis de Spínola y Contreras",c:"tree",t:"Servidor de los Reyes Católicos",note:"Veinticuatro de Jerez y vecino de El Puerto a finales del siglo XV. Participó en la conquista de Granada. De origen genovés, hijo del comendador Agustín Spínola y sobrino de Rafael Spínola, que servía a la casa de Medina Sidonia. Tuvo un hijo y seis hijas.",s:["gentepuerto","gn_galonso"]},
+  135683:{n:"Catalina Núñez de Villavicencio Camacho",c:"tree",note:"Hija de Pedro Camacho de Villavicencio «el Rico» y de Teresa de Zuazo.",s:["gn_galonso","elem_camacho"]},
+  271364:{n:"Agustín Spínola",c:"tree",t:"Comendador genovés",note:"Cortesano al servicio del marqués de Villena, en el siglo XV.",s:["gentepuerto"]},
+  271366:{n:"Pedro Camacho de Villavicencio «el Rico»",c:"ok",t:"Veinticuatro de Jerez",note:"El caballero jerezano más acaudalado de su tiempo. En 1507 fundó con su mujer un mayorazgo para su nieto Pedro: es el más antiguo que se conserva en Jerez y el primero regido por las Leyes de Toro. Lo estudia un artículo de la revista En la España Medieval, de la Universidad Complutense.",s:["elem_camacho"]},
+  271367:{n:"Teresa de Zuazo",c:"ok",note:"También Teresa de Zuazo Valdespino.",s:["elem_camacho"]},
+  542732:{n:"Alonso Núñez de Villavicencio",c:"tree",t:"Alcalde mayor de Jerez",note:"Mediados del siglo XV. Padre de Pedro Camacho el Rico según el árbol de Gonzalo Alonso en Geneanet. En esa época tres hermanos, Alonso, Lorenzo y Nuño, encabezaban las tres casas Villavicencio de Jerez.",s:["gn_galonso","rah_lfv"]},
+  542733:{n:"Antonia Ximénez Camacho",c:"tree",note:"Por ella llega el apellido Camacho.",s:["gn_galonso","elem_camacho"]},
+  1085464:{n:"Lorenzo Fernández de Villavicencio",d:"alcaide en 1406",c:"ded",t:"Alcaide del alcázar de Jerez",note:"Nieto del Lorenzo alcaide en 1326. Volvió a Jerez con su hermano Nuño en tiempos de Juan I, y el 13-VI-1406 recuperó la alcaidía que había tenido su abuelo. Se le sitúa aquí por deducción: no se ha podido confirmar si Alonso Núñez de Villavicencio era hijo suyo o de su hermano.",s:["rah_lfv"]},
+  2170928:{n:"Nuño Fernández de Villavicencio",c:"ded",note:"Hijo del alcaide Lorenzo. Leal a Pedro I en la guerra civil, nunca obtuvo el perdón de Enrique II y murió en Granada.",s:["rah_lfv"]},
+  4341856:{n:"Lorenzo Fernández de Villavicencio",d:"h. 1300 – h. 1370",c:"ded",t:"Alcaide del alcázar de Jerez desde 1326",note:"Tiene biografía en la Real Academia de la Historia. En 1326 Alfonso XI le nombró alcaide del alcázar de Jerez, con mando sobre Medina Sidonia y Alcalá de los Gazules, le hizo caballero de la Banda y le dio una regiduría. Fue alcalde mayor de Jerez y Pedro I le premió su lealtad.",s:["rah_lfv"]},
+  8683712:{n:"Gonzalo Núñez de Villavicencio",d:"h. 1280–1340",c:"ded",t:"Regidor de Jerez",note:"Padre de Lorenzo según la Real Academia de la Historia. Los genealogistas le hacen capitán de la milicia de Jerez y combatiente en la batalla del Salado (1340).",s:["rah_lfv","wk_casavill","fs_gnv","geneacan"]},
+  8683713:{n:"María Alonso de Astudillo",c:"ded",note:"De una familia noble y rica de Jerez. Con su marido creó el señorío de Valhermoso, según Wikipedia.",s:["rah_lfv","wk_casavill"]},
+  17367424:{n:"Miguel Fernández de Villavicencio",d:"conquista de Jerez, 1264",c:"ded",t:"Caballero de la conquista de Jerez",note:"Acompañó a los reyes castellanos en la conquista de Andalucía y fue uno de los caballeros que recibieron casas y tierras en el reparto de Jerez tras su toma en 1264. La historiografía jerezana lo tiene por tronco de los Villavicencio de la ciudad, uno de los pocos linajes que pueden probar presencia continuada en Jerez desde entonces. Su filiación con Gonzalo procede de genealogistas.",s:["geneacan","wk_casavill"]}
 };
+
+const LINE = [
+  {era:"Edad Media · según la historiografía del linaje"},
+  {y:"1264",ks:[17367424],t:"Caballero de la conquista de Jerez con Alfonso X; recibió casas y tierras en el reparto de la ciudad. Los historiadores jerezanos lo consideran el tronco de los Villavicencio de Jerez.",weak:true,top:true},
+  {y:"h. 1280",ks:[8683712,8683713],t:"Regidor de Jerez. La Real Academia de la Historia los da como padres de Lorenzo; según los genealogistas, él luchó en la batalla del Salado (1340)."},
+  {y:"h. 1300",ks:[4341856],t:"Alcaide del alcázar de Jerez desde 1326, con mando sobre Medina Sidonia y Alcalá de los Gazules. Caballero de la Banda y alcalde mayor; fue el primero de su linaje en alcanzar verdadero relieve."},
+  {y:"h. 1330",ks:[2170928],t:"Leal a Pedro I en la guerra civil, nunca obtuvo el perdón de Enrique II y murió en Granada."},
+  {y:"h. 1360",ks:[1085464],t:"Volvió a Jerez con su hermano Nuño en tiempos de Juan I. El 13-VI-1406 recuperó la alcaidía del alcázar que había tenido su abuelo.",weak:true},
+  {era:"Siglo XV · la casa Villavicencio de Jerez"},
+  {y:"h. 1400",ks:[542732,542733],t:"Alcalde mayor de Jerez. A mediados del siglo XV tres hermanos, Alonso, Lorenzo y Nuño, encabezaban las tres casas Villavicencio de la ciudad."},
+  {y:"h. 1440",ks:[271366,271367],t:"Veinticuatro de Jerez y el caballero jerezano más rico de su tiempo. El mayorazgo que fundaron en 1507 es el más antiguo que se conserva en Jerez, y hay un estudio académico sobre él."},
+  {y:"h. 1465",ks:[135683,135682],t:"Él, veinticuatro de Jerez, sirvió a los Reyes Católicos y luchó en la conquista de Granada. Era de origen genovés, hijo del comendador Agustín Spínola."},
+  {era:"Siglos XVI y XVII · señores de Valhermoso"},
+  {y:"h. 1490",ks:[67841,67840],t:"Él fue señor de Valhermoso y veinticuatro, y sirvió a Carlos V durante las Comunidades. Fundaron mayorazgo el 2-III-1543, año en que murió ella."},
+  {y:"h. 1515",ks:[33920,33921],t:"Señor de Valhermoso y Pozuela y veinticuatro de Jerez. Ella era de Gibraltar."},
+  {y:"h. 1540",ks:[16960,16961],t:"Caballero de Santiago, veinticuatro de Jerez y regidor perpetuo de Cádiz."},
+  {y:"h. 1565",ks:[8480],t:"Señor de Valhermoso y Pozuela, alcalde perpetuo y veinticuatro de Jerez; documentado en 1588."},
+  {y:"h. 1600",ks:[4240,4241],t:"Señor de Valhermoso y Pozuela. Ella era señora del mayorazgo de Vicos."},
+  {era:"Siglos XVII y XVIII · marqueses de Valhermoso"},
+  {y:"h. 1635",ks:[2120,2121],t:"Carlos II le hizo marqués de Valhermoso de Pozuela en 1681. Corregidor de Toledo y de Madrid y mayordomo mayor de la reina Mariana de Austria; murió en Madrid en 1707."},
+  {y:"1665",ks:[1060,1061],t:"II marqués de Valhermoso. Comandante general de Canarias de 1723 a 1735; murió en Jerez en 1741."},
+  {y:"1712",ks:[530,531],t:"III marqués de Valhermoso, veinticuatro de Jerez y alcaide de sus Alcázares."},
+  {y:"1736",ks:[265,264],t:"Petronila, hija del III marqués, casó el 6-XI-1754 con José Antonio Núñez de Villavicencio y Zurita, veinticuatro y señor de Casarejo. Así se juntan dos ramas del mismo linaje."},
+  {y:"1758",ks:[132,133],t:"Bautizado en Jerez el 19-II-1758. Veinticuatro, señor de Casarejo y conde de Cañete del Pinar."},
+  {era:"Siglos XIX y XX · de los Villavicencio a los Domecq"},
+  {y:"1800",ks:[66,67],t:"Caballero de Calatrava y señor de Casarejo. Casaron en San Miguel de Jerez el 15-I-1834."},
+  {y:"1840",ks:[33,32],t:"I marquesa de Domecq d’Usquain. Con ella entra la sangre Villavicencio en los Domecq."},
+  {y:"1869",ks:[16,17],t:"I marqués de Casa Domecq."},
+  {y:"1895",ks:[8,9],t:"Caballero de Calatrava."},
+  {y:"s. XX",ks:[4,5]},
+  {y:"s. XX",ks:[2,3]},
+  {y:"hoy",ks:[1]}
+];
 
 const DUP = {16:[28],17:[29]};
 const CONF = {self:"Tú",ok:"Confirmado en fuentes de referencia o por ti",tree:"Solo en árboles publicados",ded:"Deducido de las relaciones documentadas",none:"Sin documentar"};
-const GENS = ["","Tú","Padres","Abuelos","Bisabuelos","Tatarabuelos","Cuartos abuelos (trastatarabuelos)","Quintos abuelos","Sextos abuelos"];
-const ROMAN = ["","I","II","III","IV","V","VI","VII","VIII"];
-const REL = {2:["padre","madre"],3:["abuelo","abuela"],4:["bisabuelo","bisabuela"],5:["tatarabuelo","tatarabuela"],6:["trastatarabuelo","trastatarabuela"],7:["quinto abuelo","quinta abuela"],8:["sexto abuelo","sexta abuela"]};
 
 const gen = k => Math.floor(Math.log2(k)) + 1;
 const real = k => (P[k] && P[k].same) ? P[k].same : k;
 const person = k => P[real(k)];
 const side = k => { if (k < 2) return ""; const g = gen(k), base = 2 ** (g - 1); return k < base * 1.5 ? "pat" : "mat"; };
 const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+const fmt = n => n.toLocaleString("es-ES");
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function roman(n){
+  const m = [[10,"X"],[9,"IX"],[5,"V"],[4,"IV"],[1,"I"]];
+  let r = "";
+  for (const [v, s] of m) while (n >= v) { r += s; n -= v; }
+  return r;
+}
+function gensLabel(g){
+  return ["","Tú","Padres","Abuelos","Bisabuelos","Tatarabuelos","Trastatarabuelos"][g] || `${g - 2}.º abuelos`;
+}
 function rel(k){
   if (k === 1) return "Tú";
   const g = gen(k), fem = k % 2 === 1;
-  let r = REL[g][fem ? 1 : 0];
+  const names = {2:["padre","madre"],3:["abuelo","abuela"],4:["bisabuelo","bisabuela"],5:["tatarabuelo","tatarabuela"],6:["trastatarabuelo","trastatarabuela"]};
+  let r = names[g] ? names[g][fem ? 1 : 0] : `${g - 2}.${fem ? "ª abuela" : "º abuelo"}`;
   if (g > 2) r += side(k) === "pat" ? (fem ? " paterna" : " paterno") : (fem ? " materna" : " materno");
   return cap(r);
 }
-const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pbtn = (k, withNum = true) => {
+  const p = person(k);
+  return `<button type="button" class="pbtn ${side(k)} ${p.c}" data-k="${k}">${withNum ? `<span class="k">${fmt(k)}</span>` : ""}<span class="nm">${esc(p.n)}</span>${p.d ? `<span class="dt">${esc(p.d)}</span>` : ""}</button>`;
+};
 
 /* Cifras de cabecera */
 (function stats(){
-  const named = Object.entries(P).filter(([k,p]) => !p.same && p.c !== "none" && p.c !== "self");
+  const named = Object.entries(P).filter(([k, p]) => !p.same && p.c !== "none" && p.c !== "self");
   const deepest = Math.max(...named.map(([k]) => gen(+k)));
   document.getElementById("stats").innerHTML =
     `<div class="stat"><b class="num">${named.length}</b><span>antepasados identificados por su nombre</span></div>
-     <div class="stat"><b>${ROMAN[deepest]}</b><span>generaciones en la línea más larga, la de los Domecq de Usquain</span></div>
-     <div class="stat"><b class="num">2</b><span>veces desciendes de los I marqueses de Casa Domecq</span></div>`;
+     <div class="stat"><b>${roman(deepest)}</b><span>generaciones en la línea más larga, la de los Villavicencio de Jerez</span></div>
+     <div class="stat"><b class="num">1264</b><span>año más antiguo de tu ascendencia: la conquista de Jerez</span></div>`;
+})();
+
+/* Línea más antigua */
+(function line(){
+  let html = "", pendingWeak = false;
+  for (const r of LINE) {
+    if (r.era) {
+      html += `<li class="era${pendingWeak ? " wa wb" : ""}"><span class="yr"></span><span class="rail" aria-hidden="true"></span><p class="eralabel">${esc(r.era)}</p></li>`;
+      continue;
+    }
+    const k0 = r.ks[0], p0 = person(k0), g = gen(k0);
+    const cls = [pendingWeak ? "wa" : "", r.weak ? "wb" : "", r.top ? "top" : ""].filter(Boolean).join(" ");
+    const who = r.ks.map(k => pbtn(k, false)).join('<span class="x">×</span>');
+    const gl = k0 === 1 ? "Tú" : `Generación ${roman(g)} · ${rel(k0)} · <span class="k">nº ${fmt(k0)}</span>`;
+    html += `<li class="${cls}"><span class="yr">${esc(r.y)}</span><span class="rail" aria-hidden="true"><i class="mk ${p0.c}"></i></span>
+      <div class="body"><p class="gl">${gl}</p><div class="who">${who}</div>${r.t ? `<p class="tx">${esc(r.t)}</p>` : ""}</div></li>`;
+    pendingWeak = !!r.weak;
+  }
+  document.getElementById("line").innerHTML = html;
 })();
 
 /* Árbol de cinco generaciones */
 (function chart(){
-  const el = document.getElementById("chart");
   let html = "";
   for (let g = 1; g <= 5; g++) {
-    html += `<div class="colhead" style="grid-column:${g}"><b>${ROMAN[g]}</b>${GENS[g]}</div>`;
+    html += `<div class="colhead" style="grid-column:${g}"><b>${roman(g)}</b>${gensLabel(g)}</div>`;
   }
   for (let k = 1; k <= 31; k++) {
     const g = gen(k) - 1, i = k - 2 ** g, span = 2 ** (4 - g), row = i * span + 2;
@@ -440,42 +686,43 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":
         ${p.t ? `<span class="tg">${esc(p.t)}</span>` : ""}
       </button></div>`;
   }
-  el.innerHTML = html;
+  document.getElementById("chart").innerHTML = html;
 })();
 
-/* Ramas antiguas */
+/* Ramas antiguas, generaciones VI a XI */
 (function branches(){
   const B = [
     {a:16,b:17,h:"Domecq · Rivero"},
     {a:18,b:19,h:"Hidalgo · Enrile"},
     {a:20,b:21,h:"Bohórquez · Gómez"},
     {a:22,b:23,h:"Mora-Figueroa · Gómez-Imaz"},
-    {a:24,b:27,h:"Vergara · Lacave",txt:"Sin documentar más allá de Eduardo Vergara Lacave (nº 6). Sus padres (nº 12–13) y sus cuatro abuelos (nº 24–27) son la laguna principal del árbol."},
+    {a:24,b:27,h:"Vergara · Lacave",txt:"Por encima de Juan Vicente Vergara Sanchiz y Eugenia María Lacave Patero (nº 12–13, deducidos) no se conocen nombres. Juan Vicente tuvo bodega propia en Jerez: «Juan Vicente Vergara, vinos y coñacs»."},
     {a:30,b:31,h:"López de Carrizosa · Eizaguirre"}
   ];
-  const pbtn = k => {
-    const p = P[k];
-    return `<button type="button" class="pbtn ${side(k)} ${p.c}" data-k="${k}"><span class="k">${k}</span><span class="nm">${esc(p.n)}</span>${p.d ? `<span class="dt">${esc(p.d)}</span>` : ""}</button>`;
-  };
+  const keys = Object.keys(P).map(Number).filter(k => gen(k) >= 6);
+  const anc5 = k => Math.floor(k / 2 ** (gen(k) - 5));
   let html = "";
   for (const br of B) {
     const child = Math.floor(br.a / 2);
     const sub = br.txt ? "Vía materna" :
-      `${side(br.a) === "pat" ? "Vía paterna" : "Vía materna"} · padres de ${esc(P[child].n)} (<span class="k">nº ${child}</span>)`;
+      `${side(br.a) === "pat" ? "Vía paterna" : "Vía materna"} · padres de ${esc(person(child).n)} (<span class="k">nº ${child}</span>)`;
     html += `<article class="branch"><div><p class="glabel">nº ${br.a}–${br.b}</p><h3>${br.h}</h3><p class="sub">${sub}</p></div>`;
-    if (br.txt) { html += `<p class="empty">${br.txt}</p></article>`; continue; }
-    let any = false;
-    for (let off = 1; off <= 3; off++) {
-      const lo = br.a * 2 ** off, hi = (br.b + 1) * 2 ** off - 1;
+    if (br.txt) { html += `<p class="empty">${esc(br.txt)}</p></article>`; continue; }
+    const mine = keys.filter(k => anc5(k) >= br.a && anc5(k) <= br.b).sort((x, y) => x - y);
+    const shown = mine.filter(k => gen(k) <= 11), older = mine.length - shown.length;
+    const byGen = {};
+    for (const k of shown) (byGen[gen(k)] = byGen[gen(k)] || new Set()).add(k - (k % 2));
+    for (const g of Object.keys(byGen).map(Number).sort((x, y) => x - y)) {
       let rows = "";
-      for (let k = lo; k < hi; k += 2) {
-        if (!P[k] && !P[k + 1]) continue;
-        const of = Math.floor(k / 2);
-        rows += `<div class="couple"><span class="of">padres de ${esc(P[of] ? P[of].n : "nº " + of)}</span><div class="pair">${P[k] ? pbtn(k) : ""}<span class="x">×</span>${P[k + 1] ? pbtn(k + 1) : ""}</div></div>`;
+      for (const base of [...byGen[g]].sort((x, y) => x - y)) {
+        const known = [base, base + 1].filter(k => P[k]);
+        const of = base / 2;
+        rows += `<div class="couple"><span class="of">padres de ${esc(P[of] ? person(of).n : "nº " + fmt(of))}</span><div class="pair">${known.map(k => pbtn(k)).join('<span class="x">×</span>')}</div></div>`;
       }
-      if (rows) { any = true; html += `<div class="gblock"><p class="glabel">${ROMAN[5 + off]} · ${GENS[5 + off]}</p>${rows}</div>`; }
+      html += `<div class="gblock"><p class="glabel">${roman(g)} · ${gensLabel(g)}</p>${rows}</div>`;
     }
-    if (!any) html += `<p class="empty">Sin ascendencia documentada por encima de este matrimonio.</p>`;
+    if (!shown.length) html += `<p class="empty">Sin ascendencia documentada por encima de este matrimonio.</p>`;
+    if (older) html += `<p class="more">La línea sigue con ${older} antepasados más antiguos, hasta 1264. Están arriba, en la sección «Tu línea más antigua».</p>`;
     html += `</article>`;
   }
   document.getElementById("branches").innerHTML = html;
@@ -483,11 +730,11 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":
 
 /* Dieciséis apellidos */
 (function surnames(){
-  const SN = {16:"Domecq",17:"Rivero",18:"Hidalgo",19:"Enrile",20:"Bohórquez",21:"Gómez",22:"Mora-Figueroa",23:"Gómez-Imaz",24:"Vergara",25:"—",26:"Lacave",27:"—",28:"Domecq",29:"Rivero",30:"López de Carrizosa",31:"Eizaguirre"};
+  const SN = {16:"Domecq",17:"Rivero",18:"Hidalgo",19:"Enrile",20:"Bohórquez",21:"Gómez",22:"Mora-Figueroa",23:"Gómez-Imaz",24:"Vergara",25:"Sanchiz",26:"Lacave",27:"Patero",28:"Domecq",29:"Rivero",30:"López de Carrizosa",31:"Eizaguirre"};
   let html = "";
   for (let k = 16; k <= 31; k++) {
-    const dup = !!P[k].same, unk = SN[k] === "—";
-    html += `<div class="sn ${side(k)}${dup ? " dup" : ""}${unk ? " unk" : ""}"><span class="k">nº ${k}</span><b>${SN[k]}</b>${dup ? `<small>repite nº ${P[k].same}</small>` : unk ? "<small>sin documentar</small>" : ""}</div>`;
+    const dup = !!P[k].same, ded = k >= 24 && k <= 27;
+    html += `<div class="sn ${side(k)}${dup ? " dup" : ""}"><span class="k">nº ${k}</span><b>${SN[k]}</b>${dup ? `<small>repite nº ${P[k].same}</small>` : ded ? "<small>deducido</small>" : ""}</div>`;
   }
   document.getElementById("surnames").innerHTML = html;
 })();
@@ -505,18 +752,14 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":
 /* Ficha */
 const dlg = document.getElementById("ficha");
 const fi = document.getElementById("fi");
-function famBtn(k){
-  const p = person(k);
-  return `<button type="button" class="pbtn ${side(k)} ${p.c}" data-k="${k}"><span class="k">${k}</span><span class="nm">${esc(p.n)}</span>${p.d ? `<span class="dt">${esc(p.d)}</span>` : ""}</button>`;
-}
 function openFicha(k){
   k = real(k);
   const p = P[k];
   const places = [k, ...(DUP[k] || [])];
-  const where = places.map(n => `nº ${n} · ${rel(n)}`).join("<br>");
+  const where = places.map(n => `nº ${fmt(n)} · ${rel(n)} · generación ${roman(gen(n))}`).join("<br>");
   const parents = [2 * k, 2 * k + 1].filter(n => P[n]);
-  const kids = places.filter(n => n > 1).map(n => Math.floor(n / 2));
-  const src = (p.s || []).map(key => `<li><a href="${esc(S[key][1])}" target="_blank" rel="noopener">${esc(S[key][0])}</a></li>`).join("");
+  const kids = places.filter(n => n > 1).map(n => Math.floor(n / 2)).filter(n => P[n]);
+  const src = (p.s || []).filter(key => S[key]).map(key => `<li><a href="${esc(S[key][1])}" target="_blank" rel="noopener">${esc(S[key][0])}</a></li>`).join("");
   fi.innerHTML = `
     <div class="fi-head">
       <div><p class="eyebrow">${where}</p><h3 id="fi-name">${esc(p.n)}</h3></div>
@@ -526,8 +769,8 @@ function openFicha(k){
     <p class="conf"><i class="mk ${p.c}" aria-hidden="true"></i>${CONF[p.c]}</p>
     ${p.note ? `<p>${esc(p.note)}</p>` : ""}
     ${(parents.length || kids.length) ? `<div class="fam">
-      ${parents.length ? `<div class="row"><span class="lbl">Padres</span>${parents.map(famBtn).join("")}</div>` : ""}
-      ${kids.length ? `<div class="row"><span class="lbl">${kids.length > 1 ? "Hijos en tu línea" : (kids[0] % 2 === 1 ? "Hija" : "Hijo")}</span>${kids.map(famBtn).join("")}</div>` : ""}
+      ${parents.length ? `<div class="row"><span class="lbl">Padres</span>${parents.map(n => pbtn(n)).join("")}</div>` : ""}
+      ${kids.length ? `<div class="row"><span class="lbl">${kids.length > 1 ? "Hijos en tu línea" : (kids[0] % 2 === 1 ? "Hija" : "Hijo")}</span>${kids.map(n => pbtn(n)).join("")}</div>` : ""}
     </div>` : ""}
     ${src ? `<div class="fam"><span class="lbl eyebrow">Fuentes</span><ul>${src}</ul></div>` : ""}`;
   if (!dlg.open) { try { dlg.showModal(); } catch (e) { dlg.setAttribute("open", ""); } }
