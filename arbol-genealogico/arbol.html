@@ -198,6 +198,37 @@
   .sides span{display:inline-flex;align-items:center;gap:8px}
   @media (max-width:900px){.surnames{grid-template-columns:repeat(4,minmax(0,1fr))}}
 
+  /* Personajes */
+  .stars{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:16px}
+  .star{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px}
+  .star h3{font-size:1.5rem;line-height:1.15}
+  .star .sname{background:none;border:0;padding:0;text-align:left;cursor:pointer;font:inherit;line-height:inherit;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}
+  .star .sname:hover{text-decoration-color:currentColor}
+  .star .yr{font-family:var(--sans);font-size:14.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .star .tx{font-size:16px;line-height:1.45}
+  .star .rl{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;margin-top:auto;padding-top:8px;border-top:1px solid var(--soft);font-family:var(--sans);font-size:14.5px;color:var(--muted)}
+  .star .rl .k{font-variant-numeric:tabular-nums}
+  .star .rl.pat .k{color:var(--pat)} .star .rl.mat .k{color:var(--mat)}
+
+  /* Cuatro costados */
+  .costados{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:16px}
+  .cst{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px}
+  .cst.doubt{border-color:var(--dup)}
+  .cst.ded{border-style:dashed}
+  .cst h3{font-size:1.9rem}
+  .cst .who{font-family:var(--sans);font-size:14.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:2px 8px;align-items:baseline}
+  .cst .st{display:inline-flex;align-items:center;gap:8px;font-family:var(--sc);font-weight:700;font-size:14px;letter-spacing:.05em}
+  .cst.doubt .st{color:var(--dup)}
+  .cst p.tx{font-size:16px;line-height:1.45}
+  .verdict{display:flex;flex-direction:column;gap:12px;max-width:70ch}
+  .verdict p b{font-weight:700}
+  .ords{display:flex;flex-direction:column;border-top:1px solid var(--line);max-width:900px}
+  .ord{display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr);gap:4px 18px;padding:10px 0;border-bottom:1px solid var(--line)}
+  .ord .glabel{padding-top:2px}
+  .ord .who{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline}
+  .ord .who .ex{font-size:15.5px;color:var(--muted);font-style:italic}
+  @media (max-width:640px){.ord{grid-template-columns:minmax(0,1fr)}}
+
   /* Lagunas y fuentes */
   .gaps{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:10px;max-width:70ch}
   .sources{margin:0;padding:0;list-style:none;columns:320px;column-gap:28px;font-size:15.5px;font-family:var(--sans)}
@@ -329,6 +360,13 @@
     </div>
   </section>
 
+  <section aria-labelledby="h-stars">
+    <p class="eyebrow">Quién es quién</p>
+    <h2 id="h-stars">Los más ilustres y los más curiosos</h2>
+    <p class="intro">Una selección de antepasados directos y de parientes muy cercanos a tu línea, de la conquista de Jerez al siglo XX. En cada tarjeta, abajo, está tu parentesco: con los antepasados directos, su número; con los parientes, la persona de tu árbol a través de la cual te llega. Pulsa los nombres para abrir las fichas.</p>
+    <div class="stars" id="stars"></div>
+  </section>
+
   <section aria-labelledby="h-tree">
     <p class="eyebrow">Cinco generaciones · nº 1 a 31</p>
     <h2 id="h-tree">El árbol</h2>
@@ -366,10 +404,25 @@
     </div>
   </section>
 
+  <section aria-labelledby="h-cst">
+    <p class="eyebrow">Nobleza y órdenes militares</p>
+    <h2 id="h-cst">Los cuatro costados</h2>
+    <p class="intro">Para entrar en las órdenes de Santiago, Calatrava, Alcántara y Montesa había que probar la nobleza de sangre de los cuatro abuelos, los «cuatro costados», y las órdenes siguen pidiéndolo hoy. Cada abuelo cuenta por su línea de varonía, es decir, por su primer apellido: la nobleza de tu abuela Victoria depende de los Bohórquez, no de su madre, que era Mora-Figueroa. Así están los tuyos.</p>
+    <div class="costados" id="costados"></div>
+    <div class="verdict">
+      <p><b>¿Noble por los cuatro costados?</b> De sangre noble, sin duda: desciendes de marqueses, condes, veinticuatros de Jerez y caballeros de varias órdenes, por muchas ramas distintas. Pero en sentido estricto hoy solo se pueden dar por probados dos costados de los cuatro: los dos Domecq.</p>
+      <p><b>¿Y caballero de Calatrava?</b> La Orden es hoy honorífica y católica. El Real Consejo de las Órdenes Militares examina las pruebas de nobleza de los cuatro costados y propone al Rey la concesión del hábito, y hay que ser católico. Los dos costados Domecq te dan medio camino hecho, y el hábito de tu bisabuelo José Manuel es el mejor punto de partida. Los expedientes de pruebas antiguos se guardan en la Sección de Órdenes Militares del Archivo Histórico Nacional. Te faltaría probar el costado Bohórquez y cerrar el Vergara.</p>
+      <p><b>Una vía más sencilla.</b> La Real Asociación de Hidalgos de España solo pide la línea de varonía, la de los Domecq, acreditada con tres actos positivos de nobleza. El hábito de Calatrava de tu bisabuelo cuenta como uno de ellos.</p>
+    </div>
+    <h3 class="subhead">Caballeros de órdenes y maestrantes en tu ascendencia directa</h3>
+    <div class="ords" id="ords"></div>
+  </section>
+
   <section aria-labelledby="h-gaps">
     <h2 id="h-gaps">Lagunas y cómo seguir</h2>
     <ul class="gaps">
       <li><strong>Padres de José y Fermín Bohórquez Gómez (nº 20 y 21).</strong> Geneanet los identifica con Pedro Bohórquez Piñero «el Chico» y Juana Gómez Tocón, de Ubrique. Pero los padrones de 1866 y 1867 les dan unos 40 años y su único hijo varón murió en 1869, así que no pueden ser los padres de hermanos nacidos hacia 1904. Pide en el Registro Civil de Jerez la certificación literal de nacimiento de Fermín Bohórquez Gómez (10-IX-1904): desde 1871 esas actas recogen padres y abuelos, con su naturaleza.</li>
+      <li><strong>El catedrático del Goya o el Velázquez.</strong> En tu familia se recuerda a un antepasado de la rama de tu abuela Victoria, catedrático y estudioso, de origen granadino y con vida en Sevilla, que tuvo un Goya o un Velázquez y lo donó. No lo he podido identificar. Los que más se le parecen son tu trastatarabuelo Manuel Gómez-Imaz, erudito sevillano, académico y gran coleccionista, que publicó el inventario de los cuadros que los franceses se llevaron de Sevilla en 1810, y su nieto José de Mora-Figueroa, VIII marqués de Tamarón, catedrático y académico de la Historia. Pero ninguno de los dos era de Granada, y no consta que donaran un Goya ni un Velázquez. Con un nombre, una fecha o el museo que recibió el cuadro se podría comprobar.</li>
       <li><strong>Padres de tu abuelo Eduardo (nº 12 y 13).</strong> Todo apunta a Juan Vicente Vergara Sanchiz y Eugenia María Lacave Patero. Casaron en 1933 y bautizaron a su hijo Juan Pedro en 1937, pero ninguna fuente abierta nombra a Eduardo. Su acta de nacimiento (Jerez, 1940) lo confirmaría.</li>
       <li><strong>Eduardo Vergara (nº 48) y los Vergara del Roncal.</strong> Encaja por fechas, por la bodega y por los nombres de la familia, pero falta el documento que lo enlace con Francisco Vergara Lorea. El libro de Alfonso de la Calle Vergara probablemente trae el árbol completo.</li>
       <li><strong>El enlace medieval y los señores de Valhermoso.</strong> Los alcaides Villavicencio de los siglos XIV y XV están documentados por la Real Academia de la Historia, pero no se ha encontrado de cuál de los dos hermanos que volvieron a Jerez con Juan I desciende Alonso Núñez de Villavicencio. Los señores de Valhermoso entre 1543 y 1681 salen de árboles publicados y conviene contrastarlos.</li>
@@ -493,7 +546,25 @@ const S = {
   elem_camacho:["En la España Medieval (UCM) · El mayorazgo del veinticuatro Pedro Camacho de Villavicencio «el rico» (1507)","https://revistas.ucm.es/index.php/ELEM/article/view/38912"],
   rah_lfv:["Real Academia de la Historia · Lorenzo Fernández de Villavicencio (h. 1300 – h. 1370)","https://dbe.rah.es/biografias/39377/lorenzo-fernandez-de-villavicencio"],
   wk_casavill:["Wikipedia · Casa de Villavicencio","https://es.wikipedia.org/wiki/Casa_de_Villavicencio"],
-  fs_gnv:["FamilySearch · Gonzalo Núñez de Villavicencio (1280–1340)","https://ancestors.familysearch.org/es/LDM7-QCD/gonzalo-n%C3%BA%C3%B1ez-de-villavicencio-1280-1340"]
+  fs_gnv:["FamilySearch · Gonzalo Núñez de Villavicencio (1280–1340)","https://ancestors.familysearch.org/es/LDM7-QCD/gonzalo-n%C3%BA%C3%B1ez-de-villavicencio-1280-1340"],
+  rah_mgi:["Real Academia de la Historia · Manuel Gómez Imaz","https://historia-hispanica.rah.es/biografias/20180-manuel-gomez-imaz"],
+  wk_mgi:["Wikipedia · Manuel Gómez Imaz","https://es.wikipedia.org/wiki/Manuel_G%C3%B3mez_Imaz"],
+  rah_jgis:["Real Academia de la Historia · José Gómez-Imaz y Simón","https://dbe.rah.es/biografias/14570/jose-gomez-imaz-y-simon"],
+  ces_inv:["Centro de Estudios Andaluces · Inventario de los cuadros sustraídos por el gobierno intruso en Sevilla, año 1810 (Gómez Imaz, 1896)","https://www.centrodeestudiosandaluces.es/publicaciones/inventario-de-los-cuadros-sustraidos-por-el-gobierno-intruso-en-sevilla-ano-1810"],
+  rah_canal:["Real Academia de la Historia · Carlos Cañal y Migolla","https://historia-hispanica.rah.es/biografias/9720-carlos-canal-y-migolla"],
+  wk_canalgi:["Wikipedia · Carlos Cañal y Gómez-Imaz, marqués de Saavedra","https://es.wikipedia.org/wiki/Carlos_Ca%C3%B1al_y_G%C3%B3mez-Imaz"],
+  postal_thebussem:["Museo Postal y Telegráfico · Mariano Pardo de Figueroa, Doctor Thebussem, cartero honorario","https://museopostalytelegrafico.es/mariano-pardo-de-figueroa/"],
+  wk_ruskin:["Wikipedia · John Ruskin (Adèle Domecq)","https://en.wikipedia.org/wiki/John_Ruskin"],
+  wk_fbe:["Wikipedia · Fermín Bohórquez Escribano","https://es.wikipedia.org/wiki/Ferm%C3%ADn_Boh%C3%B3rquez_Escribano"],
+  wk_fbganad:["Wikipedia · Fermín Bohórquez (ganadería)","https://es.wikipedia.org/wiki/Ferm%C3%ADn_Boh%C3%B3rquez_(ganader%C3%ADa)"],
+  wk_calatrava:["Wikipedia · Orden de Calatrava","https://es.wikipedia.org/wiki/Orden_de_Calatrava"],
+  om_hoy:["Real Consejo de las Órdenes Militares · Las instituciones nobiliarias en la España actual","https://www.ordenesmilitares.es/?page_id=4154"],
+  ahn_om:["Ministerio de Cultura · La Sección Órdenes Militares del Archivo Histórico Nacional","https://www.cultura.gob.es/cultura/archivos/difusion/efemerides-centenarios/850-aniversario-ucles/seccion-ordenes-militares-ahn.html"],
+  rahe_ingreso:["Real Asociación de Hidalgos de España · Ingreso","https://www.hidalgosdeespana.es/asociacion/ingreso/"],
+  roncal_hid:["Hidalgos en la Historia · Escudo e hidalguía en el valle de Roncal","https://hidalgosenlahistoria.blogspot.com/2017/09/escudo-e-hidalguia-en-el-valle-de.html"],
+  gen_roncal:["Gran Enciclopedia de Navarra · Roncal, valle","http://www.enciclopedianavarra.com/?page_id=17800"],
+  wk_canal:["Wikipedia · Carlos Cañal y Migolla","https://en.wikipedia.org/wiki/Carlos_Ca%C3%B1al_y_Migolla"],
+  aun_saavedra:["Auñamendi Eusko Entziklopedia · Marqués de Saavedra","https://aunamendi.eusko-ikaskuntza.eus/es/marques-de-saavedra/ar-96797/"]
 };
 
 const P = {
@@ -519,7 +590,7 @@ const P = {
   20:{n:"Pedro Bohórquez Piñero",c:"doubt",t:"En duda",note:"El árbol de Geneanet lo da como padre de José y de Fermín Bohórquez Gómez, pero no encaja. El Pedro Bohórquez Piñero documentado, «el Chico», era un republicano de Ubrique casado con Juana Gómez Tocón. El padrón de 1867 les da 40 años a los dos, y su único hijo varón, Cristóbal, murió en 1869 cerca de Benaoján. Su hija Ángeles (1861) fue la primera maestra de Ubrique. No pueden ser los padres de hermanos nacidos hacia 1904. Lo más probable es que el árbol haya confundido a dos personas, aunque el debut de Fermín Bohórquez Escribano en Ubrique (1959) apunta a raíces familiares allí.",s:["gn_fbg","ubrique_padrones","ubrique_chico","cabello_angeles"]},
   21:{n:"Juana Gómez Tocón",c:"doubt",t:"En duda",note:"Mujer de Pedro Bohórquez Piñero «el Chico», de Ubrique. Mismo problema de fechas que su marido: no puede ser la madre de Fermín y José Bohórquez Gómez.",s:["gn_fbg","ubrique_padrones","cabello_angeles"]},
   22:{n:"José de Mora-Figueroa y Ferrer",d:"1871–1929",c:"ok",t:"VII marqués de Tamarón",note:"Nació en El Puerto de Santa María en 1871 y murió en Jerez en 1929. Fue el mayor de diez hermanos varones: cinco militares, cuatro abogados y un ingeniero.",s:["rah_mmf","lanceros"]},
-  23:{n:"Victoria Gómez-Imaz Vázquez",d:"n. h. 1870",c:"ok",note:"Hija de Manuel Gómez-Imaz Simón y Victoria Vázquez Rodríguez. Su nombre llegó a tu abuela Victoria Bohórquez.",s:["rah_mmf","fs_mmfgi"]},
+  23:{n:"Victoria Gómez-Imaz Vázquez",d:"n. h. 1870",c:"ok",note:"Hija de Manuel Gómez-Imaz Simón y Victoria Vázquez Rodríguez, que solo tuvieron dos hijas. Su nombre llegó a tu abuela Victoria Bohórquez. Su hermana María Candelaria casó con Carlos Cañal y Migolla, el primer ministro de Trabajo de España (1920–1921); el hijo de ambos, Carlos Cañal y Gómez-Imaz, marqués de Saavedra, fue diplomático y embajador.",s:["rah_mmf","fs_mmfgi","rah_mgi","rah_canal","wk_canal","wk_canalgi"]},
   24:{n:"Juan Vicente Vergara Lassaletta",d:"1831–1900",c:"tree",t:"Bodeguero e industrial en Jerez",note:"Murió en Jerez el 16-I-1900. De los bodegueros Vergara de El Puerto de Santa María, de origen navarro. Su casa de vinos acabó llamándose «Juan Vicente Vergara» y se integró en Palomino & Vergara a principios del siglo XX. Casó primero con María Ana Quesada Caugh, con quien tuvo a los Vergara Quesada (entre ellos Mateo, 1871–1954, dueño de las fábricas de hielo y de lápices de Jerez), y después con María Josefa Sanchiz Quesada.",s:["gn_vlassaletta","geni_jvvl","lavoz_lapices","jxs_palomino"]},
   25:{n:"María Josefa Sanchiz Quesada",d:"1860–1934",c:"tree",note:"Segunda mujer de Juan Vicente Vergara Lassaletta. Hijos: María Pilar (1879–1956), Eduardo (1882–1921), Isabel (1895–1977) y Juan Vicente (1899–1974) Vergara Sanchiz, entre otros. Su hermano Eliseo casó con María Josefa Vergara Quesada, hija del primer matrimonio de su marido.",s:["gn_vlassaletta","gn_sanchiz_jer"]},
   26:{n:"Pedro Lacave de la Rocha",d:"1883–1926",c:"tree",note:"Nació el 7-V-1883 y murió el 9-XII-1926. Casó en Cádiz el 27-II-1908 con María Josefa Patero d’Etchecopar. Hijos: María Teresa (1909), María del Carmen (1910), María Josefa (1911), Eugenia María (1912) y Pedro (1916), entre otros. De la familia gaditana de Lacave y Cía., una de las grandes exportadoras de vino de Jerez.",s:["gn_evilallonga","gn_lacaveperrot","uma_lacave"]},
@@ -537,8 +608,10 @@ const P = {
   39:{n:"María de la Paz González de la Mota y Velázquez-Gaztelu",d:"1825–1895",c:"tree",s:["gn_enrile"]},
   44:{n:"José de Mora-Figueroa y Daza",d:"1839–1909",c:"ok",t:"VI marqués de Tamarón",note:"Nació en Vejer de la Frontera y murió en Jerez. Terrateniente y ganadero de bravo.",s:["rah_jmf","geni_mfd"]},
   45:{n:"Francisca Ferrer y Rabech",d:"1852–1924",c:"ok",note:"Nació en El Puerto de Santa María y murió en Jerez. Casó en El Puerto en 1870; tuvieron dieciséis hijos.",s:["rah_jmf"]},
-  46:{n:"Manuel Gómez-Imaz Simón",d:"1844–1922",c:"tree",s:["fs_mmfgi"]},
-  47:{n:"Victoria Vázquez Rodríguez",d:"n. 1849",c:"tree",s:["fs_mmfgi"]},
+  46:{n:"Manuel Gómez-Imaz Simón",d:"1844–1922",c:"ok",t:"Erudito, bibliógrafo y académico en Sevilla",note:"Nació en La Habana el 3-VI-1844 y murió en Sevilla en 1922. Su familia se instaló en Cádiz en 1845; estudió en Cádiz y en Jerez y se licenció en Derecho en Sevilla, donde vivió. Periodista y bibliógrafo, especialista en la Guerra de la Independencia, ingresó en 1888 en la Real Academia Sevillana de Buenas Letras, que llegó a presidir, y perteneció a la Real Academia Española. Reunió una de las mejores colecciones privadas sobre esa guerra, que la Biblioteca Nacional compró en 1977, y en 1896 publicó el inventario de las 999 obras de arte que las tropas francesas se llevaron de Sevilla en 1810. Su hermano José fue contralmirante y ministro de Marina. En su casa de Sevilla nació en 1899 su nieto José de Mora-Figueroa, VIII marqués de Tamarón.",s:["rah_mgi","wk_mgi","ces_inv","rah_jgis","rah_jmf","fs_mmfgi"]},
+  47:{n:"Victoria Vázquez Rodríguez",d:"n. 1849",c:"ok",note:"Mujer de Manuel Gómez-Imaz. Tuvieron dos hijas, María Victoria, tu tatarabuela, y María Candelaria.",s:["rah_mgi","fs_mmfgi"]},
+  92:{n:"Francisco de Paula Gómez Imaz",c:"ded",note:"Natural de Cádiz. La Real Academia de la Historia lo da como padre del contralmirante José Gómez-Imaz y Simón (La Habana, 1838 – Madrid, 1903), ministro de Marina en 1899–1900. Manuel Gómez-Imaz Simón nació también en La Habana, seis años después, lleva el mismo segundo apellido y su familia se instaló en Cádiz en 1845, así que los dos eran hermanos y Francisco de Paula sería también su padre.",s:["rah_jgis","wk_mgi"]},
+  93:{n:"Manuela Simón",c:"ded",note:"Madre del contralmirante José Gómez-Imaz y Simón y, por lo mismo, de Manuel Gómez-Imaz Simón.",s:["rah_jgis"]},
   48:{n:"Eduardo Vergara",c:"tree",note:"Padre de Juan Vicente Vergara Lassaletta. Por fechas y por los nombres de sus nietos (Bartolomé, Mateo) es muy probablemente uno de los hermanos Vergara y Vegas, bodegueros de El Puerto de Santa María.",s:["gn_vlassaletta"]},
   49:{n:"María del Pilar Lassaletta y Fesser",d:"1812–1903",c:"tree",note:"De una familia de comerciantes de Cádiz. Hijos: Juan Vicente, Manuel, Bartolomé, Andrés, Belén y María Ángeles (1841–1927), entre otros.",s:["geni_mplf"]},
   52:{n:"Lorenzo Lacave Perrot",d:"1846–1905",c:"tree",t:"Marqués consorte de Fiel Pérez Calixto",note:"Nació el 12-III-1846 y murió el 16-VIII-1905.",s:["gn_lacaveperrot","gn_evilallonga"]},
@@ -676,6 +749,68 @@ const LINE = [
 ];
 
 const DUP = {16:[28],17:[29]};
+
+/* Personajes: k = antepasado directo; via = persona del árbol por la que llega un pariente */
+const STARS = [
+  {g:"Reconquista", y:"1264", k:17367424, h:"Miguel Fernández de Villavicencio",
+   t:"Caballero de la conquista de Jerez con Alfonso X. Recibió casas y tierras en el reparto de la ciudad, y los historiadores jerezanos lo tienen por tronco de los Villavicencio, uno de los pocos linajes presentes en Jerez sin interrupción desde entonces. Es el antepasado más antiguo de tu árbol, aunque el enlace con sus sucesores es deducido."},
+  {g:"Alcaide de Jerez", y:"1326", k:4341856, h:"Lorenzo Fernández de Villavicencio",
+   t:"Alfonso XI lo nombró alcaide del alcázar de Jerez, con mando sobre Medina Sidonia y Alcalá de los Gazules, y lo hizo caballero de la Banda, la orden de caballería que fundó el propio rey. Pedro I premió después su lealtad. Tiene biografía en la Real Academia de la Historia."},
+  {g:"El hombre más rico de Jerez", y:"1507", k:271366, h:"Pedro Camacho de Villavicencio «el Rico»",
+   t:"El caballero jerezano más acaudalado de su tiempo. En 1507 fundó con su mujer un mayorazgo para su nieto: es el más antiguo que se conserva en Jerez y el primero regido por las Leyes de Toro, y lo ha estudiado una revista de la Universidad Complutense."},
+  {g:"Conquista de Granada", y:"1492", k:135682, h:"Luis de Spínola y Contreras",
+   t:"Hijo de un comendador genovés, fue veinticuatro de Jerez, sirvió a los Reyes Católicos y luchó en la conquista de Granada. Casó con Catalina, hija de Pedro Camacho el Rico, y por ellos entra en tu árbol la sangre de Génova."},
+  {g:"Con Carlos V", y:"1520–1543", k:67840, h:"Juan Fernández de Villavicencio y Carrizosa",
+   t:"Señor de Valhermoso y veinticuatro de Jerez. Sirvió a Carlos V en la guerra de las Comunidades y en 1543 fundó mayorazgo con su mujer, Mencía Spínola, la hija de Luis."},
+  {g:"En la corte de Carlos II", y:"1681", k:2120, h:"Lorenzo Fernández de Villavicencio y Benítez Melgarejo",
+   t:"Caballero de Calatrava, corregidor de Toledo y de Madrid, asistente de Sevilla y mayordomo mayor de la reina Mariana de Austria, madre de Carlos II, que lo hizo marqués de Valhermoso de Pozuela en 1681. Su hijo, el II marqués, gobernó Canarias como comandante general de 1723 a 1735."},
+  {g:"Virrey en América", y:"1797–1799", via:134, vt:"Hermano de tu 6.º abuelo", h:"Antonio Olaguer Feliú",
+   t:"Virrey del Río de la Plata, el territorio de las actuales Argentina, Uruguay, Paraguay y Bolivia, y después secretario de Guerra de Carlos IV. Era hijo de un capitán del Regimiento de Infantería de Granada.", s:["rah_olaguer"]},
+  {g:"El origen de la casa Domecq", y:"siglo XVIII", via:259, vt:"Hermano de tu 7.ª abuela", h:"Juan Haurie",
+   t:"Comerciante de vinos francés establecido en Jerez. Su casa pasó a sus sobrinos, y en 1822 Pedro Domecq Lembeye, hermano de tu antepasado Pierre Pascal, le dio el nombre que ha llegado hasta hoy: Pedro Domecq.", s:["wk_pdlem"]},
+  {g:"El primer amor de Ruskin", y:"1836", via:64, vt:"Sobrina de tu 5.º abuelo", h:"Adèle Domecq",
+   t:"Hija de Pedro Domecq Lembeye, socio en el negocio del jerez del padre de John Ruskin, el gran crítico de arte inglés. En 1836 pasó unos días en casa de los Ruskin, en Londres, y John, que tenía diecisiete años, se enamoró de ella; los dos padres llegaron a pensar en casarlos. Ella acabó casándose con el barón Duquesne, y Ruskin lo recordaba medio siglo después en su autobiografía.", s:["wk_ruskin"]},
+  {g:"De Navarrenx a Cádiz", y:"1810", via:208, vt:"Hermano, según todo indica, de tu 6.º abuelo", h:"Pedro Lacave Miramont",
+   t:"Nació en 1776 en Navarrenx, a pocos kilómetros de Usquain, la cuna de los Domecq, y fundó en Cádiz la casa de vinos Lacave, una de las grandes exportadoras de Jerez. Trajo de Francia a su sobrino Pedro Lacave Soulé, tu antepasado. Dos familias del mismo rincón del Béarn que vuelven a juntarse en tus padres.", s:["uma_lacave","mh_lacavesoule"]},
+  {g:"Del Roncal al vino", y:"1726", k:192, h:"Francisco Vergara Lorea",
+   t:"Nació en Urzainqui, en el valle navarro del Roncal, y en 1765 ya tenía bodegas en El Puerto de Santa María. Su enlace con tu línea es muy probable, pero no está documentado. De los Vergara de Jerez salió también Mateo Vergara Quesada (1871–1954), hijo de tu tatarabuelo Juan Vicente, que fue dueño de las fábricas de hielo y de lápices de la ciudad."},
+  {g:"Fundador y los altares", y:"1874", k:32, h:"Pedro Domecq Loustau y Carmen Núñez de Villavicencio",
+   t:"Pedro nació en Usquain en 1824, entró en la bodega de su tío en Jerez en 1848 y hacia 1874 empezó a vender Fundador, el primer brandy de Jerez. Con su mujer, Carmen, fundó colegios para niños pobres, asilos de ancianos y centros para mujeres. Según Infocatólica (2025), los dos van camino de los altares."},
+  {g:"El cartero honorario", y:"1880", via:37, vt:"Hermano de tu trastatarabuela", h:"Mariano Pardo de Figueroa, «Doctor Thebussem»",
+   t:"Escritor, cervantista y gastrónomo. Su seudónimo es un anagrama de «embustes» con una «Th» delante para que sonara alemán. Correos lo nombró en 1880 su primer cartero honorario por su trabajo en favor de la filatelia. Fue caballero de Santiago y escribió las Notas genealógicas de la familia.", s:["wk_thebussem","postal_thebussem"]},
+  {g:"El erudito de Sevilla", y:"1844–1922", k:46, h:"Manuel Gómez-Imaz",
+   t:"Nacido en La Habana y afincado en Sevilla, ingresó en 1888 en la Real Academia Sevillana de Buenas Letras, que llegó a presidir. Reunió una de las mejores colecciones privadas sobre la Guerra de la Independencia, que compró la Biblioteca Nacional en 1977, y en 1896 publicó el inventario de las 999 obras de arte que los franceses se llevaron de Sevilla en 1810."},
+  {g:"Dos ministros", y:"1899–1922", via:46, vt:"Hermano y yerno de tu trastatarabuelo", h:"José Gómez-Imaz y Carlos Cañal",
+   t:"José Gómez-Imaz y Simón, hermano de Manuel, fue contralmirante y ministro de Marina de 1899 a 1900, justo después del desastre del 98. Carlos Cañal y Migolla, abogado y arqueólogo casado con María Candelaria, la otra hija de Manuel, fue ministro de Abastecimientos en 1919, el primer ministro de Trabajo de España en 1920–1921 y, durante unos pocos días de 1922, ministro de Gracia y Justicia.", s:["rah_jgis","rah_canal","wk_canal"]},
+  {g:"Catedrático y académico", y:"1899–1976", via:11, vt:"Hermano de tu bisabuela", h:"José de Mora-Figueroa y Gómez-Imaz",
+   t:"VIII marqués de Tamarón y VI de Saavedra. Nació en la casa sevillana de su abuelo Gómez-Imaz y fue catedrático, historiador y académico de la Real Academia de la Historia, además de alcalde de Jerez y procurador en Cortes. Su hermano Manuel fue contralmirante.", s:["rah_jmf","aun_saavedra"]},
+  {g:"Un título que vino de Quito", y:"1894", k:53, h:"María del Carmen de la Rocha y Pérez",
+   t:"Para ella se creó en 1894 el marquesado de Fiel Pérez Calixto, heredero del de Casa Fiel Pérez Calisto que Fernando VII había concedido a un pariente quiteño de su familia materna. Casó con Lorenzo Lacave Perrot, que fue marqués consorte."},
+  {g:"Toros y rejoneo", y:"1946", via:10, vt:"Hermano de tu bisabuelo", h:"Fermín Bohórquez Gómez",
+   t:"En 1946 compró la ganadería de reses puras de Murube que desde entonces lleva su nombre, una de las más conocidas del campo andaluz. Su hijo Fermín Bohórquez Escribano, primo hermano de tu abuela Victoria, fue uno de los grandes rejoneadores de su tiempo.", s:["wk_fbganad","wk_fbe","rah_fbe"]}
+];
+
+/* Los cuatro costados: k = abuelo o abuela; st = grado de prueba */
+const COSTADOS = [
+  {k:4, h:"Domecq", st:"ok", lab:"Probado",
+   t:"Tu bisabuelo José Manuel Domecq Rivero fue caballero de Calatrava, así que la nobleza de esta línea ya pasó el examen de la Orden. Detrás están la casa Domecq de Usquain, en el censo del Béarn desde 1385, y los marquesados de Casa Domecq y de Domecq d’Usquain."},
+  {k:5, h:"Bohórquez", st:"doubt", lab:"Sin probar",
+   t:"Es el punto débil. No he encontrado actos positivos de nobleza de los Bohórquez de Jerez, y ni siquiera está documentado quiénes eran los padres de tu bisabuelo José Bohórquez Gómez. El primer paso es la partida de nacimiento de su hermano Fermín (Jerez, 1904)."},
+  {k:6, h:"Vergara", st:"ded", lab:"Probable",
+   t:"Si se documenta que desciendes de Francisco Vergara Lorea, nacido en Urzainqui en 1726, tus Vergara serían del valle del Roncal, cuyos vecinos eran todos hidalgos por un privilegio que Carlos III de Navarra confirmó en 1412. Faltan dos eslabones: los padres de tu abuelo Eduardo y el enlace de Eduardo Vergara (nº 48) con el Roncal.", s:["roncal_hid","gen_roncal"]},
+  {k:7, h:"Domecq", st:"ok", lab:"Probado",
+   t:"La misma línea que la de tu abuelo paterno: tu abuela Beatriz era nieta del I marqués de Casa Domecq, como él, y sobrina del caballero de Calatrava José Manuel Domecq Rivero."}
+];
+
+/* Órdenes y maestranzas en la ascendencia directa */
+const ORD = [
+  {o:"Orden de Calatrava", ks:[2120,704,66,18,8]},
+  {o:"Orden de Santiago", ks:[16960], ex:"y el Doctor Thebussem, hermano de tu trastatarabuela Josefa"},
+  {o:"Orden de San Juan", ks:[534]},
+  {o:"Orden de Carlos III", ks:[294,122]},
+  {o:"Reales Maestranzas de Sevilla y Ronda", ks:[60,18,15]}
+];
+const EXTRA_SRC = ["wk_calatrava","om_hoy","ahn_om","rahe_ingreso"];
 const CONF = {self:"Tú",ok:"Confirmado en fuentes de referencia o por ti",tree:"Solo en árboles publicados",ded:"Deducido de las relaciones documentadas",doubt:"En duda: las fuentes se contradicen",none:"Sin documentar"};
 
 const gen = k => Math.floor(Math.log2(k)) + 1;
@@ -699,7 +834,9 @@ function rel(k){
   const g = gen(k), fem = k % 2 === 1;
   const names = {2:["padre","madre"],3:["abuelo","abuela"],4:["bisabuelo","bisabuela"],5:["tatarabuelo","tatarabuela"],6:["trastatarabuelo","trastatarabuela"]};
   let r = names[g] ? names[g][fem ? 1 : 0] : `${g - 2}.${fem ? "ª abuela" : "º abuelo"}`;
-  if (g > 2) r += side(k) === "pat" ? (fem ? " paterna" : " paterno") : (fem ? " materna" : " materno");
+  const a5 = g >= 5 ? Math.floor(k / 2 ** (g - 5)) : 0;
+  if (a5 === 16 || a5 === 17) r += " por las dos vías";
+  else if (g > 2) r += side(k) === "pat" ? (fem ? " paterna" : " paterno") : (fem ? " materna" : " materno");
   return cap(r);
 }
 const pbtn = (k, withNum = true) => {
@@ -711,10 +848,35 @@ const pbtn = (k, withNum = true) => {
 (function stats(){
   const named = Object.entries(P).filter(([k, p]) => !p.same && !["none", "self", "doubt"].includes(p.c));
   const deepest = Math.max(...named.map(([k]) => gen(+k)));
+  const calatrava = ORD[0].ks.length;
   document.getElementById("stats").innerHTML =
     `<div class="stat"><b class="num">${named.length}</b><span>antepasados identificados por su nombre</span></div>
      <div class="stat"><b>${roman(deepest)}</b><span>generaciones en la línea más larga, la de los Villavicencio de Jerez</span></div>
-     <div class="stat"><b class="num">1264</b><span>año más antiguo de tu ascendencia: la conquista de Jerez</span></div>`;
+     <div class="stat"><b class="num">1264</b><span>año más antiguo de tu ascendencia: la conquista de Jerez</span></div>
+     <div class="stat"><b class="num">${calatrava}</b><span>caballeros de Calatrava entre tus antepasados directos</span></div>`;
+})();
+
+/* Personajes */
+(function stars(){
+  document.getElementById("stars").innerHTML = STARS.map(c => {
+    const name = c.k ? `<button type="button" class="sname" data-k="${c.k}">${esc(c.h)}</button>` : esc(c.h);
+    const rl = c.k
+      ? `<p class="rl ${side(c.k)}"><span>${rel(c.k)}</span><span class="k">nº ${fmt(c.k)}</span></p>`
+      : `<p class="rl"><span>${esc(c.vt)}</span>${pbtn(c.via, false)}</p>`;
+    return `<article class="star"><p class="glabel">${esc(c.g)}</p><h3>${name}</h3><p class="yr">${esc(c.y)}</p><p class="tx">${esc(c.t)}</p>${rl}</article>`;
+  }).join("");
+})();
+
+/* Cuatro costados */
+(function costados(){
+  const pos = {4:"Abuelo paterno",5:"Abuela paterna",6:"Abuelo materno",7:"Abuela materna"};
+  document.getElementById("costados").innerHTML = COSTADOS.map(c =>
+    `<article class="cst ${c.st}"><p class="glabel">${pos[c.k]}</p><h3>${esc(c.h)}</h3>
+      <p class="who">${pbtn(c.k, false)}</p>
+      <p class="st"><i class="mk ${c.st}" aria-hidden="true"></i>${esc(c.lab)}</p>
+      <p class="tx">${esc(c.t)}</p></article>`).join("");
+  document.getElementById("ords").innerHTML = ORD.map(o =>
+    `<div class="ord"><p class="glabel">${esc(o.o)}</p><div class="who">${o.ks.map(k => pbtn(k)).join("")}${o.ex ? `<span class="ex">${esc(o.ex)}</span>` : ""}</div></div>`).join("");
 })();
 
 /* Línea más antigua */
@@ -814,8 +976,8 @@ const pbtn = (k, withNum = true) => {
 
 /* Fuentes */
 (function sources(){
-  const used = new Set();
-  Object.values(P).forEach(p => (p.s || []).forEach(s => used.add(s)));
+  const used = new Set(EXTRA_SRC);
+  [...Object.values(P), ...STARS, ...COSTADOS].forEach(p => (p.s || []).forEach(s => used.add(s)));
   document.getElementById("sources").innerHTML = Object.entries(S)
     .filter(([key]) => used.has(key))
     .sort((a, b) => a[1][0].localeCompare(b[1][0], "es"))
@@ -829,7 +991,7 @@ function openFicha(k){
   k = real(k);
   const p = P[k];
   const places = [k, ...(DUP[k] || [])];
-  const where = places.map(n => `nº ${fmt(n)} · ${rel(n)} · generación ${roman(gen(n))}`).join("<br>");
+  const where = `nº ${places.map(fmt).join(" y nº ")} · ${rel(k)} · generación ${roman(gen(k))}`;
   const parents = [2 * k, 2 * k + 1].filter(n => P[n]);
   const kids = places.filter(n => n > 1).map(n => Math.floor(n / 2)).filter(n => P[n]);
   const src = (p.s || []).filter(key => S[key]).map(key => `<li><a href="${esc(S[key][1])}" target="_blank" rel="noopener">${esc(S[key][0])}</a></li>`).join("");

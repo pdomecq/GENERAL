@@ -14,6 +14,8 @@ Grado de certeza: **[C]** confirmado en fuentes de referencia (Wikipedia, Real A
 Va por tu padre, los Domecq, tu trastatarabuela Carmen Núñez de Villavicencio y los marqueses de Valhermoso.
 El documento directo más antiguo es el mayorazgo de Pedro Camacho de Villavicencio «el Rico» (1507); la historiografía
 del linaje lo remonta hasta Miguel Fernández de Villavicencio, caballero de la conquista de Jerez (1264).
+Como entra por los tatarabuelos Domecq–Rivero, que están dos veces en tu árbol, toda esta línea es antepasada
+tuya por las dos vías, la de tu padre y la de tu madre.
 
 | Gen. | Nº Sosa | Antepasado | Datos | Certeza |
 |---|---|---|---|---|
@@ -61,6 +63,29 @@ eran hermanos, hijos del I marqués de Casa Domecq. Tu abuelo José Manuel Domec
 Beatriz Domecq López de Carrizosa eran primos hermanos, y tus padres son primos segundos.
 Por eso Pedro Domecq Núñez de Villavicencio × María Rivero González ocupan dos casillas: nº 16–17 y nº 28–29.
 
+## Los más ilustres y los más curiosos
+
+Antepasados directos, con su número, y parientes cercanos, con la persona de tu árbol por la que te llegan.
+
+- **Miguel Fernández de Villavicencio (nº 17.367.424), 1264.** Caballero de la conquista de Jerez con Alfonso X y tronco de los Villavicencio jerezanos. Es tu antepasado más antiguo, aunque su enlace con los siguientes es deducido.
+- **Lorenzo Fernández de Villavicencio (nº 4.341.856), 1326.** Alfonso XI lo nombró alcaide del alcázar de Jerez y lo hizo caballero de la Banda; Pedro I premió su lealtad. Tiene biografía en la Real Academia de la Historia.
+- **Pedro Camacho de Villavicencio «el Rico» (nº 271.366), 1507.** El caballero jerezano más rico de su tiempo. Su mayorazgo es el más antiguo que se conserva en Jerez y el primero regido por las Leyes de Toro.
+- **Luis de Spínola y Contreras (nº 135.682).** Hijo de un comendador genovés, luchó en la conquista de Granada con los Reyes Católicos.
+- **Juan Fernández de Villavicencio y Carrizosa (nº 67.840).** Sirvió a Carlos V en la guerra de las Comunidades.
+- **Lorenzo Fernández de Villavicencio y Benítez Melgarejo (nº 2.120), I marqués de Valhermoso (1681).** Caballero de Calatrava, corregidor de Toledo y de Madrid, asistente de Sevilla y mayordomo mayor de la reina Mariana de Austria. Su hijo gobernó Canarias de 1723 a 1735.
+- **Antonio Olaguer Feliú, hermano de tu 6.º abuelo José (nº 134).** Virrey del Río de la Plata (1797–1799) y secretario de Guerra de Carlos IV.
+- **Juan Haurie, hermano de tu 7.ª abuela Marie (nº 259).** Comerciante de vinos francés en Jerez; de su casa salió en 1822 la bodega Pedro Domecq.
+- **Adèle Domecq, sobrina de tu 5.º abuelo Pierre Pascal (nº 64).** Fue el primer amor de John Ruskin, el gran crítico de arte inglés, en 1836, y los padres de ambos llegaron a pensar en casarlos.
+- **Pedro Lacave Miramont, hermano, según todo indica, de tu 6.º abuelo Jean-Pierre (nº 208).** Nacido en Navarrenx, a pocos kilómetros de la cuna de los Domecq, fundó en Cádiz la casa de vinos Lacave en 1810.
+- **Francisco Vergara Lorea (nº 192, deducido), 1726.** Del valle del Roncal a las bodegas de El Puerto de Santa María. De la misma familia salió Mateo Vergara Quesada (1871–1954), dueño de las fábricas de hielo y de lápices de Jerez.
+- **Pedro Domecq Loustau y Carmen Núñez de Villavicencio (nº 32–33).** Él creó hacia 1874 el brandy Fundador, el primero de Jerez. Juntos fundaron colegios y asilos, y según Infocatólica (2025) van camino de los altares.
+- **Mariano Pardo de Figueroa, «Doctor Thebussem», hermano de tu trastatarabuela Josefa (nº 37).** Escritor y gastrónomo, primer cartero honorario de Correos (1880) y caballero de Santiago. Su seudónimo es un anagrama de «embustes».
+- **Manuel Gómez-Imaz (nº 46).** Erudito sevillano nacido en La Habana, académico de Buenas Letras y gran coleccionista de la Guerra de la Independencia. Publicó el inventario de las 999 obras que los franceses se llevaron de Sevilla en 1810.
+- **Dos ministros: José Gómez-Imaz y Simón, hermano de Manuel, y Carlos Cañal y Migolla, su yerno.** El primero, contralmirante, fue ministro de Marina en 1899–1900. El segundo fue ministro de Abastecimientos en 1919, el primer ministro de Trabajo de España en 1920–1921 y, durante unos pocos días de 1922, ministro de Gracia y Justicia.
+- **José de Mora-Figueroa y Gómez-Imaz, hermano de tu bisabuela María Francisca (nº 11).** VIII marqués de Tamarón, catedrático, historiador, académico de la Historia y alcalde de Jerez.
+- **María del Carmen de la Rocha y Pérez (nº 53).** I marquesa de Fiel Pérez Calixto (1894), título heredado de uno que Fernando VII concedió a un pariente quiteño.
+- **Fermín Bohórquez Gómez, hermano de tu bisabuelo José (nº 10).** Compró en 1946 la ganadería que lleva su nombre; su hijo Fermín Bohórquez Escribano fue un célebre rejoneador.
+
 ## I · Tú
 1. Pedro Domecq Vergara
 
@@ -92,7 +117,7 @@ Por eso Pedro Domecq Núñez de Villavicencio × María Rivero González ocupan 
 20. Pedro Bohórquez Piñero **[en duda]** — Geneanet lo da como padre de José y Fermín Bohórquez Gómez, pero el Pedro Bohórquez Piñero documentado («el Chico», republicano de Ubrique) tenía 40 años en 1867 y su único hijo varón murió en 1869.
 21. Juana Gómez Tocón **[en duda]** — mujer de «el Chico»; mismo problema de fechas.
 22. José de Mora-Figueroa y Ferrer (El Puerto de Santa María, 1871 – Jerez, 1929), VII marqués de Tamarón **[C]**
-23. Victoria Gómez-Imaz Vázquez (n. h. 1870) **[C]**
+23. Victoria Gómez-Imaz Vázquez (n. h. 1870) **[C]** — su hermana María Candelaria casó con Carlos Cañal y Migolla, el primer ministro de Trabajo de España (1920–1921).
 24. Juan Vicente Vergara Lassaletta (1831 – Jerez, 16-I-1900), bodeguero e industrial **[Á]**
 25. María Josefa Sanchiz Quesada (1860–1934) **[Á]**
 26. Pedro Lacave de la Rocha (1883–1926) **[Á]** — casó en Cádiz el 27-II-1908.
@@ -109,7 +134,7 @@ Por eso Pedro Domecq Núñez de Villavicencio × María Rivero González ocupan 
 37. Josefa Pardo de Figueroa y de la Serna, I marquesa de Pardo de Figueroa (1927) **[C]** — hermana del «Doctor Thebussem».
 38. Joaquín Enrile y Méndez de Sotomayor (1826–1886), teniente coronel de Artillería **[Á]** · 39. María de la Paz González de la Mota y Velázquez-Gaztelu (1825–1895) **[Á]** — casaron el 5-II-1855.
 44. José de Mora-Figueroa y Daza (1839–1909), VI marqués de Tamarón **[C]** · 45. Francisca Ferrer y Rabech (1852–1924) **[C]**
-46. Manuel Gómez-Imaz Simón (La Habana, 1844 – Sevilla, 1922), bibliógrafo **[Á]** · 47. Victoria Vázquez Rodríguez (n. 1849) **[Á]**
+46. Manuel Gómez-Imaz Simón (La Habana, 3-VI-1844 – Sevilla, 1922), erudito y bibliógrafo, académico de Buenas Letras en Sevilla y gran coleccionista de la Guerra de la Independencia **[C]** · 47. Victoria Vázquez Rodríguez (n. 1849) **[C]**
 48. Eduardo Vergara **[Á]** · 49. María del Pilar Lassaletta y Fesser (1812–1903) **[Á]**
 52. Lorenzo Lacave Perrot (1846–1905), marqués consorte de Fiel Pérez Calixto **[Á]** · 53. María del Carmen de la Rocha y Pérez (Jerez, 1859–1926), I marquesa de Fiel Pérez Calixto (1894) **[C]**
 60. Francisco Javier López de Carrizosa y Pavón (1825–1882), VIII marqués de Casa Pavón y I de Mochales **[C]**
@@ -121,6 +146,7 @@ Por eso Pedro Domecq Núñez de Villavicencio × María Rivero González ocupan 
 68. Joaquín Rivero Tijera (1797–1868) **[Á]** · 69. Carmen O'Neale Saelices **[Á]**
 74. José María Pardo de Figueroa y Manso de Andrade (Arcos, 25-I-1800) **[Á]** · 75. María Luisa de la Serna y Pareja **[Á]**
 88. José María de Mora-Figueroa y Arrafán (1804–1839) **[Á]** · 89. Josefa Daza y Caballero (1807–1887) **[Á]**
+92. Francisco de Paula Gómez Imaz, natural de Cádiz **[D]** · 93. Manuela Simón **[D]** — padres del contralmirante José Gómez-Imaz y Simón, ministro de Marina en 1899–1900, y por lo mismo de Manuel.
 72. Salvador Juan Manuel Hidalgo y Sarria **[Á]** · 73. Salvadora Meléndez y Beyens (n. 1809) **[Á]**
 76. José Nicolás Enrile Desportes **[Á]** · 77. María del Carmen Méndez de Sotomayor y Bosolongo **[Á]**
 96. N. Vergara **[D]** · 97. N. Vegas **[D]** — padres probables de los hermanos Vergara y Vegas, bodegueros de El Puerto.
@@ -163,8 +189,25 @@ Por eso Pedro Domecq Núñez de Villavicencio × María Rivero González ocupan 
 
 Las generaciones XII a XXV de la línea Villavicencio están en la tabla de arriba.
 
+## Los cuatro costados y la Orden de Calatrava
+
+Las órdenes militares piden probar la nobleza de sangre de los cuatro abuelos, cada uno por su primer apellido.
+
+| Costado | Abuelo o abuela | Situación |
+|---|---|---|
+| Domecq | José Manuel Domecq Hidalgo (nº 4) | **Probado.** Tu bisabuelo José Manuel Domecq Rivero fue caballero de Calatrava. |
+| Bohórquez | Victoria Bohórquez Mora-Figueroa (nº 5) | **Sin probar.** No se conocen actos positivos de nobleza, y los padres de tu bisabuelo José Bohórquez Gómez están en duda. |
+| Vergara | Eduardo Vergara Lacave (nº 6) | **Probable.** Si se documenta el enlace con Francisco Vergara Lorea (Urzainqui, 1726), serían del valle del Roncal, cuyos vecinos eran hidalgos por un privilegio confirmado en 1412. |
+| Domecq | Beatriz Domecq López de Carrizosa (nº 7) | **Probado.** La misma línea: nieta del I marqués de Casa Domecq. |
+
+- **¿Noble por los cuatro costados?** De sangre noble, sin duda, por muchas ramas. Pero en sentido estricto hoy solo están probados dos costados de cuatro.
+- **¿Caballero de Calatrava?** La Orden es hoy honorífica y católica. El Real Consejo de las Órdenes Militares examina las pruebas de los cuatro costados y propone al Rey la concesión del hábito. Los Domecq te dan medio camino hecho; faltaría probar el costado Bohórquez y cerrar el Vergara.
+- **Una vía más sencilla:** la Real Asociación de Hidalgos de España solo pide la línea de varonía (Domecq), con tres actos positivos de nobleza. El hábito de Calatrava de tu bisabuelo es uno de ellos.
+- **Caballeros de órdenes y maestrantes en tu ascendencia directa.** Calatrava: nº 2.120, 704, 66, 18 y 8. Santiago: nº 16.960, además del Doctor Thebussem, que es pariente. San Juan: nº 534. Carlos III: nº 294 y 122. Reales Maestranzas de Sevilla y Ronda: nº 60, 18 y 15.
+
 ## Lagunas y pistas
 - **Bohórquez (nº 20–21), en duda:** pedir en el Registro Civil de Jerez la certificación literal de nacimiento de Fermín Bohórquez Gómez (10-IX-1904), que recoge padres y abuelos.
+- **El catedrático del Goya o el Velázquez:** en la familia se recuerda a un antepasado de la rama de tu abuela Victoria, catedrático y estudioso de origen granadino con vida en Sevilla, que tuvo un Goya o un Velázquez y lo donó. No se ha podido identificar. Los que más se le parecen son Manuel Gómez-Imaz (nº 46) y su nieto José de Mora-Figueroa y Gómez-Imaz, VIII marqués de Tamarón, pero ninguno era de Granada ni consta que donara un Goya o un Velázquez.
 - **Padres de Eduardo Vergara Lacave (nº 12–13):** muy probablemente Juan Vicente Vergara Sanchiz y Eugenia María Lacave Patero; lo confirmaría su acta de nacimiento (Jerez, 1940).
 - **Eduardo Vergara (nº 48) y los Vergara del Roncal:** encaja por fechas, bodega y nombres, pero falta el documento. El libro de Alfonso de la Calle Vergara probablemente trae el árbol completo.
 - **Enlace medieval y señores de Valhermoso (1543–1681):** ver la tabla de la línea más antigua.
@@ -173,11 +216,13 @@ Las generaciones XII a XXV de la línea Villavicencio están en la tabla de arri
 - **Obras:** *La familia Vergara del Norte al Sur* (Alfonso de la Calle Vergara); *El negocio del vino en la ciudad de Cádiz. Historia empresarial de Lacave y Compañía, 1810–1927* (M. Vázquez Fariñas y M. C. Cózar Navarro); *Notas genealógicas* del Doctor Thebussem (1888–1889); *La casa de Domecq d'Usquain* (J. A. Delgado y Orellana, 1966).
 
 ## Fuentes principales
-- Real Academia de la Historia (DB~e): Lorenzo Fernández de Villavicencio (h. 1300–h. 1370), Lorenzo Fernández de Villavicencio y Benítez Melgarejo, Pedro Domecq y Núñez de Villavicencio, Antonio Olaguer Feliú y Heredia, Mariano Pardo de Figueroa, José y Manuel de Mora-Figueroa, Francisco Javier López de Carrizosa y Pavón
+- Real Academia de la Historia (DB~e): Lorenzo Fernández de Villavicencio (h. 1300–h. 1370), Lorenzo Fernández de Villavicencio y Benítez Melgarejo, Pedro Domecq y Núñez de Villavicencio, Antonio Olaguer Feliú y Heredia, Mariano Pardo de Figueroa, José y Manuel de Mora-Figueroa, Francisco Javier López de Carrizosa y Pavón, Manuel Gómez Imaz, José Gómez-Imaz y Simón, Carlos Cañal y Migolla
 - *En la España Medieval* (UCM): «El mayorazgo del veinticuatro Pedro Camacho de Villavicencio "el rico" (1507)»
-- Wikipedia: Casa de Villavicencio, Marquesado de Valhermoso de Pozuela, Condado de Cañete del Pinar, Marquesado de Casa Domecq, Pedro Domecq Loustau, Pedro Domecq Lembeye, Carmen Núñez de Villavicencio, Marquesado de Pardo de Figueroa, Baronía de Algar del Campo, Marquesado de Casa Pavón
+- Wikipedia: Casa de Villavicencio, Marquesado de Valhermoso de Pozuela, Condado de Cañete del Pinar, Marquesado de Casa Domecq, Pedro Domecq Loustau, Pedro Domecq Lembeye, Carmen Núñez de Villavicencio, Marquesado de Pardo de Figueroa, Baronía de Algar del Campo, Marquesado de Casa Pavón, Manuel Gómez Imaz, Carlos Cañal y Gómez-Imaz, John Ruskin, Fermín Bohórquez (ganadería), Fermín Bohórquez Escribano, Orden de Calatrava
 - Geneanet (árboles de Luis Manuel de Villena, Gonzalo Alonso, chamecu, Marc Le Chanony, Seminario de Genealogía Mexicana), Geni, FamilySearch, Genealogy.com
 - Movimiento nobiliario 1937, Hidalgo & Suárez, Gente del Puerto, Betilo El Puerto, blog de J.-P. Domecq, Historia y Genealogía (palomatorrijos), Genealogías Canarias, Historias de Ubrique, blog de Manuel Cabello y Esperanza Izquierdo (Ubrique), La Voz del Sur
 - Universidad de Málaga: historia empresarial de Lacave y Compañía (1810–1927)
+- Nobleza y órdenes: Real Consejo de las Órdenes Militares, Real Asociación de Hidalgos de España, Ministerio de Cultura (Sección Órdenes Militares del Archivo Histórico Nacional), Hidalgos en la Historia y Gran Enciclopedia de Navarra (hidalguía del Roncal)
+- Centro de Estudios Andaluces (inventario de Gómez Imaz, 1896), Museo Postal y Telegráfico (Doctor Thebussem), Auñamendi Eusko Entziklopedia (marqués de Saavedra)
 
 La lista completa de enlaces está en la sección "Fuentes" de `arbol.html`.
