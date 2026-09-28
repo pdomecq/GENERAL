@@ -126,6 +126,7 @@
   .mk.tree{border:2px solid var(--ink)}
   .mk.ded{border:1.5px dashed var(--ink)}
   .mk.none{border:1.5px dotted var(--muted)}
+  .mk.doubt{border:2px solid var(--dup)}
   .sw{display:inline-block;width:18px;height:3px;flex:none}
   .dash{display:inline-block;width:18px;border-top:2px dashed var(--line);flex:none}
   .solid{display:inline-block;width:18px;border-top:2px solid var(--line);flex:none}
@@ -152,6 +153,9 @@
   .card.none{background:transparent;border-style:dashed}
   .card.none .nm{font-weight:500;color:var(--muted)}
   .card.dup{border-color:var(--dup)}
+  .card.doubt{border-style:dashed;border-color:var(--dup)}
+  .card.doubt .tg{color:var(--dup);font-style:normal;font-family:var(--sc);font-size:13px;letter-spacing:.04em}
+  .pbtn.doubt .nm{text-decoration-style:dashed;text-decoration-color:var(--dup)}
   .card .badge{font-family:var(--sc);font-size:12.5px;font-weight:700;letter-spacing:.04em;color:var(--dup)}
   .card.self{border:1.5px solid var(--ink);background:var(--soft)}
   .card.self .nm{font-size:17px}
@@ -283,6 +287,24 @@
         <p>Francisco Manuel Pardo de Figueroa y Legobien, de Arcos, es bisabuelo de Mariano Pardo de Figueroa, el «Doctor Thebussem» (1828–1918), escritor y hermano de tu trastatarabuela Josefa. Mariano publicó en 1888–1889 las Notas genealógicas de la familia, la fuente para seguir esta rama.</p>
         <div class="who"><button type="button" class="pbtn" data-k="296"><span class="nm">Francisco Manuel Pardo de Figueroa</span></button><button type="button" class="pbtn" data-k="37"><span class="nm">Josefa Pardo de Figueroa</span></button></div>
       </article>
+      <article class="oldb">
+        <p class="glabel">Vergara · valle del Roncal</p>
+        <h3>1726</h3>
+        <p>Francisco Vergara Lorea nació en Urzainqui (Navarra) en 1726 y tenía bodegas en El Puerto de Santa María desde 1765. Sus nietos, los hermanos Vergara y Vegas, llevaron la casa a Jerez en 1869, y tu tatarabuelo Juan Vicente Vergara Lassaletta acabó dándole su nombre. El libro de Alfonso de la Calle Vergara cuenta esta historia.</p>
+        <div class="who"><button type="button" class="pbtn" data-k="192"><span class="nm">Francisco Vergara Lorea</span></button><button type="button" class="pbtn" data-k="24"><span class="nm">Juan Vicente Vergara Lassaletta</span></button></div>
+      </article>
+      <article class="oldb">
+        <p class="glabel">Lacave · Béarn</p>
+        <h3>1776</h3>
+        <p>Pedro Lacave Miramont nació en 1776 en Navarrenx, a pocos kilómetros de la casa Domecq de Usquain, y fundó en Cádiz en 1810 la casa de vinos Lacave. Trajo de Francia a sus sobrinos; uno de ellos, Pedro Lacave Soulé, es tu antepasado. Sus nietos fueron marqueses de Fiel Pérez Calixto.</p>
+        <div class="who"><button type="button" class="pbtn" data-k="208"><span class="nm">Jean-Pierre Lacave Miramont</span></button><button type="button" class="pbtn" data-k="104"><span class="nm">Pedro Lacave Soulé</span></button></div>
+      </article>
+      <article class="oldb">
+        <p class="glabel">Mora-Figueroa · marqueses de Tamarón</p>
+        <h3>1711</h3>
+        <p>Ignacio Teodomiro Mora-Figueroa y Gutiérrez del Mazo se hizo caballero de Calatrava en 1711 y fue II marqués de Tamarón, título creado en 1712. El marquesado siguió en la familia hasta tu tatarabuelo José de Mora-Figueroa y Ferrer, VII marqués.</p>
+        <div class="who"><button type="button" class="pbtn" data-k="704"><span class="nm">Ignacio Teodomiro Mora-Figueroa</span></button><button type="button" class="pbtn" data-k="22"><span class="nm">José de Mora-Figueroa y Ferrer</span></button></div>
+      </article>
     </div>
   </section>
 
@@ -315,6 +337,7 @@
       <span><i class="mk ok"></i>Confirmado en fuentes de referencia o por ti</span>
       <span><i class="mk tree"></i>Solo en árboles publicados</span>
       <span><i class="mk ded"></i>Deducido</span>
+      <span><i class="mk doubt"></i>En duda</span>
       <span><i class="mk none"></i>Sin documentar</span>
       <span><i class="sw" style="background:var(--pat)"></i>Vía paterna</span>
       <span><i class="sw" style="background:var(--mat)"></i>Vía materna</span>
@@ -334,7 +357,7 @@
   <section aria-labelledby="h-sn">
     <p class="eyebrow">Generación V · nº 16 a 31</p>
     <h2 id="h-sn">Los dieciséis apellidos</h2>
-    <p class="intro">En la tradición genealógica española, los apellidos de los dieciséis tatarabuelos resumen una ascendencia. En la tuya, Domecq y Rivero se repiten, y los cuatro de la rama Vergara–Lacave salen de la deducción sobre los padres de tu abuelo Eduardo.</p>
+    <p class="intro">En la tradición genealógica española, los apellidos de los dieciséis tatarabuelos resumen una ascendencia. En la tuya, Domecq y Rivero se repiten. Los cuatro de la rama Vergara–Lacave dependen de la deducción sobre los padres de tu abuelo Eduardo, y las personas de la casilla Bohórquez–Gómez están en duda, aunque los apellidos son seguros.</p>
     <div class="surnames" id="surnames"></div>
     <div class="sides">
       <span><i class="sw" style="background:var(--pat)"></i>nº 16–23, vía paterna</span>
@@ -346,12 +369,13 @@
   <section aria-labelledby="h-gaps">
     <h2 id="h-gaps">Lagunas y cómo seguir</h2>
     <ul class="gaps">
-      <li><strong>Padres de tu abuelo Eduardo (nº 12 y 13).</strong> Todo apunta a Juan Vicente Vergara Sanchiz (1899–1974) y Eugenia María Lacave Patero (1912–2008). Casaron en 1933 y en 1937 bautizaron en la Colegial de Jerez a su hijo Juan Pedro. Encaja por fechas y apellidos, pero ninguna fuente abierta nombra a Eduardo como hijo suyo; confírmalo con la familia.</li>
-      <li><strong>El enlace medieval.</strong> La Real Academia de la Historia documenta a los alcaides Villavicencio de los siglos XIV y XV, pero no se ha encontrado un documento que diga de cuál de los dos hermanos que volvieron a Jerez en tiempos de Juan I desciende Alonso Núñez de Villavicencio. Ese eslabón y el de Miguel con Gonzalo figuran como deducidos.</li>
-      <li><strong>Siglos XVI y XVII.</strong> Los señores de Valhermoso entre 1543 y 1681 salen de árboles publicados, sobre todo el de Gonzalo Alonso en Geneanet. Los apellidos encajan de una generación a la siguiente, pero conviene contrastarlos con la documentación de la casa.</li>
-      <li><strong>Nombres que faltan</strong> en las ramas Enrile, Bohórquez, Eizaguirre, Sanchiz y Patero, y los padres de Francisco Javier López de Carrizosa y Pavón y de José María Mora-Figueroa y Arrafán.</li>
-      <li><strong>Pistas por seguir.</strong> El marquesado de Tamarón se creó en 1712 para Diego Pablo de Mora-Figueroa, y el primer marqués de Casa Pavón fue Miguel José Pavón de Fuentes (Jerez, 1671). Los dos títulos llegaron por herencia a tus antepasados, así que es probable que desciendas de ambos, aunque faltan las generaciones intermedias.</li>
-      <li><strong>Obras que conviene consultar:</strong> las Notas genealógicas del Doctor Thebussem (1888–1889) para los Pardo de Figueroa, <em>La casa de Domecq d’Usquain</em> de José Antonio Delgado y Orellana (1966) para los Domecq, y el Archivo Diocesano de Asidonia-Jerez para partidas de bautismo y matrimonio.</li>
+      <li><strong>Padres de José y Fermín Bohórquez Gómez (nº 20 y 21).</strong> Geneanet los identifica con Pedro Bohórquez Piñero «el Chico» y Juana Gómez Tocón, de Ubrique. Pero los padrones de 1866 y 1867 les dan unos 40 años y su único hijo varón murió en 1869, así que no pueden ser los padres de hermanos nacidos hacia 1904. Pide en el Registro Civil de Jerez la certificación literal de nacimiento de Fermín Bohórquez Gómez (10-IX-1904): desde 1871 esas actas recogen padres y abuelos, con su naturaleza.</li>
+      <li><strong>Padres de tu abuelo Eduardo (nº 12 y 13).</strong> Todo apunta a Juan Vicente Vergara Sanchiz y Eugenia María Lacave Patero. Casaron en 1933 y bautizaron a su hijo Juan Pedro en 1937, pero ninguna fuente abierta nombra a Eduardo. Su acta de nacimiento (Jerez, 1940) lo confirmaría.</li>
+      <li><strong>Eduardo Vergara (nº 48) y los Vergara del Roncal.</strong> Encaja por fechas, por la bodega y por los nombres de la familia, pero falta el documento que lo enlace con Francisco Vergara Lorea. El libro de Alfonso de la Calle Vergara probablemente trae el árbol completo.</li>
+      <li><strong>El enlace medieval y los señores de Valhermoso.</strong> Los alcaides Villavicencio de los siglos XIV y XV están documentados por la Real Academia de la Historia, pero no se ha encontrado de cuál de los dos hermanos que volvieron a Jerez con Juan I desciende Alonso Núñez de Villavicencio. Los señores de Valhermoso entre 1543 y 1681 salen de árboles publicados y conviene contrastarlos.</li>
+      <li><strong>Nombres que faltan</strong> en las ramas Sanchiz, Quesada, Patero, Etchecopar, Rocha, Eizaguirre, Hidalgo y Sarria y González de la Mota, y el enlace entre el II y el I marqués de Tamarón. El I marqués de Casa Pavón, Miguel José Pavón de Fuentes (Jerez, 1671), es casi seguro antepasado tuyo por la rama López de Carrizosa, pero faltan generaciones para enlazarlo.</li>
+      <li><strong>Archivos para seguir.</strong> Esta investigación se ha hecho solo con fuentes en línea; los archivos físicos y sus fondos sin digitalizar no se han consultado. Los que resolverían más lagunas son el Registro Civil de Jerez (nacimientos y matrimonios desde 1871), el Archivo Diocesano de Asidonia-Jerez (partidas de Jerez, Ubrique, Villamartín, Arcos y Medina Sidonia), el Archivo Histórico Municipal de Ubrique (padrones del siglo XIX), el Archivo Municipal de Villamartín, el Archivo Histórico Provincial de Cádiz (protocolos notariales), el Archivo General del Arzobispado de Sevilla (expedientes matrimoniales) y el Archivo Municipal de El Puerto de Santa María para los Vergara.</li>
+      <li><strong>Obras que conviene consultar:</strong> <em>La familia Vergara del Norte al Sur</em>, de Alfonso de la Calle Vergara; <em>El negocio del vino en la ciudad de Cádiz. Historia empresarial de Lacave y Compañía, 1810–1927</em>, de María Vázquez Fariñas y María del Carmen Cózar Navarro; las Notas genealógicas del Doctor Thebussem (1888–1889) para los Pardo de Figueroa; y <em>La casa de Domecq d’Usquain</em>, de José Antonio Delgado y Orellana (1966).</li>
     </ul>
   </section>
 
@@ -383,6 +407,32 @@ const S = {
   gn_vlassaletta:["Geneanet (Seminario de Genealogía Mexicana) · Juan Vicente Vergara Lassaletta","https://gw.geneanet.org/sanchiz?lang=es&n=vergara+lassaletta&oc=0&p=juan+vicente"],
   todocol_jvv:["Todocolección · Etiqueta «Juan Vicente Vergara, vinos y coñacs», Jerez (1945)","https://en.todocoleccion.net/collectable-wines-liqueurs/juan-vicente-vergara-vinos-conacs-jerez-frontera-1945~x218893050"],
   fs_elp:["FamilySearch · Eugenia María Lacave Patero (1912–2008)","https://ancestors.familysearch.org/en/LRP6-G2X/eugenia-mar%C3%ADa-lacave-patero-1912-2008"],
+  calle_vergara:["Alfonso de la Calle Vergara · La familia Vergara del Norte al Sur (libro)","https://www.amazon.es/Familia-VERGARA-del-Norte-Sur-ebook/dp/B09WBWG1WZ"],
+  gentepuerto_rufina:["Gente del Puerto · Rufina Vergara Guezala","https://www.gentedelpuerto.com/2020/09/06/4-369-rufina-vergara-guezala-hija-predilecta-y-gran-cruz-de-beneficencia/"],
+  betilo_sanjose:["Betilo El Puerto · Bodega San José (II), de los Vergara","https://betiloelpuerto.org/patrimonio/bodega-san-jose-2a-parte-2/"],
+  jxs_palomino:["Jerez-Xeres-Sherry · Bodegas Palomino & Vergara","http://jerez-xeres-sherry.blogspot.com/2012/08/bodegas-palomino-vergara.html"],
+  geni_jvvl:["Geni · Juan Vicente Vergara Lassaletta (1831–1900)","https://www.geni.com/people/Juan-Vergara-Lassaletta/6000000125851040182"],
+  geni_mplf:["Geni · María del Pilar Lassaletta y Fesser (1812–1903)","https://www.geni.com/people/Mar%C3%ADa-del-Pilar-Lassaletta-y-Fesser/6000000068144717858"],
+  lavoz_lapices:["La Voz del Sur · La fábrica de lápices de los Vergara en Jerez","https://www.lavozdelsur.es/ediciones/jerez/sabias-en-esta-zona-jerez-hubo-historica-pionera-fabrica-lapices-en-espana_323775_102.html"],
+  gn_evilallonga:["Geneanet (evilallonga) · Pedro Lacave de la Rocha","https://gw.geneanet.org/evilallonga?lang=en&pz=catalina&nz=perez+zubizarreta+y+tasso&p=pedro&n=lacave+de+la+rocha"],
+  gn_lacaveperrot:["Geneanet (Seminario de Genealogía Mexicana) · Lorenzo Lacave Perrot","https://gw.geneanet.org/sanchiz?lang=en&n=lacave+perrot&p=lorenzo"],
+  gn_patero:["Geneanet (elenacm) · María Josefa Patero d’Etchecopar","https://gw.geneanet.org/elenacm?n=patero+d+etchecopar&p=maria+josefa"],
+  uma_lacave:["Universidad de Málaga · Historia empresarial de Lacave y Compañía, 1810–1927","https://riuma.uma.es/xmlui/handle/10630/29122"],
+  jxs_lacave:["Jerez-Xeres-Sherry · Bodegas Lacave y Cía.","https://jerez-xeres-sherry.blogspot.com/2012/09/bodegas-lacave-y-cia.html"],
+  mh_lacavesoule:["MyHeritage · Pedro Lacave Soulé","https://www.myheritage.com/names/pedro_lacave%20soule"],
+  wk_fielperez:["Wikipedia · Marquesado de Fiel Pérez Calixto","https://es.wikipedia.org/wiki/Marquesado_de_Fiel_P%C3%A9rez_Calixto"],
+  gn_enrile:["Geneanet · Joaquín Enrile y Méndez de Sotomayor","https://gw.geneanet.org/lmvillena?lang=en&n=joaquin+enrile+y+mendez+de+sotomayor&p=x"],
+  gn_nenrile:["Geneanet (chamecu) · Nicolás Enrile y Méndez de Sotomayor","https://gw.geneanet.org/chamecu?lang=es&n=enrile+y+mendez+de+sotomayor&p=nicolas"],
+  iber_prontuario:["IberLibro · Prontuario de Artillería de J. M. Enrile y Méndez de Sotomayor (1856)","https://www.iberlibro.com/Prontuario-Artiller%C3%ADa-ENRILE-M%C3%89NDEZ-SOTOMAYOR-Joaqu%C3%ADn/12001619979/bd"],
+  geni_bhm:["Geni · Baltasar Hidalgo Meléndez","https://www.geni.com/people/Baltasar-Hidalgo-Mel%C3%A9ndez/6000000134548322850"],
+  ancien_melendez:["Contando historias antiguas de militares · Salvador Meléndez Bruna","http://ancienhistories.blogspot.com/2015/03/salvador-melendez-bruna.html"],
+  rah_smb:["Real Academia de la Historia · Salvador Meléndez Bruna","https://dbe.rah.es/biografias/12500/salvador-melendez-bruna"],
+  gn_ldcpavon:["Geneanet (Seminario de Genealogía Mexicana) · José López de Carrizosa Pavón","https://gw.geneanet.org/sanchiz?lang=es&n=lopez+de+carrizosa+pavon&p=jose"],
+  wk_tamaron:["Wikipedia · Marquesado de Tamarón","https://es.wikipedia.org/wiki/Marquesado_de_Tamar%C3%B3n"],
+  ubrique_padrones:["Historias de Ubrique · La familia Bohórquez Gómez y los errores de los padrones","https://historiasdeubrique.wordpress.com/2013/02/22/la-familia-bohorquez-gomez-y-los-errores-de-los-padrones/"],
+  ubrique_chico:["Historias de Ubrique · Los Bohórquez republicanos: Pedro Bohórquez «el Chico»","https://historiasdeubrique.wordpress.com/2012/01/27/los-bohorquez-republicanos-de-ubrique-1-pedro-bohorquez-el-chico/"],
+  cabello_angeles:["Manuel Cabello y Esperanza Izquierdo · Doña Ángeles Bohórquez Gómez, primera maestra de Ubrique","http://manuelcabelloyesperanzaizquierdo.blogspot.com/2010/03/dona-angeles-bohorquez-gomez-la-primera.html"],
+  rah_fbe:["Real Academia de la Historia · Fermín Bohórquez Escribano","https://historia-hispanica.rah.es/biografias/6593-fermin-bohorquez-escribano"],
   gn_mchE:["Geneanet · María del Carmen Hidalgo Enrile","https://gw.geneanet.org/lmvillena?lang=es&n=maria+del+carmen+hidalgo+enrile&p=x"],
   wk_casadomecq:["Wikipedia · Marquesado de Casa Domecq","https://es.wikipedia.org/wiki/Marquesado_de_Casa_Domecq"],
   gn_jbmf:["Geneanet · José Bohórquez Mora-Figueroa","https://gw.geneanet.org/lmvillena?lang=en&n=jose+bohorquez+mora+figueroa&p=x"],
@@ -456,7 +506,7 @@ const P = {
   7:{n:"Beatriz Domecq López de Carrizosa",d:"† 2023",c:"ok",t:"Camarera de la Virgen de la Encarnación",note:"Hija de Juan Pedro Domecq Rivero y Ángeles López de Carrizosa y Eizaguirre. Murió en junio de 2023. Fue camarera de María Santísima de la Encarnación, de la Hermandad del Santo Crucifijo. Hermanos: María, Javier, Teresa, Juan Pedro, Fernando, Lucía y Gonzalo Domecq López de Carrizosa.",s:["gn_bdlc","obit_bdlc","esq_bdlc","gn_aldce"]},
   8:{n:"José Manuel Domecq Rivero",d:"1895–1981",c:"ok",t:"Caballero de Calatrava",note:"Hijo del I marqués de Casa Domecq. Casó el 12-X-1925 en la iglesia de San Miguel de Jerez con María del Carmen Hidalgo Enrile. Su hijo Pedro Domecq Hidalgo heredó de su tío Pedro el marquesado de Casa Domecq. Hermano de tu bisabuelo materno Juan Pedro Domecq Rivero.",s:["gn_jmdh","wk_casadomecq"]},
   9:{n:"María del Carmen Hidalgo Enrile",d:"1897–1998",c:"ok",note:"Hija de los marqueses de Pardo de Figueroa y de Negrón. Su hermano Baltasar Hidalgo y Enrile fue III marqués de Pardo de Figueroa y VI de Negrón.",s:["gn_mchE","wk_casadomecq","wk_pardofig"]},
-  10:{n:"José Bohórquez Gómez",c:"tree",note:"Hijo de Pedro Bohórquez Piñero y Juana Gómez Tocón. Hermano de Fermín Bohórquez Gómez (1904–1973), ganadero, diputado por Cádiz y senador vitalicio.",s:["gn_jbmf","gn_fbg"]},
+  10:{n:"José Bohórquez Gómez",c:"tree",note:"Hermano de Fermín Bohórquez Gómez (Jerez, 10-IX-1904 – 1973), ganadero, diputado por Cádiz y senador vitalicio. Sus padres están en duda: ver nº 20 y 21.",s:["gn_jbmf","gn_fbg","rah_fbe"]},
   11:{n:"María Francisca de Mora-Figueroa y Gómez-Imaz",d:"1907–2003",c:"tree",note:"Hija del VII marqués de Tamarón. Hermana de José de Mora-Figueroa y Gómez-Imaz, VIII marqués de Tamarón (1899–1976), y del contralmirante Manuel de Mora-Figueroa y Gómez-Imaz (1904–1964).",s:["gn_jbmf","rah_mmf","rah_jmf"]},
   12:{n:"Juan Vicente Vergara Sanchiz",d:"1899–1974",c:"ded",t:"Bodeguero en Jerez",note:"Muy probablemente el padre de Eduardo. Casó en 1933 con Eugenia María Lacave Patero, y en febrero de 1937 bautizaron en la Colegial de Jerez a su hijo Juan Pedro, «hijo de don Juan V. Vergara y Sanchiz y doña Eugenia Lacave». Tuvo bodega propia: «Juan Vicente Vergara, vinos y coñacs». Hermanos: María Pilar (1879–1956), Eduardo (1882–1921), casado con María Luisa Giles Ponce de León, e Isabel (1895–1977).",s:["mn1937","gn_sanchiz_jer","todocol_jvv"]},
   13:{n:"Eugenia María Lacave Patero",d:"1912–2008",c:"ded",note:"Muy probablemente la madre de Eduardo. Hermanos: María Teresa (1909–1997), María Josefa (1911–1949) y Pedro (1916–2001) Lacave Patero.",s:["fs_elp","mn1937"]},
@@ -466,14 +516,14 @@ const P = {
   17:{n:"María Rivero González",d:"1869–1962",c:"ok",note:"Nació en Jerez el 15-IV-1869 y murió allí el 25-II-1962. De la familia bodeguera Rivero.",s:["gn_mrg","wk_casadomecq"]},
   18:{n:"Salvador Hidalgo y Pardo de Figueroa",d:"1865–1939",c:"ok",t:"II marqués de Pardo de Figueroa, V de Negrón",note:"Nació en Medina Sidonia el 22-XI-1865. Caballero de Calatrava y maestrante de Sevilla. Casó en Cádiz en 1893.",s:["wk_pardofig"]},
   19:{n:"María del Carmen Enrile y González de la Mota",d:"1859–1901",c:"ok",note:"Nació el 17-V-1859. Hermanos documentados: Joaquín, Jerónimo y Francisca Enrile y González de la Mota.",s:["wk_pardofig","gn_mchE"]},
-  20:{n:"Pedro Bohórquez Piñero",c:"tree",note:"Padre de José y de Fermín Bohórquez Gómez.",s:["gn_fbg"]},
-  21:{n:"Juana Gómez Tocón",c:"tree",s:["gn_fbg"]},
+  20:{n:"Pedro Bohórquez Piñero",c:"doubt",t:"En duda",note:"El árbol de Geneanet lo da como padre de José y de Fermín Bohórquez Gómez, pero no encaja. El Pedro Bohórquez Piñero documentado, «el Chico», era un republicano de Ubrique casado con Juana Gómez Tocón. El padrón de 1867 les da 40 años a los dos, y su único hijo varón, Cristóbal, murió en 1869 cerca de Benaoján. Su hija Ángeles (1861) fue la primera maestra de Ubrique. No pueden ser los padres de hermanos nacidos hacia 1904. Lo más probable es que el árbol haya confundido a dos personas, aunque el debut de Fermín Bohórquez Escribano en Ubrique (1959) apunta a raíces familiares allí.",s:["gn_fbg","ubrique_padrones","ubrique_chico","cabello_angeles"]},
+  21:{n:"Juana Gómez Tocón",c:"doubt",t:"En duda",note:"Mujer de Pedro Bohórquez Piñero «el Chico», de Ubrique. Mismo problema de fechas que su marido: no puede ser la madre de Fermín y José Bohórquez Gómez.",s:["gn_fbg","ubrique_padrones","cabello_angeles"]},
   22:{n:"José de Mora-Figueroa y Ferrer",d:"1871–1929",c:"ok",t:"VII marqués de Tamarón",note:"Nació en El Puerto de Santa María en 1871 y murió en Jerez en 1929. Fue el mayor de diez hermanos varones: cinco militares, cuatro abogados y un ingeniero.",s:["rah_mmf","lanceros"]},
   23:{n:"Victoria Gómez-Imaz Vázquez",d:"n. h. 1870",c:"ok",note:"Hija de Manuel Gómez-Imaz Simón y Victoria Vázquez Rodríguez. Su nombre llegó a tu abuela Victoria Bohórquez.",s:["rah_mmf","fs_mmfgi"]},
-  24:{n:"N. Vergara",c:"none",note:"Padre de Juan Vicente Vergara Sanchiz. Nombre no localizado. En Jerez murió el 16-I-1900, a los 69 años, un Juan Vicente Vergara Lassaletta que podría ser pariente cercano.",s:["gn_vlassaletta"]},
-  25:{n:"N. Sanchiz",c:"none",note:"Madre de Juan Vicente Vergara Sanchiz. Nombre no localizado."},
-  26:{n:"N. Lacave",c:"none",note:"Padre de Eugenia María Lacave Patero. Nombre no localizado."},
-  27:{n:"N. Patero",c:"none",note:"Madre de Eugenia María Lacave Patero. Nombre no localizado."},
+  24:{n:"Juan Vicente Vergara Lassaletta",d:"1831–1900",c:"tree",t:"Bodeguero e industrial en Jerez",note:"Murió en Jerez el 16-I-1900. De los bodegueros Vergara de El Puerto de Santa María, de origen navarro. Su casa de vinos acabó llamándose «Juan Vicente Vergara» y se integró en Palomino & Vergara a principios del siglo XX. Casó primero con María Ana Quesada Caugh, con quien tuvo a los Vergara Quesada (entre ellos Mateo, 1871–1954, dueño de las fábricas de hielo y de lápices de Jerez), y después con María Josefa Sanchiz Quesada.",s:["gn_vlassaletta","geni_jvvl","lavoz_lapices","jxs_palomino"]},
+  25:{n:"María Josefa Sanchiz Quesada",d:"1860–1934",c:"tree",note:"Segunda mujer de Juan Vicente Vergara Lassaletta. Hijos: María Pilar (1879–1956), Eduardo (1882–1921), Isabel (1895–1977) y Juan Vicente (1899–1974) Vergara Sanchiz, entre otros. Su hermano Eliseo casó con María Josefa Vergara Quesada, hija del primer matrimonio de su marido.",s:["gn_vlassaletta","gn_sanchiz_jer"]},
+  26:{n:"Pedro Lacave de la Rocha",d:"1883–1926",c:"tree",note:"Nació el 7-V-1883 y murió el 9-XII-1926. Casó en Cádiz el 27-II-1908 con María Josefa Patero d’Etchecopar. Hijos: María Teresa (1909), María del Carmen (1910), María Josefa (1911), Eugenia María (1912) y Pedro (1916), entre otros. De la familia gaditana de Lacave y Cía., una de las grandes exportadoras de vino de Jerez.",s:["gn_evilallonga","gn_lacaveperrot","uma_lacave"]},
+  27:{n:"María Josefa Patero d’Etchecopar",c:"tree",note:"Casó en Cádiz el 27-II-1908. Su apellido materno coincide con el de Juan Pablo Echecopar, socio de Pedro Lacave desde 1830; no se ha comprobado el parentesco.",s:["gn_evilallonga","gn_patero","uma_lacave"]},
   28:{same:16}, 29:{same:17},
   30:{n:"Pedro López de Carrizosa y Giles",d:"1868–1930",c:"ok",t:"I barón de Algar del Campo",note:"El título se le concedió el 26-X-1907. Hijo del I marqués de Mochales.",s:["wk_algar","geni_plcg"]},
   31:{n:"María Josefa de Eizaguirre y Dasqui-Leguía",d:"1892–1973",c:"ok",s:["wk_algar","gn_aldce"]},
@@ -483,16 +533,39 @@ const P = {
   35:{n:"Emilia González de Soto",d:"1841–1889",c:"tree",s:["gn_tro","gn_mrg"]},
   36:{n:"Baltasar Hidalgo y Meléndez",d:"1831–1894",c:"ok",t:"IV marqués de Negrón",s:["wk_pardofig"]},
   37:{n:"Josefa Pardo de Figueroa y de la Serna",c:"ok",t:"I marquesa de Pardo de Figueroa",note:"Casó en Medina Sidonia el 13-VII-1863. Ya viuda, Alfonso XIII creó para ella el marquesado de Pardo de Figueroa (16-V-1927). Hermana de Mariano Pardo de Figueroa, el «Doctor Thebussem» (1828–1918), escritor y cervantista, que publicó las Notas genealógicas de la familia en 1888–1889.",s:["wk_pardofig","dialnet_jpf","gn_jpfs","rah_thebussem","wk_thebussem"]},
-  38:{n:"N. Enrile",c:"none",note:"Padre de María del Carmen Enrile y González de la Mota. Nombre no localizado."},
-  39:{n:"N. González de la Mota",c:"none",note:"Madre de María del Carmen Enrile y González de la Mota. Nombre no localizado."},
-  40:{n:"N. Bohórquez",c:"none",note:"Padre de Pedro Bohórquez Piñero. Nombre no localizado."},
-  41:{n:"N. Piñero",c:"none",note:"Madre de Pedro Bohórquez Piñero. Nombre no localizado."},
-  42:{n:"N. Gómez",c:"none",note:"Padre de Juana Gómez Tocón. Nombre no localizado."},
-  43:{n:"N. Tocón",c:"none",note:"Madre de Juana Gómez Tocón. Nombre no localizado."},
+  38:{n:"Joaquín Enrile y Méndez de Sotomayor",d:"1826–1886",c:"tree",t:"Teniente coronel de Artillería",note:"Nació el 9-VIII-1826 y murió el 7-V-1886. Publicó un Prontuario de Artillería (1856). Casó el 5-II-1855 con María de la Paz González de la Mota y Velázquez-Gaztelu. Los Enrile eran una familia gaditana de origen genovés.",s:["gn_enrile","iber_prontuario"]},
+  39:{n:"María de la Paz González de la Mota y Velázquez-Gaztelu",d:"1825–1895",c:"tree",s:["gn_enrile"]},
   44:{n:"José de Mora-Figueroa y Daza",d:"1839–1909",c:"ok",t:"VI marqués de Tamarón",note:"Nació en Vejer de la Frontera y murió en Jerez. Terrateniente y ganadero de bravo.",s:["rah_jmf","geni_mfd"]},
   45:{n:"Francisca Ferrer y Rabech",d:"1852–1924",c:"ok",note:"Nació en El Puerto de Santa María y murió en Jerez. Casó en El Puerto en 1870; tuvieron dieciséis hijos.",s:["rah_jmf"]},
   46:{n:"Manuel Gómez-Imaz Simón",d:"1844–1922",c:"tree",s:["fs_mmfgi"]},
   47:{n:"Victoria Vázquez Rodríguez",d:"n. 1849",c:"tree",s:["fs_mmfgi"]},
+  48:{n:"Eduardo Vergara",c:"tree",note:"Padre de Juan Vicente Vergara Lassaletta. Por fechas y por los nombres de sus nietos (Bartolomé, Mateo) es muy probablemente uno de los hermanos Vergara y Vegas, bodegueros de El Puerto de Santa María.",s:["gn_vlassaletta"]},
+  49:{n:"María del Pilar Lassaletta y Fesser",d:"1812–1903",c:"tree",note:"De una familia de comerciantes de Cádiz. Hijos: Juan Vicente, Manuel, Bartolomé, Andrés, Belén y María Ángeles (1841–1927), entre otros.",s:["geni_mplf"]},
+  52:{n:"Lorenzo Lacave Perrot",d:"1846–1905",c:"tree",t:"Marqués consorte de Fiel Pérez Calixto",note:"Nació el 12-III-1846 y murió el 16-VIII-1905.",s:["gn_lacaveperrot","gn_evilallonga"]},
+  53:{n:"María del Carmen de la Rocha y Pérez",d:"1859–1926",c:"ok",t:"I marquesa de Fiel Pérez Calixto",note:"Nació en Jerez el 29-I-1859 y murió el 2-IX-1926. Alfonso XIII creó para ella el marquesado de Fiel Pérez Calixto el 6-IV-1894, heredero del de Casa Fiel Pérez Calisto, que Fernando VII había concedido a un pariente quiteño de su familia materna.",s:["wk_fielperez","gn_lacaveperrot"]},
+  72:{n:"Salvador Juan Manuel Hidalgo y Sarria",c:"tree",note:"Padre del IV marqués de Negrón.",s:["geni_bhm"]},
+  73:{n:"Salvadora Meléndez y Beyens",d:"n. 1809",c:"tree",note:"Hija de los marqueses de Negrón. Por ella pasó el título a los Hidalgo.",s:["geni_bhm","ancien_melendez"]},
+  76:{n:"José Nicolás Enrile Desportes",c:"tree",note:"Padre de Joaquín y de Nicolás Enrile y Méndez de Sotomayor; este nació en 1804 en San Antonio (Cádiz) y fue alférez de navío.",s:["gn_nenrile"]},
+  77:{n:"María del Carmen Méndez de Sotomayor y Bosolongo",c:"tree",note:"Hija del maestre de campo Pedro Méndez de Sotomayor.",s:["gn_nenrile"]},
+  96:{n:"N. Vergara",c:"ded",note:"Hijo de Francisco Vergara Lorea y, muy probablemente, padre de los hermanos Juan, Bartolomé, Mateo y Eduardo Vergara y Vegas, bodegueros de El Puerto de Santa María. Enlace deducido.",s:["betilo_sanjose","jxs_palomino"]},
+  97:{n:"N. Vegas",c:"ded",note:"Madre de los hermanos Vergara y Vegas. Enlace deducido.",s:["betilo_sanjose"]},
+  104:{n:"Pedro Lacave Soulé",d:"n. 1809",c:"tree",note:"Sobrino de Pedro Lacave Miramont, el fundador de la casa, que lo trajo de Francia. Casó en 1831 con Catalina Perrot Vignasse y tuvieron once hijos. Su hermano Juan Pedro Lacave Soulé fue banquero en Sevilla.",s:["mh_lacavesoule","uma_lacave"]},
+  105:{n:"Catalina Perrot Vignasse",c:"tree",s:["mh_lacavesoule","gn_lacaveperrot"]},
+  120:{n:"José López de Carrizosa y Dávila",d:"1800–1842",c:"tree",s:["gn_ldcpavon"]},
+  121:{n:"Vicenta María Pavón y López de Carrizosa",c:"tree",t:"De los marqueses de Casa Pavón",note:"Por ella llega el marquesado de Casa Pavón, creado para Miguel José Pavón de Fuentes (Jerez, 1671). Su hermano Cayetano, VII marqués, cedió el título a su hijo Francisco Javier en 1851. Otro hijo suyo, José María, fue I marqués del Mérito.",s:["gn_ldcpavon","wk_casapavon"]},
+  146:{n:"Luis Meléndez y Bruna",d:"1763–1824",c:"tree",t:"Marqués de Negrón, mariscal de campo",note:"Nació en Sevilla y murió en Cádiz. Hermano de Salvador Meléndez Bruna, gobernador de Puerto Rico, que tiene biografía en la Real Academia de la Historia.",s:["ancien_melendez","rah_smb"]},
+  147:{n:"María Lorenza Beyens y Beyens",d:"1771–1835",c:"tree",note:"Nació en Cádiz y murió en Medina Sidonia. De origen flamenco, quinta hija de Lorenzo Narciso Beyens Hurwing.",s:["ancien_melendez"]},
+  154:{n:"Pedro Méndez de Sotomayor",c:"tree",t:"Maestre de campo de Infantería",s:["gn_nenrile"]},
+  176:{n:"José María Mora-Figueroa y Duarte",d:"1767–1841",c:"tree",t:"V marqués de Tamarón",note:"Sucedió a su hermano Ramón en el título. Su hijo José María murió antes que él, así que el marquesado pasó a su nieto José Mora-Figueroa y Daza.",s:["geni_mfd","wk_tamaron"]},
+  177:{n:"Ana María Arrafán y Valdés",d:"n. 1777",c:"tree",s:["geni_mfd"]},
+  192:{n:"Francisco Vergara Lorea",d:"n. 1726",c:"ded",t:"Bodeguero en El Puerto desde 1765",note:"Nació en Urzainqui, en el valle del Roncal (Navarra), en 1726, y tenía bodegas en El Puerto de Santa María desde 1765. Es abuelo de Bartolomé Vergara Vegas y tronco de los Vergara bodegueros, cuya historia cuenta el libro «La familia Vergara del Norte al Sur», de Alfonso de la Calle Vergara. Su enlace con tu línea es muy probable, pero no está documentado.",s:["betilo_sanjose","gentepuerto_rufina","calle_vergara"]},
+  208:{n:"Jean-Pierre Lacave Miramont",c:"tree",note:"Padre de Pedro Lacave Soulé y hermano, según todo indica, de Pedro Lacave Miramont, nacido en Navarrenx (Béarn) en 1776, que fundó en Cádiz la casa de vinos Lacave en 1810. Navarrenx está a pocos kilómetros de Usquain, la cuna de los Domecq.",s:["mh_lacavesoule","uma_lacave","jxs_lacave"]},
+  294:{n:"Lorenzo Narciso Beyens Hurwing",c:"tree",t:"Caballero de Carlos III",note:"Comerciante gaditano de origen flamenco.",s:["ancien_melendez"]},
+  295:{n:"María Belén Beyens Geraldino",c:"tree",s:["ancien_melendez"]},
+  352:{n:"Diego Mora-Figueroa y Pertiet",c:"tree",t:"III marqués de Tamarón",note:"Guardiamarina y alférez de navío de la Real Armada.",s:["wk_tamaron"]},
+  353:{n:"Nicolasa Duarte y Castro Palomino",c:"tree",s:["wk_tamaron"]},
+  704:{n:"Ignacio Teodomiro Mora-Figueroa y Gutiérrez del Mazo",c:"tree",t:"II marqués de Tamarón",note:"Caballero de Calatrava desde el 11-VIII-1711 y juez comisario de la Santa Hermandad Vieja de Ciudad Real. El marquesado de Tamarón se había creado el 4-IV-1712 para Diego Pablo de Mora-Figueroa.",s:["wk_tamaron"]},
+  705:{n:"María Magdalena Pertiet y Boillot",c:"tree",note:"De ascendencia francesa.",s:["wk_tamaron"]},
   60:{n:"Francisco Javier López de Carrizosa y Pavón",d:"1825–1882",c:"ok",t:"VIII marqués de Casa Pavón, I de Mochales",note:"Nació en Jerez el 21-IV-1825 y murió el 3-XI-1882. Senador y maestrante de Sevilla. Heredó Casa Pavón por cesión de su tío Cayetano y recibió el marquesado de Mochales en 1878. Casó en 1853.",s:["rah_fjlcp","wk_casapavon"]},
   61:{n:"María del Rosario de Giles y Rivero",d:"1837–1899",c:"ok",s:["rah_fjlcp"]},
   62:{n:"N. Eizaguirre",c:"none",note:"Padre de María Josefa de Eizaguirre y Dasqui-Leguía. Nombre no localizado."},
@@ -603,7 +676,7 @@ const LINE = [
 ];
 
 const DUP = {16:[28],17:[29]};
-const CONF = {self:"Tú",ok:"Confirmado en fuentes de referencia o por ti",tree:"Solo en árboles publicados",ded:"Deducido de las relaciones documentadas",none:"Sin documentar"};
+const CONF = {self:"Tú",ok:"Confirmado en fuentes de referencia o por ti",tree:"Solo en árboles publicados",ded:"Deducido de las relaciones documentadas",doubt:"En duda: las fuentes se contradicen",none:"Sin documentar"};
 
 const gen = k => Math.floor(Math.log2(k)) + 1;
 const real = k => (P[k] && P[k].same) ? P[k].same : k;
@@ -636,7 +709,7 @@ const pbtn = (k, withNum = true) => {
 
 /* Cifras de cabecera */
 (function stats(){
-  const named = Object.entries(P).filter(([k, p]) => !p.same && p.c !== "none" && p.c !== "self");
+  const named = Object.entries(P).filter(([k, p]) => !p.same && !["none", "self", "doubt"].includes(p.c));
   const deepest = Math.max(...named.map(([k]) => gen(+k)));
   document.getElementById("stats").innerHTML =
     `<div class="stat"><b class="num">${named.length}</b><span>antepasados identificados por su nombre</span></div>
@@ -694,9 +767,9 @@ const pbtn = (k, withNum = true) => {
   const B = [
     {a:16,b:17,h:"Domecq · Rivero"},
     {a:18,b:19,h:"Hidalgo · Enrile"},
-    {a:20,b:21,h:"Bohórquez · Gómez"},
+    {a:20,b:21,h:"Bohórquez · Gómez",txt:"En duda. Geneanet pone aquí a Pedro Bohórquez Piñero y Juana Gómez Tocón, de Ubrique, pero el padrón de 1867 les da 40 años y su único hijo varón murió en 1869, así que no pueden ser los padres de Fermín (1904) y José Bohórquez Gómez. La partida de nacimiento de Fermín en el Registro Civil de Jerez (10-IX-1904) resolvería la duda, porque recoge padres y abuelos."},
     {a:22,b:23,h:"Mora-Figueroa · Gómez-Imaz"},
-    {a:24,b:27,h:"Vergara · Lacave",txt:"Por encima de Juan Vicente Vergara Sanchiz y Eugenia María Lacave Patero (nº 12–13, deducidos) no se conocen nombres. Juan Vicente tuvo bodega propia en Jerez: «Juan Vicente Vergara, vinos y coñacs»."},
+    {a:24,b:27,h:"Vergara · Sanchiz · Lacave · Patero"},
     {a:30,b:31,h:"López de Carrizosa · Eizaguirre"}
   ];
   const keys = Object.keys(P).map(Number).filter(k => gen(k) >= 6);
@@ -704,7 +777,7 @@ const pbtn = (k, withNum = true) => {
   let html = "";
   for (const br of B) {
     const child = Math.floor(br.a / 2);
-    const sub = br.txt ? "Vía materna" :
+    const sub = br.txt ? "Vía paterna" :
       `${side(br.a) === "pat" ? "Vía paterna" : "Vía materna"} · padres de ${esc(person(child).n)} (<span class="k">nº ${child}</span>)`;
     html += `<article class="branch"><div><p class="glabel">nº ${br.a}–${br.b}</p><h3>${br.h}</h3><p class="sub">${sub}</p></div>`;
     if (br.txt) { html += `<p class="empty">${esc(br.txt)}</p></article>`; continue; }
