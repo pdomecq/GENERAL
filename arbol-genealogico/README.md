@@ -9,6 +9,22 @@ Fechas al estilo de los registros parroquiales (día-mes en romanos-año). "N." 
 Grado de certeza: **[C]** confirmado en fuentes de referencia (Wikipedia, Real Academia de la Historia, estudios académicos) o por ti ·
 **[Á]** solo en árboles publicados (Geneanet, Geni, FamilySearch) · **[D]** deducido · **[?]** sin documentar.
 
+## El libro de familia: «De dónde venimos»
+
+En [`libro/`](libro/) está el libro para imprimir, escrito en nombre de los hermanos Domecq Vergara:
+[`De-donde-venimos.pdf`](libro/De-donde-venimos.pdf) (A4, 70 páginas) y su versión web, [`libro.html`](libro/libro.html).
+Tiene diez capítulos: quiénes somos, la línea más antigua, las nueve ramas con su árbol y sus fichas,
+títulos, órdenes y cuatro costados, personajes, apellidos y escudos, cronología, el árbol completo
+(con un abanico de siete generaciones) y lo que falta por descubrir. Cierra con las fuentes y unas páginas para completar a mano.
+
+Los datos salen de `arbol.html`, así que el libro se rehace con lo último del árbol:
+
+```
+cd libro && python3 generar_libro.py     # necesita node, python3 con pymupdf y Chromium
+```
+
+Para imprimirlo: A4 a doble cara, sin ajustar a la página (escala 100 %). La página del abanico va girada.
+
 ## Tu línea más antigua: 25 generaciones, de 1264 a hoy
 
 Va por tu padre, los Domecq, tu trastatarabuela Carmen Núñez de Villavicencio y los marqueses de Valhermoso.
