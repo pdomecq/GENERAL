@@ -103,6 +103,7 @@ Antepasados directos, con su número, y parientes cercanos, con la persona de tu
 - **Dos ministros: José Gómez-Imaz y Simón, hermano de Manuel, y Carlos Cañal y Migolla, su yerno.** El primero, contralmirante, fue ministro de Marina en 1899–1900. El segundo fue ministro de Abastecimientos en 1919, el primer ministro de Trabajo de España en 1920–1921 y, durante unos pocos días de 1922, ministro de Gracia y Justicia.
 - **José de Mora-Figueroa y Gómez-Imaz, hermano de tu bisabuela María Francisca (nº 11).** VIII marqués de Tamarón, catedrático, historiador, académico de la Historia y alcalde de Jerez.
 - **María del Carmen de la Rocha y Pérez (nº 53).** I marquesa de Fiel Pérez Calixto (1894), título heredado de uno que Fernando VII concedió a un pariente quiteño.
+- **Bartolomé Bohórquez Rubiales (nº 20), «el diputado de las tres palabras».** Terrateniente de Ubrique, representó a la Sierra de Cádiz en siete legislaturas (seis como diputado por Grazalema desde 1899 y una como senador por Cádiz en 1919–1920). Según la tradición de su pueblo, en todos esos años solo dijo «Jesús, María y José», cuando tosía algún colega.
 - **Fermín Bohórquez Gómez, hermano de tu bisabuelo José (nº 10).** Compró en 1946 la ganadería que lleva su nombre; su hijo Fermín Bohórquez Escribano fue un célebre rejoneador.
 
 ## I · Tú
@@ -121,7 +122,7 @@ Antepasados directos, con su número, y parientes cercanos, con la persona de tu
 ## IV · Bisabuelos
 8. José Manuel Domecq Rivero (1895–1981), caballero de Calatrava **[C]** — casó el 12-X-1925 en San Miguel, Jerez.
 9. María del Carmen Hidalgo Enrile (1897–1998) **[C]**
-10. José Bohórquez Gómez **[Á]** — hermano del ganadero y senador Fermín Bohórquez Gómez (1904–1973).
+10. José Bohórquez Gómez **[C]** — hijo del diputado Bartolomé Bohórquez Rubiales y hermano del ganadero Fermín Bohórquez Gómez (1904–1973).
 11. María Francisca de Mora-Figueroa y Gómez-Imaz (1907–2003) **[Á]**
 12. Juan Vicente Vergara Sanchiz (1899–1974), bodeguero en Jerez («Juan Vicente Vergara, vinos y coñacs») **[D]** — casó en 1933 con Eugenia María Lacave Patero; en 1937 bautizaron en la Colegial de Jerez a su hijo Juan Pedro.
 13. Eugenia María Lacave Patero (1912–2008) **[D]**
@@ -133,8 +134,8 @@ Antepasados directos, con su número, y parientes cercanos, con la persona de tu
 17. María Rivero González (Jerez, 15-IV-1869 – 25-II-1962) **[C]**
 18. Salvador Hidalgo y Pardo de Figueroa (Medina Sidonia, 22-XI-1865 – 1939), II marqués de Pardo de Figueroa y V de Negrón **[C]**
 19. María del Carmen Enrile y González de la Mota (17-V-1859 – 1901) **[C]**
-20. Pedro Bohórquez Piñero **[en duda]** — Geneanet lo da como padre de José y Fermín Bohórquez Gómez, pero el Pedro Bohórquez Piñero documentado («el Chico», republicano de Ubrique) tenía 40 años en 1867. Fue diputado a Cortes por Cádiz y amigo de Fermín Salvochea; entre sus hijos estaba Sixto (n. h. 1858), quizá el eslabón que falta.
-21. Juana Gómez Tocón **[en duda]** — mujer de «el Chico»; mismo problema de fechas.
+20. Bartolomé Bohórquez Rubiales (Ubrique, 1862 – Jerez, 15-X-1925), terrateniente, diputado a Cortes por Grazalema desde 1899 y senador por Cádiz (1919–1920) **[C]** — dato de la familia, confirmado en el Senado, Geni y Geneanet. Algunos árboles publicados ponían aquí a Pedro Bohórquez Piñero «el Chico», de otra familia Bohórquez Gómez de Ubrique.
+21. Ana María Gómez Bohórquez († Jerez, 17-II-1940) **[C]** — madre de Ana María, José y Fermín Bohórquez Gómez.
 22. José de Mora-Figueroa y Ferrer (El Puerto de Santa María, 1871 – Jerez, 1929), VII marqués de Tamarón **[C]**
 23. Victoria Gómez-Imaz Vázquez (n. h. 1870) **[C]** — su hermana María Candelaria casó con Carlos Cañal y Migolla, el primer ministro de Trabajo de España (1920–1921).
 24. Juan Vicente Vergara Lassaletta (1831 – Jerez, 16-I-1900), bodeguero e industrial **[Á]**
@@ -152,6 +153,7 @@ Antepasados directos, con su número, y parientes cercanos, con la persona de tu
 36. Baltasar Hidalgo y Meléndez (1831–1894), IV marqués de Negrón **[C]**
 37. Josefa Pardo de Figueroa y de la Serna, I marquesa de Pardo de Figueroa (1927) **[C]** — hermana del «Doctor Thebussem».
 38. Joaquín Enrile y Méndez de Sotomayor (1826–1886), teniente coronel de Artillería **[Á]** · 39. María de la Paz González de la Mota y Velázquez-Gaztelu (1825–1895) **[Á]** — casaron el 5-II-1855.
+40. Fermín Bohórquez Zarco **[Á]** · 41. Ana Rubiales Olmedo **[Á]** — de Ubrique; padres del diputado Bartolomé y de Rafaela, Fermín (1870–1921), Rafael (1873–1940) y José Bohórquez Rubiales.
 44. José de Mora-Figueroa y Daza (1839–1909), VI marqués de Tamarón **[C]** · 45. Francisca Ferrer y Rabech (1852–1924) **[C]**
 46. Manuel Gómez-Imaz Simón (La Habana, 3-VI-1844 – Sevilla, 1922), erudito y bibliógrafo, académico de Buenas Letras en Sevilla y gran coleccionista de la Guerra de la Independencia **[C]** · 47. Victoria Vázquez Rodríguez (n. 1849) **[C]**
 48. Eduardo Vergara **[Á]** · 49. María del Pilar Lassaletta y Fesser (1812–1903) **[Á]**
@@ -171,6 +173,8 @@ Antepasados directos, con su número, y parientes cercanos, con la persona de tu
 92. Francisco de Paula Gómez Imaz, natural de Cádiz **[D]** · 93. Manuela Simón **[D]** — padres del contralmirante José Gómez-Imaz y Simón, ministro de Marina en 1899–1900, y por lo mismo de Manuel.
 72. Salvador Juan Manuel Hidalgo y Sarria **[Á]** · 73. Salvadora Meléndez y Beyens (n. 1809) **[Á]**
 76. José Nicolás Enrile Desportes **[Á]** · 77. María del Carmen Méndez de Sotomayor y Bosolongo **[Á]**
+80. Bartolomé Bohórquez Marchán **[Á]** · 81. Rafaela Zarco Morales **[Á]** — abuelos paternos del diputado.
+82. Rafael Rubiales **[Á]** · 83. María Olmedo **[Á]** — abuelos maternos del diputado.
 102. José María Quesada Bardalona **[Á]** · 103. Marianne Caugh Burns **[Á]**
 96. N. Vergara **[D]** · 97. N. Vegas **[D]** — padres probables de los hermanos Vergara y Vegas, bodegueros de El Puerto.
 104. Pedro Lacave Soulé (n. 1809) **[Á]** · 105. Catalina Perrot Vignasse **[Á]**
@@ -227,7 +231,7 @@ Las órdenes militares piden probar la nobleza de sangre de los cuatro abuelos, 
 | Costado | Abuelo o abuela | Situación |
 |---|---|---|
 | Domecq | José Manuel Domecq Hidalgo (nº 4) | **Probado.** Tu bisabuelo José Manuel Domecq Rivero fue caballero de Calatrava. |
-| Bohórquez | Victoria Bohórquez Mora-Figueroa (nº 5) | **Sin probar.** No se conocen actos positivos de nobleza, y los padres de tu bisabuelo José Bohórquez Gómez están en duda. |
+| Bohórquez | Victoria Bohórquez Mora-Figueroa (nº 5) | **Sin probar.** Ya se sabe quiénes eran (el diputado Bartolomé Bohórquez Rubiales y su ascendencia en Ubrique), pero no se conocen actos positivos de nobleza de esta rama. |
 | Vergara | Eduardo Vergara Lacave (nº 6) | **Probable.** Si se documenta el enlace con Francisco Vergara Lorea (Urzainqui, 1726), serían del valle del Roncal, cuyos vecinos eran hidalgos por un privilegio confirmado en 1412. |
 | Domecq | Beatriz Domecq López de Carrizosa (nº 7) | **Probado.** La misma línea: nieta del I marqués de Casa Domecq. |
 
@@ -237,7 +241,7 @@ Las órdenes militares piden probar la nobleza de sangre de los cuatro abuelos, 
 - **Caballeros de órdenes y maestrantes en tu ascendencia directa.** Calatrava: nº 2.120, 1.408, 704, 66, 18 y 8. Santiago: nº 16.960, además del Doctor Thebussem, que es pariente. San Juan: nº 534. Carlos III: nº 294, 68 y 122. Reales Maestranzas de Sevilla, Ronda y Zaragoza: nº 240, 68, 60, 18 y 15.
 
 ## Lagunas y pistas
-- **Bohórquez (nº 20–21), en duda:** pedir en el Registro Civil de Jerez la certificación literal de nacimiento de Fermín Bohórquez Gómez (10-IX-1904), que recoge padres y abuelos.
+- **Padres de Ana María Gómez Bohórquez (nº 42–43):** pedir en el Registro Civil de Jerez la certificación literal de nacimiento de su hijo Fermín Bohórquez Gómez (10-IX-1904), que recoge los cuatro abuelos.
 - **El catedrático del Goya o el Velázquez:** en la familia se recuerda a un antepasado de la rama de tu abuela Victoria, catedrático y estudioso de origen granadino con vida en Sevilla, que tuvo un Goya o un Velázquez y lo donó. No se ha podido identificar. Los que más se le parecen son Manuel Gómez-Imaz (nº 46) y su nieto José de Mora-Figueroa y Gómez-Imaz, VIII marqués de Tamarón, pero ninguno era de Granada ni consta que donara un Goya o un Velázquez.
 - **Padres de Eduardo Vergara Lacave (nº 12–13):** muy probablemente Juan Vicente Vergara Sanchiz y Eugenia María Lacave Patero; lo confirmaría su acta de nacimiento (Jerez, 1940).
 - **Eduardo Vergara (nº 48) y los Vergara del Roncal:** encaja por fechas, bodega y nombres, pero falta el documento. El libro de Alfonso de la Calle Vergara probablemente trae el árbol completo.
@@ -257,6 +261,7 @@ Las órdenes militares piden probar la nobleza de sangre de los cuatro abuelos, 
 - Universidad de Málaga: historia empresarial de Lacave y Compañía (1810–1927)
 - Nobleza y órdenes: Real Consejo de las Órdenes Militares, Real Asociación de Hidalgos de España, Ministerio de Cultura (Sección Órdenes Militares del Archivo Histórico Nacional), Hidalgos en la Historia y Gran Enciclopedia de Navarra (hidalguía del Roncal)
 - López de Carrizosa: Los abuelos de mi historia, Blasonari, El barroco jerezano, La Voz del Sur (cripta de San Juan de los Caballeros), Fundación del Hospital de la Santa Resurrección de Utrera
+- Bohórquez: datos de la familia (Pablo Domecq Bohórquez, 2026), Senado de España (expediente de Bartolomé Bohórquez Rubiales), Historias de Ubrique, blog de Manuel Cabello y Esperanza Izquierdo, UNED (*Elecciones y élites parlamentarias en Cádiz, 1903–1923*), Real Academia Matritense de Heráldica y Genealogía (*Movimiento nobiliario 1940*), Geni y Geneanet (chamecu)
 - Revista Escaparate (González Byass), Gente del Puerto (Federico Ferrer Sahuervain), Gente de Cádiz (Pedro Lacave Miramont)
 - Centro de Estudios Andaluces (inventario de Gómez Imaz, 1896), Museo Postal y Telegráfico (Doctor Thebussem), Auñamendi Eusko Entziklopedia (marqués de Saavedra)
 

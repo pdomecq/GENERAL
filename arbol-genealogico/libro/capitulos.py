@@ -76,9 +76,13 @@ def figure(svg, caption, cls=""):
     return f'<figure class="fig {cls}"><div class="fig-art">{svg}</div><figcaption>{caption}</figcaption></figure>'
 
 
+HAS_DOUBT = any(p.get("c") == "doubt" for p in P.values())
+
+
 def legend():
+    doubt = '<span><i class="sw doubt"></i>En duda</span>' if HAS_DOUBT else ''
     return ('<p class="legend"><span><i class="sw pat"></i>Por papá</span><span><i class="sw mat"></i>Por mamá</span>'
-            '<span><i class="sw dashed"></i>Enlace deducido</span><span><i class="sw doubt"></i>En duda</span></p>')
+            f'<span><i class="sw dashed"></i>Enlace deducido</span>{doubt}</p>')
 
 
 # ===================================================================== textos
@@ -127,10 +131,11 @@ def intro():
 <li><span class="mk ok">●</span> <b>Confirmado</b> en fuentes de referencia (la Real Academia de la Historia, el BOE, estudios publicados, Wikipedia) o por la propia familia.</li>
 <li><span class="mk tree">○</span> <b>Tomado de árboles genealógicos publicados</b> (Geneanet, Geni, FamilySearch), sin comprobar todavía en documentos originales.</li>
 <li><span class="mk ded">◌</span> <b>Deducido</b> de las relaciones documentadas: encaja por nombres, fechas y lugares, pero falta el papel que lo pruebe.</li>
-<li><span class="mk doubt">◇</span> <b>En duda</b>, porque las fuentes se contradicen.</li>
+<li><span class="mk doubt">◇</span> <b>En duda</b>, porque las fuentes se contradicen.%%DUDA%%</li>
 </ul>
 <p>Nada de lo que aquí se cuenta se ha inventado, pero hay eslabones que conviene comprobar en los archivos. El último capítulo explica cuáles y dónde buscarlos. La investigación se hizo en septiembre y octubre de 2026 con fuentes publicadas en internet; no se han consultado archivos físicos. Cuando alguien de la familia lo haga, este libro se podrá corregir y ampliar.</p>
 </div>"""
+    body = body.replace("%%DUDA%%", "" if HAS_DOUBT else " Ahora mismo no queda ninguno: la última duda, la de los padres del bisabuelo José Bohórquez, la resolvió papá.")
     return chapter("intro", "Antes de empezar", "Cómo leer este libro", body)
 
 
@@ -139,7 +144,7 @@ def cap1():
 <p class="lead">Somos los hijos de Pablo Domecq Bohórquez y Beatriz Vergara Domecq. Papá es hijo de José Manuel Domecq Hidalgo y Victoria Bohórquez Mora-Figueroa, y tiene cuatro hermanos: Victoria, José Manuel, Almudena y Jorge. Mamá es hija de Eduardo Vergara Lacave y Beatriz Domecq López de Carrizosa, y también tiene cuatro hermanos: Begoña María, Mercedes, María del Rocío y Juan Pedro.</p>
 <h2>Los cuatro abuelos</h2>
 <p><b>José Manuel Domecq Hidalgo</b>, el abuelo paterno, era hijo de José Manuel Domecq Rivero (1895–1981), caballero de Calatrava, y de María del Carmen Hidalgo Enrile (1897–1998), hija de los marqueses de Pardo de Figueroa y de Negrón. Por su padre era nieto del I marqués de Casa Domecq.</p>
-<p><b>Victoria Bohórquez Mora-Figueroa</b>, la abuela paterna, era hija de José Bohórquez Gómez, hermano del ganadero Fermín Bohórquez Gómez, y de María Francisca de Mora-Figueroa y Gómez-Imaz (1907–2003), hija del VII marqués de Tamarón. Su nombre le venía de su abuela materna, Victoria Gómez-Imaz.</p>
+<p><b>Victoria Bohórquez Mora-Figueroa</b>, la abuela paterna, era hija de José Bohórquez Gómez, hijo del diputado Bartolomé Bohórquez Rubiales y hermano del ganadero Fermín Bohórquez Gómez, y de María Francisca de Mora-Figueroa y Gómez-Imaz (1907–2003), hija del VII marqués de Tamarón. Su nombre le venía de su abuela materna, Victoria Gómez-Imaz.</p>
 <p><b>Eduardo Vergara Lacave</b> (1940–2008), el abuelo materno, era con toda probabilidad hijo del bodeguero Juan Vicente Vergara Sanchiz (1899–1974) y de Eugenia María Lacave Patero (1912–2008), de la familia gaditana de los vinos Lacave. Es el único de los cuatro cuyos padres no aparecen nombrados en ningún documento publicado; todo lo demás encaja, y su partida de nacimiento lo confirmaría.</p>
 <p><b>Beatriz Domecq López de Carrizosa</b>, la abuela materna, murió en junio de 2023. Era hija del ganadero Juan Pedro Domecq Rivero (1910–1995) y de Ángeles López de Carrizosa y Eizaguirre, dama de la Real Maestranza de Ronda e hija del I barón de Algar del Campo. Fue camarera de María Santísima de la Encarnación, de la Hermandad del Santo Crucifijo, y tuvo siete hermanos: María, Javier, Teresa, Juan Pedro, Fernando, Lucía y Gonzalo.</p>
 </div>"""
@@ -151,7 +156,7 @@ def cap1():
         f'<div class="sn {side(16 + i)}{" dup" if i in (12, 13) else ""}"><span class="k">nº {16 + i}</span><b>{s}</b><small>{esc(pname(16 + i)) if not P[str(16 + i)].get("same") else "repite nº " + str(P[str(16 + i)]["same"])}</small></div>'
         for i, s in enumerate(sixteen))
     sn = f"""<div class="prose"><h2>Los dieciséis apellidos</h2>
-<p>En la tradición genealógica española, los apellidos de los dieciséis tatarabuelos resumen una ascendencia. Los nuestros son estos; Domecq y Rivero aparecen dos veces. La casilla Bohórquez–Gómez está en duda en cuanto a las personas, pero no en cuanto a los apellidos.</p></div>
+<p>En la tradición genealógica española, los apellidos de los dieciséis tatarabuelos resumen una ascendencia. Los nuestros son estos; Domecq y Rivero aparecen dos veces.</p></div>
 <div class="surnames">{cells}</div>"""
     chart = f"""<div class="fullpage chartpage">
 <h2 class="chart-title">Nuestro árbol de cinco generaciones</h2>
@@ -249,15 +254,16 @@ def cap3():
         [9], 5, subtree(18) + subtree(19), "La rama de la bisabuela María del Carmen Hidalgo Enrile.")
 
     bohorquez = rama(
-        "r-bohorquez", "Los Bohórquez",
-        "La abuela Victoria era hija de José Bohórquez Gómez, hermano de Fermín Bohórquez Gómez (Jerez, 1904–1973), uno de los grandes ganaderos andaluces de su tiempo. En 1946 Fermín compró la ganadería de reses de Murube que desde entonces lleva su nombre, y su hijo, Fermín Bohórquez Escribano, primo hermano de la abuela, fue un rejoneador célebre.",
-        """<p>Los padres de José y Fermín son la gran incógnita de nuestro árbol. Los árboles publicados dicen que eran Pedro Bohórquez Piñero y Juana Gómez Tocón, de Ubrique. Ese matrimonio existió y tiene historia: Pedro, «el Chico», fue un republicano federal, diputado a Cortes por Cádiz y amigo íntimo de Fermín Salvochea. Su hijo Cristóbal murió joven en los levantamientos republicanos de 1869 y 1870, y su hija Ángeles fue la primera maestra de Ubrique. Pero en el padrón de 1867 los dos tenían ya unos cuarenta años, así que no pueden ser los padres de unos hermanos nacidos hacia 1904. Lo más probable es que los árboles se hayan saltado una generación; si es así, el eslabón podría ser Sixto, un hijo de «el Chico» nacido hacia 1858. El debut de Fermín Bohórquez Escribano en Ubrique, en 1959, apunta también a raíces familiares allí.</p>
-<p>La partida literal de nacimiento de Fermín Bohórquez Gómez en el Registro Civil de Jerez (10 de septiembre de 1904) lo resolverá: desde 1871 esas actas recogen los padres y los abuelos, con su naturaleza.</p>
-<p><b>El apellido.</b> Según los tratados de heráldica, los Bohórquez son un linaje de origen castellano, del valle de Runanza, en la merindad de Trasmiera (Cantabria), que bajó a Andalucía con la Reconquista y fundó casa en Villamartín. Gonzalo Argote de Molina cuenta que un caballero Bohórquez que luchó en la batalla del Salado recibió del rey la Banda, y de ahí sus armas.</p>""",
-        None, 0, [20, 21], "", extra=fillbox(
-            "Para completar cuando aparezca la partida",
-            "La partida de nacimiento de Fermín Bohórquez Gómez (Jerez, 10 de septiembre de 1904) dirá quiénes eran sus padres y sus cuatro abuelos, y de dónde eran. Cuando la tengamos, aquí van:",
-            ["Padre", "Madre", "Abuelo paterno", "Abuela paterna", "Abuelo materno", "Abuela materna", "De dónde eran"]))
+        "r-bohorquez", "Los Bohórquez, de Ubrique",
+        "La abuela Victoria era hija de José Bohórquez Gómez y nieta de Bartolomé Bohórquez Rubiales (1862–1925), un terrateniente de Ubrique que representó a la Sierra de Cádiz en las Cortes durante siete legislaturas. El hermano de José, Fermín Bohórquez Gómez (Jerez, 1904–1973), fue uno de los grandes ganaderos andaluces de su tiempo: en 1946 compró la ganadería de reses de Murube que desde entonces lleva su nombre, y su hijo, Fermín Bohórquez Escribano, primo hermano de la abuela, fue un rejoneador célebre.",
+        """<p><b>El diputado de las tres palabras.</b> Bartolomé nació en Ubrique en 1862, hijo de Fermín Bohórquez Zarco y Ana Rubiales Olmedo, y se hizo bachiller en el Instituto Columela de Cádiz en 1881. Fue seis veces diputado por el distrito de Grazalema, desde 1899, y senador por Cádiz en 1919 y 1920. Un estudio de la UNED sobre las elecciones en Cádiz lo describe como el hombre fuerte del distrito en la primera década del siglo XX. En Ubrique se contaba que en todas esas legislaturas solo habló para decir «Jesús, María y José» cuando tosía algún colega, y de ahí su apodo. Murió en Jerez en octubre de 1925. Su mujer, Ana María Gómez Bohórquez, le sobrevivió hasta 1940. Tuvieron tres hijos: Ana María, José, nuestro bisabuelo, y Fermín.</p>
+<p><b>Un error de los árboles publicados.</b> Varios árboles de internet daban como padres de José y Fermín a Pedro Bohórquez Piñero «el Chico», un republicano federal de Ubrique, y a su mujer, Juana Gómez Tocón. Las fechas no encajaban, porque en el padrón de 1867 los dos tenían ya unos cuarenta años. Papá lo ha aclarado: en Ubrique hubo dos familias Bohórquez Gómez, y los árboles las mezclaron. Los padres de José y Fermín eran Bartolomé y Ana María.</p>
+<p><b>Ubrique.</b> En el siglo XIX los Bohórquez fueron una de las familias principales de Ubrique, con alcaldes, comerciantes, abogados y políticos. De allí eran también los padres y los abuelos de Bartolomé: los Bohórquez Marchán, los Zarco Morales, los Rubiales y los Olmedo. Y en Ubrique se presentó en público como rejoneador, en 1959, Fermín Bohórquez Escribano.</p>
+<p><b>El apellido.</b> Según los tratados de heráldica, los Bohórquez son un linaje de origen castellano, del valle de Runanza, en la merindad de Trasmiera (Cantabria), que bajó a Andalucía con la Reconquista y fundó casa en Villamartín. Gonzalo Argote de Molina cuenta que un caballero Bohórquez que luchó en la batalla del Salado recibió del rey la Banda, y de ahí sus armas. El enlace de los Bohórquez de Ubrique con esa casa está por documentar.</p>""",
+        [10], 4, sorted(subtree(20) + subtree(21)), "La rama del bisabuelo José Bohórquez Gómez.", extra=fillbox(
+            "Para completar: los padres de Ana María Gómez Bohórquez",
+            "Son los que faltan en esta rama. La partida de nacimiento de su hijo Fermín (Registro Civil de Jerez, 10 de septiembre de 1904) da los nombres de sus cuatro abuelos y de dónde eran. Cuando la tengamos, aquí van:",
+            ["Padre", "Madre", "De dónde eran"]))
 
     tamaron = rama(
         "r-tamaron", "Los Mora-Figueroa, marqueses de Tamarón",
@@ -364,7 +370,7 @@ APELLIDOS = [
     ("Adorno", "Familia de origen genovés asentada en Jerez.", [481], None),
     ("Angulo", "Inés de Angulo, condesa de Cañete del Pinar; su padre nació en Lucena.", [133, 266, 532], None),
     ("Beyens", "Comerciantes de Cádiz de origen flamenco; uno de ellos, caballero de Carlos III.", [147, 294, 295], None),
-    ("Bohórquez", "Linaje castellano del valle de Runanza, en Trasmiera (Cantabria), que fundó casa en Villamartín. Según Argote de Molina, un Bohórquez que luchó en el Salado recibió la Banda del rey.", [10, 5], "En campo de gules, una banda de oro con dragantes de sinople; bordura de azur con dos flores de lis de oro, una en el jefe y otra en la punta, y una columna de plata a cada costado."),
+    ("Bohórquez", "Linaje castellano del valle de Runanza, en Trasmiera (Cantabria), que fundó casa en Villamartín. Según Argote de Molina, un Bohórquez que luchó en el Salado recibió la Banda del rey. Nuestra rama es de Ubrique, donde fueron una de las familias principales del siglo XIX.", [5, 10, 20, 40, 80], "En campo de gules, una banda de oro con dragantes de sinople; bordura de azur con dos flores de lis de oro, una en el jefe y otra en la punta, y una columna de plata a cada costado."),
     ("Camacho", "Pedro Camacho de Villavicencio «el Rico», el caballero más acaudalado de Jerez a finales del siglo XV.", [271366, 542733], None),
     ("Carrizosa y López de Carrizosa", "Linaje con casa en Medina de Pomar (Burgos) del que una rama pasó a Jerez; Rodrigo de Carrizosa recibió tierras en el repartimiento de 1266. Sus armas son «parlantes»: los carrizos son cañas.", [15, 30, 60, 120, 240, 480, 271362], "En campo de gules, cuatro carrizos de oro y un león de púrpura echado detrás de las cañas; bordura de azur con ocho aspas de oro."),
     ("Daza", "Josefa Daza y Caballero, madre del VI marqués de Tamarón.", [89], None),
@@ -373,6 +379,7 @@ APELLIDOS = [
     ("Enrile", "Familia gaditana de origen genovés: militares y marinos.", [19, 38, 76], None),
     ("Ferrer", "Gaditanos asentados en El Puerto; Federico Ferrer Sahuervain fue diputado a Cortes.", [45, 90, 180], None),
     ("Giles", "Miguel de Giles, caballero de Carlos III, diputado y consejero real de Agricultura.", [61, 122, 244], None),
+    ("Gómez", "Uno de los apellidos más comunes de España. El nuestro llega por Ana María Gómez Bohórquez, mujer del diputado Bartolomé Bohórquez Rubiales; sus padres están por documentar.", [21], None),
     ("Gómez-Imaz", "Familia de Cádiz con rama en La Habana: un erudito sevillano y un ministro de Marina.", [23, 46, 92], None),
     ("González", "Del segoviano José Antonio González, que llegó a Sanlúcar en 1783; su hijo fundó González Byass.", [35, 70, 140], None),
     ("Haurie", "De Vielleségure, en el Béarn; Juan Haurie está en el origen de la casa Domecq.", [259], None),
@@ -393,12 +400,14 @@ APELLIDOS = [
     ("Quesada", "Familia de Cádiz y Jerez.", [51, 102], None),
     ("Rivero", "Familia jerezana de origen cántabro: las bodegas Rivero-CZ y dos presidentes del Ayuntamiento.", [17, 34, 68, 136], None),
     ("Rocha", "Jerezanos; María del Carmen de la Rocha fue I marquesa de Fiel Pérez Calixto.", [53], None),
+    ("Rubiales", "Familia de Ubrique. Ana Rubiales Olmedo fue la madre del diputado Bartolomé Bohórquez Rubiales.", [41, 82], None),
     ("Sanchiz", "Familia de Jerez.", [25, 50], None),
     ("Soto", "De Briviesca (Burgos); Pedro Nolasco de Soto hizo fortuna en México y se estableció en Cádiz.", [71, 142], None),
     ("Spínola", "Genoveses, al servicio del marqués de Villena y de los Reyes Católicos.", [1061, 67841, 135682, 271364], None),
     ("Tixera", "Herederos de la bodega CZ, fundada en 1650.", [137], None),
     ("Vergara", "Bodegueros de El Puerto y Jerez, del valle navarro del Roncal. Las armas más extendidas son las de los Vergara de Guipúzcoa; los de Navarra usaban, según una ejecutoria de 1630, «un puerco jabalí bajo un árbol e una ave rampante».", [3, 6, 12, 24, 48, 96, 192], "En campo de oro, un roble de sinople con un lobo de sable atado al tronco con una cadena de oro (Vergara de Guipúzcoa)."),
     ("Villavicencio", "El linaje de la conquista de Jerez (1264), con presencia continuada en la ciudad desde entonces: alcaides, veinticuatros y marqueses de Valhermoso.", [2120, 4341856, 17367424], None),
+    ("Zarco", "Familia de Ubrique. Rafaela Zarco Morales fue la abuela paterna del diputado Bartolomé Bohórquez Rubiales.", [81], None),
     ("Zurita", "Marqueses de Campo Real; los Zurita de Jerez se tenían por descendientes de Fagut de Zurita, caballero de la conquista.", [529, 1058], None),
 ]
 
@@ -461,9 +470,10 @@ CRONO = [
     ("1892", "Boda de Pedro Domecq Núñez de Villavicencio y María Rivero González."),
     ("1894", "Se crea el marquesado de Fiel Pérez Calixto."),
     ("1896", "Manuel Gómez-Imaz publica el inventario de los cuadros que los franceses se llevaron de Sevilla."),
-    ("1899", "José Gómez-Imaz y Simón, ministro de Marina."),
+    ("1899", "José Gómez-Imaz y Simón, ministro de Marina. Bartolomé Bohórquez Rubiales sale elegido por primera vez diputado por Grazalema."),
     ("1906", "Pío X concede el marquesado pontificio de Casa Domecq."),
     ("1907", "Alfonso XIII crea la baronía de Algar del Campo."),
+    ("1919", "Bartolomé Bohórquez Rubiales, senador por Cádiz."),
     ("1920", "Carlos Cañal, primer ministro de Trabajo de España. Alfonso XIII crea el marquesado de Domecq d’Usquain."),
     ("1925", "Boda de los bisabuelos José Manuel Domecq Rivero y María del Carmen Hidalgo Enrile."),
     ("1927", "Alfonso XIII crea el marquesado de Pardo de Figueroa."),
@@ -516,7 +526,7 @@ def cap9():
 {table}
 <div class="prose"><p>Si nadie se repitiera, en la generación {roman(deepest)}, la de Miguel Fernández de Villavicencio, tendríamos {fmt(2 ** (deepest - 1))} antepasados, muchos más que todos los habitantes de la Península en el siglo XIII. La explicación es que los árboles se cierran sobre sí mismos: a fuerza de casarse entre vecinos y parientes, las mismas personas ocupan muchas casillas. Los genealogistas lo llaman implejo. A nosotros nos ocurre ya en la generación V, porque los marqueses de Casa Domecq son a la vez tatarabuelos por papá y por mamá, y desde ellos hacia atrás toda su ascendencia cuenta dos veces. Por eso las {n_people} personas que tenemos en el árbol ocupan {n_pos} casillas.</p></div>"""
     fan = f"""<div class="fullpage fanpage"><div class="landscape"><h2 class="chart-title">El abanico de siete generaciones</h2>
-<p class="chart-note"><span class="print-only">Gira el libro para leerlo. </span>En el centro estamos nosotros; cada anillo es una generación, hasta los 64 quintos abuelos. Por papá a un lado y por mamá al otro. Las casillas grises son antepasados que aún no conocemos; las rosadas con un número repiten a los marqueses de Casa Domecq y su ascendencia, que nos llegan por los dos lados, y las rayadas están en duda.</p>
+<p class="chart-note"><span class="print-only">Gira el libro para leerlo. </span>En el centro estamos nosotros; cada anillo es una generación, hasta los 64 quintos abuelos. Por papá a un lado y por mamá al otro. Las casillas grises son antepasados que aún no conocemos; las rosadas con un número repiten a los marqueses de Casa Domecq y su ascendencia, que nos llegan por los dos lados{', y las rayadas están en duda' if HAS_DOUBT else ''}.</p>
 {fan_chart(7, uid="fanbig")}</div></div>"""
     groups = []
     keys = sorted(int(k) for k, p in P.items() if not p.get("same") and int(k) > 1)
@@ -541,13 +551,13 @@ def cap10():
     body = """<div class="prose">
 <p class="lead">Este libro es un punto de partida. Estos son los huecos que quedan y los sitios donde se pueden llenar.</p>
 <ol class="gaps">
-<li><b>Los padres de José y Fermín Bohórquez Gómez.</b> Es la incógnita más importante, porque de ella depende uno de nuestros cuatro costados. La partida literal de nacimiento de Fermín en el Registro Civil de Jerez (10-IX-1904) dará los nombres de sus padres y abuelos. Si vienen de Ubrique, el Archivo Histórico Municipal de Ubrique guarda los padrones del siglo XIX.</li>
+<li><b>Los padres de Ana María Gómez Bohórquez.</b> Gracias a papá ya sabemos que el bisabuelo José Bohórquez Gómez era hijo del diputado Bartolomé Bohórquez Rubiales y de Ana María Gómez Bohórquez. Faltan los padres de ella; su segundo apellido hace pensar que era pariente de su marido. La partida literal de nacimiento de su hijo Fermín en el Registro Civil de Jerez (10-IX-1904) los nombra. Para subir más en los Bohórquez, el Archivo Histórico Municipal de Ubrique guarda los padrones del siglo XIX, y la parroquia de Nuestra Señora de la O, los libros de bautismo.</li>
 <li><b>Los padres del abuelo Eduardo.</b> Todo apunta a Juan Vicente Vergara Sanchiz y Eugenia María Lacave Patero; su acta de nacimiento (Jerez, 1940) lo confirmaría.</li>
 <li><b>Los Vergara del Roncal.</b> Falta el documento que enlace a Eduardo Vergara, padre de Juan Vicente Vergara Lassaletta, con los Vergara y Vegas de El Puerto. El libro de Alfonso de la Calle Vergara y el Archivo Municipal de El Puerto son los sitios donde buscar.</li>
 <li><b>Los López de Carrizosa entre 1479 y 1770.</b> Faltan las generaciones entre Íñigo López de Carrizosa y Álvaro López de Carrizosa Perea, y el enlace con Rodrigo de Carrizosa. Archivo Municipal de Jerez y archivo de la Fundación del Hospital de la Santa Resurrección de Utrera.</li>
 <li><b>El enlace medieval de los Villavicencio.</b> No se sabe si Alonso Núñez de Villavicencio era hijo del alcaide Lorenzo o de su hermano Nuño, y los señores de Valhermoso entre 1543 y 1681 salen de árboles publicados. La obra de Rafael Sánchez Saus sobre los linajes medievales de Jerez es la referencia.</li>
 <li><b>Nombres que faltan.</b> Las familias de las bisabuelas María Josefa de Eizaguirre y Dasqui-Leguía y María Josefa Patero d’Etchecopar, los padres de María del Carmen de la Rocha y de María del Pilar Lassaletta y Fesser, los Hidalgo y Sarria, los González de la Mota y la madre del II marqués de Tamarón, una Gutiérrez del Mazo.</li>
-<li><b>El catedrático del Goya o el Velázquez.</b> En la familia se recuerda a un antepasado de la rama de la abuela Victoria, catedrático y estudioso, de origen granadino y con vida en Sevilla, que tuvo un Goya o un Velázquez y lo donó. No lo hemos identificado. Los que más se le parecen son Manuel Gómez-Imaz, erudito sevillano y gran coleccionista, y su nieto José de Mora-Figueroa, VIII marqués de Tamarón, catedrático; pero ninguno era de Granada, y no consta que donaran un cuadro así.</li>
+<li><b>El catedrático del Goya o el Velázquez.</b> En la familia se recuerda a un antepasado de la rama de la abuela Victoria, catedrático y estudioso, de origen granadino y con vida en Sevilla, que tuvo un Goya o un Velázquez y lo donó. No lo hemos identificado. Los que más se le parecen son Manuel Gómez-Imaz, erudito sevillano y gran coleccionista, y su nieto José de Mora-Figueroa, VIII marqués de Tamarón, catedrático; pero ninguno era de Granada, y no consta que donaran un cuadro así. La rama Bohórquez, ya corregida, es de terratenientes y políticos de Ubrique, y tampoco tiene un catedrático conocido.</li>
 <li><b>Lacoste y Torquemada.</b> No aparecen como antepasados directos. Los Lacoste están muy cerca (Juan Pedro Lacoste en el origen de la casa Domecq; Ana María Lacoste, mujer de Pedro Lacave Miramont), y de Torquemada no hay rastro.</li>
 </ol>
 <h2>Archivos</h2>
@@ -577,7 +587,7 @@ def fuentes():
     for s in STARS + COSTADOS:
         used.update(s.get("s", []))
     items = sorted(((S[k][0], S[k][1]) for k in used if k in S), key=lambda x: x[0].lower())
-    lis = "".join(f'<li>{esc(lbl)}<br><span class="url">{esc(url)}</span></li>' for lbl, url in items)
+    lis = "".join(f'<li>{esc(lbl)}' + (f'<br><span class="url">{esc(url)}</span>' if url else '') + '</li>' for lbl, url in items)
     body = f"""<div class="prose"><p class="lead">Las {len(items)} fuentes en que se apoya este libro, por orden alfabético. Los enlaces están vivos en el árbol interactivo.</p></div><ul class="sources">{lis}</ul>"""
     return chapter("fuentes", "Al final", "Fuentes", body)
 
@@ -592,7 +602,6 @@ def completar():
 <div class="wi"><h3>Nuestras bodas</h3>{lines}</div>
 <div class="wi"><h3>La generación que viene</h3>{lines}</div>
 <div class="wi wi-page"><h3>Descubrimientos y correcciones</h3>{many}</div>
-<div class="wi wi-page"><h3>Notas</h3>{many}</div>
 </section>
 <section class="colophon">
 <p>Este libro se compuso con las tipografías Alegreya y Alegreya Sans, de Juan Pablo del Peral, e IM Fell English, de Igino Marini, que reproduce las letras que el obispo John Fell legó a la imprenta de Oxford en el siglo XVII.</p>
@@ -615,7 +624,7 @@ TOC_STRUCTURE = [
     (2, "", "Los Villavicencio y sus alianzas"),
     (2, "", "Los Rivero y los González: CZ y González Byass"),
     (2, "", "Los Hidalgo, los Pardo de Figueroa y los Enrile"),
-    (2, "", "Los Bohórquez"),
+    (2, "", "Los Bohórquez, de Ubrique"),
     (2, "", "Los Mora-Figueroa, marqueses de Tamarón"),
     (2, "", "Los Vergara, del Roncal a Jerez"),
     (2, "", "Los Lacave y el título que vino de Quito"),
