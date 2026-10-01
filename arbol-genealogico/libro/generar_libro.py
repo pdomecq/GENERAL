@@ -57,7 +57,7 @@ DARK = """
 """
 
 BASE_CSS = """
-  html{background:var(--paper)}
+  html,body{background:var(--paper)}
   body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:10.5pt;line-height:1.48;
        font-variant-numeric:oldstyle-nums proportional-nums;text-rendering:optimizeLegibility}
   h1,h2,h3,h4{margin:0;font-weight:400;text-wrap:balance}
