@@ -47,7 +47,7 @@ tuya por las dos vías, la de tu padre y la de tu madre.
 
 ### Otras ramas que llegan lejos
 - **Spínola (Génova), s. XV:** Agustín Spínola (nº 271.364), comendador al servicio del marqués de Villena.
-- **Domecq (Béarn), 1385:** la casa Domecq de Usquain figura en el censo del Béarn de 1385; un Juan de Domecq rindió homenaje a Luis XIV el 18-III-1666. Jean Domecq (h. 1759–1831, nº 128) casó el 25-VII-1780 con Catherine Lembeye Haurie (nº 129), sobrina de Juan Haurie, el comerciante de vinos de Jerez.
+- **Domecq (Béarn), 1364:** el 5-IV-1364 Bertrand, señor de la casa Domecq de Usquain, rindió homenaje a Gaston Fébus en Orthez; la casa figura en el censo del Béarn de 1385; un Juan de Domecq rindió homenaje a Luis XIV el 18-III-1666. Jean Domecq (h. 1759–1831, nº 128) casó el 25-VII-1780 con Catherine Lembeye Haurie (nº 129), sobrina de Juan Haurie, el comerciante de vinos de Jerez.
 - **Zurita (marqueses de Campo Real), s. XVII:** Álvaro Diego de Zurita y Haro (nº 1.058).
 - **Lasso de la Vega (Écija), 1679:** García Lasso de la Vega y Valbuena (nº 1.068).
 - **Olaguer-Feliú, 1716:** Tomás Olaguer Feliú × María Josefa Heredia (Jaca, 1716) (nº 268–269), padres del virrey del Río de la Plata Antonio Olaguer Feliú y de tu antepasado José (bautizado en Barcelona en 1747).
@@ -117,13 +117,13 @@ Antepasados directos, con su número, y parientes cercanos, con la persona de tu
 17. María Rivero González (Jerez, 15-IV-1869 – 25-II-1962) **[C]**
 18. Salvador Hidalgo y Pardo de Figueroa (Medina Sidonia, 22-XI-1865 – 1939), II marqués de Pardo de Figueroa y V de Negrón **[C]**
 19. María del Carmen Enrile y González de la Mota (17-V-1859 – 1901) **[C]**
-20. Pedro Bohórquez Piñero **[en duda]** — Geneanet lo da como padre de José y Fermín Bohórquez Gómez, pero el Pedro Bohórquez Piñero documentado («el Chico», republicano de Ubrique) tenía 40 años en 1867 y su único hijo varón murió en 1869.
+20. Pedro Bohórquez Piñero **[en duda]** — Geneanet lo da como padre de José y Fermín Bohórquez Gómez, pero el Pedro Bohórquez Piñero documentado («el Chico», republicano de Ubrique) tenía 40 años en 1867. Fue diputado a Cortes por Cádiz y amigo de Fermín Salvochea; entre sus hijos estaba Sixto (n. h. 1858), quizá el eslabón que falta.
 21. Juana Gómez Tocón **[en duda]** — mujer de «el Chico»; mismo problema de fechas.
 22. José de Mora-Figueroa y Ferrer (El Puerto de Santa María, 1871 – Jerez, 1929), VII marqués de Tamarón **[C]**
 23. Victoria Gómez-Imaz Vázquez (n. h. 1870) **[C]** — su hermana María Candelaria casó con Carlos Cañal y Migolla, el primer ministro de Trabajo de España (1920–1921).
 24. Juan Vicente Vergara Lassaletta (1831 – Jerez, 16-I-1900), bodeguero e industrial **[Á]**
 25. María Josefa Sanchiz Quesada (1860–1934) **[Á]**
-26. Pedro Lacave de la Rocha (1883–1926) **[Á]** — casó en Cádiz el 27-II-1908.
+26. Pedro Lacave de la Rocha (1883–1926), II marqués de Fiel Pérez Calixto **[C]** — casó en Cádiz el 27-II-1908.
 27. María Josefa Patero d'Etchecopar **[Á]**
 28. = nº 16 · 29. = nº 17
 30. Pedro López de Carrizosa y Giles (1868–1930), I barón de Algar del Campo (1907) **[C]**
@@ -140,7 +140,7 @@ Antepasados directos, con su número, y parientes cercanos, con la persona de tu
 46. Manuel Gómez-Imaz Simón (La Habana, 3-VI-1844 – Sevilla, 1922), erudito y bibliógrafo, académico de Buenas Letras en Sevilla y gran coleccionista de la Guerra de la Independencia **[C]** · 47. Victoria Vázquez Rodríguez (n. 1849) **[C]**
 48. Eduardo Vergara **[Á]** · 49. María del Pilar Lassaletta y Fesser (1812–1903) **[Á]**
 50. Eliseo Sanchiz Basadre (1825–1902) **[Á]** · 51. Isabel Quesada Caugh (1842–1874) **[Á]** — ella era hermana de María Ana, la primera mujer de Juan Vicente Vergara Lassaletta.
-52. Lorenzo Lacave Perrot (1846–1905), marqués consorte de Fiel Pérez Calixto **[Á]** · 53. María del Carmen de la Rocha y Pérez (Jerez, 1859–1926), I marquesa de Fiel Pérez Calixto (1894) **[C]**
+52. Lorenzo Lacave Perrot (1846–1905), marqués consorte de Fiel Pérez Calixto **[Á]** · 53. María del Carmen de la Rocha y Pérez (Jerez, 1859–1926), I marquesa de Fiel Pérez Calixto (1894) **[C]** — el título sigue en la familia: hoy es V marqués su bisnieto Juan Lacave y Vergara.
 60. Francisco Javier López de Carrizosa y Pavón (1825–1882), VIII marqués de Casa Pavón y I de Mochales **[C]**
 61. María del Rosario de Giles y Rivero (1837–1899) **[C]**
 
@@ -178,6 +178,7 @@ Antepasados directos, con su número, y parientes cercanos, con la persona de tu
 244. Vicente de Giles y Castro (n. 1761) **[Á]** · 245. María Antonia Fernández del Rivero **[Á]**
 
 ## IX · 7.º abuelos
+242. N. Pavón y Castilla **[D]** · 243. N. López de Carrizosa y Adorno **[D]** — padres de Vicenta Pavón, deducidos de los apellidos de su hermano Cayetano; ella sería hermana del nº 240, así que Vicenta se casó con su primo hermano.
 240. Francisco Álvaro López de Carrizosa y Adorno (1760–1803), veinticuatro de Jerez, maestrante de Sevilla y patrono de la Fundación de Utrera **[Á]**
 258. Arnaud Lembeye **[Á]** · 259. Marie Haurie **[Á]** (hermana de Juan Haurie)
 264. José Antonio Núñez de Villavicencio y Zurita (1733–1791) **[Á]** · 265. Petronila Inés Fernández de Villavicencio y Villavicencio (n. 1736) **[Á]**
@@ -196,6 +197,7 @@ Antepasados directos, con su número, y parientes cercanos, con la persona de tu
 704. Ignacio Teodomiro Mora-Figueroa y Gutiérrez del Mazo, II marqués de Tamarón, caballero de Calatrava (1711) **[Á]** · 705. María Magdalena Pertiet y Boillot **[Á]**
 
 ## XI · 9.º abuelos
+1408. Diego Pablo de Mora-Figueroa, Miranda y Morales, I marqués de Tamarón (1712), caballero de Calatrava, vecino de Cádiz **[C]**
 1058. Álvaro Diego de Zurita y Haro, marqués de Campo Real **[Á]** · 1059. María de Auñón **[Á]**
 1060. Lorenzo Fernández de Villavicencio y Villavicencio (1665–1741), II marqués de Valhermoso **[C]** · 1061. María Manuela Spínola y Villaviciosa **[Á]**
 1068. García Lasso de la Vega y Valbuena (n. 1679) **[Á]** · 1069. Ana Rivas Castroviejo Dávila **[Á]**
@@ -216,7 +218,7 @@ Las órdenes militares piden probar la nobleza de sangre de los cuatro abuelos, 
 - **¿Noble por los cuatro costados?** De sangre noble, sin duda, por muchas ramas. Pero en sentido estricto hoy solo están probados dos costados de cuatro.
 - **¿Caballero de Calatrava?** La Orden es hoy honorífica y católica. El Real Consejo de las Órdenes Militares examina las pruebas de los cuatro costados y propone al Rey la concesión del hábito. Los Domecq te dan medio camino hecho; faltaría probar el costado Bohórquez y cerrar el Vergara.
 - **Una vía más sencilla:** la Real Asociación de Hidalgos de España solo pide la línea de varonía (Domecq), con tres actos positivos de nobleza. El hábito de Calatrava de tu bisabuelo es uno de ellos.
-- **Caballeros de órdenes y maestrantes en tu ascendencia directa.** Calatrava: nº 2.120, 704, 66, 18 y 8. Santiago: nº 16.960, además del Doctor Thebussem, que es pariente. San Juan: nº 534. Carlos III: nº 294, 68 y 122. Reales Maestranzas de Sevilla, Ronda y Zaragoza: nº 240, 68, 60, 18 y 15.
+- **Caballeros de órdenes y maestrantes en tu ascendencia directa.** Calatrava: nº 2.120, 1.408, 704, 66, 18 y 8. Santiago: nº 16.960, además del Doctor Thebussem, que es pariente. San Juan: nº 534. Carlos III: nº 294, 68 y 122. Reales Maestranzas de Sevilla, Ronda y Zaragoza: nº 240, 68, 60, 18 y 15.
 
 ## Lagunas y pistas
 - **Bohórquez (nº 20–21), en duda:** pedir en el Registro Civil de Jerez la certificación literal de nacimiento de Fermín Bohórquez Gómez (10-IX-1904), que recoge padres y abuelos.
