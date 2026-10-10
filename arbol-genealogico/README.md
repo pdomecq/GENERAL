@@ -12,10 +12,10 @@ Grado de certeza: **[C]** confirmado en fuentes de referencia (Wikipedia, Real A
 ## El libro de familia: «De dónde venimos»
 
 En [`libro/`](libro/) está el libro para imprimir, escrito en nombre de los hermanos Domecq Vergara:
-[`De-donde-venimos.pdf`](libro/De-donde-venimos.pdf) (A4, 70 páginas) y su versión web, [`libro.html`](libro/libro.html).
-Tiene diez capítulos: quiénes somos, la línea más antigua, las nueve ramas con su árbol y sus fichas,
-títulos, órdenes y cuatro costados, personajes, apellidos y escudos, cronología, el árbol completo
-(con un abanico de siete generaciones) y lo que falta por descubrir. Cierra con las fuentes y unas páginas para completar a mano.
+[`De-donde-venimos.pdf`](libro/De-donde-venimos.pdf) (A4, 74 páginas) y su versión web, [`libro.html`](libro/libro.html).
+
+- **Contenido:** diez capítulos (quiénes somos, la línea más antigua, las nueve ramas con su árbol y sus fichas, títulos, órdenes y cuatro costados, personajes, apellidos y escudos, cronología, el árbol completo y lo que queda por investigar), las fuentes y unas páginas para completar a mano.
+- **Ilustraciones:** las armas de los cuatro costados en la portada, los escudos de Domecq, Bohórquez, Vergara, López de Carrizosa, Villavicencio, Figueroa y Spínola, las cruces de las órdenes y las coronas de los títulos junto a cada antepasado, dos mapas (orígenes de las familias y la tierra de Cádiz y Sevilla) y la ilustración del valle del Roncal.
 
 Los datos salen de `arbol.html`, así que el libro se rehace con lo último del árbol:
 
@@ -23,7 +23,10 @@ Los datos salen de `arbol.html`, así que el libro se rehace con lo último del 
 cd libro && python3 generar_libro.py     # necesita node, python3 con pymupdf y Chromium
 ```
 
-Para imprimirlo: A4 a doble cara, sin ajustar a la página (escala 100 %). La página del abanico va girada.
+Los escudos se dibujan en `libro/heraldica.py` con figuras del Fantasy Map Generator (CC0 y WappenWiki, CC BY-NC-SA 3.0).
+Los mapas ya están en `libro/ilustraciones/`; para rehacerlos: `cd libro/mapas && npm install es-atlas world-atlas topojson-client d3-geo && node hacer_mapas.js`.
+
+Para imprimirlo: A4 a doble cara, sin ajustar a la página (escala 100 %), mejor en color. La página del abanico va girada.
 
 ## Tu línea más antigua: 25 generaciones, de 1264 a hoy
 
@@ -103,7 +106,7 @@ Antepasados directos, con su número, y parientes cercanos, con la persona de tu
 - **Dos ministros: José Gómez-Imaz y Simón, hermano de Manuel, y Carlos Cañal y Migolla, su yerno.** El primero, contralmirante, fue ministro de Marina en 1899–1900. El segundo fue ministro de Abastecimientos en 1919, el primer ministro de Trabajo de España en 1920–1921 y, durante unos pocos días de 1922, ministro de Gracia y Justicia.
 - **José de Mora-Figueroa y Gómez-Imaz, hermano de tu bisabuela María Francisca (nº 11).** VIII marqués de Tamarón, catedrático, historiador, académico de la Historia y alcalde de Jerez.
 - **María del Carmen de la Rocha y Pérez (nº 53).** I marquesa de Fiel Pérez Calixto (1894), título heredado de uno que Fernando VII concedió a un pariente quiteño.
-- **Bartolomé Bohórquez Rubiales (nº 20), «el diputado de las tres palabras».** Terrateniente de Ubrique, representó a la Sierra de Cádiz en siete legislaturas (seis como diputado por Grazalema desde 1899 y una como senador por Cádiz en 1919–1920). Según la tradición de su pueblo, en todos esos años solo dijo «Jesús, María y José», cuando tosía algún colega.
+- **Bartolomé Bohórquez Rubiales (nº 20), diputado y senador.** Terrateniente de Ubrique, representó a la Sierra de Cádiz en siete legislaturas: seis como diputado por Grazalema desde 1899 y una como senador por Cádiz en 1919–1920.
 - **Fermín Bohórquez Gómez, hermano de tu bisabuelo José (nº 10).** Compró en 1946 la ganadería que lleva su nombre; su hijo Fermín Bohórquez Escribano fue un célebre rejoneador.
 
 ## I · Tú
@@ -134,7 +137,7 @@ Antepasados directos, con su número, y parientes cercanos, con la persona de tu
 17. María Rivero González (Jerez, 15-IV-1869 – 25-II-1962) **[C]**
 18. Salvador Hidalgo y Pardo de Figueroa (Medina Sidonia, 22-XI-1865 – 1939), II marqués de Pardo de Figueroa y V de Negrón **[C]**
 19. María del Carmen Enrile y González de la Mota (17-V-1859 – 1901) **[C]**
-20. Bartolomé Bohórquez Rubiales (Ubrique, 1862 – Jerez, 15-X-1925), terrateniente, diputado a Cortes por Grazalema desde 1899 y senador por Cádiz (1919–1920) **[C]** — dato de la familia, confirmado en el Senado, Geni y Geneanet. Algunos árboles publicados ponían aquí a Pedro Bohórquez Piñero «el Chico», de otra familia Bohórquez Gómez de Ubrique.
+20. Bartolomé Bohórquez Rubiales (Ubrique, 1862 – Jerez, 15-X-1925), terrateniente, diputado a Cortes por Grazalema desde 1899 y senador por Cádiz (1919–1920) **[C]** — dato de la familia, confirmado en el Senado, Geni y Geneanet.
 21. Ana María Gómez Bohórquez († Jerez, 17-II-1940) **[C]** — madre de Ana María, José y Fermín Bohórquez Gómez.
 22. José de Mora-Figueroa y Ferrer (El Puerto de Santa María, 1871 – Jerez, 1929), VII marqués de Tamarón **[C]**
 23. Victoria Gómez-Imaz Vázquez (n. h. 1870) **[C]** — su hermana María Candelaria casó con Carlos Cañal y Migolla, el primer ministro de Trabajo de España (1920–1921).

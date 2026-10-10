@@ -4,10 +4,48 @@ La narración está escrita a mano a partir de lo investigado; las fichas de
 cada antepasado salen de los datos del árbol (arbol.html) para que libro y
 árbol digan siempre lo mismo.
 """
+import base64
+import re
 from html import escape
+from pathlib import Path
 
+import heraldica as HR
 from datos import P, S, LINE, STARS, COSTADOS, ORD, gen, real, side, fmt, roman, rel, nos, both_ways
 from graficos import pedigree5, branch_tree, fan_chart, convergence
+
+ILU = Path(__file__).resolve().parent / "ilustraciones"
+
+
+def ilustracion(nombre):
+    """SVG de ilustraciones/ en línea, o PNG como data URI."""
+    p = ILU / nombre
+    if p.suffix == ".svg":
+        return p.read_text()
+    data = base64.b64encode(p.read_bytes()).decode()
+    return f'<img src="data:image/png;base64,{data}" alt="">'
+
+
+# Órdenes de cada antepasado, para las cruces de las fichas.
+ORDER_OF = {}
+for _o in ORD:
+    _key = {"Orden de Calatrava": "calatrava", "Orden de Santiago": "santiago",
+            "Orden de San Juan": "sanjuan", "Orden de Carlos III": "carlos3"}.get(_o["o"])
+    if _key:
+        for _k in _o["ks"]:
+            ORDER_OF.setdefault(int(_k), []).append(_key)
+ORDER_NAME = {"calatrava": "Caballero de Calatrava", "santiago": "Caballero de Santiago",
+              "sanjuan": "Caballero de San Juan", "carlos3": "Caballero de Carlos III"}
+_TITLED = re.compile(r"\b[IVX]+ (marqu|conde|bar[oó]n)", re.I)
+
+
+def honores(k, t=""):
+    """Cruces de órdenes y corona de título, en pequeño, junto al nombre."""
+    out = [f'<span class="ico" title="{ORDER_NAME[o]}">{HR.cross(o, "ocross mini")}</span>' for o in ORDER_OF.get(int(k), [])]
+    if t and _TITLED.search(t):
+        rank = HR.title_rank(_TITLED.search(t).group(0))
+        if rank:
+            out.insert(0, f'<span class="ico crown" title="Título nobiliario">{HR.coronet(rank, "coronet mini")}</span>')
+    return "".join(out)
 
 
 def esc(s):
@@ -34,11 +72,12 @@ def card(k):
     note = nos(p.get("note", ""))
     return f"""<article class="card {side(k) or 'self'}">
   <div class="card-k"><span class="num">nº {fmt(k)}</span><span class="rel">{esc(rel(k))}</span>{mark(p.get('c'))}</div>
-  <div class="card-b"><h4>{esc(p['n'])}</h4>{f'<p class="meta">{esc(meta)}</p>' if meta else ''}{f'<p>{esc(note)}</p>' if note else ''}</div>
+  <div class="card-b"><h4>{esc(p['n'])}{honores(k, p.get("t", ""))}</h4>{f'<p class="meta">{esc(meta)}</p>' if meta else ''}{f'<p>{esc(note)}</p>' if note else ''}</div>
 </article>"""
 
 
 def cards(keys, title=""):
+    keys = [k for k in keys if P[str(k)].get("c") != "none"]
     items = [card(k) for k in keys]
     if title and items:
         # El título va pegado a la primera ficha para que no quede solo al pie de una página.
@@ -67,7 +106,7 @@ LINE_KEYS = {k for r in LINE for k in r.get("ks", [])}
 # --------------------------------------------------------------------- piezas
 def chapter(cid, label, title, body, lead=""):
     return f"""<section class="chapter" id="{cid}">
-<header class="ch-head"><p class="ch-num">{esc(label)}</p><h1>{esc(title)}</h1>{f'<p class="ch-lead">{lead}</p>' if lead else ''}</header>
+<header class="ch-head"><p class="ch-num">{esc(label)}</p><h1>{esc(title)}</h1>{HR.fleuron()}{f'<p class="ch-lead">{lead}</p>' if lead else ''}</header>
 {body}
 </section>"""
 
@@ -91,20 +130,26 @@ def front_matter():
   <div class="cover-frame">
     <p class="cover-kicker">Historia y genealogía de una familia de Jerez</p>
     <h1 class="cover-title">De dónde venimos</h1>
-    <p class="cover-sub">Los antepasados de los Domecq Vergara</p>
-    <div class="cover-art">""" + fan_chart(7, decorative=True, uid="cov") + """</div>
+    <p class="cover-sub">Linaje y armas de los Domecq Vergara</p>
+    <div class="cover-art">""" + HR.costados("cov") + """</div>
     <p class="cover-years">1264 · 2026</p>
     <p class="cover-foot">Recopilado por Pedro Domecq Vergara<br>Jerez de la Frontera, 2026</p>
   </div>
 </section>
 <section class="front colophon-front">
-  <p>Edición familiar, para los hermanos Domecq Vergara y sus padres. No se vende.</p>
-  <p>Compilado en septiembre y octubre de 2026 a partir de fuentes publicadas: la Real Academia de la Historia, el Boletín Oficial del Estado, estudios universitarios, Wikipedia y árboles genealógicos en línea. La lista completa está al final del libro.</p>
-  <p>El árbol interactivo, con las mismas fichas y enlaces a cada fuente, acompaña a este libro y se irá corrigiendo a medida que aparezcan documentos.</p>
+  <p>Edición familiar para los hermanos Domecq Vergara y sus padres.</p>
+  <p>Compuesto en septiembre y octubre de 2026 con los recuerdos de la familia y fuentes publicadas: la Real Academia de la Historia, el Boletín Oficial del Estado, el Senado, estudios universitarios y genealogías impresas y en línea. La relación completa está al final del libro.</p>
+  <p>Lo acompaña un árbol interactivo con las mismas fichas y el enlace a cada fuente, que se irá corrigiendo a medida que aparezcan documentos.</p>
 </section>
 <section class="front dedication">
   <p>Para papá y mamá, Pablo y Beatriz.</p>
   <p>Y para nuestros hermanos, y para los que vengan detrás.</p>
+</section>
+<section class="front plate">
+  <div class="plate-art">""" + HR.costados("front") + """</div>
+  <h2 class="plate-title">Armas de nuestros cuatro costados</h2>
+  <p class="plate-text">Cuartelado: primero y cuarto, de azur, una espada de plata guarnecida de oro, puesta en banda, acompañada de dos guantes de plata, que es de <b>Domecq</b>, por los dos abuelos Domecq; segundo, de gules, una banda de oro engolada en dragantes de sinople y bordura de azur con dos flores de lis de oro y dos columnas de plata, que es de <b>Bohórquez</b>, por la abuela Victoria; tercero, de oro, un roble de sinople con un lobo de sable atado al tronco con cadena de oro, que es de <b>Vergara</b>, por el abuelo Eduardo.</p>
+  <p class="plate-note">Así se reunían en un solo escudo los linajes de los cuatro abuelos en las pruebas de nobleza.</p>
 </section>"""
 
 
@@ -131,11 +176,14 @@ def intro():
 <li><span class="mk ok">●</span> <b>Confirmado</b> en fuentes de referencia (la Real Academia de la Historia, el BOE, estudios publicados, Wikipedia) o por la propia familia.</li>
 <li><span class="mk tree">○</span> <b>Tomado de árboles genealógicos publicados</b> (Geneanet, Geni, FamilySearch), sin comprobar todavía en documentos originales.</li>
 <li><span class="mk ded">◌</span> <b>Deducido</b> de las relaciones documentadas: encaja por nombres, fechas y lugares, pero falta el papel que lo pruebe.</li>
-<li><span class="mk doubt">◇</span> <b>En duda</b>, porque las fuentes se contradicen.%%DUDA%%</li>
+%%DUDA%%
 </ul>
-<p>Nada de lo que aquí se cuenta se ha inventado, pero hay eslabones que conviene comprobar en los archivos. El último capítulo explica cuáles y dónde buscarlos. La investigación se hizo en septiembre y octubre de 2026 con fuentes publicadas en internet; no se han consultado archivos físicos. Cuando alguien de la familia lo haga, este libro se podrá corregir y ampliar.</p>
+<p>Los caballeros de las órdenes militares llevan junto al nombre su cruz (<span class="ico">%%CAL%%</span> Calatrava, <span class="ico">%%SAN%%</span> Santiago, <span class="ico">%%SJ%%</span> San Juan, <span class="ico">%%C3%%</span> Carlos III), y los que tuvieron título, una corona.</p>
+<p>Hay eslabones que conviene comprobar en los archivos; el último capítulo dice cuáles y dónde buscarlos.</p>
 </div>"""
-    body = body.replace("%%DUDA%%", "" if HAS_DOUBT else " Ahora mismo no queda ninguno: la última duda, la de los padres del bisabuelo José Bohórquez, la resolvió papá.")
+    body = body.replace("%%DUDA%%", '<li><span class="mk doubt">◇</span> <b>En duda</b>, porque las fuentes se contradicen.</li>' if HAS_DOUBT else "")
+    for tok, o in (("%%CAL%%", "calatrava"), ("%%SAN%%", "santiago"), ("%%SJ%%", "sanjuan"), ("%%C3%%", "carlos3")):
+        body = body.replace(tok, HR.cross(o, "ocross mini"))
     return chapter("intro", "Antes de empezar", "Cómo leer este libro", body)
 
 
@@ -163,8 +211,11 @@ def cap1():
 {legend()}
 {pedigree5()}
 </div>"""
+    mapa = ('''<div class="prose"><h2>De dónde vinieron</h2>
+<p>Las familias que se fueron juntando en Jerez llegaron de muy lejos: del Béarn francés, al otro lado de los Pirineos; del Roncal navarro; de Cantabria y de Burgos; de Génova, de Flandes y de Irlanda; y algunas pasaron por América antes de asentarse en Cádiz.</p></div>'''
+            + figure(ilustracion("mapa_origenes.svg"), "Los lugares de origen de nuestras familias, y su camino hasta Jerez.", "map-fig"))
     fichas = '<div class="prose"><h2>Padres, abuelos y bisabuelos</h2><p>Las fichas de las tres primeras generaciones. Las de los tatarabuelos están en el capítulo de cada rama.</p></div>' + cards(range(2, 16))
-    return chapter("c1", "Capítulo 1", "Quiénes somos", p8 + conv + sn + chart + fichas)
+    return chapter("c1", "Capítulo 1", "Quiénes somos", p8 + conv + sn + mapa + chart + fichas)
 
 
 def cap2():
@@ -194,14 +245,19 @@ def cap2():
 RAMAS = []
 
 
-def rama(rid, title, lead, prose, chart_roots, chart_depth, keys, chart_caption, extra=""):
+def rama(rid, title, lead, prose, chart_roots, chart_depth, keys, chart_caption, extra="", arms=None, illus=""):
     chart = ""
     if chart_roots:
         chart = figure(branch_tree(chart_roots, chart_depth, label=title), chart_caption, "branch-fig")
     RAMAS.append((rid, title))
+    shield = ""
+    if arms:
+        key, cap = arms
+        shield = f'<figure class="rama-arms">{HR.shield(key, "r" + rid)}<figcaption>{esc(cap)}</figcaption></figure>'
     return f"""<section class="rama" id="{rid}">
-<h2 class="rama-title">{esc(title)}</h2>
+<header class="rama-head"><h2 class="rama-title">{esc(title)}</h2>{shield}</header>
 <div class="prose"><p class="lead">{lead}</p>{prose}</div>
+{illus}
 {chart}
 {cards(keys, "Fichas de la rama") if keys else ''}
 {extra}
@@ -219,23 +275,25 @@ def cap3():
         "Los Domecq vienen de Usquain, una aldea del Béarn, al pie de los Pirineos franceses, cerca de Sauveterre. En bearnés, su apellido designa una casa noble, y eso era la casa Domecq de Usquain: un pequeño dominio con su señor.",
         """<p>La primera noticia es del 5 de abril de 1364, cuando Bertrand, señor de Domecq, rindió homenaje a Gaston Fébus, conde de Foix y vizconde de Béarn, en el castillo de Orthez. La casa vuelve a aparecer en el censo del Béarn de 1385, y en 1666 un Juan de Domecq rindió homenaje a Luis XIV.</p>
 <p>El camino hacia Jerez empieza con una boda. Jean Domecq, señor de la casa de Usquain, se casó en 1780 con Catherine Lembeye Haurie, cuya madre, Marie Haurie, era hermana de Juan Haurie, un bearnés de Vielleségure que había llegado a Jerez como refugiado en 1740. Juan Haurie hizo fortuna con el vino: a la muerte de su amigo irlandés Patrick Murphy, en 1764, heredó su negocio junto con Juan Pedro Lacoste, y ganó contra el gremio de vinateros de Jerez un pleito que acabó en la Real Orden de 1778, la que liberalizó el comercio del vino. En 1791 metió en la casa a cinco sobrinos.</p>
-<p>Los hijos de Jean y Catherine siguieron el camino de su tío abuelo. Pedro Domecq Lembeye dio en 1822 su nombre a la casa, que desde entonces se llamó Pedro Domecq. Fue socio en el negocio del jerez de John James Ruskin, el padre del gran crítico de arte inglés John Ruskin, y en 1836 su hija Adèle fue el primer amor del joven Ruskin. Otro hermano, Juan Pedro, continuó la bodega. Nuestro antepasado es un tercer hermano, al que los árboles llaman Pierre Pascal o Pedro Pascual, casado con Marie de Loustau; las fuentes no se ponen de acuerdo en sus fechas.</p>
-<p>Su hijo Pierre Patient, que en España se llamó Pedro Domecq Loustau, nació en Usquain en 1824 y en 1848 entró en la bodega de su tío en Jerez. Hacia 1874 empezó a vender Fundador, el primer brandy de Jerez. En 1868 se casó con Carmen Núñez de Villavicencio y Olaguer-Feliú, de uno de los linajes más antiguos de la ciudad. Juntos fundaron colegios para niños pobres, asilos de ancianos y centros para mujeres, y según Infocatólica (2025) van camino de los altares. Alfonso XIII hizo a Carmen marquesa de Domecq d’Usquain en 1920.</p>
+<p>Los hijos de Jean y Catherine siguieron el camino de su tío abuelo. Pedro Domecq Lembeye dio en 1822 su nombre a la casa, que desde entonces se llamó Pedro Domecq. Fue socio en el negocio del jerez de John James Ruskin, padre del gran crítico de arte inglés John Ruskin. Otro hermano, Juan Pedro, continuó la bodega. Nuestro antepasado es un tercer hermano, Pierre Pascal, o Pedro Pascual, casado con Marie de Loustau.</p>
+<p>Su hijo Pierre Patient, que en España se llamó Pedro Domecq Loustau, nació en Usquain en 1824 y en 1848 entró en la bodega de su tío en Jerez. Hacia 1874 empezó a vender Fundador, el primer brandy de Jerez. En 1868 se casó con Carmen Núñez de Villavicencio y Olaguer-Feliú, de uno de los linajes más antiguos de la ciudad. Juntos fundaron colegios para niños pobres, asilos de ancianos y centros para mujeres, y van camino de los altares. Alfonso XIII hizo a Carmen marquesa de Domecq d’Usquain en 1920.</p>
 <p>Su hijo Pedro Domecq Núñez de Villavicencio (1869–1921) dirigió la casa después de él y recibió en 1906 del papa Pío X el título pontificio de marqués de Casa Domecq. Se casó en 1892 con María Rivero González, de los bodegueros Rivero, y de ellos vienen nuestros dos bisabuelos Domecq: José Manuel (1895–1981), caballero de Calatrava, padre del abuelo José Manuel, y Juan Pedro (1910–1995), ganadero de bravo, padre de la abuela Beatriz. Al morir en 1979 su hermano Pedro, Juan Pedro llevó la ganadería familiar con su hijo Gonzalo, y en 1999 sus hijos Gonzalo y Juan Pedro fundaron la ganadería Casa de los Toreros.</p>""",
-        [32], 3, [16, 17] + subtree(32), "Los Domecq del Béarn: de Pedro Domecq Loustau a los Haurie y los Lembeye.")
+        [32], 3, [16, 17] + subtree(32), "Los Domecq del Béarn: de Pedro Domecq Loustau a los Haurie y los Lembeye.",
+        arms=("domecq", "Armas de los Domecq"))
 
     vill_keys = [k for k in subtree(33) if k not in LINE_KEYS or k in (33, 66, 67, 132, 133)]
     vill_keys = sorted(set(vill_keys) | {k for k in subtree(33, 12)})
     villa = rama(
         "r-villavicencio", "Los Villavicencio y sus alianzas",
         "Con Carmen Núñez de Villavicencio entra en la familia el linaje más antiguo de Jerez, y con él una larga lista de alianzas: los Camacho, los Spínola de Génova, los Carrizosa, los Zurita, los Angulo, los Lasso de la Vega y los Olaguer-Feliú. La línea principal está en el capítulo anterior; aquí van las ramas que la rodean.",
-        """<p><b>Los condes de Cañete del Pinar.</b> Carlos II creó el título el 11 de mayo de 1688; al principio se llamó Cañete la Real y cambió de nombre en 1764. Todo indica que lo tuvieron José Núñez de Villavicencio (nacido en 1758), veinticuatro de Jerez y señor de Casarejo, y su mujer, Inés de Angulo y Lasso de la Vega, que murió en Écija en 1845. Su hijo José Juan (1800–1875), caballero de Calatrava, se casó con María Regla Olaguer-Feliú, y el hermano de Carmen, Manuel Núñez de Villavicencio (nacido en 1838), también fue conde de Cañete del Pinar.</p>
+        """<p><b>Los condes de Cañete del Pinar.</b> Carlos II creó el título el 11 de mayo de 1688; al principio se llamó Cañete la Real y cambió de nombre en 1764. Lo tuvieron José Núñez de Villavicencio (nacido en 1758), veinticuatro de Jerez y señor de Casarejo, y su mujer, Inés de Angulo y Lasso de la Vega, que murió en Écija en 1845. Su hijo José Juan (1800–1875), caballero de Calatrava, se casó con María Regla Olaguer-Feliú, y el hermano de Carmen, Manuel Núñez de Villavicencio (nacido en 1838), también fue conde de Cañete del Pinar.</p>
 <p><b>Los Olaguer-Feliú.</b> María Regla Olaguer-Feliú (1798–1864) era sobrina de Antonio Olaguer Feliú, virrey del Río de la Plata entre 1797 y 1799 y después secretario de Guerra de Carlos IV. Su padre, José, teniente coronel de Estado Mayor, se bautizó en Barcelona en 1747, y su abuelo, Tomás, nacido en Ceuta, fue capitán del Regimiento de Infantería de Granada.</p>
 <p><b>Los Angulo y los Lasso de la Vega.</b> Por la condesa Inés llegan los Angulo de Lucena y los Lasso de la Vega de Écija. Su abuelo Antonio García Lasso de la Vega fue caballero de la Orden de San Juan desde 1725.</p>
 <p><b>Los Zurita.</b> Bruno Núñez de Villavicencio se casó en 1725 con Francisca de Zurita, hija de Álvaro Diego de Zurita y Haro, II marqués de Campo Real, un título creado en 1689. Los Zurita de Jerez se tenían por descendientes de Fagut de Zurita, otro caballero de la conquista de 1264.</p>
 <p><b>Los marqueses de Valhermoso.</b> Petronila Inés Fernández de Villavicencio, la mujer de José Antonio Núñez de Villavicencio, era hija del III marqués de Valhermoso de Pozuela. Por ella sigue nuestra línea más antigua: su abuelo, el II marqués, gobernó Canarias, y su bisabuelo, el I, fue mayordomo mayor de la reina Mariana de Austria.</p>
 <p><b>Los Carrizosa y los Spínola.</b> Juan Fernández de Villavicencio y Carrizosa, señor de Valhermoso, era hijo de Diego Fernández de Villavicencio y de Isabel Melgarejo y Carrizosa, hija a su vez de Íñigo López de Carrizosa, el veinticuatro que en 1479 fundó la capilla funeraria de los Carrizosa en San Juan de los Caballeros. Juan se casó con Mencía Spínola, nieta de Pedro Camacho el Rico y hija de Luis de Spínola, un genovés que luchó en la conquista de Granada. Los Spínola vuelven a entrar dos siglos después con María Manuela Spínola, mujer del II marqués de Valhermoso.</p>""",
-        [33], 5, vill_keys, "La rama de Carmen Núñez de Villavicencio hasta la undécima generación.")
+        [33], 5, vill_keys, "La rama de Carmen Núñez de Villavicencio hasta la undécima generación.",
+        arms=("villavicencio", "Armas de los Villavicencio de Jerez"))
 
     rivero = rama(
         "r-rivero", "Los Rivero y los González: CZ y González Byass",
@@ -256,11 +314,10 @@ def cap3():
     bohorquez = rama(
         "r-bohorquez", "Los Bohórquez, de Ubrique",
         "La abuela Victoria era hija de José Bohórquez Gómez y nieta de Bartolomé Bohórquez Rubiales (1862–1925), un terrateniente de Ubrique que representó a la Sierra de Cádiz en las Cortes durante siete legislaturas. El hermano de José, Fermín Bohórquez Gómez (Jerez, 1904–1973), fue uno de los grandes ganaderos andaluces de su tiempo: en 1946 compró la ganadería de reses de Murube que desde entonces lleva su nombre, y su hijo, Fermín Bohórquez Escribano, primo hermano de la abuela, fue un rejoneador célebre.",
-        """<p><b>El diputado de las tres palabras.</b> Bartolomé nació en Ubrique en 1862, hijo de Fermín Bohórquez Zarco y Ana Rubiales Olmedo, y se hizo bachiller en el Instituto Columela de Cádiz en 1881. Fue seis veces diputado por el distrito de Grazalema, desde 1899, y senador por Cádiz en 1919 y 1920. Un estudio de la UNED sobre las elecciones en Cádiz lo describe como el hombre fuerte del distrito en la primera década del siglo XX. En Ubrique se contaba que en todas esas legislaturas solo habló para decir «Jesús, María y José» cuando tosía algún colega, y de ahí su apodo. Murió en Jerez en octubre de 1925. Su mujer, Ana María Gómez Bohórquez, le sobrevivió hasta 1940. Tuvieron tres hijos: Ana María, José, nuestro bisabuelo, y Fermín.</p>
-<p><b>Un error de los árboles publicados.</b> Varios árboles de internet daban como padres de José y Fermín a Pedro Bohórquez Piñero «el Chico», un republicano federal de Ubrique, y a su mujer, Juana Gómez Tocón. Las fechas no encajaban, porque en el padrón de 1867 los dos tenían ya unos cuarenta años. Papá lo ha aclarado: en Ubrique hubo dos familias Bohórquez Gómez, y los árboles las mezclaron. Los padres de José y Fermín eran Bartolomé y Ana María.</p>
+        """<p><b>Diputado y senador.</b> Bartolomé nació en Ubrique en 1862, hijo de Fermín Bohórquez Zarco y Ana Rubiales Olmedo, y se hizo bachiller en el Instituto Columela de Cádiz en 1881. Fue seis veces diputado a Cortes por el distrito de Grazalema, desde 1899, y senador por la provincia de Cádiz en 1919 y 1920. Un estudio de la UNED sobre las elecciones en Cádiz lo describe como el hombre fuerte del distrito en la primera década del siglo XX. Murió en Jerez en octubre de 1925. Su mujer, Ana María Gómez Bohórquez, le sobrevivió hasta 1940. Tuvieron tres hijos: Ana María, José, nuestro bisabuelo, y Fermín.</p>
 <p><b>Ubrique.</b> En el siglo XIX los Bohórquez fueron una de las familias principales de Ubrique, con alcaldes, comerciantes, abogados y políticos. De allí eran también los padres y los abuelos de Bartolomé: los Bohórquez Marchán, los Zarco Morales, los Rubiales y los Olmedo. Y en Ubrique se presentó en público como rejoneador, en 1959, Fermín Bohórquez Escribano.</p>
 <p><b>El apellido.</b> Según los tratados de heráldica, los Bohórquez son un linaje de origen castellano, del valle de Runanza, en la merindad de Trasmiera (Cantabria), que bajó a Andalucía con la Reconquista y fundó casa en Villamartín. Gonzalo Argote de Molina cuenta que un caballero Bohórquez que luchó en la batalla del Salado recibió del rey la Banda, y de ahí sus armas. El enlace de los Bohórquez de Ubrique con esa casa está por documentar.</p>""",
-        [10], 4, sorted(subtree(20) + subtree(21)), "La rama del bisabuelo José Bohórquez Gómez.", extra=fillbox(
+        [10], 4, sorted(subtree(20) + subtree(21)), "La rama del bisabuelo José Bohórquez Gómez.", arms=("bohorquez", "Armas de los Bohórquez"), extra=fillbox(
             "Para completar: los padres de Ana María Gómez Bohórquez",
             "Son los que faltan en esta rama. La partida de nacimiento de su hijo Fermín (Registro Civil de Jerez, 10 de septiembre de 1904) da los nombres de sus cuatro abuelos y de dónde eran. Cuando la tengamos, aquí van:",
             ["Padre", "Madre", "De dónde eran"]))
@@ -272,7 +329,8 @@ def cap3():
 <p><b>Los Ferrer.</b> El VI marqués se casó en El Puerto en 1870 con Francisca Ferrer y Rabech (1852–1924), con la que tuvo dieciséis hijos. Su padre, Federico Ferrer Sahuervain, fue elegido diputado a Cortes por El Puerto en 1864 y otra vez en 1865, y llegó a tener ochenta y una fincas repartidas por toda la provincia de Cádiz.</p>
 <p><b>Los Gómez-Imaz.</b> El VII marqués se casó con Victoria Gómez-Imaz Vázquez, hija de Manuel Gómez-Imaz (La Habana, 1844 – Sevilla, 1922), periodista, bibliógrafo y académico, presidente de la Real Academia Sevillana de Buenas Letras. Reunió una de las mejores colecciones privadas sobre la Guerra de la Independencia, hoy en la Biblioteca Nacional, y en 1896 publicó el inventario de las 999 obras de arte que los franceses se llevaron de Sevilla en 1810. Su hermano José fue contralmirante y ministro de Marina en 1899 y 1900, justo después del desastre del 98, y su yerno Carlos Cañal y Migolla fue el primer ministro de Trabajo de España, en 1920.</p>
 <p>Los hermanos de la bisabuela también dejaron huella. José de Mora-Figueroa y Gómez-Imaz (1899–1976), VIII marqués de Tamarón, fue catedrático, historiador, académico de la Real Academia de la Historia y alcalde de Jerez; Manuel (1904–1964) llegó a contralmirante. Hoy el título lo tiene Santiago de Mora-Figueroa y Williams, IX marqués, diplomático y escritor, embajador de España en el Reino Unido entre 1999 y 2004, hijo del VIII y primo hermano de la abuela Victoria.</p>""",
-        [11], 5, subtree(22) + subtree(23), "La rama de la bisabuela María Francisca de Mora-Figueroa hasta la novena generación.")
+        [11], 5, subtree(22) + subtree(23), "La rama de la bisabuela María Francisca de Mora-Figueroa hasta la novena generación.",
+        arms=("figueroa", "Armas de los Figueroa"))
 
     vergara = rama(
         "r-vergara", "Los Vergara, del Roncal a Jerez",
@@ -281,14 +339,16 @@ def cap3():
 <p><b>Del Roncal a El Puerto.</b> Los Vergara bodegueros de El Puerto de Santa María descienden de Francisco Vergara Lorea, nacido en 1726 en Urzainqui, en el valle navarro del Roncal, que ya tenía bodegas en El Puerto en 1765. Sus nietos, los hermanos Vergara y Vegas, llevaron la casa a Jerez en 1869. Todo indica que Eduardo Vergara, el padre de Juan Vicente Vergara Lassaletta, era uno de esos hermanos, pero falta el documento que lo pruebe. El libro <i>La familia Vergara del Norte al Sur</i>, de Alfonso de la Calle Vergara, cuenta esta historia.</p>
 <p>Los vecinos del valle del Roncal eran todos hidalgos por un privilegio que Carlos III de Navarra confirmó en 1412, y el valle tenía un escudo común a todos ellos, que recuerda la leyenda de la batalla de Olast. Si se documenta el enlace, los Vergara tendrían esa hidalguía.</p>
 <p><b>Los Lassaletta.</b> La madre de Juan Vicente, María del Pilar Lassaletta y Fesser (1812–1903), era de una familia de comerciantes de Cádiz. Según la historiadora Fátima Ruiz de Lassaletta, los Lassaletta figuran entre las familias de origen bearnés que impulsaron el comercio del jerez, como los Haurie, los Lacoste y los Domecq.</p>""",
-        [12], 4, subtree(24) + subtree(25), "La rama del bisabuelo Juan Vicente Vergara Sanchiz.")
+        [12], 4, subtree(24) + subtree(25), "La rama del bisabuelo Juan Vicente Vergara Sanchiz.",
+        arms=("vergara", "Armas de los Vergara"),
+        illus=figure(ilustracion("valle_roncal.png"), "El valle del Roncal. Urzainqui, la cuna de Francisco Vergara Lorea, está entre Isaba y Roncal, a orillas del río Esca.", "roncal-fig"))
 
     lacave = rama(
         "r-lacave", "Los Lacave y el título que vino de Quito",
         "La bisabuela Eugenia María Lacave Patero era hija de Pedro Lacave de la Rocha (1883–1926), II marqués de Fiel Pérez Calixto, y de María Josefa Patero d’Etchecopar, que se casaron en Cádiz en 1908.",
         """<p><b>De Navarrenx a Cádiz.</b> Pedro Lacave Miramont nació en 1776 en Navarrenx, en el Béarn, a pocos kilómetros de Usquain, la cuna de los Domecq. Era el sexto de once hijos de unos labradores, y en 1791, durante una crisis de alimentos en Francia, se fue a Cádiz, donde un tío materno tenía casa de comercio. En 1810 fundó la casa de vinos Lacave y Compañía, que llegó a ser una de las grandes exportadoras de vino de Jerez. Se casó en 1821 con la jerezana Ana María Lacoste Salazar, pero no tuvieron hijos, y trajo de Francia a sus sobrinos. Uno de ellos, Pedro Lacave Soulé (nacido en 1809), es nuestro antepasado: se casó en 1831 con Catalina Perrot Vignasse y tuvieron once hijos. Su hermano Juan Pedro fue banquero en Sevilla. Dos familias del mismo rincón del Béarn, los Domecq y los Lacave, vuelven a juntarse en nosotros.</p>
 <p><b>Un título que vino de Quito.</b> Lorenzo Lacave Perrot (1846–1905) se casó con María del Carmen de la Rocha y Pérez (1859–1926), para quien Alfonso XIII creó en 1894 el marquesado de Fiel Pérez Calixto. Era el heredero del de Casa Fiel Pérez Calisto, que Fernando VII había concedido en 1820 a un pariente de su familia materna, el quiteño Pedro José María Pérez Calisto, en recuerdo de sus antepasados muertos defendiendo la causa del rey en América. El título sigue en la familia: lo heredaron su hijo Pedro, nuestro tatarabuelo, sus nietos Pedro (1916–2001) y Juan Lacave Patero (1920–2005), hermanos de la bisabuela, y desde 2005 su bisnieto Juan Lacave y Vergara, primo hermano del abuelo Eduardo.</p>
-<p><b>Los Patero y los Etchecopar.</b> El segundo apellido de la tatarabuela María Josefa coincide con el de Juan Pablo Echecopar, socio de Pedro Lacave desde 1830, pero no se ha comprobado el parentesco.</p>""",
+""",
         [13], 4, subtree(26) + subtree(27), "La rama de la bisabuela Eugenia María Lacave Patero.")
 
     carrizosa = rama(
@@ -297,10 +357,12 @@ def cap3():
         """<p><b>Un linaje de la conquista.</b> Los López de Carrizosa descienden de Rodrigo de Carrizosa, uno de los caballeros que recibieron tierras en el repartimiento de Jerez en 1266. En 1494 los Reyes Católicos llamaron a su corte a dos hidalgos jerezanos del apellido, Pedro Díaz de Carrizosa y el jurado Diego de Carrizosa. Íñigo López de Carrizosa, veinticuatro de Jerez nacido en 1440, fundó en 1479 la capilla funeraria de la familia en San Juan de los Caballeros, hoy sacristía de la iglesia; como su hija Isabel se casó con un señor de Valhermoso, Íñigo es también antepasado nuestro por la línea de los Villavicencio. Desde hace unas veinte generaciones, los López de Carrizosa son patronos del Hospital de la Santa Resurrección de Utrera, fundado en 1514.</p>
 <p><b>La línea documentada.</b> Empieza con el veinticuatro Álvaro López de Carrizosa Perea, que murió en 1770 y cuya viuda, Rosa María Adorno, reformó el palacio familiar de Jerez. Su hijo Francisco Álvaro (1760–1803) fue veinticuatro, maestrante de Sevilla y patrono de la fundación de Utrera, y su nieto José López de Carrizosa y Dávila (1800–1842), coronel de Caballería, se casó con Vicenta Pavón, de los marqueses de Casa Pavón, que según todo indica era su prima hermana. Su hijo Francisco Javier López de Carrizosa y Pavón (1825–1882), senador y maestrante de Sevilla, heredó el marquesado de Casa Pavón y recibió el de Mochales en 1878; se casó con María del Rosario de Giles y Rivero, hija de Miguel de Giles, caballero de Carlos III y consejero real de Agricultura.</p>
 <p><b>Casa Pavón.</b> Felipe V creó el marquesado el 31 de diciembre de 1706, con el vizcondado previo de Trobal, para Miguel José Pavón de Fuentes, nacido en Jerez en 1671: veinticuatro, coronel de Dragones, mariscal de campo, gobernador de La Habana y caballero de Santiago.</p>
-<p><b>Los Eizaguirre.</b> De la familia de la bisabuela María Josefa de Eizaguirre y Dasqui-Leguía no hemos encontrado nada todavía.</p>""",
-        [15], 5, [k for k in subtree(30) + subtree(31)], "La rama de la bisabuela Ángeles López de Carrizosa y Eizaguirre.")
+""",
+        [15], 5, [k for k in subtree(30) + subtree(31)], "La rama de la bisabuela Ángeles López de Carrizosa y Eizaguirre.",
+        arms=("carrizosa", "Armas de los López de Carrizosa"))
 
-    intro_txt = """<div class="prose"><p class="lead">Cada uno de nuestros dieciséis tatarabuelos abre una rama. Aquí van agrupadas por familias, cada una con su historia, un árbol con los antepasados que constan y las fichas de todos ellos. La rama de los marqueses de Casa Domecq, que es la nuestra por partida doble, ocupa las tres primeras secciones: los Domecq, los Villavicencio y los Rivero.</p></div>"""
+    intro_txt = """<div class="prose"><p class="lead">Cada uno de nuestros dieciséis tatarabuelos abre una rama. Aquí van agrupadas por familias, cada una con su historia, sus armas cuando las conocemos, un árbol con los antepasados que constan y las fichas de todos ellos. La rama de los marqueses de Casa Domecq, que es la nuestra por partida doble, ocupa las tres primeras secciones: los Domecq, los Villavicencio y los Rivero.</p>
+<p>Casi todas acabaron en la misma tierra: Jerez y su campiña, la bahía de Cádiz, la Sierra y Sevilla.</p></div>""" + figure(ilustracion("mapa_cadiz.svg"), "La tierra de la familia: los pueblos y ciudades de cada rama.", "map-fig")
     body = intro_txt + domecq + villa + rivero + hidalgo + bohorquez + tamaron + vergara + lacave + carrizosa
     return chapter("c3", "Capítulo 3", "Las ramas de la familia", body)
 
@@ -325,7 +387,9 @@ PARIENTES_TITULOS = ("En las ramas colaterales aparecen además el marquesado de
 
 
 def cap4():
-    rows = "".join(f'<tr><th scope="row">{esc(t)}</th><td class="when">{esc(w)}</td><td>{esc(x)}</td></tr>' for t, w, x in TITULOS)
+    def rk(t):
+        return "conde" if t.startswith("Condado") else "baron" if t.startswith("Baron") else "marques"
+    rows = "".join(f'<tr><th scope="row"><span class="tcrown">{HR.coronet(rk(t))}</span>{esc(t)}</th><td class="when">{esc(w)}</td><td>{esc(x)}</td></tr>' for t, w, x in TITULOS)
     body = f"""<div class="prose"><p class="lead">Doce títulos nobiliarios pasaron por nuestros antepasados directos. Los más antiguos son del siglo XVII y premiaban servicios a la Corona; los del siglo XX, la obra de familias que habían hecho fortuna con el vino y la ganadería. Al menos dos siguen hoy en manos de parientes cercanos: Tamarón, que tiene Santiago de Mora-Figueroa, primo hermano de la abuela Victoria, y Fiel Pérez Calixto, que tiene Juan Lacave y Vergara, primo hermano del abuelo Eduardo.</p>
 <p>Un título se hereda, por lo general, por el primogénito, así que la mayoría de nuestros antepasados no lo tuvo aunque descendamos de quien lo recibió. La tabla dice, para cada uno, quién fue el primer titular y por dónde nos llega.</p></div>
 <table class="titles"><thead><tr><th>Título</th><th>Creación</th><th>Por dónde nos llega</th></tr></thead><tbody>{rows}</tbody></table>
@@ -340,28 +404,40 @@ def cap5():
     for o in ORD:
         people = "; ".join(f"{esc(pname(k))} (nº {fmt(k)}, {esc(rel(k, False))})" for k in o["ks"])
         ex = extra.get(o["o"])
-        ords.append(f'<li><b>{esc(o["o"])}</b>: {people}{"; " + esc(ex) if ex else ""}.</li>')
-    ords.insert(0, "<li><b>Orden de la Banda</b>: Lorenzo Fernández de Villavicencio, alcaide de Jerez desde 1326 (nº 4.341.856, 21.º abuelo por las dos vías), a quien hizo caballero de la Banda el propio Alfonso XI, que la había fundado.</li>")
+        key = {"Orden de Calatrava": "calatrava", "Orden de Santiago": "santiago", "Orden de San Juan": "sanjuan", "Orden de Carlos III": "carlos3"}.get(o["o"])
+        ico = f'<span class="ocross-l">{HR.cross(key)}</span>' if key else '<span class="ocross-l"></span>'
+        ords.append(f'<li>{ico}<div><b>{esc(o["o"])}</b>: {people}{"; " + esc(ex) if ex else ""}.</div></li>')
+    ords.insert(0, '<li><span class="ocross-l"></span><div><b>Orden de la Banda</b>: Lorenzo Fernández de Villavicencio, alcaide de Jerez desde 1326 (nº 4.341.856, 21.º abuelo por las dos vías), a quien hizo caballero de la Banda el propio Alfonso XI, que la había fundado.</div></li>')
     cst = "".join(f'<tr class="{c["st"]}"><th scope="row">{esc(c["h"])}</th><td>{esc(pname(c["k"]))}</td><td class="st">{mark(c["st"])} {esc(c["lab"])}</td><td>{esc(nos(c["t"]))}</td></tr>' for c in COSTADOS)
     body = f"""<div class="prose"><p class="lead">Las órdenes militares de Santiago, Calatrava, Alcántara y Montesa nacieron en la Edad Media como órdenes de caballeros que combatían en la frontera; con los siglos se convirtieron en corporaciones honoríficas que exigían probar la nobleza. Entre nuestros antepasados directos hay seis caballeros de Calatrava, uno de Santiago, uno de San Juan y uno de la Banda, además de caballeros de Carlos III y maestrantes de Sevilla, Ronda y Zaragoza.</p></div>
 <ul class="ords">{"".join(ords)}</ul>
 <div class="prose"><h2>Los cuatro costados</h2>
 <p>Para entrar en las órdenes había que probar la nobleza de sangre de los cuatro abuelos, los «cuatro costados», y las órdenes lo siguen pidiendo hoy. Cada abuelo cuenta por su primer apellido: la nobleza de la abuela Victoria depende de los Bohórquez, no de su madre Mora-Figueroa. Así están los nuestros:</p></div>
 <table class="costados"><thead><tr><th>Costado</th><th>Abuelo o abuela</th><th>Situación</th><th>Por qué</th></tr></thead><tbody>{cst}</tbody></table>
-<div class="prose"><p>De sangre noble, sin duda: descendemos de marqueses, condes, veinticuatros de Jerez y caballeros de varias órdenes, por muchas ramas distintas. Pero en sentido estricto hoy solo se pueden dar por probados dos costados de los cuatro, los dos Domecq.</p>
+<div class="costados-arms">%%COSTADOS%%</div>
+<div class="prose"><p>Somos de sangre noble por muchas ramas: descendemos de marqueses, condes, veinticuatros de Jerez y caballeros de varias órdenes. A efectos de las órdenes militares, los dos costados Domecq están probados por el hábito de Calatrava del bisabuelo José Manuel; el Bohórquez y el Vergara están por documentar.</p>
 <p>La Orden de Calatrava es hoy honorífica y católica. El Real Consejo de las Órdenes Militares examina las pruebas de nobleza de los cuatro costados y propone al Rey la concesión del hábito. Los dos costados Domecq dan medio camino hecho, y el hábito del bisabuelo José Manuel es el mejor punto de partida; los expedientes de pruebas antiguos se guardan en la Sección de Órdenes Militares del Archivo Histórico Nacional. Faltaría probar el costado Bohórquez y cerrar el Vergara. La Real Asociación de Hidalgos de España, en cambio, solo pide la línea de varonía, la de los Domecq, con tres actos positivos de nobleza, y el hábito de Calatrava del bisabuelo es uno de ellos.</p></div>"""
+    trio = [("domecq", "Domecq", "El abuelo José Manuel"), ("bohorquez", "Bohórquez", "La abuela Victoria"),
+            ("vergara", "Vergara", "El abuelo Eduardo"), ("domecq", "Domecq", "La abuela Beatriz")]
+    arms = "".join(f'<figure>{HR.shield(k, f"c5{i}")}<figcaption><b>{n}</b><br>{w}</figcaption></figure>' for i, (k, n, w) in enumerate(trio))
+    body = body.replace("%%COSTADOS%%", arms)
     return chapter("c5", "Capítulo 5", "Órdenes, maestranzas y los cuatro costados", body)
+
+
+OMIT_STARS = {"El primer amor de Ruskin"}
 
 
 def cap6():
     items = []
     for s in STARS:
+        if s["g"] in OMIT_STARS:
+            continue
         if s.get("k"):
             relx = f"{rel(s['k'])} · nº {fmt(s['k'])}"
         else:
             relx = f"{nos(s['vt'])} {pname(s['via'])} (nº {fmt(s['via'])})"
-        items.append(f"""<article class="star"><p class="star-g">{esc(s['g'])} · {esc(s['y'])}</p><h3>{esc(s['h'])}</h3><p class="star-rel">{esc(relx)}</p><p>{esc(nos(s['t']))}</p></article>""")
-    body = f"""<div class="prose"><p class="lead">Una selección de antepasados y de parientes muy cercanos, de la conquista de Jerez al siglo XX: los que hicieron historia y los que dejaron las historias más curiosas.</p></div>
+        items.append(f"""<article class="star"><p class="star-g">{esc(s['g'])} · {esc(s['y'])}</p><h3>{esc(s['h'])}{honores(s['k']) if s.get('k') else ''}</h3><p class="star-rel">{esc(relx)}</p><p>{esc(nos(s['t']))}</p></article>""")
+    body = f"""<div class="prose"><p class="lead">Una galería de antepasados y de parientes muy cercanos, de la conquista de Jerez al siglo XX: los que sirvieron a la Corona, fundaron casas y bodegas y dejaron nombre.</p></div>
 <div class="stars">{"".join(items)}</div>"""
     return chapter("c6", "Capítulo 6", "Personajes de la familia", body)
 
@@ -390,7 +466,7 @@ APELLIDOS = [
     ("Lembeye", "Bearneses; por Catherine Lembeye Haurie se enlazan los Domecq con los Haurie.", [129, 258], None),
     ("Loustau", "Bearneses; el apellido viene del gascón l’ostau, «la casa».", [65], None),
     ("Meléndez", "Sevillanos; Luis Meléndez y Bruna fue el I marqués de Negrón y su hermano Salvador, gobernador de Puerto Rico.", [73, 146], None),
-    ("Mora-Figueroa", "Marqueses de Tamarón desde 1712, con casa en Cádiz y luego en Vejer, El Puerto y Jerez.", [11, 22, 44, 88, 176, 352, 704, 1408], None),
+    ("Mora-Figueroa", "Marqueses de Tamarón desde 1712, con casa en Cádiz y luego en Vejer, El Puerto y Jerez. El escudo del I marqués, en el Ayuntamiento de Tamarón, reúne sus cuatro apellidos; el de Figueroa es el más conocido.", [11, 22, 44, 88, 176, 352, 704, 1408], "Figueroa: en campo de oro, cinco hojas de higuera de sinople, puestas en sotuer."),
     ("Núñez de Villavicencio", "Una de las tres casas de los Villavicencio de Jerez: condes de Cañete del Pinar y señores de Casarejo.", [33, 66, 132, 264, 528], None),
     ("Olaguer-Feliú", "Familia de militares catalanes; un virrey del Río de la Plata.", [67, 134, 268], None),
     ("O'Neale", "Familia jerezana de origen irlandés.", [69], None),
@@ -403,10 +479,10 @@ APELLIDOS = [
     ("Rubiales", "Familia de Ubrique. Ana Rubiales Olmedo fue la madre del diputado Bartolomé Bohórquez Rubiales.", [41, 82], None),
     ("Sanchiz", "Familia de Jerez.", [25, 50], None),
     ("Soto", "De Briviesca (Burgos); Pedro Nolasco de Soto hizo fortuna en México y se estableció en Cádiz.", [71, 142], None),
-    ("Spínola", "Genoveses, al servicio del marqués de Villena y de los Reyes Católicos.", [1061, 67841, 135682, 271364], None),
+    ("Spínola", "Genoveses, al servicio del marqués de Villena y de los Reyes Católicos.", [1061, 67841, 135682, 271364], "En campo de oro, una faja jaquelada de gules y plata, de tres órdenes, sumada de una flor de lis de gules."),
     ("Tixera", "Herederos de la bodega CZ, fundada en 1650.", [137], None),
     ("Vergara", "Bodegueros de El Puerto y Jerez, del valle navarro del Roncal. Las armas más extendidas son las de los Vergara de Guipúzcoa; los de Navarra usaban, según una ejecutoria de 1630, «un puerco jabalí bajo un árbol e una ave rampante».", [3, 6, 12, 24, 48, 96, 192], "En campo de oro, un roble de sinople con un lobo de sable atado al tronco con una cadena de oro (Vergara de Guipúzcoa)."),
-    ("Villavicencio", "El linaje de la conquista de Jerez (1264), con presencia continuada en la ciudad desde entonces: alcaides, veinticuatros y marqueses de Valhermoso.", [2120, 4341856, 17367424], None),
+    ("Villavicencio", "El linaje de la conquista de Jerez (1264), con presencia continuada en la ciudad desde entonces: alcaides, veinticuatros y marqueses de Valhermoso.", [2120, 4341856, 17367424], "En campo de azur, tres fajas de oro, cargada cada una de cinco dedos de sangre, según el estudio del mayorazgo de Pedro Camacho (1507)."),
     ("Zarco", "Familia de Ubrique. Rafaela Zarco Morales fue la abuela paterna del diputado Bartolomé Bohórquez Rubiales.", [81], None),
     ("Zurita", "Marqueses de Campo Real; los Zurita de Jerez se tenían por descendientes de Fagut de Zurita, caballero de la conquista.", [529, 1058], None),
 ]
@@ -417,7 +493,13 @@ def cap7():
     for name, txt, ks, blazon in APELLIDOS:
         nums = ", ".join(fmt(k) for k in ks if str(k) in P)
         items.append(f"""<article class="ap{' has-blazon' if blazon else ''}"><h3>{esc(name)}</h3><p>{esc(txt)}</p>{f'<p class="blazon"><span>Armas.</span> {esc(blazon)}</p>' if blazon else ''}<p class="ap-k">En el árbol: nº {nums}</p></article>""")
-    body = f"""<div class="prose"><p class="lead">Los apellidos de nuestros antepasados, de la A a la Z: de dónde vienen, por dónde entran en el árbol y, en los cuatro de nuestros abuelos con escudo documentado, sus armas.</p>
+    plate = [("domecq", "Domecq"), ("bohorquez", "Bohórquez"), ("vergara", "Vergara"), ("carrizosa", "López de Carrizosa"),
+             ("villavicencio", "Villavicencio"), ("figueroa", "Figueroa"), ("spinola", "Spínola")]
+    armorial = ('<div class="armorial">' + "".join(f'<figure>{HR.shield(k, "a" + k)}<figcaption>{esc(n)}</figcaption></figure>' for k, n in plate)
+                + f'<figure>{HR.costados("acost")}<figcaption>Los cuatro costados</figcaption></figure></div>')
+    body = f"""<div class="prose"><p class="lead">Los apellidos de nuestros antepasados, de la A a la Z: de dónde vienen, por dónde entran en el árbol y, cuando las conocemos, sus armas.</p></div>
+{armorial}
+<div class="prose">
 <p class="small">Las armas se describen en el lenguaje de la heráldica: el campo es el fondo del escudo; los colores (esmaltes) se llaman gules (rojo), azur (azul), sinople (verde), sable (negro) y púrpura, y los metales, oro y plata. Un escudo de apellido no pertenece a todos los que lo llevan; describe las armas que usó el linaje.</p></div>
 <div class="apellidos">{"".join(items)}</div>"""
     return chapter("c7", "Capítulo 7", "Nuestros apellidos y sus escudos", body)
@@ -455,18 +537,16 @@ CRONO = [
     ("1783", "José Antonio González llega a Sanlúcar como visitador de las salinas reales."),
     ("1791", "Pedro Agustín Rivero se casa con Tomasa de la Tixera, heredera de la bodega CZ."),
     ("1797", "Antonio Olaguer Feliú, virrey del Río de la Plata hasta 1799."),
-    ("1810", "Pedro Lacave funda en Cádiz Lacave y Compañía. Los franceses se llevan 999 obras de arte de Sevilla."),
+    ("1810", "Pedro Lacave funda en Cádiz Lacave y Compañía."),
     ("1822", "La casa de Juan Haurie pasa a llamarse Pedro Domecq."),
     ("1824", "Nace en Usquain Pedro Domecq Loustau."),
     ("1835", "Manuel María González Ángel funda en Jerez la bodega que será González Byass."),
-    ("1836", "Adèle Domecq, primer amor de John Ruskin."),
     ("1848", "Pedro Domecq Loustau entra en la bodega de su tío en Jerez."),
     ("1865", "Emilia González de Soto se casa con Tomás Rivero O'Neale."),
     ("1868", "Pedro Domecq Loustau se casa con Carmen Núñez de Villavicencio."),
     ("1869", "Los Vergara y Vegas llevan su casa a Jerez."),
     ("1874", "Hacia este año sale a la venta Fundador, el primer brandy de Jerez."),
     ("1878", "Alfonso XII crea el marquesado de Mochales."),
-    ("1880", "El Doctor Thebussem, primer cartero honorario de España."),
     ("1892", "Boda de Pedro Domecq Núñez de Villavicencio y María Rivero González."),
     ("1894", "Se crea el marquesado de Fiel Pérez Calixto."),
     ("1896", "Manuel Gómez-Imaz publica el inventario de los cuadros que los franceses se llevaron de Sevilla."),
@@ -524,7 +604,7 @@ def cap9():
 <h2>Cuántos antepasados conocemos</h2>
 <p>Cada generación duplica a la anterior: dos padres, cuatro abuelos, ocho bisabuelos… Esta tabla cuenta, en cada generación, cuántas casillas tiene el árbol y cuántas sabemos ya quién ocupa.</p></div>
 {table}
-<div class="prose"><p>Si nadie se repitiera, en la generación {roman(deepest)}, la de Miguel Fernández de Villavicencio, tendríamos {fmt(2 ** (deepest - 1))} antepasados, muchos más que todos los habitantes de la Península en el siglo XIII. La explicación es que los árboles se cierran sobre sí mismos: a fuerza de casarse entre vecinos y parientes, las mismas personas ocupan muchas casillas. Los genealogistas lo llaman implejo. A nosotros nos ocurre ya en la generación V, porque los marqueses de Casa Domecq son a la vez tatarabuelos por papá y por mamá, y desde ellos hacia atrás toda su ascendencia cuenta dos veces. Por eso las {n_people} personas que tenemos en el árbol ocupan {n_pos} casillas.</p></div>"""
+<div class="prose"><p>Los marqueses de Casa Domecq son a la vez tatarabuelos por papá y por mamá, y desde ellos hacia atrás toda su ascendencia cuenta dos veces. Por eso las {n_people} personas que tenemos en el árbol ocupan {n_pos} casillas.</p></div>"""
     fan = f"""<div class="fullpage fanpage"><div class="landscape"><h2 class="chart-title">El abanico de siete generaciones</h2>
 <p class="chart-note"><span class="print-only">Gira el libro para leerlo. </span>En el centro estamos nosotros; cada anillo es una generación, hasta los 64 quintos abuelos. Por papá a un lado y por mamá al otro. Las casillas grises son antepasados que aún no conocemos; las rosadas con un número repiten a los marqueses de Casa Domecq y su ascendencia, que nos llegan por los dos lados{', y las rayadas están en duda' if HAS_DOUBT else ''}.</p>
 {fan_chart(7, uid="fanbig")}</div></div>"""
@@ -549,23 +629,22 @@ def cap9():
 
 def cap10():
     body = """<div class="prose">
-<p class="lead">Este libro es un punto de partida. Estos son los huecos que quedan y los sitios donde se pueden llenar.</p>
+<p class="lead">Este libro es un punto de partida. Estos son los eslabones que conviene completar y los archivos donde buscarlos.</p>
 <ol class="gaps">
 <li><b>Los padres de Ana María Gómez Bohórquez.</b> Gracias a papá ya sabemos que el bisabuelo José Bohórquez Gómez era hijo del diputado Bartolomé Bohórquez Rubiales y de Ana María Gómez Bohórquez. Faltan los padres de ella; su segundo apellido hace pensar que era pariente de su marido. La partida literal de nacimiento de su hijo Fermín en el Registro Civil de Jerez (10-IX-1904) los nombra. Para subir más en los Bohórquez, el Archivo Histórico Municipal de Ubrique guarda los padrones del siglo XIX, y la parroquia de Nuestra Señora de la O, los libros de bautismo.</li>
 <li><b>Los padres del abuelo Eduardo.</b> Todo apunta a Juan Vicente Vergara Sanchiz y Eugenia María Lacave Patero; su acta de nacimiento (Jerez, 1940) lo confirmaría.</li>
 <li><b>Los Vergara del Roncal.</b> Falta el documento que enlace a Eduardo Vergara, padre de Juan Vicente Vergara Lassaletta, con los Vergara y Vegas de El Puerto. El libro de Alfonso de la Calle Vergara y el Archivo Municipal de El Puerto son los sitios donde buscar.</li>
 <li><b>Los López de Carrizosa entre 1479 y 1770.</b> Faltan las generaciones entre Íñigo López de Carrizosa y Álvaro López de Carrizosa Perea, y el enlace con Rodrigo de Carrizosa. Archivo Municipal de Jerez y archivo de la Fundación del Hospital de la Santa Resurrección de Utrera.</li>
 <li><b>El enlace medieval de los Villavicencio.</b> No se sabe si Alonso Núñez de Villavicencio era hijo del alcaide Lorenzo o de su hermano Nuño, y los señores de Valhermoso entre 1543 y 1681 salen de árboles publicados. La obra de Rafael Sánchez Saus sobre los linajes medievales de Jerez es la referencia.</li>
-<li><b>Nombres que faltan.</b> Las familias de las bisabuelas María Josefa de Eizaguirre y Dasqui-Leguía y María Josefa Patero d’Etchecopar, los padres de María del Carmen de la Rocha y de María del Pilar Lassaletta y Fesser, los Hidalgo y Sarria, los González de la Mota y la madre del II marqués de Tamarón, una Gutiérrez del Mazo.</li>
-<li><b>El catedrático del Goya o el Velázquez.</b> En la familia se recuerda a un antepasado de la rama de la abuela Victoria, catedrático y estudioso, de origen granadino y con vida en Sevilla, que tuvo un Goya o un Velázquez y lo donó. No lo hemos identificado. Los que más se le parecen son Manuel Gómez-Imaz, erudito sevillano y gran coleccionista, y su nieto José de Mora-Figueroa, VIII marqués de Tamarón, catedrático; pero ninguno era de Granada, y no consta que donaran un cuadro así. La rama Bohórquez, ya corregida, es de terratenientes y políticos de Ubrique, y tampoco tiene un catedrático conocido.</li>
-<li><b>Lacoste y Torquemada.</b> No aparecen como antepasados directos. Los Lacoste están muy cerca (Juan Pedro Lacoste en el origen de la casa Domecq; Ana María Lacoste, mujer de Pedro Lacave Miramont), y de Torquemada no hay rastro.</li>
+<li><b>Las familias de las tatarabuelas.</b> Los Eizaguirre y Dasqui-Leguía de la bisabuela María Josefa, y los Patero d’Etchecopar de la tatarabuela María Josefa, están todavía por estudiar.</li>
+<li><b>El catedrático del Goya o el Velázquez.</b> En la familia se recuerda a un antepasado de la rama de la abuela Victoria, catedrático y estudioso, de origen granadino y con vida en Sevilla, que tuvo un Goya o un Velázquez y lo donó. No lo hemos identificado. Los que más se le parecen son Manuel Gómez-Imaz, erudito sevillano y gran coleccionista, y su nieto José de Mora-Figueroa, VIII marqués de Tamarón, catedrático; pero ninguno era de Granada. Si alguien de la familia recuerda su nombre, aquí está su sitio.</li>
 </ol>
 <h2>Archivos</h2>
 <p>Registro Civil de Jerez (nacimientos, matrimonios y defunciones desde 1871); Archivo Diocesano de Asidonia-Jerez (partidas de Jerez, Ubrique, Villamartín, Arcos y Medina Sidonia); Archivo Municipal de Jerez; Archivo Histórico Municipal de Ubrique; Archivo Municipal de Villamartín; Archivo Municipal de El Puerto de Santa María; Archivo Histórico Provincial de Cádiz (protocolos notariales); Archivo General del Arzobispado de Sevilla (expedientes matrimoniales); Archivo Histórico Nacional, Sección de Órdenes Militares (expedientes de pruebas de los caballeros de Calatrava y Santiago), y, para las familias del Béarn, los Archivos Departamentales de los Pirineos Atlánticos, en Pau.</p>
 <h2>Libros</h2>
 <p><i>La familia Vergara del Norte al Sur</i>, de Alfonso de la Calle Vergara. <i>El negocio del vino en la ciudad de Cádiz. Historia empresarial de Lacave y Compañía (1810–1927)</i>, de María Vázquez Fariñas y María del Carmen Cózar Navarro. <i>Notas genealógicas</i>, del Doctor Thebussem (1888–1889). <i>La casa de Domecq d’Usquain</i>, de José Antonio Delgado y Orellana (1966). <i>Linajes medievales de Jerez de la Frontera</i>, de Rafael Sánchez Saus. <i>Franceses en la expansión del jerez</i>, de Fátima Ruiz de Lassaletta.</p>
 </div>"""
-    return chapter("c10", "Capítulo 10", "Lo que falta por descubrir", body)
+    return chapter("c10", "Capítulo 10", "Para seguir investigando", body)
 
 
 HERALDIC_SRC = ["hera_domecq", "hera_bohorquez", "hera_carrizosa", "blasonari_vergara", "roncal_hid", "gen_roncal",
@@ -587,8 +666,11 @@ def fuentes():
     for s in STARS + COSTADOS:
         used.update(s.get("s", []))
     items = sorted(((S[k][0], S[k][1]) for k in used if k in S), key=lambda x: x[0].lower())
-    lis = "".join(f'<li>{esc(lbl)}' + (f'<br><span class="url">{esc(url)}</span>' if url else '') + '</li>' for lbl, url in items)
-    body = f"""<div class="prose"><p class="lead">Las {len(items)} fuentes en que se apoya este libro, por orden alfabético. Los enlaces están vivos en el árbol interactivo.</p></div><ul class="sources">{lis}</ul>"""
+    lis = "".join(f'<li>{esc(lbl)}</li>' for lbl, url in items)
+    body = f"""<div class="prose"><p class="lead">Las {len(items)} fuentes en que se apoya este libro, por orden alfabético. El árbol interactivo enlaza cada una.</p></div><ul class="sources">{lis}</ul>
+<div class="prose credits"><h2>Las ilustraciones</h2>
+<p>{esc(HR.CREDITS)}</p>
+<p>Los mapas se han dibujado para este libro con los límites municipales del Instituto Geográfico Nacional (a través de es-atlas) y la cartografía de Natural Earth. La ilustración del valle del Roncal la aportó la familia.</p></div>"""
     return chapter("fuentes", "Al final", "Fuentes", body)
 
 
@@ -605,6 +687,7 @@ def completar():
 </section>
 <section class="colophon">
 <p>Este libro se compuso con las tipografías Alegreya y Alegreya Sans, de Juan Pablo del Peral, e IM Fell English, de Igino Marini, que reproduce las letras que el obispo John Fell legó a la imprenta de Oxford en el siglo XVII.</p>
+<p>Los escudos y los mapas se dibujaron expresamente para él.</p>
 <p>Se terminó de componer en Jerez de la Frontera en octubre de 2026.</p>
 </section>"""
 
@@ -635,7 +718,7 @@ TOC_STRUCTURE = [
     (1, "7", "Nuestros apellidos y sus escudos"),
     (1, "8", "Cronología"),
     (1, "9", "El árbol completo"),
-    (1, "10", "Lo que falta por descubrir"),
+    (1, "10", "Para seguir investigando"),
     (1, "", "Fuentes"),
     (1, "", "Para completar a mano"),
 ]

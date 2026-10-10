@@ -84,7 +84,7 @@ BASE_CSS = """
   .ch-head{padding-top:26mm;margin-bottom:10mm;max-width:128mm;margin-inline:auto}
   .ch-num{font-family:var(--sc);font-weight:500;font-size:10pt;letter-spacing:.14em;color:var(--dup)}
   .ch-head h1{font-family:var(--display);font-size:31pt;line-height:1.05;margin-top:3mm}
-  .ch-head::after{content:"";display:block;width:22mm;border-top:.8pt solid var(--dup);margin-top:5mm}
+  .ch-head svg.fleuron{display:block;width:44mm;height:auto;margin:4mm 0 0 -1mm}
 
   /* ---- ramas */
   .rama-title{font-family:var(--display);font-size:22pt;line-height:1.1;max-width:128mm;margin:0 auto 6mm}
@@ -173,8 +173,37 @@ BASE_CSS = """
   table.cuantos thead th.num{text-align:right}
 
   /* ---- órdenes */
-  .ords{max-width:128mm;margin:4mm auto;padding-left:4mm;font-size:9.8pt}
-  .ords li{margin:1.6mm 0}
+  .ords{max-width:128mm;margin:4mm auto;padding-left:0;font-size:9.8pt;list-style:none}
+  .ords li{margin:2.2mm 0;display:flex;gap:3.5mm;align-items:flex-start}
+  .ocross-l{flex:none;width:7mm;height:7mm} .ocross-l svg{width:7mm;height:7mm;display:block}
+
+  /* ---- heráldica */
+  svg.arms{display:block;width:100%;height:auto}
+  .ico{display:inline-block;vertical-align:-.1em;margin-left:1.4mm}
+  .ico svg.ocross{width:3.4mm;height:3.4mm;display:block}
+  .ico svg.coronet{width:6.4mm;height:2.7mm;display:block}
+  .prose .ico{margin:0 .6mm}
+  .tcrown{display:block;width:11mm;margin-bottom:1mm} .tcrown svg{width:11mm;height:auto;display:block}
+  .rama-head{display:flex;align-items:flex-end;justify-content:space-between;gap:8mm;max-width:128mm;margin:0 auto 6mm}
+  .rama-head .rama-title{margin:0;flex:1 1 auto}
+  .rama-arms{flex:none;width:27mm;margin:0;text-align:center}
+  .rama-arms figcaption{font-family:var(--sc);font-weight:500;font-size:7pt;letter-spacing:.08em;color:var(--muted);margin-top:1.2mm}
+  .armorial{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7mm 9mm;margin:7mm auto 6mm;max-width:150mm;break-inside:avoid}
+  .armorial figure{margin:0;text-align:center}
+  .armorial figcaption{font-family:var(--display);font-size:11pt;margin-top:1.6mm}
+  .costados-arms{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7mm;margin:5mm auto 6mm;max-width:128mm;break-inside:avoid}
+  .costados-arms figure{margin:0;text-align:center}
+  .costados-arms figcaption{font-size:8.4pt;line-height:1.3;margin-top:1.6mm;color:var(--muted)}
+  .costados-arms b{color:var(--ink);font-family:var(--display);font-size:11.5pt;font-weight:400}
+  .map-fig .fig-art svg.map{width:100%;max-width:132mm;height:auto;display:block;margin:0 auto}
+  .roncal-fig img{display:block;width:72mm;height:auto;margin:0 auto;border:.6pt solid var(--line);padding:2.5mm;background:#fff}
+  .plate{text-align:center}
+  .plate-art svg{width:92mm;height:auto;margin:0 auto}
+  .plate-title{font-family:var(--display);font-size:20pt;font-weight:400;margin:9mm 0 4mm}
+  .plate-text{max-width:122mm;margin:0 auto;font-size:9.8pt;line-height:1.5;text-align:justify;hyphens:auto}
+  .plate-note{max-width:122mm;margin:4mm auto 0;font-size:9pt;font-style:italic;color:var(--muted)}
+  .credits h2{margin-top:8mm}
+  .credits p{font-size:8.8pt;color:var(--muted)}
 
   /* ---- personajes */
   .stars{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4mm 6mm;margin-top:4mm}
@@ -258,10 +287,11 @@ PRINT_CSS = """
   @page plain:left{@bottom-right{content:none} @bottom-left{content:none}}
   .cover{page:cover;height:297mm;display:flex}
   .cover-frame{margin:14mm;flex:1;border:.8pt solid #2E5E4E;outline:.4pt solid #2E5E4E;outline-offset:-2.4mm;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:16mm 14mm}
-  .cover-art{margin:12mm 0 8mm} .cover-art svg{width:150mm;height:auto}
+  .cover-art{margin:14mm 0 12mm} .cover-art svg{width:84mm;height:auto}
   .cover-foot{margin-top:14mm}
   .front{page:plain;break-before:page}
   .colophon-front{display:flex;flex-direction:column;justify-content:flex-end;height:250mm}
+  .plate{page:plain;break-before:page;display:flex;flex-direction:column;justify-content:center;height:250mm}
   .dedication{display:flex;flex-direction:column;justify-content:center;height:200mm}
   .toc{page:plain}
   .chapter{break-before:page}
@@ -293,7 +323,10 @@ SCREEN_CSS = """
     #dlmsg{font-family:var(--sans);font-size:14px;color:var(--muted)}
     .cover{padding:40px 0 30px;border-bottom:1px solid var(--line)}
     .cover-frame{display:flex;flex-direction:column;align-items:center;gap:10px}
-    .cover-art svg{width:min(100%,560px);height:auto}
+    .cover-art svg{width:min(70%,280px);height:auto;margin:0 auto}
+    .plate{padding:36px 0;border-bottom:1px solid var(--line)} .plate-art svg{width:min(60%,240px)}
+    .armorial,.costados-arms{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .rama-arms{width:90px}
     .front,.toc,.chapter,.colophon{padding-top:36px}
     .colophon-front{display:none}
     .dedication{padding:30px 0;border-bottom:1px solid var(--line)}
@@ -318,6 +351,7 @@ SCREEN_CSS = """
     .stars{grid-template-columns:repeat(2,minmax(0,1fr))}
     .apellidos,.index,.sources{columns:2}
     .surnames{grid-template-columns:repeat(8,minmax(0,1fr))}
+    .armorial,.costados-arms{grid-template-columns:repeat(4,minmax(0,1fr))}
   }
   @media screen and (max-width:560px){
     body{font-size:16px}

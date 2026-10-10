@@ -1,0 +1,191 @@
+{
+ "castle": {
+  "x": 67.8,
+  "y": 60,
+  "w": 64.4,
+  "h": 79.8,
+  "license": "https://creativecommons.org/licenses/by-nc-sa/3.0",
+  "source": "http://wappenwiki.org/images/8/82/Alfonso_VIII_of_Castile.svg",
+  "author": ""
+ },
+ "chain": {
+  "x": 79.34,
+  "y": 60.58,
+  "w": 39.85,
+  "h": 80.84,
+  "license": "https://creativecommons.org/licenses/by-nc-sa/3.0",
+  "source": "http://wappenwiki.org/images/5/50/Neuhoff.svg",
+  "author": ""
+ },
+ "column": {
+  "x": 88.12,
+  "y": 59.95,
+  "w": 23.84,
+  "h": 80.13,
+  "license": "https://creativecommons.org/licenses/by-nc-sa/3.0",
+  "source": "http://wappenwiki.org/images/4/48/Giuliano_I_Cesarini.svg",
+  "author": ""
+ },
+ "crossFleury": {
+  "x": 60,
+  "y": 60,
+  "w": 80,
+  "h": 80,
+  "license": "https://creativecommons.org/publicdomain/zero/1.0",
+  "source": "",
+  "author": "Azgaar"
+ },
+ "crossMaltese": {
+  "x": 60,
+  "y": 60,
+  "w": 80,
+  "h": 80,
+  "license": "https://creativecommons.org/publicdomain/zero/1.0",
+  "source": "",
+  "author": "Azgaar"
+ },
+ "crossPatonce": {
+  "x": 60,
+  "y": 60,
+  "w": 80,
+  "h": 80,
+  "license": "https://creativecommons.org/publicdomain/zero/1.0",
+  "source": "",
+  "author": "Azgaar"
+ },
+ "crossPattee": {
+  "x": 62,
+  "y": 62,
+  "w": 76,
+  "h": 76,
+  "license": "https://creativecommons.org/publicdomain/zero/1.0",
+  "source": "",
+  "author": "Azgaar"
+ },
+ "crossSaltire": {
+  "x": 66,
+  "y": 66,
+  "w": 68,
+  "h": 68,
+  "license": "https://creativecommons.org/publicdomain/zero/1.0",
+  "source": "",
+  "author": "Azgaar"
+ },
+ "crossSantiago": {
+  "x": 70,
+  "y": 58,
+  "w": 60,
+  "h": 90,
+  "license": "https://creativecommons.org/publicdomain/zero/1.0",
+  "source": "",
+  "author": "Azgaar"
+ },
+ "dragonPassant": {
+  "x": 57.29,
+  "y": 61.23,
+  "w": 84.9,
+  "h": 77.61,
+  "license": "https://creativecommons.org/licenses/by-nc-sa/3.0",
+  "source": "http://wappenwiki.org",
+  "author": ""
+ },
+ "escallop": {
+  "x": 61.67,
+  "y": 60.84,
+  "w": 76.74,
+  "h": 77.95,
+  "license": "https://creativecommons.org/licenses/by-nc-sa/3.0",
+  "source": "http://wappenwiki.org",
+  "author": ""
+ },
+ "fleurDeLis": {
+  "x": 68.98,
+  "y": 60,
+  "w": 62.05,
+  "h": 80.2,
+  "license": "https://creativecommons.org/publicdomain/zero/1.0",
+  "source": "",
+  "author": "Azgaar"
+ },
+ "gauntlet": {
+  "x": 78.45,
+  "y": 60.19,
+  "w": 43.23,
+  "h": 79.6,
+  "license": "https://creativecommons.org/licenses/by-nc-sa/3.0",
+  "source": "http://wappenwiki.org/images/f/fd/FW672_Wauncy.svg",
+  "author": ""
+ },
+ "lionPassant": {
+  "x": 57.13,
+  "y": 77.58,
+  "w": 84.07,
+  "h": 41.66,
+  "license": "https://creativecommons.org/licenses/by-nc-sa/3.0",
+  "source": "http://wappenwiki.org",
+  "author": ""
+ },
+ "mullet6": {
+  "x": 65.36,
+  "y": 60,
+  "w": 69.28,
+  "h": 80,
+  "license": "https://creativecommons.org/publicdomain/zero/1.0",
+  "source": "",
+  "author": "Azgaar"
+ },
+ "oak": {
+  "x": 64.14,
+  "y": 56.55,
+  "w": 71.76,
+  "h": 97,
+  "license": "https://creativecommons.org/licenses/by-nc-sa/3.0",
+  "source": "http://wappenwiki.org/images/d/d0/Bydelsbak.svg",
+  "author": ""
+ },
+ "sword": {
+  "x": 87.6,
+  "y": 60,
+  "w": 24.8,
+  "h": 80,
+  "license": "https://creativecommons.org/licenses/by-nc-sa/3.0",
+  "source": "http://wappenwiki.org",
+  "author": ""
+ },
+ "tower": {
+  "x": 82.08,
+  "y": 59.69,
+  "w": 35.69,
+  "h": 80.14,
+  "license": "https://creativecommons.org/licenses/by-nc-sa/3.0",
+  "source": "http://wappenwiki.org/images/3/3c/Logudoro.svg",
+  "author": ""
+ },
+ "tree": {
+  "x": 61.78,
+  "y": 56.16,
+  "w": 76.5,
+  "h": 95.3,
+  "license": "https://creativecommons.org/licenses/by-nc-sa/3.0",
+  "source": "http://wappenwiki.org/images/2/2b/Krummedige.svg",
+  "author": ""
+ },
+ "wolfPassant": {
+  "x": 60.13,
+  "y": 77.29,
+  "w": 79.99,
+  "h": 45.3,
+  "license": "https://creativecommons.org/licenses/by-nc-sa/3.0",
+  "source": "http://wappenwiki.org",
+  "author": ""
+ },
+ "wolfStatant": {
+  "x": 59.83,
+  "y": 69.18,
+  "w": 80.33,
+  "h": 61.79,
+  "license": "https://creativecommons.org/licenses/by-nc-sa/3.0",
+  "source": "http://wappenwiki.org/images/7/7e/Louvel.svg",
+  "author": ""
+ }
+}
