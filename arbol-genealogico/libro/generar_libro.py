@@ -202,7 +202,7 @@ BASE_CSS = """
   .ph figcaption{display:table-caption;caption-side:bottom;font-style:italic;font-size:8.2pt;line-height:1.32;color:var(--muted);text-align:center;padding-top:1.8mm}
   .ph.wide img{height:auto;width:118mm;max-width:100%}
   .photos.kings{gap:4mm 5mm}
-  .photos.kings .ph img{height:44mm}
+  .photos.kings .ph img{height:34mm}
   .photos.kings .ph figcaption{font-size:7.8pt}
   .photos.mixed .ph img{height:44mm}
   .star-ph{float:left;display:flex;gap:1.5mm;margin:.6mm 3.2mm 1.4mm 0}
