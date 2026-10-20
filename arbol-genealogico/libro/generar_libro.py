@@ -196,6 +196,19 @@ BASE_CSS = """
   .costados-arms figcaption{font-size:8.4pt;line-height:1.3;margin-top:1.6mm;color:var(--muted)}
   .costados-arms b{color:var(--ink);font-family:var(--display);font-size:11.5pt;font-weight:400}
   .map-fig .fig-art svg.map{width:100%;max-width:132mm;height:auto;display:block;margin:0 auto}
+  .photos{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:5mm 7mm;margin:6mm auto 7mm;max-width:150mm;break-inside:avoid}
+  .ph{display:table;margin:0;break-inside:avoid}
+  .ph img{display:block;height:48mm;width:auto;border:.5pt solid var(--line);padding:1.5mm;background:#fff}
+  .ph figcaption{display:table-caption;caption-side:bottom;font-style:italic;font-size:8.2pt;line-height:1.32;color:var(--muted);text-align:center;padding-top:1.8mm}
+  .ph.wide img{height:auto;width:118mm;max-width:100%}
+  .photos.kings{gap:4mm 5mm}
+  .photos.kings .ph img{height:44mm}
+  .photos.kings .ph figcaption{font-size:7.8pt}
+  .photos.mixed .ph img{height:44mm}
+  .star-ph{float:left;display:flex;gap:1.5mm;margin:.6mm 3.2mm 1.4mm 0}
+  .star-ph img{display:block;height:31mm;width:auto;border:.5pt solid var(--line);padding:1mm;background:#fff}
+  .star-ph.n2 img{height:27mm}
+  .star::after{content:"";display:block;clear:both}
   .roncal-fig img{display:block;width:72mm;height:auto;margin:0 auto;border:.6pt solid var(--line);padding:2.5mm;background:#fff}
   .plate{text-align:center}
   .plate-art svg{width:92mm;height:auto;margin:0 auto}

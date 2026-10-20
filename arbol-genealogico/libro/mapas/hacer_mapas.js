@@ -98,6 +98,8 @@ function label(p, name, sub, opts = {}) {
     [[8.93, 44.41], "Génova", "Spínola, Adorno, Enrile", { anchor: "end", dx: -7, dy: -6 }],
     [[4.4, 51.0], "Flandes", "Beyens", {}],
     [[-6.9, 54.6], "Irlanda", "O’Neale", { dx: 7 }],
+    [[-8.23, 43.48], "Ferrol", "Sanchiz", { anchor: "end", dx: -7, dy: 2 }],
+    [[-4.33, 36.9], "Colmenar", "Pérez Muñoz", { dx: 7, dy: 4 }],
   ];
   let lines = "";
   for (const [ll] of O) {
@@ -110,11 +112,12 @@ function label(p, name, sub, opts = {}) {
   body += lines;
   for (const [ll, n, s, o] of O) body += label(proj(ll), n, s, o);
   body += label(jerez, "Jerez", "", { big: true, dx: 8, dy: 5 });
-  body += `<g transform="translate(${W - 222},${H - 106})"><rect width="196" height="82" fill="#fff" fill-opacity="0.75" stroke="${C.gold}" stroke-width="0.6"/>` +
+  body += `<g transform="translate(${W - 222},${H - 122})"><rect width="196" height="98" fill="#fff" fill-opacity="0.75" stroke="${C.gold}" stroke-width="0.6"/>` +
     `<text x="10" y="18" font-size="10" ${SANS} letter-spacing="1.5" fill="${C.red}">Y en ultramar</text>` +
-    `<text x="10" y="36" font-size="10.5" ${FONT} fill="${C.ink}">La Habana · Gómez-Imaz</text>` +
-    `<text x="10" y="52" font-size="10.5" ${FONT} fill="${C.ink}">Quito · Fiel Pérez Calixto</text>` +
-    `<text x="10" y="68" font-size="10.5" ${FONT} fill="${C.ink}">México · Soto</text></g>`;
+    `<text x="10" y="36" font-size="10.5" ${FONT} fill="${C.ink}">Quito · Pérez Muñoz, Molina</text>` +
+    `<text x="10" y="52" font-size="10.5" ${FONT} fill="${C.ink}">Puerto Rico · Meléndez Bruna</text>` +
+    `<text x="10" y="68" font-size="10.5" ${FONT} fill="${C.ink}">La Habana · Gómez-Imaz</text>` +
+    `<text x="10" y="84" font-size="10.5" ${FONT} fill="${C.ink}">México · Soto</text></g>`;
   body += `<text x="40" y="400" font-size="13" ${FONT} font-style="italic" fill="#7A8C96">Océano Atlántico</text>`;
   body += `<text x="452" y="428" font-size="12" ${FONT} font-style="italic" fill="#7A8C96">Mar Mediterráneo</text>`;
   body += compass(W - 46, 50, 15);

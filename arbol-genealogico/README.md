@@ -12,10 +12,10 @@ Grado de certeza: **[C]** confirmado en fuentes de referencia (Wikipedia, Real A
 ## El libro de familia: «De dónde venimos»
 
 En [`libro/`](libro/) está el libro para imprimir, escrito en nombre de los hermanos Domecq Vergara:
-[`De-donde-venimos.pdf`](libro/De-donde-venimos.pdf) (A4, 74 páginas) y su versión web, [`libro.html`](libro/libro.html).
+[`De-donde-venimos.pdf`](libro/De-donde-venimos.pdf) (A4, 90 páginas) y su versión web, [`libro.html`](libro/libro.html).
 
 - **Contenido:** diez capítulos (quiénes somos, la línea más antigua, las nueve ramas con su árbol y sus fichas, títulos, órdenes y cuatro costados, personajes, apellidos y escudos, cronología, el árbol completo y lo que queda por investigar), las fuentes y unas páginas para completar a mano.
-- **Ilustraciones:** las armas de los cuatro costados en la portada, los escudos de Domecq, Bohórquez, Vergara, López de Carrizosa, Villavicencio, Figueroa y Spínola, las cruces de las órdenes y las coronas de los títulos junto a cada antepasado, dos mapas (orígenes de las familias y la tierra de Cádiz y Sevilla) y la ilustración del valle del Roncal.
+- **Ilustraciones:** las armas de los cuatro costados en la portada, los escudos de Domecq, Bohórquez, Vergara, López de Carrizosa, Villavicencio, Figueroa y Spínola, las cruces de las órdenes y las coronas de los títulos junto a cada antepasado, dos mapas (orígenes de las familias y la tierra de Cádiz y Sevilla), la ilustración del valle del Roncal y unas treinta imágenes de Wikimedia Commons: retratos de familia (Pedro Domecq Lembeye, Pedro Domecq Loustau y Carmen Núñez de Villavicencio, González Ángel, Thebussem, Olaguer Feliú, Meléndez Bruna, Molina, Ahumada, Gómez-Imaz, Cañal), los reyes que dieron los títulos, Alfonso X, un grabado de la bodega de González y Byass (1865), el mapa de la Audiencia de Quito (1779) y vistas de Usquain, Orthez, Navarrenx, Urzainqui, Ubrique, Medina Sidonia y Jerez. Los autores y licencias van en el capítulo de fuentes.
 
 Los datos salen de `arbol.html`, así que el libro se rehace con lo último del árbol:
 
@@ -25,6 +25,7 @@ cd libro && python3 generar_libro.py     # necesita node, python3 con pymupdf y 
 
 Los escudos se dibujan en `libro/heraldica.py` con figuras del Fantasy Map Generator (CC0 y WappenWiki, CC BY-NC-SA 3.0).
 Los mapas ya están en `libro/ilustraciones/`; para rehacerlos: `cd libro/mapas && npm install es-atlas world-atlas topojson-client d3-geo && node hacer_mapas.js`.
+Las fotos están en `libro/ilustraciones/fotos/`. `libro/fotos.py` es su catálogo (archivo de Commons, recorte, autor y licencia) y `libro/preparar_fotos.py CARPETA` las recorta y reduce a partir de las descargas.
 
 Para imprimirlo: A4 a doble cara, sin ajustar a la página (escala 100 %), mejor en color. La página del abanico va girada.
 
@@ -100,12 +101,16 @@ Antepasados directos, con su número, y parientes cercanos, con la persona de tu
 - **Francisco Vergara Lorea (nº 192, deducido), 1726.** Del valle del Roncal a las bodegas de El Puerto de Santa María. De la misma familia salió Mateo Vergara Quesada (1871–1954), dueño de las fábricas de hielo y de lápices de Jerez.
 - **Tomasa de la Tixera y Menchaca (nº 137).** Heredera de una bodega de Jerez fundada en 1650 con la marca CZ. Al casar en 1791 con Pedro Agustín Rivero y de la Herrán (nº 136) nació la casa Rivero-CZ; su hijo Joaquín (nº 68), caballero de Carlos III, presidió el Ayuntamiento de Jerez.
 - **Manuel María González Ángel (nº 70), el fundador de González Byass (1835).** Su tío José Ángel, el «Tío Pepe», dio nombre al vino más famoso de la casa. Su hija Emilia es tu trastatarabuela, y como está en la rama Domecq–Rivero desciendes de él por las dos vías.
-- **Pedro Domecq Loustau y Carmen Núñez de Villavicencio (nº 32–33).** Él creó hacia 1874 el brandy Fundador, el primero de Jerez. Juntos fundaron colegios y asilos, y según Infocatólica (2025) van camino de los altares.
+- **Pedro Domecq Loustau y Carmen Núñez de Villavicencio (nº 32–33).** Él creó hacia 1874 el brandy Fundador, el primero de Jerez. Juntos fundaron colegios y asilos, y van camino de los altares.
 - **Mariano Pardo de Figueroa, «Doctor Thebussem», hermano de tu trastatarabuela Josefa (nº 37).** Escritor y gastrónomo, primer cartero honorario de Correos (1880) y caballero de Santiago. Su seudónimo es un anagrama de «embustes».
 - **Manuel Gómez-Imaz (nº 46).** Erudito sevillano nacido en La Habana, académico de Buenas Letras y gran coleccionista de la Guerra de la Independencia. Publicó el inventario de las 999 obras que los franceses se llevaron de Sevilla en 1810.
 - **Dos ministros: José Gómez-Imaz y Simón, hermano de Manuel, y Carlos Cañal y Migolla, su yerno.** El primero, contralmirante, fue ministro de Marina en 1899–1900. El segundo fue ministro de Abastecimientos en 1919, el primer ministro de Trabajo de España en 1920–1921 y, durante unos pocos días de 1922, ministro de Gracia y Justicia.
 - **José de Mora-Figueroa y Gómez-Imaz, hermano de tu bisabuela María Francisca (nº 11).** VIII marqués de Tamarón, catedrático, historiador, académico de la Historia y alcalde de Jerez.
-- **María del Carmen de la Rocha y Pérez (nº 53).** I marquesa de Fiel Pérez Calixto (1894), título heredado de uno que Fernando VII concedió a un pariente quiteño.
+- **María del Carmen de la Rocha y Pérez (nº 53).** I marquesa de Fiel Pérez Calixto (1894), título heredado del que Fernando VII concedió en 1820 a su medio tío quiteño.
+- **Pedro Pérez Muñoz (nº 214) y Joaquín de Molina y Zulueta (nº 430), en Quito.** El primero, malagueño de Colmenar, fue alcalde de Quito en 1797 y escribió unas cartas sobre la rebelión de 1809–1815; murió en Jerez en 1842. El segundo, su suegro, jefe de escuadra, presidió la Real Audiencia de Quito en 1810–1811.
+- **Salvador Meléndez Bruna (nº 146).** Combatió en Trafalgar, gobernó Puerto Rico de 1809 a 1820 y fue comendador de Calatrava. Su hermano Luis fue el I marqués de Negrón.
+- **Agustín de Ahumada y Villalón, hermano de tu 7.ª abuela María Luisa (nº 587).** Virrey de Nueva España de 1755 a 1760.
+- **Ignacio Vázquez Gutiérrez (nº 94).** Alcalde de Sevilla hacia 1840, fundador del Banco Agrícola de Sevilla y presidente del Real Círculo de Labradores en 1861.
 - **Bartolomé Bohórquez Rubiales (nº 20), diputado y senador.** Terrateniente de Ubrique, representó a la Sierra de Cádiz en siete legislaturas: seis como diputado por Grazalema desde 1899 y una como senador por Cádiz en 1919–1920.
 - **Fermín Bohórquez Gómez, hermano de tu bisabuelo José (nº 10).** Compró en 1946 la ganadería que lleva su nombre; su hijo Fermín Bohórquez Escribano fue un célebre rejoneador.
 
@@ -127,8 +132,8 @@ Antepasados directos, con su número, y parientes cercanos, con la persona de tu
 9. María del Carmen Hidalgo Enrile (1897–1998) **[C]**
 10. José Bohórquez Gómez **[C]** — hijo del diputado Bartolomé Bohórquez Rubiales y hermano del ganadero Fermín Bohórquez Gómez (1904–1973).
 11. María Francisca de Mora-Figueroa y Gómez-Imaz (1907–2003) **[Á]**
-12. Juan Vicente Vergara Sanchiz (1899–1974), bodeguero en Jerez («Juan Vicente Vergara, vinos y coñacs») **[D]** — casó en 1933 con Eugenia María Lacave Patero; en 1937 bautizaron en la Colegial de Jerez a su hijo Juan Pedro.
-13. Eugenia María Lacave Patero (1912–2008) **[D]**
+12. Juan Vicente Vergara Sanchiz (1899–1974), bodeguero en Jerez («Juan Vicente Vergara, vinos y coñacs») **[D]** — casó en 1933 con Eugenia María Lacave Patero; en 1937 bautizaron en la Colegial de Jerez a su hijo Juan Pedro. **[Á]** desde la ronda 8 (árbol de Luis Manuel de Villena).
+13. Eugenia María Lacave Patero (1912–2008) **[Á]**
 14. Juan Pedro Domecq Rivero (1910–1995), ganadero de bravo **[C]**
 15. Ángeles López de Carrizosa y Eizaguirre (n. 1918), dama de la Real Maestranza de Ronda **[Á]**
 
@@ -144,10 +149,10 @@ Antepasados directos, con su número, y parientes cercanos, con la persona de tu
 24. Juan Vicente Vergara Lassaletta (1831 – Jerez, 16-I-1900), bodeguero e industrial **[Á]**
 25. María Josefa Sanchiz Quesada (1860–1934) **[Á]**
 26. Pedro Lacave de la Rocha (1883–1926), II marqués de Fiel Pérez Calixto **[C]** — casó en Cádiz el 27-II-1908.
-27. María Josefa Patero d'Etchecopar **[Á]**
+27. María Josefa Patero d'Etchecopar **[Á]** — su segundo apellido es el de Juan Pablo Echecopar, socio de Pedro Lacave en Lacave y Echecopar (1830–1870).
 28. = nº 16 · 29. = nº 17
 30. Pedro López de Carrizosa y Giles (1868–1930), I barón de Algar del Campo (1907) **[C]**
-31. María Josefa de Eizaguirre y Dasqui-Leguía (1892–1973) **[C]**
+31. María Josefa de Eizaguirre y Dasqui-Leguía (1892–1973) **[C]** — todo indica que nació en México (ver nº 62–63).
 
 ## VI · Trastatarabuelos (4.º abuelos)
 32. Pedro Domecq Loustau (Usquain, 10-IX-1824 – Saint-Gladie, 5-IX-1894), creador del brandy Fundador **[C]**
@@ -158,12 +163,13 @@ Antepasados directos, con su número, y parientes cercanos, con la persona de tu
 38. Joaquín Enrile y Méndez de Sotomayor (1826–1886), teniente coronel de Artillería **[Á]** · 39. María de la Paz González de la Mota y Velázquez-Gaztelu (1825–1895) **[Á]** — casaron el 5-II-1855.
 40. Fermín Bohórquez Zarco **[Á]** · 41. Ana Rubiales Olmedo **[Á]** — de Ubrique; padres del diputado Bartolomé y de Rafaela, Fermín (1870–1921), Rafael (1873–1940) y José Bohórquez Rubiales.
 44. José de Mora-Figueroa y Daza (1839–1909), VI marqués de Tamarón **[C]** · 45. Francisca Ferrer y Rabech (1852–1924) **[C]**
-46. Manuel Gómez-Imaz Simón (La Habana, 3-VI-1844 – Sevilla, 1922), erudito y bibliógrafo, académico de Buenas Letras en Sevilla y gran coleccionista de la Guerra de la Independencia **[C]** · 47. Victoria Vázquez Rodríguez (n. 1849) **[C]**
-48. Eduardo Vergara **[Á]** · 49. María del Pilar Lassaletta y Fesser (1812–1903) **[Á]**
-50. Eliseo Sanchiz Basadre (1825–1902) **[Á]** · 51. Isabel Quesada Caugh (1842–1874) **[Á]** — ella era hermana de María Ana, la primera mujer de Juan Vicente Vergara Lassaletta.
-52. Lorenzo Lacave Perrot (1846–1905), marqués consorte de Fiel Pérez Calixto **[Á]** · 53. María del Carmen de la Rocha y Pérez (Jerez, 1859–1926), I marquesa de Fiel Pérez Calixto (1894) **[C]** — el título sigue en la familia: hoy es V marqués su bisnieto Juan Lacave y Vergara.
+46. Manuel Gómez-Imaz Simón (La Habana, 3-VI-1844 – Sevilla, 1922), erudito y bibliógrafo, académico de Buenas Letras en Sevilla y gran coleccionista de la Guerra de la Independencia **[C]** · 47. Victoria Vázquez Rodríguez (n. 1849) **[C]** — hija de Ignacio Vázquez Gutiérrez, alcalde de Sevilla (nº 94).
+48. Eduardo Vergara **[Á]** · 49. María del Pilar Lassaletta y Fesser (Cádiz, 11-X-1812 – Jerez, 24-X-1903) **[Á]**
+50. Eliseo Sanchiz Basadre (Ferrol, 7-VI-1825 – 1902) **[Á]** · 51. Isabel Quesada Caugh (1842–1874) **[Á]** — ella era hermana de María Ana, la primera mujer de Juan Vicente Vergara Lassaletta.
+52. Lorenzo Lacave Perrot (1846–1905), marqués consorte de Fiel Pérez Calixto **[Á]** · 53. María del Carmen de la Rocha y Pérez (Jerez, 1859–1926), I marquesa de Fiel Pérez Calixto (1894) **[C]** — el título sigue en la familia: hoy es V marqués su bisnieto Juan Lacave y Vergara. Hija de Francisco de Paula Rocha y Aranda y de María Josefa Pérez y Molina; casó el 21-VI-1882.
 60. Francisco Javier López de Carrizosa y Pavón (1825–1882), VIII marqués de Casa Pavón y I de Mochales **[C]**
 61. María del Rosario de Giles y Rivero (1837–1899) **[C]**
+62. José Andrés Eizaguirre Ganchegui (1857–1910) **[D]** · 63. Josefa Darqui-Leguía Sánchez (Tampico, h. 1859 – 1891) **[D]** — casaron el 10-I-1889 en Sauceda de la Borda (Zacatecas, México); el árbol del Seminario de Genealogía Mexicana les da una hija Josefa Catalina, nacida en 1891, que por nombre, apellidos y fecha sería la nº 31.
 
 ## VII · 5.º abuelos
 64. Pierre Pascal (Pedro Pascual) Domecq Lembeye (h. 1783–1848) **[C]** · 65. Marie de Loustau **[C]**
@@ -174,7 +180,12 @@ Antepasados directos, con su número, y parientes cercanos, con la persona de tu
 88. José María de Mora-Figueroa y Arrafán (1804–1839) **[Á]** · 89. Josefa Daza y Caballero (1807–1887) **[Á]**
 90. Federico Ferrer Sahuervain (Cádiz, h. 1825), dos veces diputado por El Puerto **[Á]** · 91. María del Carmen Rabech López **[Á]** — casaron en Cádiz el 16-XII-1843.
 92. Francisco de Paula Gómez Imaz, natural de Cádiz **[D]** · 93. Manuela Simón **[D]** — padres del contralmirante José Gómez-Imaz y Simón, ministro de Marina en 1899–1900, y por lo mismo de Manuel.
-72. Salvador Juan Manuel Hidalgo y Sarria **[Á]** · 73. Salvadora Meléndez y Beyens (n. 1809) **[Á]**
+72. Salvador Juan Manuel Hidalgo y Sarria (Cádiz, 1801–1838), oficial de Artillería **[Á]** · 73. Salvadora Meléndez y Beyens (n. 1809) **[Á]** — casaron en Tortosa el 12-I-1829.
+94. Ignacio Vázquez Gutiérrez (Sevilla, 1807–1873), alcalde de Sevilla, fundador del Banco Agrícola de Sevilla y presidente del Real Círculo de Labradores (1861) **[Á]** · 95. Candelaria Rodríguez Ruiz **[Á]** — casaron en 1832.
+98. Pedro José Lassaletta **[Á]** · 99. Juana Fesser Kirchmayr **[Á]** — comerciantes de Cádiz.
+100. Juan Sanchiz Sanjurjo (n. 1791) **[Á]** · 101. Josefa Basadre Abona (n. 1784) **[Á]**
+106. Francisco de Paula Rocha y Aranda **[Á]** · 107. María Josefa Pérez y Molina **[Á]** — por ella, la rama de Quito.
+126. Salvador Darqui-Leguía (n. 1817) **[D]** · 127. Rosalía Sánchez Domínguez **[D]** — en México.
 76. José Nicolás Enrile Desportes **[Á]** · 77. María del Carmen Méndez de Sotomayor y Bosolongo **[Á]**
 80. Bartolomé Bohórquez Marchán **[Á]** · 81. Rafaela Zarco Morales **[Á]** — abuelos paternos del diputado.
 82. Rafael Rubiales **[Á]** · 83. María Olmedo **[Á]** — abuelos maternos del diputado.
@@ -192,7 +203,12 @@ Antepasados directos, con su número, y parientes cercanos, con la persona de tu
 140. José Antonio González y Rodríguez, segoviano, visitador de las salinas reales **[C]** · 141. María del Rosario Ángel y Moreno, hermana del «Tío Pepe» **[C]**
 142. Pedro Nolasco de Soto y Araco, de Briviesca, comerciante en México y Cádiz **[C]**
 148. José María Pardo de Figueroa y Yuste de la Torre (Arcos, 1756) **[Á]** · 149. Vicenta Manso de Andrade **[Á]**
-146. Luis Meléndez y Bruna (Sevilla, 1763 – Cádiz, 1824), marqués de Negrón **[Á]** · 147. María Lorenza Beyens y Beyens (Cádiz, 1771 – Medina Sidonia, 1835) **[Á]**
+146. Salvador Meléndez Bruna (h. 1760–1828), marino en Trafalgar, gobernador y capitán general de Puerto Rico (1809–1820), comendador de Calatrava **[C]** · 147. María Lorenza Beyens y Beyens (Cádiz, 1771 – Medina Sidonia, 1835) **[Á]** — corrección: antes figuraba aquí su hermano Luis, I marqués de Negrón.
+138. Enrique O'Neale Bray (1768–1838) **[Á]** · 139. María del Carmen Saelices Wandozell (El Puerto, n. 1765) **[Á]**
+144. Salvador Hidalgo y Vidal **[Á]** · 145. Nicolasa Sarria y Desportes **[Á]**
+150. Francisco de la Serna y Montes de Oca **[Á]** · 151. Rosa Pareja y Pérez **[Á]**
+209. Jeanne Soulé (Castetbon, 1790–1874) **[Á]** — mujer de Jean-Pierre Lacave.
+214. Pedro Pérez Muñoz (Colmenar, 1767 – Jerez, 1842), alcalde de Quito en 1797 y autor de unas cartas sobre la rebelión de 1809–1815 **[C]** · 215. María del Carmen de Molina y Zulueta **[C]**
 154. Pedro Méndez de Sotomayor, maestre de campo **[Á]**
 176. José María Mora-Figueroa y Duarte (1767–1841), V marqués de Tamarón **[Á]** · 177. Ana María Arrafán y Valdés (n. 1777) **[Á]**
 192. Francisco Vergara Lorea (Urzainqui, Roncal, 1726), bodeguero en El Puerto desde 1765 **[D]**
@@ -208,6 +224,10 @@ Antepasados directos, con su número, y parientes cercanos, con la persona de tu
 266. Gregorio José de Angulo y Tamariz (1747–1789) **[Á]** · 267. María Josefa Lasso de la Vega y Fernández de Bobadilla (1750–1825) **[Á]**
 268. Tomás Olaguer Feliú **[Á]** · 269. María Josefa Heredia (Jaca, 1716) **[Á]**
 294. Lorenzo Narciso Beyens Hurwing, caballero de Carlos III **[Á]** · 295. María Belén Beyens Geraldino **[Á]**
+292. Antonio Meléndez y Maltés (Isla de León, 1705–1772), oidor de la Real Audiencia de Sevilla **[Á]** · 293. Teresa de Bruna y Ahumada (Palma de Mallorca) **[Á]**
+276. Patricio O'Neale Fernández **[Á]** · 277. María Antonia Bray Warnes **[Á]**
+428. José Ramón Pérez y Fernández de Tejada **[Á]** · 429. María Muñoz y Molina **[Á]** — padres de Pedro Pérez Muñoz.
+430. Joaquín de Molina y Zulueta († 1821), jefe de escuadra, presidente de la Real Audiencia de Quito (1810–1811) **[C]**
 296. Francisco Manuel Pardo de Figueroa y Legobien **[Á]** · 297. Antonia Josefa Yuste de la Torre y Angulo **[Á]**
 352. Diego Mora-Figueroa y Pertiet, III marqués de Tamarón **[Á]** · 353. Nicolasa Duarte y Castro Palomino **[Á]**
 
@@ -218,12 +238,16 @@ Antepasados directos, con su número, y parientes cercanos, con la persona de tu
 532. Francisco de Paula de Angulo y Fernández de Valenzuela (n. 1696) **[Á]** · 533. Inés Tamariz y Torres de Villavicencio (n. 1701) **[Á]**
 534. Antonio García Lasso de la Vega y Rivas (Écija, 1708) **[Á]** · 535. Francisca Fernández de Bobadilla y Galindo **[Á]**
 704. Ignacio Teodomiro Mora-Figueroa y Gutiérrez del Mazo, II marqués de Tamarón, caballero de Calatrava (1711) **[Á]** · 705. María Magdalena Pertiet y Boillot **[Á]**
+584. José Meléndez Valdés y Cárdenas (Córdoba, n. 1669), regidor perpetuo de Cádiz **[Á]** · 585. Nicolasa Maltés Negrón de la Vega (Cádiz, n. 1676) **[Á]** — de los Maltés Negrón tomó nombre el marquesado de Negrón.
+586. Andrés López de Bruna y Cabeza (Lucena), presidente de la Real Audiencia de Mallorca **[Á]** · 587. María Luisa de Ahumada y Villalón (Ronda), hermana del virrey de Nueva España Agustín de Ahumada **[Á]**
 
 ## XI · 9.º abuelos
 1408. Diego Pablo de Mora-Figueroa, Miranda y Morales, I marqués de Tamarón (1712), caballero de Calatrava, vecino de Cádiz **[C]**
 1058. Álvaro Diego de Zurita y Haro, marqués de Campo Real **[Á]** · 1059. María de Auñón **[Á]**
 1060. Lorenzo Fernández de Villavicencio y Villavicencio (1665–1741), II marqués de Valhermoso **[C]** · 1061. María Manuela Spínola y Villaviciosa **[Á]**
 1068. García Lasso de la Vega y Valbuena (n. 1679) **[Á]** · 1069. Ana Rivas Castroviejo Dávila **[Á]**
+1170. José Maltés Negrón, coronel, que levantó a su costa el Regimiento de Ronda en 1704 **[Á]** · 1171. Josefa Gabriela de la Vega **[Á]**
+1174. Bartolomé Félix de Ahumada y Mendoza (Ronda, n. 1661) **[C]** · 1175. Luisa Gertrudis de Villalón y Narváez **[C]** — padres del virrey Agustín de Ahumada y Villalón.
 
 Las generaciones XII a XXV de la línea Villavicencio están en la tabla de arriba.
 
@@ -241,17 +265,18 @@ Las órdenes militares piden probar la nobleza de sangre de los cuatro abuelos, 
 - **¿Noble por los cuatro costados?** De sangre noble, sin duda, por muchas ramas. Pero en sentido estricto hoy solo están probados dos costados de cuatro.
 - **¿Caballero de Calatrava?** La Orden es hoy honorífica y católica. El Real Consejo de las Órdenes Militares examina las pruebas de los cuatro costados y propone al Rey la concesión del hábito. Los Domecq te dan medio camino hecho; faltaría probar el costado Bohórquez y cerrar el Vergara.
 - **Una vía más sencilla:** la Real Asociación de Hidalgos de España solo pide la línea de varonía (Domecq), con tres actos positivos de nobleza. El hábito de Calatrava de tu bisabuelo es uno de ellos.
-- **Caballeros de órdenes y maestrantes en tu ascendencia directa.** Calatrava: nº 2.120, 1.408, 704, 66, 18 y 8. Santiago: nº 16.960, además del Doctor Thebussem, que es pariente. San Juan: nº 534. Carlos III: nº 294, 68 y 122. Reales Maestranzas de Sevilla, Ronda y Zaragoza: nº 240, 68, 60, 18 y 15.
+- **Caballeros de órdenes y maestrantes en tu ascendencia directa.** Calatrava: nº 2.120, 1.408, 704, 146, 66, 18 y 8. Santiago: nº 16.960, además del Doctor Thebussem, que es pariente. San Juan: nº 534. Carlos III: nº 294, 68 y 122. Reales Maestranzas de Sevilla, Ronda y Zaragoza: nº 240, 68, 60, 18 y 15.
 
 ## Lagunas y pistas
 - **Padres de Ana María Gómez Bohórquez (nº 42–43):** pedir en el Registro Civil de Jerez la certificación literal de nacimiento de su hijo Fermín Bohórquez Gómez (10-IX-1904), que recoge los cuatro abuelos.
 - **El catedrático del Goya o el Velázquez:** en la familia se recuerda a un antepasado de la rama de tu abuela Victoria, catedrático y estudioso de origen granadino con vida en Sevilla, que tuvo un Goya o un Velázquez y lo donó. No se ha podido identificar. Los que más se le parecen son Manuel Gómez-Imaz (nº 46) y su nieto José de Mora-Figueroa y Gómez-Imaz, VIII marqués de Tamarón, pero ninguno era de Granada ni consta que donara un Goya o un Velázquez.
-- **Padres de Eduardo Vergara Lacave (nº 12–13):** muy probablemente Juan Vicente Vergara Sanchiz y Eugenia María Lacave Patero; lo confirmaría su acta de nacimiento (Jerez, 1940).
+- **Padres de Eduardo Vergara Lacave (nº 12–13):** Juan Vicente Vergara Sanchiz y Eugenia María Lacave Patero, según el árbol de Luis Manuel de Villena; su acta de nacimiento (Jerez, 1940) lo dejaría documentado.
+- **Los Eizaguirre de México (nº 62–63):** salen de un árbol publicado y encajan por nombre, apellidos y fecha; la partida de bautismo de María Josefa (Zacatecas, 1891) o su partida de boda lo probarían.
 - **Eduardo Vergara (nº 48) y los Vergara del Roncal:** encaja por fechas, bodega y nombres, pero falta el documento. El libro de Alfonso de la Calle Vergara probablemente trae el árbol completo.
 - **Enlace medieval y señores de Valhermoso (1543–1681):** ver la tabla de la línea más antigua.
-- **Lacoste y Torquemada:** no aparecen como antepasados directos en ninguna rama documentada. Los Lacoste están muy cerca: Juan Pedro Lacoste heredó en 1764 con Juan Haurie el negocio del que salió la casa Domecq, y Ana María Lacoste Salazar se casó en 1821 con Pedro Lacave Miramont, sin hijos. De Torquemada no hay rastro. Si están, será en las ramas que aún faltan: Bohórquez–Gómez, Eizaguirre–Dasqui-Leguía, Patero–Etchecopar, Rocha–Pérez o Lassaletta–Fesser.
+- **Lacoste y Torquemada:** no aparecen como antepasados directos en ninguna rama documentada. Los Lacoste están muy cerca: Juan Pedro Lacoste heredó en 1764 con Juan Haurie el negocio del que salió la casa Domecq, y Ana María Lacoste Salazar se casó en 1821 con Pedro Lacave Miramont, sin hijos. De Torquemada no hay rastro. Si están, será en las ramas que aún faltan: Gómez (la mujer del diputado Bohórquez), Patero–Etchecopar o González de la Mota.
 - **López de Carrizosa entre 1479 y 1770:** faltan las generaciones entre Íñigo López de Carrizosa y Álvaro López de Carrizosa Perea, y el enlace con Rodrigo de Carrizosa (1266). Archivo Municipal de Jerez y archivo de la Fundación del Hospital de la Santa Resurrección de Utrera.
-- **Nombres que faltan:** Patero, Etchecopar, Rocha, Eizaguirre, Dasqui-Leguía, Lassaletta, Hidalgo y Sarria, González de la Mota; enlace entre el II y el I marqués de Tamarón; el I marqués de Casa Pavón (Miguel José Pavón de Fuentes, Jerez, 1671) es casi seguro antepasado.
+- **Nombres que faltan:** Patero, Etchecopar y González de la Mota; enlace entre el II y el I marqués de Tamarón; el I marqués de Casa Pavón (Miguel José Pavón de Fuentes, Jerez, 1671) es casi seguro antepasado.
 - **Archivos para seguir (no consultados; esta investigación es solo en línea):** Registro Civil de Jerez; Archivo Diocesano de Asidonia-Jerez (Jerez, Ubrique, Villamartín, Arcos, Medina Sidonia); Archivo Histórico Municipal de Ubrique (padrones); Archivo Municipal de Villamartín; Archivo Histórico Provincial de Cádiz (protocolos); Archivo General del Arzobispado de Sevilla (expedientes matrimoniales); Archivo Municipal de El Puerto de Santa María.
 - **Obras:** *La familia Vergara del Norte al Sur* (Alfonso de la Calle Vergara); *El negocio del vino en la ciudad de Cádiz. Historia empresarial de Lacave y Compañía, 1810–1927* (M. Vázquez Fariñas y M. C. Cózar Navarro); *Notas genealógicas* del Doctor Thebussem (1888–1889); *La casa de Domecq d'Usquain* (J. A. Delgado y Orellana, 1966).
 

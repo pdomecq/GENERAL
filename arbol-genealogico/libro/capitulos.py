@@ -10,6 +10,7 @@ from html import escape
 from pathlib import Path
 
 import heraldica as HR
+from fotos import foto, lamina, img as fimg, disponible, creditos
 from datos import P, S, LINE, STARS, COSTADOS, ORD, gen, real, side, fmt, roman, rel, nos, both_ways
 from graficos import pedigree5, branch_tree, fan_chart, convergence
 
@@ -193,7 +194,7 @@ def cap1():
 <h2>Los cuatro abuelos</h2>
 <p><b>José Manuel Domecq Hidalgo</b>, el abuelo paterno, era hijo de José Manuel Domecq Rivero (1895–1981), caballero de Calatrava, y de María del Carmen Hidalgo Enrile (1897–1998), hija de los marqueses de Pardo de Figueroa y de Negrón. Por su padre era nieto del I marqués de Casa Domecq.</p>
 <p><b>Victoria Bohórquez Mora-Figueroa</b>, la abuela paterna, era hija de José Bohórquez Gómez, hijo del diputado Bartolomé Bohórquez Rubiales y hermano del ganadero Fermín Bohórquez Gómez, y de María Francisca de Mora-Figueroa y Gómez-Imaz (1907–2003), hija del VII marqués de Tamarón. Su nombre le venía de su abuela materna, Victoria Gómez-Imaz.</p>
-<p><b>Eduardo Vergara Lacave</b> (1940–2008), el abuelo materno, era con toda probabilidad hijo del bodeguero Juan Vicente Vergara Sanchiz (1899–1974) y de Eugenia María Lacave Patero (1912–2008), de la familia gaditana de los vinos Lacave. Es el único de los cuatro cuyos padres no aparecen nombrados en ningún documento publicado; todo lo demás encaja, y su partida de nacimiento lo confirmaría.</p>
+<p><b>Eduardo Vergara Lacave</b> (1940–2008), el abuelo materno, era hijo del bodeguero Juan Vicente Vergara Sanchiz (1899–1974) y de Eugenia María Lacave Patero (1912–2008), de la familia gaditana de los vinos Lacave y de los marqueses de Fiel Pérez Calixto, que se casaron en 1933 y tuvieron una familia numerosa.</p>
 <p><b>Beatriz Domecq López de Carrizosa</b>, la abuela materna, murió en junio de 2023. Era hija del ganadero Juan Pedro Domecq Rivero (1910–1995) y de Ángeles López de Carrizosa y Eizaguirre, dama de la Real Maestranza de Ronda e hija del I barón de Algar del Campo. Fue camarera de María Santísima de la Encarnación, de la Hermandad del Santo Crucifijo, y tuvo siete hermanos: María, Javier, Teresa, Juan Pedro, Fernando, Lucía y Gonzalo.</p>
 </div>"""
     conv = """<div class="prose"><h2>Dos veces Domecq</h2>
@@ -237,6 +238,7 @@ def cap2():
 <p class="lead">De todas nuestras líneas, la que llega más lejos es la de los Villavicencio de Jerez. Sube por papá y por mamá a la vez, a través de los marqueses de Casa Domecq; pasa por Carmen Núñez de Villavicencio, la marquesa de Domecq d’Usquain, por los condes de Cañete del Pinar y los marqueses de Valhermoso, y termina en Miguel Fernández de Villavicencio, uno de los caballeros que tomaron Jerez con Alfonso X en 1264. Son veinticinco generaciones.</p>
 <p>El documento directo más antiguo de la cadena es el mayorazgo que fundó Pedro Camacho «el Rico» en 1507, estudiado en una revista de la Universidad Complutense. Lo anterior se apoya en la biografía que la Real Academia de la Historia dedica al alcaide Lorenzo Fernández de Villavicencio y en la tradición de los genealogistas jerezanos. Dos eslabones son deducidos: van marcados con ◌ y con trazo discontinuo. La fecha de la izquierda es una época aproximada de nacimiento.</p>
 </div>
+{lamina(("alfonso_x", "Alfonso X el Sabio, que tomó Jerez en 1264, en el <i>Libro de los juegos</i> que mandó hacer en 1283."))}
 <ol class="line">{"".join(rows)}</ol>"""
     return chapter("c2", "Capítulo 2", "La línea más antigua", body)
 
@@ -279,7 +281,13 @@ def cap3():
 <p>Su hijo Pierre Patient, que en España se llamó Pedro Domecq Loustau, nació en Usquain en 1824 y en 1848 entró en la bodega de su tío en Jerez. Hacia 1874 empezó a vender Fundador, el primer brandy de Jerez. En 1868 se casó con Carmen Núñez de Villavicencio y Olaguer-Feliú, de uno de los linajes más antiguos de la ciudad. Juntos fundaron colegios para niños pobres, asilos de ancianos y centros para mujeres, y van camino de los altares. Alfonso XIII hizo a Carmen marquesa de Domecq d’Usquain en 1920.</p>
 <p>Su hijo Pedro Domecq Núñez de Villavicencio (1869–1921) dirigió la casa después de él y recibió en 1906 del papa Pío X el título pontificio de marqués de Casa Domecq. Se casó en 1892 con María Rivero González, de los bodegueros Rivero, y de ellos vienen nuestros dos bisabuelos Domecq: José Manuel (1895–1981), caballero de Calatrava, padre del abuelo José Manuel, y Juan Pedro (1910–1995), ganadero de bravo, padre de la abuela Beatriz. Al morir en 1979 su hermano Pedro, Juan Pedro llevó la ganadería familiar con su hijo Gonzalo, y en 1999 sus hijos Gonzalo y Juan Pedro fundaron la ganadería Casa de los Toreros.</p>""",
         [32], 3, [16, 17] + subtree(32), "Los Domecq del Béarn: de Pedro Domecq Loustau a los Haurie y los Lembeye.",
-        arms=("domecq", "Armas de los Domecq"))
+        arms=("domecq", "Armas de los Domecq"),
+        illus=lamina(("usquain", "Usquain, la aldea del Béarn de donde salieron los Domecq."),
+                     ("gaston_febus", "Gaston Fébus, conde de Foix y vizconde de Béarn, en el castillo de Pau."),
+                     ("orthez", "El puente viejo de Orthez, la villa donde Bertrand de Domecq le rindió homenaje en 1364."))
+        + lamina(("domecq_lembeye", "Pedro Domecq Lembeye (1787–1839), que dio nombre a la casa."),
+                 ("palacio_domecq", "El palacio Domecq, en la plaza de Aladro de Jerez."),
+                 ("bodegas_domecq", "Un patio de las bodegas Domecq, en Jerez.")))
 
     vill_keys = [k for k in subtree(33) if k not in LINE_KEYS or k in (33, 66, 67, 132, 133)]
     vill_keys = sorted(set(vill_keys) | {k for k in subtree(33, 12)})
@@ -293,7 +301,8 @@ def cap3():
 <p><b>Los marqueses de Valhermoso.</b> Petronila Inés Fernández de Villavicencio, la mujer de José Antonio Núñez de Villavicencio, era hija del III marqués de Valhermoso de Pozuela. Por ella sigue nuestra línea más antigua: su abuelo, el II marqués, gobernó Canarias, y su bisabuelo, el I, fue mayordomo mayor de la reina Mariana de Austria.</p>
 <p><b>Los Carrizosa y los Spínola.</b> Juan Fernández de Villavicencio y Carrizosa, señor de Valhermoso, era hijo de Diego Fernández de Villavicencio y de Isabel Melgarejo y Carrizosa, hija a su vez de Íñigo López de Carrizosa, el veinticuatro que en 1479 fundó la capilla funeraria de los Carrizosa en San Juan de los Caballeros. Juan se casó con Mencía Spínola, nieta de Pedro Camacho el Rico y hija de Luis de Spínola, un genovés que luchó en la conquista de Granada. Los Spínola vuelven a entrar dos siglos después con María Manuela Spínola, mujer del II marqués de Valhermoso.</p>""",
         [33], 5, vill_keys, "La rama de Carmen Núñez de Villavicencio hasta la undécima generación.",
-        arms=("villavicencio", "Armas de los Villavicencio de Jerez"))
+        arms=("villavicencio", "Armas de los Villavicencio de Jerez"),
+        illus=lamina(("palacio_villavicencio", "El palacio de Villavicencio, dentro del Alcázar de Jerez.", "wide")))
 
     rivero = rama(
         "r-rivero", "Los Rivero y los González: CZ y González Byass",
@@ -301,15 +310,18 @@ def cap3():
         """<p><b>Los Rivero.</b> Por su padre, Tomás Rivero O'Neale (1835–1902), venía de los Rivero, de origen cántabro. Pedro Agustín Rivero y de la Herrán (1762–1829), alcalde de la Santa Hermandad de Jerez, se casó en 1791 con Tomasa de la Tixera y Menchaca, heredera de una bodega fundada en 1650 con la marca CZ, y así nacieron las bodegas Rivero-CZ. Su hijo Joaquín (1797–1868), caballero de Carlos III y maestrante de Zaragoza, presidió el Ayuntamiento de Jerez; su hermano Rafael fue alcalde de la ciudad en tres etapas, y otro hermano, Francisco, gentilhombre de cámara de Isabel II. Joaquín se casó con Carmen O'Neale Saelices, de una familia jerezana de origen irlandés.</p>
 <p><b>Los González.</b> Por su madre, Emilia González de Soto (1841–1889), venía de los González de González Byass. Manuel María González Ángel (Sanlúcar de Barrameda, 1812 – Jerez, 1887) se instaló en Jerez en 1835 y fundó la bodega que, al asociarse con el inglés Robert Blake Byass, acabó llamándose González Byass. Su tío José Ángel y Vargas, el «Tío Pepe», le aconsejó en el negocio y dio nombre al vino más famoso de la casa. Fue diputado a Cortes por Sanlúcar. Su padre, José Antonio González y Rodríguez, era un segoviano de la Guardia de Corps que llegó a Sanlúcar en 1783 como visitador de las salinas reales, y su madre, María del Rosario Ángel, una sanluqueña a la que llamaban Rosario Peña por el apellido de su padrastro.</p>
 <p>Manuel María se casó en 1837 con Victorina de Soto y Lavaggi, hija de Pedro Nolasco de Soto y Araco, un comerciante de Briviesca que hizo fortuna en México antes de establecerse en Cádiz. Tuvieron nueve hijos; uno de ellos, Pedro Nolasco, fue I marqués de Torresoto de Briviesca, y otra, Emilia, se casó en 1865 con Tomás Rivero O'Neale. Así, el fundador de González Byass y los creadores de Rivero-CZ son antepasados nuestros, y por las dos vías.</p>""",
-        [17], 4, subtree(34) + subtree(35), "La rama de María Rivero González: los Rivero, los O'Neale, los González y los Soto.")
+        [17], 4, subtree(34) + subtree(35), "La rama de María Rivero González: los Rivero, los O'Neale, los González y los Soto.",
+        illus=lamina(("bodega_gonzalez", "Una de las naves de la bodega de González y Byass, grabada por Bernardo Rico para <i>El Museo Universal</i> en 1865.", "wide")))
 
     hidalgo = rama(
         "r-hidalgo", "Los Hidalgo, los Pardo de Figueroa y los Enrile",
         "La bisabuela María del Carmen Hidalgo Enrile (1897–1998), mujer del bisabuelo José Manuel Domecq Rivero, era hija de Salvador Hidalgo y Pardo de Figueroa (1865–1939), II marqués de Pardo de Figueroa y V de Negrón, caballero de Calatrava y maestrante de Sevilla, nacido en Medina Sidonia. Su hermano Baltasar fue III marqués de Pardo de Figueroa y VI de Negrón.",
-        """<p><b>Los marqueses de Negrón.</b> El primero fue Luis Meléndez y Bruna (1763–1824), mariscal de campo, sevillano y hermano de Salvador Meléndez Bruna, gobernador de Puerto Rico. Con María Lorenza Beyens, de una familia gaditana de origen flamenco, tuvo a Salvadora Meléndez y Beyens, que llevó el título a los Hidalgo al casarse con Salvador Juan Manuel Hidalgo y Sarria. Su hijo Baltasar Hidalgo y Meléndez (1831–1894) fue IV marqués de Negrón.</p>
+        """<p><b>Los Meléndez y el marquesado de Negrón.</b> El abuelo del IV marqués fue Salvador Meléndez Bruna, marino sevillano que combatió en Trafalgar, gobernó Puerto Rico como gobernador y capitán general de 1809 a 1820 y fue comendador de Calatrava; su hermano mayor, Luis, consejero de Castilla, fue el I marqués de Negrón. Con María Lorenza Beyens, de una familia gaditana de origen flamenco, Salvador tuvo a Salvadora, que llegó a Puerto Rico con tres meses y en 1829 se casó en Tortosa, donde su padre era gobernador militar, con Salvador Hidalgo y Sarria, oficial de Artillería. Por ella pasó el título a los Hidalgo: su hijo Baltasar Hidalgo y Meléndez (1831–1894) fue IV marqués de Negrón.</p>
+<p>La familia de Salvador sube varias generaciones más: su padre, Antonio Meléndez y Maltés, fue oidor de la Real Audiencia de Sevilla; su bisabuelo José Maltés Negrón, coronel, levantó a su costa el Regimiento de Ronda en 1704, y de los Maltés Negrón tomó nombre el título. Por su madre, Teresa de Bruna, era nieto de Andrés López de Bruna, presidente de la Audiencia de Mallorca, y de María Luisa de Ahumada, hermana de Agustín de Ahumada y Villalón, virrey de Nueva España de 1755 a 1760.</p>
 <p><b>Los Pardo de Figueroa.</b> Baltasar se casó en Medina Sidonia en 1863 con Josefa Pardo de Figueroa y de la Serna. Ya viuda, Alfonso XIII creó para ella en 1927 el marquesado de Pardo de Figueroa. Su hermano Mariano fue el «Doctor Thebussem» (1828–1918), escritor, cervantista y gastrónomo, primer cartero honorario de España, que publicó en 1888 y 1889 las <i>Notas genealógicas</i> de la familia. Los Pardo de Figueroa venían de Arcos: allí nacieron su padre, José María, regidor perpetuo de Cádiz, y su abuelo.</p>
 <p><b>Los Enrile.</b> La madre de la bisabuela, María del Carmen Enrile y González de la Mota (1859–1901), era hija de Joaquín Enrile y Méndez de Sotomayor (1826–1886), teniente coronel de Artillería y autor de un <i>Prontuario de Artillería</i> (1856), de una familia gaditana de origen genovés, y de María de la Paz González de la Mota y Velázquez-Gaztelu.</p>""",
-        [9], 5, subtree(18) + subtree(19), "La rama de la bisabuela María del Carmen Hidalgo Enrile.")
+        [9], 5, subtree(18) + subtree(19), "La rama de la bisabuela María del Carmen Hidalgo Enrile.",
+        illus=lamina(("medina_sidonia", "El castillo de Medina Sidonia, la villa de los Hidalgo y los Pardo de Figueroa.", "wide")))
 
     bohorquez = rama(
         "r-bohorquez", "Los Bohórquez, de Ubrique",
@@ -317,7 +329,8 @@ def cap3():
         """<p><b>Diputado y senador.</b> Bartolomé nació en Ubrique en 1862, hijo de Fermín Bohórquez Zarco y Ana Rubiales Olmedo, y se hizo bachiller en el Instituto Columela de Cádiz en 1881. Fue seis veces diputado a Cortes por el distrito de Grazalema, desde 1899, y senador por la provincia de Cádiz en 1919 y 1920. Un estudio de la UNED sobre las elecciones en Cádiz lo describe como el hombre fuerte del distrito en la primera década del siglo XX. Murió en Jerez en octubre de 1925. Su mujer, Ana María Gómez Bohórquez, le sobrevivió hasta 1940. Tuvieron tres hijos: Ana María, José, nuestro bisabuelo, y Fermín.</p>
 <p><b>Ubrique.</b> En el siglo XIX los Bohórquez fueron una de las familias principales de Ubrique, con alcaldes, comerciantes, abogados y políticos. De allí eran también los padres y los abuelos de Bartolomé: los Bohórquez Marchán, los Zarco Morales, los Rubiales y los Olmedo. Y en Ubrique se presentó en público como rejoneador, en 1959, Fermín Bohórquez Escribano.</p>
 <p><b>El apellido.</b> Según los tratados de heráldica, los Bohórquez son un linaje de origen castellano, del valle de Runanza, en la merindad de Trasmiera (Cantabria), que bajó a Andalucía con la Reconquista y fundó casa en Villamartín. Gonzalo Argote de Molina cuenta que un caballero Bohórquez que luchó en la batalla del Salado recibió del rey la Banda, y de ahí sus armas. El enlace de los Bohórquez de Ubrique con esa casa está por documentar.</p>""",
-        [10], 4, sorted(subtree(20) + subtree(21)), "La rama del bisabuelo José Bohórquez Gómez.", arms=("bohorquez", "Armas de los Bohórquez"), extra=fillbox(
+        [10], 4, sorted(subtree(20) + subtree(21)), "La rama del bisabuelo José Bohórquez Gómez.", arms=("bohorquez", "Armas de los Bohórquez"),
+        illus=lamina(("ubrique", "Ubrique, en la Sierra de Cádiz, la tierra de los Bohórquez.", "wide")), extra=fillbox(
             "Para completar: los padres de Ana María Gómez Bohórquez",
             "Son los que faltan en esta rama. La partida de nacimiento de su hijo Fermín (Registro Civil de Jerez, 10 de septiembre de 1904) da los nombres de sus cuatro abuelos y de dónde eran. Cuando la tengamos, aquí van:",
             ["Padre", "Madre", "De dónde eran"]))
@@ -327,39 +340,45 @@ def cap3():
         "La bisabuela María Francisca de Mora-Figueroa y Gómez-Imaz (1907–2003), madre de la abuela Victoria, era hija de José de Mora-Figueroa y Ferrer (1871–1929), VII marqués de Tamarón, nacido en El Puerto de Santa María y el mayor de diez hermanos varones: cinco militares, cuatro abogados y un ingeniero.",
         """<p><b>El marquesado.</b> Felipe V creó el título el 4 de abril de 1712 para Diego Pablo de Mora-Figueroa, Miranda y Morales, caballero de Calatrava y vecino de Cádiz, que es nuestro 9.º abuelo. Le sucedió en 1716 su hijo Ignacio Teodomiro, también caballero de Calatrava (desde 1711) y juez comisario de la Santa Hermandad Vieja de Ciudad Real, casado con María Magdalena Pertiet y Boillot, de ascendencia francesa. El III marqués, Diego Mora-Figueroa y Pertiet, fue guardiamarina y alférez de navío. José María Mora-Figueroa y Duarte (1767–1841) sucedió a su hermano Ramón como V marqués; como su hijo José María murió antes que él, el título pasó a su nieto José de Mora-Figueroa y Daza (1839–1909), nacido en Vejer, terrateniente y ganadero de bravo, padre del VII.</p>
 <p><b>Los Ferrer.</b> El VI marqués se casó en El Puerto en 1870 con Francisca Ferrer y Rabech (1852–1924), con la que tuvo dieciséis hijos. Su padre, Federico Ferrer Sahuervain, fue elegido diputado a Cortes por El Puerto en 1864 y otra vez en 1865, y llegó a tener ochenta y una fincas repartidas por toda la provincia de Cádiz.</p>
-<p><b>Los Gómez-Imaz.</b> El VII marqués se casó con Victoria Gómez-Imaz Vázquez, hija de Manuel Gómez-Imaz (La Habana, 1844 – Sevilla, 1922), periodista, bibliógrafo y académico, presidente de la Real Academia Sevillana de Buenas Letras. Reunió una de las mejores colecciones privadas sobre la Guerra de la Independencia, hoy en la Biblioteca Nacional, y en 1896 publicó el inventario de las 999 obras de arte que los franceses se llevaron de Sevilla en 1810. Su hermano José fue contralmirante y ministro de Marina en 1899 y 1900, justo después del desastre del 98, y su yerno Carlos Cañal y Migolla fue el primer ministro de Trabajo de España, en 1920.</p>
+<p><b>Los Gómez-Imaz.</b> El VII marqués se casó con Victoria Gómez-Imaz Vázquez, hija de Manuel Gómez-Imaz (La Habana, 1844 – Sevilla, 1922), periodista, bibliógrafo y académico, presidente de la Real Academia Sevillana de Buenas Letras. Reunió una de las mejores colecciones privadas sobre la Guerra de la Independencia, hoy en la Biblioteca Nacional, y en 1896 publicó el inventario de las 999 obras de arte que los franceses se llevaron de Sevilla en 1810. Su hermano José fue contralmirante y ministro de Marina en 1899 y 1900, justo después del desastre del 98, y su yerno Carlos Cañal y Migolla fue el primer ministro de Trabajo de España, en 1920. Su mujer, Victoria Vázquez Rodríguez, era hija de Ignacio Vázquez Gutiérrez (1807–1873), un labrador sevillano que fue alcalde de la ciudad hacia 1840, fundó con otros socios el Banco Agrícola de Sevilla y presidió en 1861 el Real Círculo de Labradores, y de Candelaria Rodríguez Ruiz.</p>
 <p>Los hermanos de la bisabuela también dejaron huella. José de Mora-Figueroa y Gómez-Imaz (1899–1976), VIII marqués de Tamarón, fue catedrático, historiador, académico de la Real Academia de la Historia y alcalde de Jerez; Manuel (1904–1964) llegó a contralmirante. Hoy el título lo tiene Santiago de Mora-Figueroa y Williams, IX marqués, diplomático y escritor, embajador de España en el Reino Unido entre 1999 y 2004, hijo del VIII y primo hermano de la abuela Victoria.</p>""",
         [11], 5, subtree(22) + subtree(23), "La rama de la bisabuela María Francisca de Mora-Figueroa hasta la novena generación.",
         arms=("figueroa", "Armas de los Figueroa"))
 
     vergara = rama(
         "r-vergara", "Los Vergara, del Roncal a Jerez",
-        "El abuelo Eduardo Vergara Lacave (1940–2008) era, con toda probabilidad, hijo del bodeguero Juan Vicente Vergara Sanchiz (1899–1974) y de Eugenia María Lacave Patero (1912–2008), que se casaron en 1933 y bautizaron a su hijo Juan Pedro en la Colegial de Jerez en 1937. Juan Vicente tuvo bodega propia: «Juan Vicente Vergara, vinos y coñacs».",
+        "El abuelo Eduardo Vergara Lacave (1940–2008) era hijo del bodeguero Juan Vicente Vergara Sanchiz (1899–1974) y de Eugenia María Lacave Patero (1912–2008), que se casaron en 1933 y bautizaron a su hijo Juan Pedro en la Colegial de Jerez en 1937. Juan Vicente tuvo bodega propia: «Juan Vicente Vergara, vinos y coñacs».",
         """<p>Su padre, Juan Vicente Vergara Lassaletta (1831–1900), fue bodeguero e industrial en Jerez; su casa de vinos acabó integrada en Palomino &amp; Vergara a principios del siglo XX. Se casó primero con María Ana Quesada Caugh, con la que tuvo, entre otros, a Mateo Vergara Quesada (1871–1954), dueño de las fábricas de hielo y de lápices de Jerez. Viudo, se casó con la sobrina de su mujer, María Josefa Sanchiz Quesada (1860–1934), hija de Eliseo Sanchiz Basadre y de Isabel Quesada Caugh, que es nuestra tatarabuela.</p>
 <p><b>Del Roncal a El Puerto.</b> Los Vergara bodegueros de El Puerto de Santa María descienden de Francisco Vergara Lorea, nacido en 1726 en Urzainqui, en el valle navarro del Roncal, que ya tenía bodegas en El Puerto en 1765. Sus nietos, los hermanos Vergara y Vegas, llevaron la casa a Jerez en 1869. Todo indica que Eduardo Vergara, el padre de Juan Vicente Vergara Lassaletta, era uno de esos hermanos, pero falta el documento que lo pruebe. El libro <i>La familia Vergara del Norte al Sur</i>, de Alfonso de la Calle Vergara, cuenta esta historia.</p>
 <p>Los vecinos del valle del Roncal eran todos hidalgos por un privilegio que Carlos III de Navarra confirmó en 1412, y el valle tenía un escudo común a todos ellos, que recuerda la leyenda de la batalla de Olast. Si se documenta el enlace, los Vergara tendrían esa hidalguía.</p>
-<p><b>Los Lassaletta.</b> La madre de Juan Vicente, María del Pilar Lassaletta y Fesser (1812–1903), era de una familia de comerciantes de Cádiz. Según la historiadora Fátima Ruiz de Lassaletta, los Lassaletta figuran entre las familias de origen bearnés que impulsaron el comercio del jerez, como los Haurie, los Lacoste y los Domecq.</p>""",
+<p><b>Los Lassaletta.</b> La madre de Juan Vicente, María del Pilar Lassaletta y Fesser (Cádiz, 1812 – Jerez, 1903), era hija de Pedro José Lassaletta y de Juana Fesser, de dos familias de comerciantes de Cádiz; los Fesser, de apellidos alemanes. Según la historiadora Fátima Ruiz de Lassaletta, los Lassaletta figuran entre las familias de origen bearnés que impulsaron el comercio del jerez, como los Haurie, los Lacoste y los Domecq.</p>""",
         [12], 4, subtree(24) + subtree(25), "La rama del bisabuelo Juan Vicente Vergara Sanchiz.",
         arms=("vergara", "Armas de los Vergara"),
-        illus=figure(ilustracion("valle_roncal.png"), "El valle del Roncal. Urzainqui, la cuna de Francisco Vergara Lorea, está entre Isaba y Roncal, a orillas del río Esca.", "roncal-fig"))
+        illus=figure(ilustracion("valle_roncal.png"), "El valle del Roncal. Urzainqui, la cuna de Francisco Vergara Lorea, está entre Isaba y Roncal, a orillas del río Esca.", "roncal-fig")
+        + lamina(("urzainqui", "Urzainqui, en el valle del Roncal, donde nació Francisco Vergara Lorea en 1726.", "wide")))
 
     lacave = rama(
         "r-lacave", "Los Lacave y el título que vino de Quito",
-        "La bisabuela Eugenia María Lacave Patero era hija de Pedro Lacave de la Rocha (1883–1926), II marqués de Fiel Pérez Calixto, y de María Josefa Patero d’Etchecopar, que se casaron en Cádiz en 1908.",
+        "La bisabuela Eugenia María Lacave Patero era hija de Pedro Lacave de la Rocha (1883–1926), II marqués de Fiel Pérez Calixto, y de María Josefa Patero d’Etchecopar, que se casaron en Cádiz en 1908. El segundo apellido de la novia era el de Juan Pablo Echecopar, el bearnés con el que Pedro Lacave había fundado en 1830 la sociedad Lacave y Echecopar, con casas en Cádiz y en Gibraltar.",
         """<p><b>De Navarrenx a Cádiz.</b> Pedro Lacave Miramont nació en 1776 en Navarrenx, en el Béarn, a pocos kilómetros de Usquain, la cuna de los Domecq. Era el sexto de once hijos de unos labradores, y en 1791, durante una crisis de alimentos en Francia, se fue a Cádiz, donde un tío materno tenía casa de comercio. En 1810 fundó la casa de vinos Lacave y Compañía, que llegó a ser una de las grandes exportadoras de vino de Jerez. Se casó en 1821 con la jerezana Ana María Lacoste Salazar, pero no tuvieron hijos, y trajo de Francia a sus sobrinos. Uno de ellos, Pedro Lacave Soulé (nacido en 1809), es nuestro antepasado: se casó en 1831 con Catalina Perrot Vignasse y tuvieron once hijos. Su hermano Juan Pedro fue banquero en Sevilla. Dos familias del mismo rincón del Béarn, los Domecq y los Lacave, vuelven a juntarse en nosotros.</p>
-<p><b>Un título que vino de Quito.</b> Lorenzo Lacave Perrot (1846–1905) se casó con María del Carmen de la Rocha y Pérez (1859–1926), para quien Alfonso XIII creó en 1894 el marquesado de Fiel Pérez Calixto. Era el heredero del de Casa Fiel Pérez Calisto, que Fernando VII había concedido en 1820 a un pariente de su familia materna, el quiteño Pedro José María Pérez Calisto, en recuerdo de sus antepasados muertos defendiendo la causa del rey en América. El título sigue en la familia: lo heredaron su hijo Pedro, nuestro tatarabuelo, sus nietos Pedro (1916–2001) y Juan Lacave Patero (1920–2005), hermanos de la bisabuela, y desde 2005 su bisnieto Juan Lacave y Vergara, primo hermano del abuelo Eduardo.</p>
+<p><b>Un título que vino de Quito.</b> Lorenzo Lacave Perrot (1846–1905) se casó con María del Carmen de la Rocha y Pérez (1859–1926), para quien Alfonso XIII creó en 1894 el marquesado de Fiel Pérez Calixto. Era el heredero del de Casa Fiel Pérez Calisto, que Fernando VII había concedido en 1820 a su medio tío, el quiteño Pedro José María Pérez Calisto, en recuerdo de sus antepasados muertos defendiendo la causa del rey en América.</p>
+<p><b>Quito.</b> María del Carmen era hija de Francisco de Paula Rocha y Aranda y de María Josefa Pérez y Molina, y por su madre, nieta de Pedro Pérez Muñoz (1767–1842), un malagueño de Colmenar que hizo carrera en Quito, donde fue alcalde en 1797 y escribió unas cartas sobre la rebelión de 1809 a 1815 que hoy están publicadas. De su primer matrimonio, con María Teresa Calisto y Borja, nació el I marqués; del segundo, con María del Carmen de Molina, venimos nosotros. Ella era hija de Joaquín de Molina y Zulueta, jefe de escuadra de la Real Armada y presidente de la Audiencia de Quito en 1810 y 1811. Pedro Pérez Muñoz acabó sus días en Jerez, y así llegó la familia a la ciudad.</p>
+<p> <b>El título hoy.</b> Sigue en la familia: lo heredaron su hijo Pedro, nuestro tatarabuelo, sus nietos Pedro (1916–2001) y Juan Lacave Patero (1920–2005), hermanos de la bisabuela, y desde 2005 su bisnieto Juan Lacave y Vergara, primo hermano del abuelo Eduardo.</p>
 """,
-        [13], 4, subtree(26) + subtree(27), "La rama de la bisabuela Eugenia María Lacave Patero.")
+        [13], 4, subtree(26) + subtree(27), "La rama de la bisabuela Eugenia María Lacave Patero.",
+        illus=lamina(("navarrenx", "Navarrenx, en el Béarn, donde nació Pedro Lacave Miramont en 1776."),
+                     ("quito_1779", "La Real Audiencia de Quito en el mapa que levantó Francisco Requena en 1779."), cls="mixed"))
 
     carrizosa = rama(
         "r-carrizosa", "Los López de Carrizosa",
-        "La abuela Beatriz era hija de Ángeles López de Carrizosa y Eizaguirre (nacida en 1918), dama de la Real Maestranza de Ronda, y nieta de Pedro López de Carrizosa y Giles (1868–1930), a quien Alfonso XIII hizo barón de Algar del Campo en 1907, y de María Josefa de Eizaguirre y Dasqui-Leguía (1892–1973).",
+        "La abuela Beatriz era hija de Ángeles López de Carrizosa y Eizaguirre (nacida en 1918), dama de la Real Maestranza de Ronda, y nieta de Pedro López de Carrizosa y Giles (1868–1930), a quien Alfonso XIII hizo barón de Algar del Campo en 1907, y de María Josefa de Eizaguirre y Dasqui-Leguía (1892–1973). Todo indica que la tatarabuela María Josefa nació en México: en Sauceda de la Borda, en la sierra minera de Zacatecas, se casaron en 1889 José Andrés Eizaguirre Ganchegui, de apellidos vascos, y Josefa Darqui-Leguía Sánchez, nacida en Tampico, y en 1891 tuvieron una hija, Josefa Catalina.",
         """<p><b>Un linaje de la conquista.</b> Los López de Carrizosa descienden de Rodrigo de Carrizosa, uno de los caballeros que recibieron tierras en el repartimiento de Jerez en 1266. En 1494 los Reyes Católicos llamaron a su corte a dos hidalgos jerezanos del apellido, Pedro Díaz de Carrizosa y el jurado Diego de Carrizosa. Íñigo López de Carrizosa, veinticuatro de Jerez nacido en 1440, fundó en 1479 la capilla funeraria de la familia en San Juan de los Caballeros, hoy sacristía de la iglesia; como su hija Isabel se casó con un señor de Valhermoso, Íñigo es también antepasado nuestro por la línea de los Villavicencio. Desde hace unas veinte generaciones, los López de Carrizosa son patronos del Hospital de la Santa Resurrección de Utrera, fundado en 1514.</p>
 <p><b>La línea documentada.</b> Empieza con el veinticuatro Álvaro López de Carrizosa Perea, que murió en 1770 y cuya viuda, Rosa María Adorno, reformó el palacio familiar de Jerez. Su hijo Francisco Álvaro (1760–1803) fue veinticuatro, maestrante de Sevilla y patrono de la fundación de Utrera, y su nieto José López de Carrizosa y Dávila (1800–1842), coronel de Caballería, se casó con Vicenta Pavón, de los marqueses de Casa Pavón, que según todo indica era su prima hermana. Su hijo Francisco Javier López de Carrizosa y Pavón (1825–1882), senador y maestrante de Sevilla, heredó el marquesado de Casa Pavón y recibió el de Mochales en 1878; se casó con María del Rosario de Giles y Rivero, hija de Miguel de Giles, caballero de Carlos III y consejero real de Agricultura.</p>
 <p><b>Casa Pavón.</b> Felipe V creó el marquesado el 31 de diciembre de 1706, con el vizcondado previo de Trobal, para Miguel José Pavón de Fuentes, nacido en Jerez en 1671: veinticuatro, coronel de Dragones, mariscal de campo, gobernador de La Habana y caballero de Santiago.</p>
 """,
         [15], 5, [k for k in subtree(30) + subtree(31)], "La rama de la bisabuela Ángeles López de Carrizosa y Eizaguirre.",
-        arms=("carrizosa", "Armas de los López de Carrizosa"))
+        arms=("carrizosa", "Armas de los López de Carrizosa"),
+        illus=lamina(("san_juan", "San Juan de los Caballeros, en Jerez, donde Íñigo López de Carrizosa fundó en 1479 la capilla de la familia.")))
 
     intro_txt = """<div class="prose"><p class="lead">Cada uno de nuestros dieciséis tatarabuelos abre una rama. Aquí van agrupadas por familias, cada una con su historia, sus armas cuando las conocemos, un árbol con los antepasados que constan y las fichas de todos ellos. La rama de los marqueses de Casa Domecq, que es la nuestra por partida doble, ocupa las tres primeras secciones: los Domecq, los Villavicencio y los Rivero.</p>
 <p>Casi todas acabaron en la misma tierra: Jerez y su campiña, la bahía de Cádiz, la Sierra y Sevilla.</p></div>""" + figure(ilustracion("mapa_cadiz.svg"), "La tierra de la familia: los pueblos y ciudades de cada rama.", "map-fig")
@@ -374,9 +393,9 @@ TITULOS = [
     ("Marquesado de Campo Real", "1689 · Carlos II", "Su II marqués, Álvaro Diego de Zurita y Haro, es nuestro 9.º abuelo por las dos vías."),
     ("Marquesado de Casa Pavón", "1706 · Felipe V", "Creado con el vizcondado previo de Trobal para Miguel José Pavón de Fuentes, gobernador de La Habana. Lo tuvieron los hermanos de nuestra 5.ª abuela Vicenta Pavón; su hijo Francisco Javier López de Carrizosa y Pavón, nuestro trastatarabuelo, fue el VIII marqués."),
     ("Marquesado de Tamarón", "1712 · Felipe V", "Diego Pablo de Mora-Figueroa, nuestro 9.º abuelo, fue el I marqués. También son antepasados directos el II, el III, el V, el VI y el VII, José de Mora-Figueroa y Ferrer, nuestro tatarabuelo; el IV, Ramón, era hermano del V. Hoy lo tiene el IX, Santiago de Mora-Figueroa y Williams, primo hermano de la abuela Victoria."),
-    ("Marquesado de Negrón", "hacia 1800", "Su I marqués, Luis Meléndez y Bruna, es nuestro 6.º abuelo. Pasó a los Hidalgo por su hija Salvadora: Baltasar Hidalgo y Meléndez fue el IV y Salvador Hidalgo y Pardo de Figueroa, nuestro tatarabuelo, el V."),
+    ("Marquesado de Negrón", "hacia 1800", "Creado para Luis Meléndez Bruna, hermano de nuestro 6.º abuelo Salvador Meléndez Bruna, gobernador de Puerto Rico. Pasó a los Hidalgo por Salvadora, la hija de Salvador: Baltasar Hidalgo y Meléndez fue el IV y Salvador Hidalgo y Pardo de Figueroa, nuestro tatarabuelo, el V."),
     ("Marquesado de Mochales", "1878 · Alfonso XII", "Concedido a nuestro trastatarabuelo Francisco Javier López de Carrizosa y Pavón."),
-    ("Marquesado de Fiel Pérez Calixto", "1894 · Alfonso XIII", "Creado para nuestra trastatarabuela María del Carmen de la Rocha y Pérez, heredero del de Casa Fiel Pérez Calisto, que Fernando VII concedió en 1820 a un noble de Quito. Su hijo Pedro Lacave de la Rocha, nuestro tatarabuelo, fue el II marqués, y hoy lo tiene el V, Juan Lacave y Vergara."),
+    ("Marquesado de Fiel Pérez Calixto", "1894 · Alfonso XIII", "Creado para nuestra trastatarabuela María del Carmen de la Rocha y Pérez, heredero del de Casa Fiel Pérez Calisto, que Fernando VII concedió en 1820 a su medio tío, el quiteño Pedro José María Pérez Calisto. Su hijo Pedro Lacave de la Rocha, nuestro tatarabuelo, fue el II marqués, y hoy lo tiene el V, Juan Lacave y Vergara."),
     ("Marquesado de Casa Domecq", "1906 · Pío X", "Título pontificio, cuyo uso se autorizó en España ese mismo año. Su I marqués, Pedro Domecq Núñez de Villavicencio, es nuestro tatarabuelo por las dos vías; lo heredaron su hijo Pedro Domecq Rivero y después Pedro Domecq Hidalgo, hermano del abuelo José Manuel."),
     ("Baronía de Algar del Campo", "1907 · Alfonso XIII", "Concedida a nuestro tatarabuelo Pedro López de Carrizosa y Giles. El II barón fue su hijo Pedro, hermano de la bisabuela Ángeles."),
     ("Marquesado de Domecq d’Usquain", "1920 · Alfonso XIII", "Creado para nuestra trastatarabuela Carmen Núñez de Villavicencio, viuda de Pedro Domecq Loustau. El II marqués fue su nieto Pedro Domecq Rivero."),
@@ -387,11 +406,16 @@ PARIENTES_TITULOS = ("En las ramas colaterales aparecen además el marquesado de
 
 
 def cap4():
+    REYES = lamina(("carlos_ii", "Carlos II: Valhermoso, Cañete del Pinar y Campo Real."),
+                   ("felipe_v", "Felipe V: Casa Pavón y Tamarón."),
+                   ("fernando_vii", "Fernando VII: Casa Fiel Pérez Calisto."),
+                   ("alfonso_xiii", "Alfonso XIII: Fiel Pérez Calixto, Algar del Campo, Domecq d’Usquain y Pardo de Figueroa."), cls="kings")
     def rk(t):
         return "conde" if t.startswith("Condado") else "baron" if t.startswith("Baron") else "marques"
     rows = "".join(f'<tr><th scope="row"><span class="tcrown">{HR.coronet(rk(t))}</span>{esc(t)}</th><td class="when">{esc(w)}</td><td>{esc(x)}</td></tr>' for t, w, x in TITULOS)
     body = f"""<div class="prose"><p class="lead">Doce títulos nobiliarios pasaron por nuestros antepasados directos. Los más antiguos son del siglo XVII y premiaban servicios a la Corona; los del siglo XX, la obra de familias que habían hecho fortuna con el vino y la ganadería. Al menos dos siguen hoy en manos de parientes cercanos: Tamarón, que tiene Santiago de Mora-Figueroa, primo hermano de la abuela Victoria, y Fiel Pérez Calixto, que tiene Juan Lacave y Vergara, primo hermano del abuelo Eduardo.</p>
 <p>Un título se hereda, por lo general, por el primogénito, así que la mayoría de nuestros antepasados no lo tuvo aunque descendamos de quien lo recibió. La tabla dice, para cada uno, quién fue el primer titular y por dónde nos llega.</p></div>
+{REYES}
 <table class="titles"><thead><tr><th>Título</th><th>Creación</th><th>Por dónde nos llega</th></tr></thead><tbody>{rows}</tbody></table>
 <div class="prose"><p class="small">{esc(PARIENTES_TITULOS)}</p>
 <p class="small">Hubo además señoríos y mayorazgos más antiguos que los títulos: el señorío de Valhermoso y Pozuela, el de Casarejo y el mayorazgo que fundó Pedro Camacho el Rico en 1507, el más antiguo que se conserva en Jerez.</p></div>"""
@@ -409,7 +433,7 @@ def cap5():
         ords.append(f'<li>{ico}<div><b>{esc(o["o"])}</b>: {people}{"; " + esc(ex) if ex else ""}.</div></li>')
     ords.insert(0, '<li><span class="ocross-l"></span><div><b>Orden de la Banda</b>: Lorenzo Fernández de Villavicencio, alcaide de Jerez desde 1326 (nº 4.341.856, 21.º abuelo por las dos vías), a quien hizo caballero de la Banda el propio Alfonso XI, que la había fundado.</div></li>')
     cst = "".join(f'<tr class="{c["st"]}"><th scope="row">{esc(c["h"])}</th><td>{esc(pname(c["k"]))}</td><td class="st">{mark(c["st"])} {esc(c["lab"])}</td><td>{esc(nos(c["t"]))}</td></tr>' for c in COSTADOS)
-    body = f"""<div class="prose"><p class="lead">Las órdenes militares de Santiago, Calatrava, Alcántara y Montesa nacieron en la Edad Media como órdenes de caballeros que combatían en la frontera; con los siglos se convirtieron en corporaciones honoríficas que exigían probar la nobleza. Entre nuestros antepasados directos hay seis caballeros de Calatrava, uno de Santiago, uno de San Juan y uno de la Banda, además de caballeros de Carlos III y maestrantes de Sevilla, Ronda y Zaragoza.</p></div>
+    body = f"""<div class="prose"><p class="lead">Las órdenes militares de Santiago, Calatrava, Alcántara y Montesa nacieron en la Edad Media como órdenes de caballeros que combatían en la frontera; con los siglos se convirtieron en corporaciones honoríficas que exigían probar la nobleza. Entre nuestros antepasados directos hay siete caballeros de Calatrava, uno de Santiago, uno de San Juan y uno de la Banda, además de caballeros de Carlos III y maestrantes de Sevilla, Ronda y Zaragoza.</p></div>
 <ul class="ords">{"".join(ords)}</ul>
 <div class="prose"><h2>Los cuatro costados</h2>
 <p>Para entrar en las órdenes había que probar la nobleza de sangre de los cuatro abuelos, los «cuatro costados», y las órdenes lo siguen pidiendo hoy. Cada abuelo cuenta por su primer apellido: la nobleza de la abuela Victoria depende de los Bohórquez, no de su madre Mora-Figueroa. Así están los nuestros:</p></div>
@@ -426,6 +450,25 @@ def cap5():
 
 OMIT_STARS = {"El primer amor de Ruskin"}
 
+# Retratos de la galería de personajes, por el encabezado de cada ficha.
+STAR_FOTOS = {
+    "Virrey en América": ["olaguer"],
+    "El fundador de González Byass": ["gonzalez_angel"],
+    "Fundador y los altares": ["domecq_loustau", "carmen_villavicencio"],
+    "El cartero honorario": ["thebussem"],
+    "Dos ministros": ["gomez_imaz", "canal"],
+    "Virrey de Nueva España": ["ahumada"],
+    "Trafalgar y Puerto Rico": ["melendez_bruna"],
+    "Presidente de Quito": ["molina"],
+}
+
+
+def star_ph(g):
+    ids = [f for f in STAR_FOTOS.get(g, []) if disponible(f)]
+    if not ids:
+        return ""
+    return f'<div class="star-ph n{len(ids)}">{"".join(fimg(f) for f in ids)}</div>'
+
 
 def cap6():
     items = []
@@ -436,7 +479,7 @@ def cap6():
             relx = f"{rel(s['k'])} · nº {fmt(s['k'])}"
         else:
             relx = f"{nos(s['vt'])} {pname(s['via'])} (nº {fmt(s['via'])})"
-        items.append(f"""<article class="star"><p class="star-g">{esc(s['g'])} · {esc(s['y'])}</p><h3>{esc(s['h'])}{honores(s['k']) if s.get('k') else ''}</h3><p class="star-rel">{esc(relx)}</p><p>{esc(nos(s['t']))}</p></article>""")
+        items.append(f"""<article class="star"><p class="star-g">{esc(s['g'])} · {esc(s['y'])}</p><h3>{esc(s['h'])}{honores(s['k']) if s.get('k') else ''}</h3><p class="star-rel">{esc(relx)}</p>{star_ph(s['g'])}<p>{esc(nos(s['t']))}</p></article>""")
     body = f"""<div class="prose"><p class="lead">Una galería de antepasados y de parientes muy cercanos, de la conquista de Jerez al siglo XX: los que sirvieron a la Corona, fundaron casas y bodegas y dejaron nombre.</p></div>
 <div class="stars">{"".join(items)}</div>"""
     return chapter("c6", "Capítulo 6", "Personajes de la familia", body)
@@ -522,6 +565,7 @@ CRONO = [
     ("1666", "Un Juan de Domecq rinde homenaje a Luis XIV."),
     ("1681", "Carlos II crea el marquesado de Valhermoso de Pozuela."),
     ("1688", "Carlos II crea el condado de Cañete la Real, después Cañete del Pinar."),
+    ("1704", "José Maltés Negrón levanta a su costa el Regimiento de Ronda."),
     ("1706", "Felipe V crea el marquesado de Casa Pavón."),
     ("1711", "Ignacio Teodomiro Mora-Figueroa entra en la Orden de Calatrava."),
     ("1712", "Felipe V crea el marquesado de Tamarón."),
@@ -529,6 +573,7 @@ CRONO = [
     ("1725", "Antonio García Lasso de la Vega, caballero de San Juan. Bruno Núñez de Villavicencio se casa con Francisca de Zurita."),
     ("1726", "Nace en Urzainqui, en el Roncal, Francisco Vergara Lorea."),
     ("1740", "Juan Haurie llega a Jerez como refugiado."),
+    ("1755", "Agustín de Ahumada y Villalón, hermano de nuestra 8.ª abuela María Luisa, virrey de Nueva España hasta 1760."),
     ("1764", "Muere Patrick Murphy; Juan Haurie y Juan Pedro Lacoste heredan su negocio de vinos."),
     ("1765", "Los Vergara ya tienen bodegas en El Puerto de Santa María."),
     ("1776", "Nace en Navarrenx Pedro Lacave Miramont."),
@@ -536,8 +581,10 @@ CRONO = [
     ("1780", "Jean Domecq se casa con Catherine Lembeye Haurie."),
     ("1783", "José Antonio González llega a Sanlúcar como visitador de las salinas reales."),
     ("1791", "Pedro Agustín Rivero se casa con Tomasa de la Tixera, heredera de la bodega CZ."),
-    ("1797", "Antonio Olaguer Feliú, virrey del Río de la Plata hasta 1799."),
-    ("1810", "Pedro Lacave funda en Cádiz Lacave y Compañía."),
+    ("1797", "Antonio Olaguer Feliú, virrey del Río de la Plata hasta 1799. Pedro Pérez Muñoz, alcalde de Quito."),
+    ("1805", "Salvador Meléndez Bruna combate en Trafalgar."),
+    ("1809", "Salvador Meléndez Bruna, gobernador y capitán general de Puerto Rico hasta 1820."),
+    ("1810", "Pedro Lacave funda en Cádiz Lacave y Compañía. Joaquín de Molina y Zulueta, presidente de la Audiencia de Quito."),
     ("1822", "La casa de Juan Haurie pasa a llamarse Pedro Domecq."),
     ("1824", "Nace en Usquain Pedro Domecq Loustau."),
     ("1835", "Manuel María González Ángel funda en Jerez la bodega que será González Byass."),
@@ -632,11 +679,11 @@ def cap10():
 <p class="lead">Este libro es un punto de partida. Estos son los eslabones que conviene completar y los archivos donde buscarlos.</p>
 <ol class="gaps">
 <li><b>Los padres de Ana María Gómez Bohórquez.</b> Gracias a papá ya sabemos que el bisabuelo José Bohórquez Gómez era hijo del diputado Bartolomé Bohórquez Rubiales y de Ana María Gómez Bohórquez. Faltan los padres de ella; su segundo apellido hace pensar que era pariente de su marido. La partida literal de nacimiento de su hijo Fermín en el Registro Civil de Jerez (10-IX-1904) los nombra. Para subir más en los Bohórquez, el Archivo Histórico Municipal de Ubrique guarda los padrones del siglo XIX, y la parroquia de Nuestra Señora de la O, los libros de bautismo.</li>
-<li><b>Los padres del abuelo Eduardo.</b> Todo apunta a Juan Vicente Vergara Sanchiz y Eugenia María Lacave Patero; su acta de nacimiento (Jerez, 1940) lo confirmaría.</li>
+<li><b>Los padres del abuelo Eduardo.</b> Los da ya un árbol publicado; su acta de nacimiento (Jerez, 1940) los dejaría documentados.</li>
 <li><b>Los Vergara del Roncal.</b> Falta el documento que enlace a Eduardo Vergara, padre de Juan Vicente Vergara Lassaletta, con los Vergara y Vegas de El Puerto. El libro de Alfonso de la Calle Vergara y el Archivo Municipal de El Puerto son los sitios donde buscar.</li>
 <li><b>Los López de Carrizosa entre 1479 y 1770.</b> Faltan las generaciones entre Íñigo López de Carrizosa y Álvaro López de Carrizosa Perea, y el enlace con Rodrigo de Carrizosa. Archivo Municipal de Jerez y archivo de la Fundación del Hospital de la Santa Resurrección de Utrera.</li>
 <li><b>El enlace medieval de los Villavicencio.</b> No se sabe si Alonso Núñez de Villavicencio era hijo del alcaide Lorenzo o de su hermano Nuño, y los señores de Valhermoso entre 1543 y 1681 salen de árboles publicados. La obra de Rafael Sánchez Saus sobre los linajes medievales de Jerez es la referencia.</li>
-<li><b>Las familias de las tatarabuelas.</b> Los Eizaguirre y Dasqui-Leguía de la bisabuela María Josefa, y los Patero d’Etchecopar de la tatarabuela María Josefa, están todavía por estudiar.</li>
+<li><b>Las familias de las tatarabuelas.</b> Los padres mexicanos de la tatarabuela María Josefa de Eizaguirre salen de un árbol genealógico; su partida de bautismo, de Zacatecas, o la de su boda lo dejarían probado. Los Patero d’Etchecopar de la otra María Josefa, la mujer del II marqués de Fiel Pérez Calixto, están todavía por estudiar.</li>
 <li><b>El catedrático del Goya o el Velázquez.</b> En la familia se recuerda a un antepasado de la rama de la abuela Victoria, catedrático y estudioso, de origen granadino y con vida en Sevilla, que tuvo un Goya o un Velázquez y lo donó. No lo hemos identificado. Los que más se le parecen son Manuel Gómez-Imaz, erudito sevillano y gran coleccionista, y su nieto José de Mora-Figueroa, VIII marqués de Tamarón, catedrático; pero ninguno era de Granada. Si alguien de la familia recuerda su nombre, aquí está su sitio.</li>
 </ol>
 <h2>Archivos</h2>
@@ -670,6 +717,8 @@ def fuentes():
     body = f"""<div class="prose"><p class="lead">Las {len(items)} fuentes en que se apoya este libro, por orden alfabético. El árbol interactivo enlaza cada una.</p></div><ul class="sources">{lis}</ul>
 <div class="prose credits"><h2>Las ilustraciones</h2>
 <p>{esc(HR.CREDITS)}</p>
+<p>Los retratos, grabados y vistas proceden de Wikimedia Commons:</p>
+<ul class="sources photo-credits">{creditos()}</ul>
 <p>Los mapas se han dibujado para este libro con los límites municipales del Instituto Geográfico Nacional (a través de es-atlas) y la cartografía de Natural Earth. La ilustración del valle del Roncal la aportó la familia.</p></div>"""
     return chapter("fuentes", "Al final", "Fuentes", body)
 
@@ -687,7 +736,7 @@ def completar():
 </section>
 <section class="colophon">
 <p>Este libro se compuso con las tipografías Alegreya y Alegreya Sans, de Juan Pablo del Peral, e IM Fell English, de Igino Marini, que reproduce las letras que el obispo John Fell legó a la imprenta de Oxford en el siglo XVII.</p>
-<p>Los escudos y los mapas se dibujaron expresamente para él.</p>
+<p>Los escudos y los mapas se dibujaron expresamente para él; los retratos y las vistas proceden de Wikimedia Commons.</p>
 <p>Se terminó de componer en Jerez de la Frontera en octubre de 2026.</p>
 </section>"""
 
