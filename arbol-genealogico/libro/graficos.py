@@ -120,7 +120,7 @@ def pedigree5(root_label="Los hermanos Domecq Vergara"):
 
 
 # ---------------------------------------------------------------- árbol por rama
-def branch_tree(roots, depth, width=166.0, row_h=11.4, label=None):
+def branch_tree(roots, depth, width=134.0, row_h=11.4, label=None):
     """Árbol compacto de los antepasados conocidos de una o varias personas.
 
     Cada columna es una generación; solo se dibujan los antepasados que

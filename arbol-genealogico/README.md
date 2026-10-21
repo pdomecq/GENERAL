@@ -11,23 +11,45 @@ Grado de certeza: **[C]** confirmado en fuentes de referencia (Wikipedia, Real A
 
 ## El libro de familia: «De dónde venimos»
 
-En [`libro/`](libro/) está el libro para imprimir, escrito en nombre de los hermanos Domecq Vergara:
-[`De-donde-venimos.pdf`](libro/De-donde-venimos.pdf) (A4, 90 páginas) y su versión web, [`libro.html`](libro/libro.html).
+En [`libro/`](libro/) está el libro, escrito en nombre de los hermanos Domecq Vergara, maquetado para encuadernar en tapa dura a **168 × 240 mm** (128 páginas):
+
+- [`De-donde-venimos-imprenta.pdf`](libro/De-donde-venimos-imprenta.pdf): el interior para la imprenta, a 174 × 246 mm (3 mm de sangrado por lado, con la caja de corte marcada), páginas sueltas y consecutivas, total múltiplo de 4, capítulos en página impar.
+- [`De-donde-venimos-cubierta-stamping.pdf`](libro/De-donde-venimos-cubierta-stamping.pdf): la cubierta para grabar en oro sobre símil piel (contraportada + lomo + portada y 20 mm por lado para forrar el cartón). Lo negro es lo que se graba.
+- [`De-donde-venimos-cubierta-maqueta.pdf`](libro/De-donde-venimos-cubierta-maqueta.pdf): cómo queda la cubierta, en verde y oro.
+- [`De-donde-venimos.pdf`](libro/De-donde-venimos.pdf): el mismo libro recortado, para leer en pantalla, y su versión web, [`libro.html`](libro/libro.html).
 
 - **Contenido:** diez capítulos (quiénes somos, la línea más antigua, las nueve ramas con su árbol y sus fichas, títulos, órdenes y cuatro costados, personajes, apellidos y escudos, cronología, el árbol completo y lo que queda por investigar), las fuentes y unas páginas para completar a mano.
-- **Ilustraciones:** las armas de los cuatro costados en la portada, los escudos de Domecq, Bohórquez, Vergara, López de Carrizosa, Villavicencio, Figueroa y Spínola, las cruces de las órdenes y las coronas de los títulos junto a cada antepasado, dos mapas (orígenes de las familias y la tierra de Cádiz y Sevilla), la ilustración del valle del Roncal y unas treinta imágenes de Wikimedia Commons: retratos de familia (Pedro Domecq Lembeye, Pedro Domecq Loustau y Carmen Núñez de Villavicencio, González Ángel, Thebussem, Olaguer Feliú, Meléndez Bruna, Molina, Ahumada, Gómez-Imaz, Cañal), los reyes que dieron los títulos, Alfonso X, un grabado de la bodega de González y Byass (1865), el mapa de la Audiencia de Quito (1779) y vistas de Usquain, Orthez, Navarrenx, Urzainqui, Ubrique, Medina Sidonia y Jerez. Los autores y licencias van en el capítulo de fuentes.
+- **Ilustraciones:** las armas de los cuatro costados en la portada, los escudos de Domecq, Bohórquez, Vergara, López de Carrizosa, Villavicencio, Figueroa y Spínola, las cruces de las órdenes y las coronas de los títulos junto a cada antepasado, dos mapas (orígenes de las familias y la tierra de Cádiz y Sevilla), la ilustración del valle del Roncal y unas treinta imágenes de Wikimedia Commons: retratos de familia (Pedro Domecq Lembeye, Pedro Domecq Loustau y Carmen Núñez de Villavicencio, González Ángel, Thebussem, Olaguer Feliú, Meléndez Bruna, Molina, Ahumada, Gómez-Imaz, Cañal), los reyes que dieron los títulos, Alfonso X, un grabado de la bodega de González y Byass (1865), el mapa de la Audiencia de Quito (1779) y vistas de Usquain, Orthez, Navarrenx, Urzainqui, Ubrique y Jerez. Los autores y licencias van en el capítulo de fuentes.
 
 Los datos salen de `arbol.html`, así que el libro se rehace con lo último del árbol:
 
 ```
 cd libro && python3 generar_libro.py     # necesita node, python3 con pymupdf y Chromium
+cd libro && python3 cubierta.py          # la cubierta; con --lomo MM si la imprenta da otra medida
 ```
 
 Los escudos se dibujan en `libro/heraldica.py` con figuras del Fantasy Map Generator (CC0 y WappenWiki, CC BY-NC-SA 3.0).
 Los mapas ya están en `libro/ilustraciones/`; para rehacerlos: `cd libro/mapas && npm install es-atlas world-atlas topojson-client d3-geo && node hacer_mapas.js`.
 Las fotos están en `libro/ilustraciones/fotos/`. `libro/fotos.py` es su catálogo (archivo de Commons, recorte, autor y licencia) y `libro/preparar_fotos.py CARPETA` las recorta y reduce a partir de las descargas.
 
-Para imprimirlo: A4 a doble cara, sin ajustar a la página (escala 100 %), mejor en color. La página del abanico va girada.
+### Encargarlo encuadernado
+
+Pensado para [La Imprenta CG](https://imprentaonline.laimprentacg.com/es/producto/114-imprimir-tesis-tapa-dura-stamping) (Valencia), producto «Tesis clásica stamping»: tapa dura de cartón de 2,5 mm forrada en símil piel (guáflex) con el título y las armas grabados en oro, desde 2 ejemplares, envío a toda España. Opciones para el pedido:
+
+| Opción | Elegir |
+|---|---|
+| Tamaño | 168 × 240 |
+| Páginas | 128 en color y 0 en blanco y negro, impresión a dos caras |
+| Papel | estucado mate, 150 g (o 130 g, más ligero) |
+| Guardas | offset ahuesado |
+| Símil piel | verde (también hay marrón, negro, rojo y azul oscuro) |
+| Stamping | oro, en portada; en «observaciones», pedir que graben también el lomo con el mismo archivo |
+| Muestra previa | recomendable (un ejemplar de prueba en tapa blanda; añade 6 días laborables) |
+| Cantidad | 7 |
+
+Se suben el interior (`De-donde-venimos-imprenta.pdf`) y la cubierta (`De-donde-venimos-cubierta-stamping.pdf`). El lomo está calculado en unos 14 mm; si la imprenta da otra medida, se rehace la cubierta con `python3 cubierta.py --lomo MM`. Plazo: 10 a 15 días laborables, más unos 10 por el grabado en oro.
+
+Otra opción, también en La Imprenta CG: «Libros color tapa dura» (cartoné con la cubierta impresa a todo color y cosido con hilo), en el mismo tamaño 168 × 240; necesitaría una cubierta impresa en vez de la de grabado.
 
 ## Tu línea más antigua: 25 generaciones, de 1264 a hoy
 

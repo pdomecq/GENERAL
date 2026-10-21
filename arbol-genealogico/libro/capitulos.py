@@ -126,8 +126,13 @@ def legend():
 
 
 # ===================================================================== textos
+BLANK = '<div class="blank-page"></div>'
+
+
 def front_matter():
-    return """<section class="cover">
+    return """<section class="halftitle print-only"><h1>De dónde venimos</h1><div>""" + HR.fleuron() + """</div></section>
+""" + BLANK + """
+<section class="cover">
   <div class="cover-frame">
     <p class="cover-kicker">Historia y genealogía de una familia de Jerez</p>
     <h1 class="cover-title">De dónde venimos</h1>
@@ -143,15 +148,17 @@ def front_matter():
   <p>Lo acompaña un árbol interactivo con las mismas fichas y el enlace a cada fuente, que se irá corrigiendo a medida que aparezcan documentos.</p>
 </section>
 <section class="front dedication">
-  <p>Para papá y mamá, Pablo y Beatriz.</p>
-  <p>Y para nuestros hermanos, y para los que vengan detrás.</p>
+  <p>Para papá y mamá, Pablo y Bea.</p>
+  <p>Y para los que vengan detrás.</p>
 </section>
+""" + BLANK + """
 <section class="front plate">
   <div class="plate-art">""" + HR.costados("front") + """</div>
   <h2 class="plate-title">Armas de nuestros cuatro costados</h2>
   <p class="plate-text">Cuartelado: primero y cuarto, de azur, una espada de plata guarnecida de oro, puesta en banda, acompañada de dos guantes de plata, que es de <b>Domecq</b>, por los dos abuelos Domecq; segundo, de gules, una banda de oro engolada en dragantes de sinople y bordura de azur con dos flores de lis de oro y dos columnas de plata, que es de <b>Bohórquez</b>, por la abuela Victoria; tercero, de oro, un roble de sinople con un lobo de sable atado al tronco con cadena de oro, que es de <b>Vergara</b>, por el abuelo Eduardo.</p>
   <p class="plate-note">Así se reunían en un solo escudo los linajes de los cuatro abuelos en las pruebas de nobleza.</p>
-</section>"""
+</section>
+""" + BLANK
 
 
 def toc(entries):
@@ -210,7 +217,7 @@ def cap1():
     chart = f"""<div class="fullpage chartpage">
 <h2 class="chart-title">Nuestro árbol de cinco generaciones</h2>
 {legend()}
-{pedigree5()}
+<div class="chart-art">{pedigree5()}</div>
 </div>"""
     mapa = ('''<div class="prose"><h2>De dónde vinieron</h2>
 <p>Las familias que se fueron juntando en Jerez llegaron de muy lejos: del Béarn francés, al otro lado de los Pirineos; del Roncal navarro; de Cantabria y de Burgos; de Génova, de Flandes y de Irlanda; y algunas pasaron por América antes de asentarse en Cádiz.</p></div>'''
@@ -724,8 +731,8 @@ def fuentes():
 
 
 def completar():
-    lines = "".join('<div class="wline"></div>' for _ in range(5))
-    many = "".join('<div class="wline"></div>' for _ in range(26))
+    lines = "".join('<div class="wline"></div>' for _ in range(4))
+    many = "".join('<div class="wline"></div>' for _ in range(24))
     return f"""<section class="chapter writein" id="completar">
 <header class="ch-head"><p class="ch-num">Para la familia</p><h1>Para completar a mano</h1></header>
 <div class="prose"><p>Este árbol empieza en nosotros, pero no termina aquí. Estas páginas son para escribir lo que venga: nuestros nombres y fechas, las bodas, los hijos, y lo que encontremos en los archivos.</p></div>
@@ -741,10 +748,19 @@ def completar():
 </section>"""
 
 
-def build_body(toc_entries):
+def build_body(toc_entries, blanks=(), pad=0):
+    """blanks: títulos de capítulo que llevan delante una página en blanco para
+    empezar en página impar; pad: páginas de notas antes del colofón para que
+    el total sea múltiplo de 4."""
     RAMAS.clear()
-    parts = [front_matter(), toc(toc_entries), intro(), cap1(), cap2(), cap3(), cap4(), cap5(), cap6(), cap7(), cap8(), cap9(), cap10(), fuentes(), completar()]
-    return "\n".join(parts)
+    chapters = [intro(), cap1(), cap2(), cap3(), cap4(), cap5(), cap6(), cap7(), cap8(), cap9(), cap10(), fuentes(), completar()]
+    titles = [t for lvl, _, t in TOC_STRUCTURE if lvl == 1]
+    parts = [front_matter(), toc(toc_entries)]
+    for title, html in zip(titles, chapters):
+        parts.append((BLANK if title in blanks else "") + html)
+    body = "\n".join(parts)
+    notas = "".join('<section class="notes"><h3>Notas</h3>' + '<div class="wline"></div>' * 24 + '</section>' for _ in range(pad))
+    return body.replace('<section class="colophon">', notas + '<section class="colophon">')
 
 
 TOC_STRUCTURE = [

@@ -1,9 +1,11 @@
 """Genera el libro «De dónde venimos» a partir de los datos de arbol.html.
 
 Produce:
-  libro_impresion.html  → la versión que se imprime (fuentes locales)
-  De-donde-venimos.pdf  → el PDF A4 listo para imprimir (Chromium headless)
-  libro.html            → la versión para leer en pantalla y publicar
+  libro_impresion.html          → la versión que se imprime (fuentes locales)
+  De-donde-venimos-imprenta.pdf → el interior para la imprenta: 168 × 240 mm
+                                  con 3 mm de sangrado (Chromium headless)
+  De-donde-venimos.pdf          → el mismo PDF recortado a 168 × 240, para leer
+  libro.html                    → la versión para leer en pantalla y publicar
 
 Uso: python3 generar_libro.py
 Requiere node (para leer arbol.html), Chromium y PyMuPDF (pip install pymupdf).
@@ -24,6 +26,8 @@ FUENTES = AQUI / "fuentes"
 CHROMIUM = (os.environ.get("CHROMIUM") or shutil.which("chromium") or shutil.which("chromium-browser")
             or shutil.which("google-chrome") or "/opt/pw-browsers/chromium")
 PDF = AQUI / "De-donde-venimos.pdf"
+PDF_IMPRENTA = AQUI / "De-donde-venimos-imprenta.pdf"
+CORTE = (168 / 25.4 * 72, 240 / 25.4 * 72)  # 168 × 240 mm en puntos
 TITULO = "De dónde venimos"
 
 TOKENS = """
@@ -286,40 +290,76 @@ BASE_CSS = """
   .dedication p{font-family:var(--display);font-style:italic;font-size:16pt;text-align:center;line-height:1.5}
 """
 
+# Edición encuadernada: 168 × 240 mm a sangre (3 mm por lado), así que cada
+# página del PDF mide 174 × 246 mm. Los márgenes se cuentan desde el borde del
+# PDF: 3 mm de sangrado más el margen real del libro (17 arriba, 22 abajo,
+# 19 al lomo y 15 al corte). La caja de texto queda en 134 × 201 mm.
 PRINT_CSS = """
-  @page{size:A4;margin:20mm 22mm 22mm 22mm}
-  @page :right{margin-left:24mm;margin-right:18mm;
+  @page{size:174mm 246mm;margin:20mm 18mm 25mm 22mm}
+  @page :right{margin-left:22mm;margin-right:18mm;
     @bottom-right{content:counter(page);font-family:'Alegreya Sans';font-size:8.5pt;color:#5A6170}
     @bottom-left{content:"De dónde venimos";font-family:'Alegreya Sans SC';font-size:7.5pt;letter-spacing:.12em;color:#8A909B}}
-  @page :left{margin-left:18mm;margin-right:24mm;
+  @page :left{margin-left:18mm;margin-right:22mm;
     @bottom-left{content:counter(page);font-family:'Alegreya Sans';font-size:8.5pt;color:#5A6170}
     @bottom-right{content:"Los Domecq Vergara";font-family:'Alegreya Sans SC';font-size:7.5pt;letter-spacing:.12em;color:#8A909B}}
   @page cover:right{margin:0;@bottom-right{content:none} @bottom-left{content:none}}
   @page cover:left{margin:0;@bottom-right{content:none} @bottom-left{content:none}}
   @page plain:right{@bottom-right{content:none} @bottom-left{content:none}}
   @page plain:left{@bottom-right{content:none} @bottom-left{content:none}}
-  .cover{page:cover;height:297mm;display:flex}
-  .cover-frame{margin:14mm;flex:1;border:.8pt solid #2E5E4E;outline:.4pt solid #2E5E4E;outline-offset:-2.4mm;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:16mm 14mm}
-  .cover-art{margin:14mm 0 12mm} .cover-art svg{width:84mm;height:auto}
-  .cover-foot{margin-top:14mm}
+  @page blank:right{@bottom-right{content:none} @bottom-left{content:none}}
+  @page blank:left{@bottom-right{content:none} @bottom-left{content:none}}
+  @page chart:right{margin:16mm 16mm 22mm 18mm}
+  @page chart:left{margin:16mm 18mm 22mm 16mm}
+  .blank-page{page:blank;break-before:page;height:1mm}
+  .halftitle{page:plain;padding-top:52mm;text-align:center}
+  .halftitle h1{font-family:var(--display);font-size:24pt;font-weight:400}
+  .halftitle svg.fleuron{display:block;width:36mm;height:5.4mm;margin:4mm auto 0}
+  .cover{page:cover;break-before:page;height:246mm;display:flex}
+  .cover-frame{margin:17mm 18mm 17mm 22mm;flex:1;border:.8pt solid #2E5E4E;outline:.4pt solid #2E5E4E;outline-offset:-2.4mm;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:12mm 10mm}
+  .cover-title{font-size:38pt}
+  .cover-sub{font-size:14pt}
+  .cover-art{margin:10mm 0 9mm} .cover-art svg{width:66mm;height:auto}
+  .cover-foot{margin-top:10mm}
   .front{page:plain;break-before:page}
-  .colophon-front{display:flex;flex-direction:column;justify-content:flex-end;height:250mm}
-  .plate{page:plain;break-before:page;display:flex;flex-direction:column;justify-content:center;height:250mm}
-  .dedication{display:flex;flex-direction:column;justify-content:center;height:200mm}
+  .colophon-front{display:flex;flex-direction:column;justify-content:flex-end;height:201mm}
+  .plate{page:plain;break-before:page;display:flex;flex-direction:column;justify-content:center;height:201mm}
+  .plate-art svg{width:74mm}
+  .plate-title{font-size:18pt;margin:7mm 0 3mm}
+  .dedication{display:flex;flex-direction:column;justify-content:center;height:150mm}
   .toc{page:plain}
+  .toc h1{margin-top:14mm}
   .chapter{break-before:page}
+  .ch-head{padding-top:16mm;margin-bottom:8mm}
+  .ch-head h1{font-size:27pt}
   .rama{break-before:page}
   .rama:first-of-type{break-before:auto}
+  .rama-title{font-size:20pt}
+  .rama-arms{width:24mm}
   .fullpage{break-before:page;break-after:page}
-  .chartpage svg{display:block;margin:0 auto}
-  .fanpage{position:relative;height:250mm;overflow:hidden}
-  .fanpage .landscape{position:absolute;width:250mm;height:164mm;left:calc(50% - 125mm);top:calc(50% - 82mm);transform:rotate(-90deg);display:flex;flex-direction:column;align-items:center}
-  .fanpage .landscape svg{width:250mm;height:auto}
+  .chartpage{page:chart}
+  .chartpage svg{display:block;margin:0 auto;width:auto;height:184mm;max-width:100%}
+  .fanpage{page:chart;position:relative;height:208mm;overflow:hidden}
+  .fanpage .landscape{position:absolute;width:208mm;height:140mm;left:calc(50% - 104mm);top:calc(50% - 70mm);transform:rotate(-90deg);display:flex;flex-direction:column;align-items:center}
+  .fanpage .landscape svg{width:208mm;height:auto}
   .fanpage .chart-title{margin:0 0 1.5mm}
-  .fanpage .chart-note{max-width:200mm;margin:0 auto 3mm;text-align:center}
-  .colophon{break-before:page;padding-top:200mm}
+  .fanpage .chart-note{max-width:190mm;margin:0 auto 3mm;text-align:center}
+  .fig-art svg{max-width:100%;height:auto}
+  .surnames{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .photos{max-width:134mm;gap:4mm 6mm}
+  .ph img{height:42mm}
+  .ph.wide img{width:112mm}
+  .photos.kings{gap:3mm 4mm}
+  .photos.kings .ph img{height:29mm}
+  .photos.mixed .ph img{height:38mm}
+  .star-ph img{height:28mm} .star-ph.n2 img{height:24mm}
+  .armorial{max-width:134mm;gap:6mm 7mm}
+  table.cuantos{max-width:134mm}
+  .colophon{page:plain;break-before:page;height:201mm;display:flex;flex-direction:column;justify-content:flex-end}
   .writein{page:plain}
   .wi-page{break-before:page;padding-top:4mm}
+  .wi{margin-top:5mm} .wline{height:7mm}
+  .notes{page:plain;break-before:page;max-width:128mm;margin:0 auto;padding-top:4mm}
+  .notes h3{font-family:var(--display);font-size:13pt;font-weight:400;margin-bottom:1mm}
   a{color:inherit;text-decoration:none}
 """
 
@@ -357,7 +397,7 @@ SCREEN_CSS = """
     .stars{grid-template-columns:1fr}
     .apellidos,.index,.sources{columns:1}
     .sources .url{word-break:break-all}
-    .wi,.writein,.fillbox,.print-only{display:none}
+    .wi,.writein,.fillbox,.print-only,.blank-page,.notes{display:none}
     table{display:block;overflow-x:auto}
   }
   @media screen and (min-width:700px){
@@ -459,21 +499,55 @@ def find_pages(pdf_path):
     return pages, doc.page_count
 
 
+def maquetar(entries, blanks=(), pad=0):
+    html_print = AQUI / "libro_impresion.html"
+    html_print.write_text(page(C.build_body(entries, blanks, pad)), encoding="utf-8")
+    to_pdf(html_print, PDF_IMPRENTA)
+    return find_pages(PDF_IMPRENTA)
+
+
+def cajas():
+    """Marca la caja de corte en el PDF de imprenta y guarda la copia de lectura."""
+    doc = pymupdf.open(PDF_IMPRENTA)
+    for pg in doc:
+        r = pg.mediabox
+        pg.set_bleedbox(r)
+        dx, dy = (r.width - CORTE[0]) / 2, (r.height - CORTE[1]) / 2
+        pg.set_trimbox(pymupdf.Rect(r.x0 + dx, r.y0 + dy, r.x1 - dx, r.y1 - dy))
+    doc.save(PDF_IMPRENTA.with_suffix(".tmp.pdf"), garbage=3, deflate=True)
+    doc.close()
+    PDF_IMPRENTA.with_suffix(".tmp.pdf").replace(PDF_IMPRENTA)
+    doc = pymupdf.open(PDF_IMPRENTA)
+    for pg in doc:
+        pg.set_cropbox(pg.trimbox)
+    doc.save(PDF, garbage=3, deflate=True)
+
+
 def main():
     entries = [(lvl, num, title, "") for lvl, num, title in C.TOC_STRUCTURE]
-    html_print = AQUI / "libro_impresion.html"
-    for _ in range(2):
-        body = C.build_body(entries)
-        html_print.write_text(page(body), encoding="utf-8")
-        to_pdf(html_print, PDF)
-        pages, total = find_pages(PDF)
-        entries = [(lvl, num, title, pg) for (lvl, num, title), pg in zip(C.TOC_STRUCTURE, pages)]
+    # 1. Sin blancos, para ver en qué página cae cada capítulo.
+    pages, total = maquetar(entries)
+    blanks, shift = set(), 0
+    for (lvl, num, title), pg in zip(C.TOC_STRUCTURE, pages):
+        if lvl == 1 and pg and (pg + shift) % 2 == 0:
+            blanks.add(title)
+            shift += 1
+    # 2. Con una página en blanco delante de cada capítulo que caía en par.
+    pages, total = maquetar(entries, blanks)
+    entries = [(lvl, num, title, pg) for (lvl, num, title), pg in zip(C.TOC_STRUCTURE, pages)]
+    pad = (-total) % 4
+    # 3. Con el índice numerado y el total redondeado a múltiplo de 4.
+    pages, total = maquetar(entries, blanks, pad)
+    cajas()
     (AQUI / "libro.html").write_text(page(C.build_body(entries), web=True), encoding="utf-8")
     missing = [t for (l, n, t), p in zip(C.TOC_STRUCTURE, pages) if not p]
-    print(f"PDF: {PDF.name} · {total} páginas")
+    pares = [t for (l, n, t), p in zip(C.TOC_STRUCTURE, pages) if l == 1 and p and p % 2 == 0]
+    print(f"PDF: {PDF_IMPRENTA.name} y {PDF.name} · {total} páginas")
     print("Índice:", ", ".join(f"{t} → {p}" for (l, n, t), p in zip(C.TOC_STRUCTURE, pages)))
     if missing:
         print("Sin página:", missing)
+    if pares or total % 4:
+        print("AVISO: capítulos en página par", pares, "o total no múltiplo de 4:", total)
 
 
 if __name__ == "__main__":
