@@ -11,11 +11,12 @@ Grado de certeza: **[C]** confirmado en fuentes de referencia (Wikipedia, Real A
 
 ## El libro de familia: «De dónde venimos»
 
-En [`libro/`](libro/) está el libro, escrito en nombre de los hermanos Domecq Vergara, maquetado para encuadernar en tapa dura a **168 × 240 mm** (128 páginas):
+En [`libro/`](libro/) está el libro, escrito en nombre de los hermanos Domecq Vergara, maquetado para encuadernar en tapa dura a **168 × 240 mm** (132 páginas):
 
 - [`De-donde-venimos-imprenta.pdf`](libro/De-donde-venimos-imprenta.pdf): el interior para la imprenta, a 174 × 246 mm (3 mm de sangrado por lado, con la caja de corte marcada), páginas sueltas y consecutivas, total múltiplo de 4, capítulos en página impar.
 - [`De-donde-venimos-cubierta-stamping.pdf`](libro/De-donde-venimos-cubierta-stamping.pdf): la cubierta para grabar en oro sobre símil piel (contraportada + lomo + portada y 20 mm por lado para forrar el cartón). Lo negro es lo que se graba.
 - [`De-donde-venimos-cubierta-maqueta.pdf`](libro/De-donde-venimos-cubierta-maqueta.pdf): cómo queda la cubierta, en verde y oro.
+- [`De-donde-venimos-cubierta-impresa.pdf`](libro/De-donde-venimos-cubierta-impresa.pdf): la otra opción, la cubierta impresa a todo color para tapa dura de cartoné, con las armas en color y un texto en la contraportada.
 - [`De-donde-venimos.pdf`](libro/De-donde-venimos.pdf): el mismo libro recortado, para leer en pantalla, y su versión web, [`libro.html`](libro/libro.html).
 
 - **Contenido:** diez capítulos (quiénes somos, la línea más antigua, las nueve ramas con su árbol y sus fichas, títulos, órdenes y cuatro costados, personajes, apellidos y escudos, cronología, el árbol completo y lo que queda por investigar), las fuentes y unas páginas para completar a mano.
@@ -39,7 +40,7 @@ Pensado para [La Imprenta CG](https://imprentaonline.laimprentacg.com/es/product
 | Opción | Elegir |
 |---|---|
 | Tamaño | 168 × 240 |
-| Páginas | 128 en color y 0 en blanco y negro, impresión a dos caras |
+| Páginas | 132 en color y 0 en blanco y negro, impresión a dos caras |
 | Papel | estucado mate, 150 g (o 130 g, más ligero) |
 | Guardas | offset ahuesado |
 | Símil piel | verde (también hay marrón, negro, rojo y azul oscuro) |
@@ -49,7 +50,7 @@ Pensado para [La Imprenta CG](https://imprentaonline.laimprentacg.com/es/product
 
 Se suben el interior (`De-donde-venimos-imprenta.pdf`) y la cubierta (`De-donde-venimos-cubierta-stamping.pdf`). El lomo está calculado en unos 14 mm; si la imprenta da otra medida, se rehace la cubierta con `python3 cubierta.py --lomo MM`. Plazo: 10 a 15 días laborables, más unos 10 por el grabado en oro.
 
-Otra opción, también en La Imprenta CG: «Libros color tapa dura» (cartoné con la cubierta impresa a todo color y cosido con hilo), en el mismo tamaño 168 × 240; necesitaría una cubierta impresa en vez de la de grabado.
+Otra opción, también en La Imprenta CG: [«Libros color tapa dura»](https://imprentaonline.laimprentacg.com/es/producto/3-imprimir-libros-color-tapa-dura) (cartoné con la cubierta impresa a todo color y cosido con hilo), en el mismo tamaño 168 × 240, papel estucado mate de 150 g y peliculado mate o tacto seda. Se suben el mismo interior y `De-donde-venimos-cubierta-impresa.pdf`, que lleva 20 mm de más por cada lado para forrar el cartón; si la imprenta pide otra medida de lomo o de sangrado, se rehace con `python3 cubierta.py --lomo MM`.
 
 ## Tu línea más antigua: 25 generaciones, de 1264 a hoy
 
@@ -182,7 +183,7 @@ Antepasados directos, con su número, y parientes cercanos, con la persona de tu
 34. Tomás Rivero O'Neale (1835–1902) **[Á]** · 35. Emilia González de Soto (1841–1889), hija del fundador de González Byass **[C]** — casaron en 1865.
 36. Baltasar Hidalgo y Meléndez (1831–1894), IV marqués de Negrón **[C]**
 37. Josefa Pardo de Figueroa y de la Serna, I marquesa de Pardo de Figueroa (1927) **[C]** — hermana del «Doctor Thebussem».
-38. Joaquín Enrile y Méndez de Sotomayor (1826–1886), teniente coronel de Artillería **[Á]** · 39. María de la Paz González de la Mota y Velázquez-Gaztelu (1825–1895) **[Á]** — casaron el 5-II-1855.
+38. Joaquín Enrile y Méndez de Sotomayor (1826–1886), teniente coronel de Artillería **[Á]** · 39. María de la Paz González de la Mota y Velázquez (1825–1895) **[C]** — casaron el 5-II-1855.
 40. Fermín Bohórquez Zarco **[Á]** · 41. Ana Rubiales Olmedo **[Á]** — de Ubrique; padres del diputado Bartolomé y de Rafaela, Fermín (1870–1921), Rafael (1873–1940) y José Bohórquez Rubiales.
 44. José de Mora-Figueroa y Daza (1839–1909), VI marqués de Tamarón **[C]** · 45. Francisca Ferrer y Rabech (1852–1924) **[C]**
 46. Manuel Gómez-Imaz Simón (La Habana, 3-VI-1844 – Sevilla, 1922), erudito y bibliógrafo, académico de Buenas Letras en Sevilla y gran coleccionista de la Guerra de la Independencia **[C]** · 47. Victoria Vázquez Rodríguez (n. 1849) **[C]** — hija de Ignacio Vázquez Gutiérrez, alcalde de Sevilla (nº 94).
@@ -209,6 +210,7 @@ Antepasados directos, con su número, y parientes cercanos, con la persona de tu
 106. Francisco de Paula Rocha y Aranda **[Á]** · 107. María Josefa Pérez y Molina **[Á]** — por ella, la rama de Quito.
 126. Salvador Darqui-Leguía (n. 1817) **[D]** · 127. Rosalía Sánchez Domínguez **[D]** — en México.
 76. José Nicolás Enrile Desportes **[Á]** · 77. María del Carmen Méndez de Sotomayor y Bosolongo **[Á]**
+78. Juan González de la Mota, comerciante de Jerez **[C]** · 79. Antonia Velázquez Gómez, de Medina Sidonia **[C]** — padres también de Ana, mujer de Antonio de Zulueta (Revista de Historia de El Puerto, 2023).
 80. Bartolomé Bohórquez Marchán **[Á]** · 81. Rafaela Zarco Morales **[Á]** — abuelos paternos del diputado.
 82. Rafael Rubiales **[Á]** · 83. María Olmedo **[Á]** — abuelos maternos del diputado.
 102. José María Quesada Bardalona **[Á]** · 103. Marianne Caugh Burns **[Á]**
@@ -298,7 +300,8 @@ Las órdenes militares piden probar la nobleza de sangre de los cuatro abuelos, 
 - **Enlace medieval y señores de Valhermoso (1543–1681):** ver la tabla de la línea más antigua.
 - **Lacoste y Torquemada:** no aparecen como antepasados directos en ninguna rama documentada. Los Lacoste están muy cerca: Juan Pedro Lacoste heredó en 1764 con Juan Haurie el negocio del que salió la casa Domecq, y Ana María Lacoste Salazar se casó en 1821 con Pedro Lacave Miramont, sin hijos. De Torquemada no hay rastro. Si están, será en las ramas que aún faltan: Gómez (la mujer del diputado Bohórquez), Patero–Etchecopar o González de la Mota.
 - **López de Carrizosa entre 1479 y 1770:** faltan las generaciones entre Íñigo López de Carrizosa y Álvaro López de Carrizosa Perea, y el enlace con Rodrigo de Carrizosa (1266). Archivo Municipal de Jerez y archivo de la Fundación del Hospital de la Santa Resurrección de Utrera.
-- **Nombres que faltan:** Patero, Etchecopar y González de la Mota; enlace entre el II y el I marqués de Tamarón; el I marqués de Casa Pavón (Miguel José Pavón de Fuentes, Jerez, 1671) es casi seguro antepasado.
+- **Los Patero (nº 54):** en la Armada hubo dos marinos gaditanos del apellido, Francisco Patero y Chacón (campaña del Pacífico, 1865–1866) y Santiago Patero y Micón (brigadier carlista en 1874); podrían ser de la familia, sin documento que lo pruebe.
+- **Nombres que faltan:** Patero, Etchecopar; enlace entre el II y el I marqués de Tamarón; el I marqués de Casa Pavón (Miguel José Pavón de Fuentes, Jerez, 1671) es casi seguro antepasado.
 - **Archivos para seguir (no consultados; esta investigación es solo en línea):** Registro Civil de Jerez; Archivo Diocesano de Asidonia-Jerez (Jerez, Ubrique, Villamartín, Arcos, Medina Sidonia); Archivo Histórico Municipal de Ubrique (padrones); Archivo Municipal de Villamartín; Archivo Histórico Provincial de Cádiz (protocolos); Archivo General del Arzobispado de Sevilla (expedientes matrimoniales); Archivo Municipal de El Puerto de Santa María.
 - **Obras:** *La familia Vergara del Norte al Sur* (Alfonso de la Calle Vergara); *El negocio del vino en la ciudad de Cádiz. Historia empresarial de Lacave y Compañía, 1810–1927* (M. Vázquez Fariñas y M. C. Cózar Navarro); *Notas genealógicas* del Doctor Thebussem (1888–1889); *La casa de Domecq d'Usquain* (J. A. Delgado y Orellana, 1966).
 
